@@ -1,0 +1,2 @@
+- use wsl with Ubuntu-24.04 image for building with typst.
+- font calibri is in ~/.local/share/fonts. Tell typst with command line args

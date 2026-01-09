@@ -1,0 +1,23 @@
+# Ignore generated files
+*.pdf
+*.log
+*.aux
+*.toc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Typst build artifacts (if any)
+*.typst-cache
+
+# OneDrive temporary
+~$*
