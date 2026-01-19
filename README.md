@@ -61,6 +61,7 @@ The project includes `build.sh` for automated building:
 ./build.sh vainqueur_de # RSWC Vainqueur (German)
 ./build.sh ala14        # RSWC Super Stellar Ala 14
 ./build.sh typhoon      # RSWC Super Stellar Typhoon
+./build.sh roquina      # SyS Roquina
 ```
 
 **Clean output directory:**
@@ -87,8 +88,10 @@ HdR zines/
 │   └── ala14 zine.pdf
 ├── RSWC Super Stellar Typhoon/
 │   └── typhoon zine.pdf
-└── SyS Caballero/
-    └── caballero zine.pdf
+├── SyS Caballero/
+│   └── caballero zine.pdf
+└── SyS Roquina/
+    └── roquina zine.pdf
 ```
 
 
