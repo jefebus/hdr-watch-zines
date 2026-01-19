@@ -1,4 +1,4 @@
-#import "../src/lib.typ": zine8
+#import "../src/lib.typ": watch_zine
 
 #set document(author: "Jefebus", title: "RSWC Vainqueur")
 #set text(font: "Calibri", size: 7pt, lang: "es")
@@ -10,7 +10,7 @@
   pad(top: 2em, text(10em, align(center, hd.body)))
 }
 
-#show: zine8.with(
+#show: watch_zine.with(
   digital: json(bytes(sys.inputs.at("digital", default: "false"))),
   draw-border: true // draw border boxes in printing mode
 )

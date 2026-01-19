@@ -1,4 +1,4 @@
-#let default-margin-zine8 = ("bottom": 0.5in, "rest": 0.25in)
+#let default-margin-watch_zine = ("bottom": 0.5in, "rest": 0.25in)
 
 /// the base container for a single page in the final (folded or digital) zine
 ///
@@ -85,7 +85,7 @@
     if numbering == none {
       0.25in
     } else {
-      default-margin-zine8
+      default-margin-watch_zine
     }
   } else {
     margin
@@ -191,7 +191,7 @@
 /// within the document (implying eight pages are defined).])
 ///
 /// -> content
-#let zine8(
+#let watch_zine(
   /// whether to be in printer mode (false) or digital (true)
   ///
   /// When creating a digital zine, the margin specified with `zine-page-margin`

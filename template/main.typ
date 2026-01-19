@@ -1,4 +1,4 @@
-#import "../src/lib.typ": zine8
+#import "../src/lib.typ": watch_zine
 
 #set document(author: "Tom", title: "A4 Zen Zine Example")
 #set text(font: "Calibri", size: 7pt, lang: "en")
@@ -14,7 +14,7 @@
   pad(top: 2em, text(10em, align(center, hd.body)))
 }
 
-#show: zine8.with(
+#show: watch_zine.with(
   // whether to make output PDF pages align with zine pages (true)
   // or have the zine pages located onto a printer page (false)
   // with this code, you can provide which kind you want on the command line
