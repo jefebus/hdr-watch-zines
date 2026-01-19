@@ -21,6 +21,7 @@ declare -A ZINES=(
     ["caballero"]="caballero/caballero.typ"
     ["iberia"]="iberia/iberia.typ"
     ["vainqueur"]="vainqueur/vainqueur.typ"
+    ["vainqueur_de"]="vainqueur/vainqueur_de.typ"
     ["ala14"]="ala14/ala14.typ"
     ["typhoon"]="typhoon/typhoon.typ"
 )
@@ -30,6 +31,7 @@ declare -A OUTPUT_SUBDIRS=(
     ["caballero"]="SyS Caballero"
     ["iberia"]="RSWC Suite Iberia"
     ["vainqueur"]="RSWC Vainqueur"
+    ["vainqueur_de"]="RSWC Vainqueur"
     ["ala14"]="RSWC Super Stellar Ala 14"
     ["typhoon"]="RSWC Super Stellar Typhoon"
 )
