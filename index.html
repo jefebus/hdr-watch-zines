@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HdR Watch Zines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #666;
+        }
+        
+        .zines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .zine-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e9ecef;
+        }
+        
+        .zine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .zine-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .zine-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            margin-top: 10px;
+        }
+        
+        .download-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .language-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #666;
+            margin-left: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⌚ HdR Watch Zines</h1>
+            <p>Printable instruction booklets for watch enthusiasts</p>
+        </header>
+        
+        <div class="content">
+            <div class="intro">
+                <p>Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.</p>
+                <p>Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.</p>
+            </div>
+            
+            <div class="zines-grid">
+                <div class="zine-card">
+                    <h3>RSWC Vainqueur</h3>
+                    <p>Automatic chronograph inspired by Formula 1 racing</p>
+                    <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download>📥 Download ES</a>
+                    <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download>📥 Download DE</a>
+                </div>
+                
+                <div class="zine-card">
+                    <h3>RSWC Suite Iberia</h3>
+                    <p>Elegant timepiece from the RSWC collection</p>
+                    <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download>📥 Download</a>
+                </div>
+                
+                <div class="zine-card">
+                    <h3>RSWC Super Stellar Ala 14</h3>
+                    <p>Fighter pilot watch validated by the Spanish Air Force</p>
+                    <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download>📥 Download</a>
+                </div>
+                
+                <div class="zine-card">
+                    <h3>RSWC Super Stellar Typhoon</h3>
+                    <p>Aerospace-grade instrument for extreme conditions</p>
+                    <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download>📥 Download</a>
+                </div>
+                
+                <div class="zine-card">
+                    <h3>Sol y Sombra Caballero</h3>
+                    <p>Classic design from the SyS collection</p>
+                    <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download>📥 Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>About this project:</strong></p>
+            <p>These zines are created with <a href="https://typst.app/" target="_blank">Typst</a> using the zen-zine template.</p>
+            <p>Content based on descriptions from the "Hablemos de Relojes" forum community.</p>
+            <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank">View on GitHub</a> | 
+               <a href="README.md">Documentation</a></p>
+        </footer>
+    </div>
+</body>
+</html>
