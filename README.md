@@ -1,22 +1,41 @@
-# typst zine
+# typst watch zine
 
-Project for creating small typst zines for your watch case. Includes zines for a number of watches created in the "Hablemos de Relojes" watch forum.
+Project for creating small typst watch zines for your watch case. Includes booklets for a number of watches created in the "Hablemos de Relojes" watch forum.
 
 # Credits
 
 ## Zen Zine Template
 
-This project uses the **Zen Zine** template for Typst, created by Tom Eichlersmith.
+## Text and Photographs
+
+The watch descriptions for the RSWC and SyS (Sol y Sombra) booklets are based on the watch descriptions from the "Hablemos de Relojes" forum, primarily written by user **@Gasparacha**.
+
+Photographs featured in the booklets were taken from the forum and were created by:
+- **@Gasparacha**
+- **@submariner**
+
+All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
+
+This project derives from the **Zen Zine** template for Typst, created by Tom Eichlersmith.
 
 - **Package**: [zen-zine](https://typst.app/universe/package/zen-zine/)
 - **License**: MIT License
-- **Description**: A template for creating printable 8-page zines from A4 or US Letter paper
+- **Description**: A template for creating printable 8-page zines from a page of paper
 
-### Usage
+## Typst
+
+This project is built with [Typst](https://typst.app/), a modern typesetting system.
+
+- **Website**: https://typst.app/
+- **License**: Apache-2.0
+
+# Usage
 
 The `watch_zine` function in `src/lib.typ` is based on the zen-zine template, adapted for creating watch instruction booklets. The template enables the creation of foldable booklets with proper page ordering for printing.
 
-### License Notice
+Build the pdfs by executing the build.sh script in linux. typst and Font calibri must be installed in the system (by default in ~/.local/share/fonts directory).
+
+# License Notice
 
 ```
 MIT License
@@ -42,9 +61,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## Typst
-
-This project is built with [Typst](https://typst.app/), a modern typesetting system.
-
-- **Website**: https://typst.app/
-- **License**: Apache-2.0
