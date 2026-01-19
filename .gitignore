@@ -19,5 +19,3 @@ __pycache__/
 # Typst build artifacts (if any)
 *.typst-cache
 
-# OneDrive temporary
-~$*

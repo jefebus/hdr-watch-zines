@@ -1,7 +1,7 @@
 #import "../src/lib.typ": watch_zine
 
 #set document(author: "Jefebus", title: "RSWC Vainqueur")
-#set text(font: "Calibri", size: 7pt, lang: "de")
+#set text(font: "Carlito", size: 7pt, lang: "de")
 
 #set page("a4")
 

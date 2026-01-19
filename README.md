@@ -1,5 +1,3 @@
-# typst watch zine
-
 Project for creating small typst watch zines for your watch case. Includes booklets for a number of watches created in the "Hablemos de Relojes" watch forum.
 
 # Credits
@@ -33,7 +31,82 @@ This project is built with [Typst](https://typst.app/), a modern typesetting sys
 
 The `watch_zine` function in `src/lib.typ` is based on the zen-zine template, adapted for creating watch instruction booklets. The template enables the creation of foldable booklets with proper page ordering for printing.
 
-Build the pdfs by executing the build.sh script in linux. typst and Font calibri must be installed in the system (by default in ~/.local/share/fonts directory).
+## Prerequisites
+
+### Install Typst
+
+Follow the installation instructions at [typst.app](https://typst.app/).
+
+### Install Carlito Font
+
+The booklets use the Carlito font (a free, metric-compatible alternative to Calibri). Install it on your system.
+https://fonts.google.com/specimen/Carlito 
+
+## Building Booklets
+
+### Using the Build Script (Linux/WSL)
+
+The project includes `build.sh` for automated building:
+
+**Build all booklets:**
+```bash
+./build.sh
+```
+
+**Build a specific booklet:**
+```bash
+./build.sh caballero    # SyS Caballero
+./build.sh iberia       # RSWC Suite Iberia
+./build.sh vainqueur    # RSWC Vainqueur (Spanish)
+./build.sh vainqueur_de # RSWC Vainqueur (German)
+./build.sh ala14        # RSWC Super Stellar Ala 14
+./build.sh typhoon      # RSWC Super Stellar Typhoon
+```
+
+**Clean output directory:**
+```bash
+./build.sh --clean
+```
+
+**Show help:**
+```bash
+./build.sh --help
+```
+
+### Output Structure
+
+PDFs are generated in the `HdR booklets/` directory:
+```
+HdR booklets/
+├── RSWC Suite Iberia/
+│   └── iberia booklet.pdf
+├── RSWC Vainqueur/
+│   ├── vainqueur booklet.pdf
+│   └── vainqueur_de booklet.pdf
+├── RSWC Super Stellar Ala 14/
+│   └── ala14 booklet.pdf
+├── RSWC Super Stellar Typhoon/
+│   └── typhoon booklet.pdf
+└── SyS Caballero/
+    └── caballero booklet.pdf
+```
+
+
+## Creating Your Own Booklet
+
+1. Copy an existing booklet directory (e.g., `template/`)
+2. Modify the `.typ` file with your content
+3. Add your images
+4. Add to `build.sh`:
+   ```bash
+   # In ZINES array:
+   ["mywatch"]="mywatch/mywatch.typ"
+   
+   # In OUTPUT_SUBDIRS array:
+   ["mywatch"]="My Watch Name"
+   ```
+5. Build: `./build.sh mywatch`
+
 
 # License Notice
 

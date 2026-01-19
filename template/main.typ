@@ -1,7 +1,7 @@
 #import "../src/lib.typ": watch_zine
 
 #set document(author: "Tom", title: "A4 Zen Zine Example")
-#set text(font: "Calibri", size: 7pt, lang: "en")
+#set text(font: "Carlito", size: 7pt, lang: "en")
 
 // this page size is what the printer page size is
 // if building a digital zine, the page will be re-set

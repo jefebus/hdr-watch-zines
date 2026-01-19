@@ -1,7 +1,7 @@
 #import "../src/lib.typ": watch_zine
 
 #set document(author: "Jefebus", title: "Sol y Sombra – Caballero")
-#set text(font: "Calibri", size: 7pt, lang: "es")
+#set text(font: "Carlito", size: 7pt, lang: "es")
 #set page("a4")
 
 #show heading.where(level: 1): hd => {

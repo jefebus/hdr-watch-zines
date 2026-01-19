@@ -1,7 +1,7 @@
 #import "../src/lib.typ": watch_zine
 
 #set document(author: "Jefebus", title: "RSWC Super Stellar Typhoon")
-#set text(font: "Calibri", size: 7pt, lang: "es")
+#set text(font: "Carlito", size: 7pt, lang: "es")
 
 #set page("a4")
 
