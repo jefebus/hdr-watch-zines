@@ -16,6 +16,7 @@ TARGETS := \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur\ zine.pdf \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur_de\ zine.pdf \
 	HdR\ zines/RSWC\ Verne/verne\ zine.pdf \
+	HdR\ zines/RSWF\ Ichi/ichi\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ Ala\ 14/ala14\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ Typhoon/typhoon\ zine.pdf \
 	HdR\ zines/SyS\ Roquina/roquina\ zine.pdf \
@@ -61,6 +62,10 @@ HdR\ zines/RSWC\ Vainqueur/vainqueur_de\ zine.pdf: $(wildcard vainqueur/*.typ va
 HdR\ zines/RSWC\ Verne/verne\ zine.pdf: $(wildcard verne/*.typ verne/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Verne"
 	$(TYPST) verne/verne.typ "$@"
+
+HdR\ zines/RSWF\ Ichi/ichi\ zine.pdf: $(wildcard ichi/*.typ ichi/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWF Ichi"
+	$(TYPST) ichi/ichi.typ "$@"
 
 HdR\ zines/RSWC\ Super\ Stellar\ Ala\ 14/ala14\ zine.pdf: $(wildcard ala14/*.typ ala14/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Super Stellar Ala 14"

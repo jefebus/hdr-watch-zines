@@ -10,6 +10,7 @@ Photographs featured in the zines were taken from the forum and were created by:
 - **@Gasparacha**
 - **@submariner**
 - **@Pirlo**
+- **@vegaban**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 
@@ -61,6 +62,7 @@ make iberia                 # RSWC Suite Iberia
 make vainqueur              # RSWC Vainqueur (Spanish)
 make vainqueur_de           # RSWC Vainqueur (German)
 make verne                  # RSWC Verne
+make ichi                   # RSWF Ichi
 make ala14                  # RSWC Super Stellar Ala 14
 make typhoon                # RSWC Super Stellar Typhoon
 make roquina                # SyS Roquina
@@ -94,6 +96,8 @@ HdR zines/
 │   └── vainqueur_de zine.pdf
 ├── RSWC Verne/
 │   └── verne zine.pdf
+├── RSWF Ichi/
+│   └── ichi zine.pdf
 ├── RSWC Super Stellar Ala 14/
 │   └── ala14 zine.pdf
 ├── RSWC Super Stellar Typhoon/
