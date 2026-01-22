@@ -64,6 +64,7 @@ make vainqueur_de           # RSWC Vainqueur (German)
 make verne                  # RSWC Verne
 make ichi                   # RSWF Ichi
 make ala14                  # RSWC Super Stellar Ala 14
+make supersharkomatic       # RSWC Supersharkomatic
 make typhoon                # RSWC Super Stellar Typhoon
 make roquina                # SyS Roquina
 make digimatico             # SyS Digimático
@@ -100,6 +101,8 @@ HdR zines/
 │   └── ichi zine.pdf
 ├── RSWC Super Stellar Ala 14/
 │   └── ala14 zine.pdf
+├── RSWC Supersharkomatic/
+│   └── supersharkomatic zine.pdf
 ├── RSWC Super Stellar Typhoon/
 │   └── typhoon zine.pdf
 ├── SyS Caballero/

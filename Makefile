@@ -18,6 +18,7 @@ TARGETS := \
 	HdR\ zines/RSWC\ Verne/verne\ zine.pdf \
 	HdR\ zines/RSWF\ Ichi/ichi\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ Ala\ 14/ala14\ zine.pdf \
+	HdR\ zines/RSWC\ Supersharkomatic/supersharkomatic\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ Typhoon/typhoon\ zine.pdf \
 	HdR\ zines/SyS\ Roquina/roquina\ zine.pdf \
 	HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf \
@@ -70,6 +71,10 @@ HdR\ zines/RSWF\ Ichi/ichi\ zine.pdf: $(wildcard ichi/*.typ ichi/*.jpeg) $(SRC_L
 HdR\ zines/RSWC\ Super\ Stellar\ Ala\ 14/ala14\ zine.pdf: $(wildcard ala14/*.typ ala14/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Super Stellar Ala 14"
 	$(TYPST) ala14/ala14.typ "$@"
+
+HdR\ zines/RSWC\ Supersharkomatic/supersharkomatic\ zine.pdf: $(wildcard supersharkomatic/*.typ supersharkomatic/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Supersharkomatic"
+	$(TYPST) supersharkomatic/supersharkomatic.typ "$@"
 
 HdR\ zines/RSWC\ Super\ Stellar\ Typhoon/typhoon\ zine.pdf: $(wildcard typhoon/*.typ typhoon/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Super Stellar Typhoon"
