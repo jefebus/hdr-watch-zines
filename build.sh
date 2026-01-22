@@ -28,6 +28,7 @@ declare -A ZINES=(
     ["digimatico"]="digimatico/digimatico.typ"
     ["forest_defender"]="forest_defender/forest_defender.typ"
     ["inmortal_reserva_especial"]="inmortal_reserva_especial/inmortal_reserva_especial.typ"
+    ["verne"]="verne/verne.typ"
 )
 
 # Output directory mapping
@@ -42,6 +43,7 @@ declare -A OUTPUT_SUBDIRS=(
     ["digimatico"]="SyS Digimático"
     ["forest_defender"]="RSWC Forest Defender"
     ["inmortal_reserva_especial"]="SyS Inmortal Reserva Especial"
+    ["verne"]="RSWC Verne"
 )
 
 # Function to build a single zine
