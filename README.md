@@ -69,6 +69,7 @@ make typhoon                # RSWC Super Stellar Typhoon
 make roquina                # SyS Roquina
 make digimatico             # SyS Digimático
 make forest_defender        # RSWC Forest Defender
+make ferroviario            # Ferroviario
 make inmortal               # SyS Inmortal
 make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
 ```
@@ -88,6 +89,8 @@ make help
 PDFs are generated in the `HdR zines/` directory:
 ```
 HdR zines/
+├── Ferroviario/
+│   └── ferroviario zine.pdf
 ├── RSWC Forest Defender/
 │   └── forest_defender zine.pdf
 ├── RSWC Suite Iberia/

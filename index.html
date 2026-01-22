@@ -186,6 +186,12 @@
             
             <div class="zines-grid">
                 <div class="zine-card">
+                    <h3>Ferroviario</h3>
+                    <p id="ferroviario-desc"></p>
+                    <a href="HdR zines/Ferroviario/ferroviario zine.pdf" class="download-btn" download><span id="download-btn-ferrov">📥 Descargar</span></a>
+                </div>
+                
+                <div class="zine-card">
                     <h3>RSWC Forest Defender</h3>
                     <p id="forest-defender-desc"></p>
                     <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
@@ -279,6 +285,7 @@
                 headerSubtitle: 'Folletos de instrucciones imprimibles para aficionados a la relojería',
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
+                ferroviarioDesc: 'Homenaje al primer ferrocarril iberoamericano. Carga manual Seagull TY3620-2',
                 forestDefenderDesc: 'Cronógrafo de bomberos con escala especial y pulsómetro',
                 inmortalSysDesc: 'Homenaje a los relojes clásicos españoles de los 60-70. Tres variantes',
                 inmortalReservaDesc: 'Cronógrafo de cuerda manual con calibre ST-1901 (última serie)',
@@ -305,6 +312,7 @@
                 headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
                 introText1: 'Lade druckfertige Zines für deine Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
                 introText2: 'Jedes Zine ist so gestaltet, dass es zu einem kompakten Heft gefaltet werden kann, das perfekt in dein Uhrenetui passt.',
+                ferroviarioDesc: 'Hommage an die erste iberoamerikanische Eisenbahn. Handaufzug Seagull TY3620-2',
                 forestDefenderDesc: 'Feuerwehr-Chronograph mit Spezialskala und Pulsmesser',
                 inmortalSysDesc: 'Hommage an klassische spanische Uhren der 60-70er. Drei Varianten',
                 inmortalReservaDesc: 'Handaufzug-Chronograph mit ST-1901-Kaliber (letzte Serie)',
@@ -331,6 +339,7 @@
                 headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
                 introText1: 'Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.',
                 introText2: 'Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.',
+                ferroviarioDesc: 'Tribute to the first Iberoamerican railroad. Manual-wind Seagull TY3620-2',
                 forestDefenderDesc: 'Firefighter chronograph with special scale and pulsometer',
                 inmortalSysDesc: 'Tribute to classic Spanish watches from the 60s-70s. Three variants',
                 inmortalReservaDesc: 'Manual-wind chronograph with ST-1901 caliber (final series)',
@@ -367,6 +376,7 @@
             document.getElementById('header-subtitle').textContent = t.headerSubtitle;
             document.getElementById('intro-text-1').textContent = t.introText1;
             document.getElementById('intro-text-2').textContent = t.introText2;
+            document.getElementById('ferroviario-desc').textContent = t.ferroviarioDesc;
             document.getElementById('forest-defender-desc').textContent = t.forestDefenderDesc;
             document.getElementById('inmortal-sys-desc').textContent = t.inmortalSysDesc;
             document.getElementById('inmortal-reserva-desc').textContent = t.inmortalReservaDesc;
@@ -392,6 +402,7 @@
             document.getElementById('download-btn-4').textContent = t.downloadBtn;
             document.getElementById('download-btn-5').textContent = t.downloadBtn;
             document.getElementById('download-btn-6').textContent = t.downloadBtn;
+            document.getElementById('download-btn-ferrov').textContent = t.downloadBtn;
             document.getElementById('download-btn-verne').textContent = t.downloadBtn;
             document.getElementById('download-btn-ichi').textContent = t.downloadBtn;
             document.getElementById('footer-about').textContent = t.footerAbout;
