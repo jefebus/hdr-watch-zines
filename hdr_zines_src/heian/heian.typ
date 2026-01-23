@@ -1,4 +1,4 @@
-#import "../src/lib.typ": watch_zine
+#import "../../src/lib.typ": watch_zine
 
 #set document(author: "HdR", title: "RSWC Heian")
 #set text(font: "Carlito", size: 7pt, lang: "es")
@@ -166,8 +166,17 @@ cada 4-5 años.
 
 // back cover
 #block({
-  image("heian_back.jpeg", width: 100%, height: 100%, fit: "cover")
+  image("heian_back.jpeg", width: 100%, height: 50%, fit: "cover")
 })
+
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
+La trasera roscada customizada RSWC presenta grabados con 
+las especificaciones técnicas y el sello del foro. Su 
+diseño rinde homenaje a los clásicos japoneses vintage 
+como el King Seiko, con una estética sobria y elegante. 
+La paz y tranquilidad de la época Heian, grabadas en 
+acero.
+]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
 _RSWC · Hablemos de Relojes_

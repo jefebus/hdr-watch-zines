@@ -1,4 +1,4 @@
-#import "../src/lib.typ": watch_zine
+#import "../../src/lib.typ": watch_zine
 
 #set document(author: "HdR", title: "Sol y Sombra – Digimático")
 #set text(font: "Carlito", size: 7pt, lang: "es")

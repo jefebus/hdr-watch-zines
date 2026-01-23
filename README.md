@@ -56,28 +56,6 @@ The project includes a `Makefile` for automated building:
 make
 ```
 
-**Build a specific zine:**
-```bash
-make caballero              # SyS Caballero
-make bushido                # RSWC Bushido (versiones roja y Midori)
-make digimatico             # SyS Digimático
-make ferroviario            # Ferroviario
-make forest_defender        # RSWC Forest Defender
-make heian                  # RSWC Heian
-make iberia                 # RSWC Suite Iberia
-make ichi                   # RSWF Ichi
-make inmortal               # SyS Inmortal
-make inmortal_reserva_especial  # SyS Inmortal Reserva Especial
-make ala14                  # RSWC Super Stellar Ala 14
-make roquina                # SyS Roquina
-make salto_de_fe            # RSWC Salto de Fe
-make supersharkomatic       # RSWC Supersharkomatic
-make typhoon                # RSWC Super Stellar Typhoon
-make vainqueur              # RSWC Vainqueur (Spanish)
-make vainqueur_de           # RSWC Vainqueur (German)
-make verne                  # RSWC Verne
-```
-
 **Clean output directory:**
 ```bash
 make clean
