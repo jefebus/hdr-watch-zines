@@ -1,6 +1,6 @@
 #import "../src/lib.typ": watch_zine
 
-#set document(author: "Gasparacha", title: "RSWC Supersharkomatic")
+#set document(author: "HdR", title: "RSWC Supersharkomatic")
 #set text(font: "Carlito", size: 7pt, lang: "es")
 #set page("a4")
 
@@ -26,127 +26,95 @@
 #pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
-- Caja de acero inoxidable 316L tipo "cushion" de 41 mm
+- Caja en acero 316L de 41 mm
 - Lug to lug: 46,5 mm
-- Grosor: 13,3 mm (cristal incluido)
-- Movimiento automático calibre PT5000 (clon del ETA 2824-2)
-- Con carga manual y parada de segundero
-- Cristal de zafiro con tratamiento antirreflejo
-- Bisel unidireccional de buceo
-- Trasera ciega roscada con grabado exclusivo de tiburón
-- Lumen BGW-9 azul en índices y agujas
-- Correa de silicona negra estilo Tropic
-- Cierre con hebilla clásica
+- Tapa a rosca con grabado *oil press* (en relieve)
+- Corona a rosca
+- Bisel de aluminio bi-direccional, 120 pasos
+- Movimiento automático PT5000 (clon ETA 2824-2)
+- Cristal de zafiro sobredimensionado con triple AR interno
+- Esfera y agujas con Super-LumiNova Swiss C3 (verde)
+- Correa Tropic FKM
 - Resistencia al agua: 200 metros
+- Estuche: cofrecito negro clásico RSWC
+- Serie limitada: 150 unidades (agotada)
+- Precio final: 220 € (aduanas incluidas)
 
 #pagebreak()
 
 *DESCRIPCIÓN DEL RELOJ*
 
-El Supersharkomatic es un reloj de buceo con estética 
-retro que rinde homenaje a los relojes de inmersión 
-clásicos de los años 70.
+El RSWC Supersharkomatic es un diver forero diseñado desde cero para rendir homenaje a un reloj de buceo
+icónico del cine de 1975. Mantiene estética setentera reconocible, actualizada con materiales modernos.
 
-Su imponente caja cushion y su bisel unidireccional 
-lo dotan de una presencia robusta y profesional. 
-Está diseñado para destacar tanto dentro como fuera 
-del agua.
+La caja de 41 mm en acero 316L con corona y tapa roscadas refuerza su carácter de herramienta. El cristal
+de zafiro sobredimensionado con triple antirreflejo aporta legibilidad, mientras que el bisel de aluminio
+de 120 pasos completa la experiencia "vintage-pro".
 
-Su diseño combina elementos tradicionales con tecnología 
-moderna, como el lumen BGW-9 y el cristal zafiro.
-
-La elección del movimiento PT5000 garantiza 
-fiabilidad y precisión, mientras que 
-el grabado del tiburón en la trasera refuerza su 
-identidad marina.
+Dos configuraciones: *Cyclops "Original"* (con lupa) y *"Standard"* (sin lupa), para elegir entre el guiño
+histórico o una lectura más limpia.
 
 #pagebreak()
 
 *UN DIVER DE AUTOR*
 
-El Supersharkomatic nació como un "diver de autor" 
-dentro del entorno creativo de HdR. Inspirado en los 
-relojes de buceo vintage, fue diseñado para ofrecer 
-un homenaje lúdico y potente al espíritu libre de 
-los años 70.
+Este reloj nace dentro de HdR como proyecto sin ánimo de lucro por amor a la relojería. La idea surge
+de una conversación informal entre foreros ("noche de WhatsApp" convertida en fenómeno social), y crece
+gracias a las reservas en firme y coordinación colectiva.
 
-El proyecto reunió ideas y aportes de distintos foreros, 
-dando forma a un reloj valiente, poco convencional y 
-cargado de personalidad.
+No es catálogo ni "encargo a fábrica": es pieza 100% RSWC, con decisiones de diseño tomadas por y para
+la comunidad, con apoyo de Astar para materializarlo con calidad al precio más ajustado.
 
-No fue un encargo a fábrica, sino una expresión genuina 
-de diseño forero. Representa una visión libre y creativa 
-de la relojería.
-
-Desde su lanzamiento, ha sido símbolo de creatividad y 
-entusiasmo colectivo.
+Resultado: uno de los modelos con mayor demanda en la historia de la marca, en tirada limitada ya agotada.
 
 #pagebreak()
 
-*DISEÑO CUSHION Y HERENCIA*
+*DISEÑO Y HERENCIA*
 
-El nombre "Supersharkomatic" evoca los grandes diver 
-automáticos de antaño, como el Doxa Sub o los primeros 
-Seiko de buceo.
+Supersharkomatic no pretende copiar: interpreta. Parte del "oscuro reloj" del oceanógrafo de la película
+de 1975 y lo adapta a los gustos actuales, manteniendo el espíritu de los divers clásicos.
 
-El tiburón grabado en la trasera simboliza potencia, 
-libertad y dominio marino. Una criatura perfectamente 
-adaptada a su medio, como este reloj al entorno acuático.
+El conjunto se apoya en proporciones contenidas (41 mm), lug-to-lug equilibrado (46,5 mm) y caja fabricada
+en 316L. El bisel bi-direccional de 120 pasos aporta tacto preciso, mientras que la opción con o sin
+*cyclops* refuerza el juego entre fidelidad y preferencia personal.
 
-El diseño cushion se remonta a los relojes de los años 
-60 y 70 usados en ambientes extremos. Es una forma que 
-mejora la ergonomía y protege mejor la corona y el cristal.
-
-Este proyecto rinde homenaje, sin ataduras, a la 
-relojería de exploración.
+La trasera roscada con grabado en relieve remata el carácter de herramienta RSWC.
 
 #pagebreak()
 
 *LUMEN Y FUNCIONALIDAD*
 
-El lumen BGW-9, de tono azul, es una mejora moderna 
-que ofrece excelente visibilidad nocturna, reforzando 
-su carácter funcional.
+La elección de Super-LumiNova Swiss C3 (verde) garantiza una lectura clara en condiciones de poca luz,
+con una estética muy acorde a los divers clásicos.
 
-El bisel unidireccional permite medir tiempos de 
-inmersión con seguridad, evitando giros accidentales 
-que puedan dar lecturas peligrosas.
+En el apartado técnico, el cristal de zafiro sobredimensionado con triple AR interno mejora la visibilidad
+y reduce reflejos, mientras que la estanqueidad de 200 m, la corona a rosca y la tapa roscada completan un
+conjunto preparado para agua y uso intensivo.
 
-La correa de silicona estilo Tropic es un guiño 
-directo a las correas clásicas de buceo, flexibles, 
-resistentes y cómodas tanto en el agua como fuera.
-
-Este reloj no solo es una herramienta funcional de 
-buceo, sino una pieza con carácter, pensada para los 
-amantes de la estética vintage y la robustez mecánica.
+La correa Tropic en FKM aporta comodidad, resistencia y el look retro que define el proyecto, con una
+sensación más moderna que la goma tradicional.
 
 #pagebreak()
 
 *INSTRUCCIONES DE USO*
 
-El movimiento PT5000 es automático con posibilidad 
-de carga manual y parada de segundero. Puede cargarse 
-con el movimiento de la muñeca o girando la corona 
-manualmente (20-30 vueltas).
+El calibre PT5000 es automático: se carga con el movimiento de la muñeca y admite carga manual girando la
+corona (20–30 vueltas si está parado).
 
-*Ajuste de hora y fecha:* Sacar la corona al primer 
-clic para ajustar la fecha, y al segundo clic para 
-ajustar la hora. No ajustar la fecha entre las 20:00 
-y las 04:00 para evitar daños al mecanismo.
+*Ajuste de hora y fecha:* desenroscar la corona y tirar al primer punto para cambiar fecha; al segundo para
+ajustar hora. Evita ajustar la fecha entre 21:00–03:00.
 
-*Mantenimiento:* Evitar impactos fuertes. Tras uso 
-acuático, enjuagar con agua dulce. Revisar la 
-estanqueidad anualmente. Servicio técnico recomendado 
-cada 4-5 años para mantener el rendimiento óptimo.
+*Mantenimiento:* tras uso en agua, enjuagar con agua dulce. Revisión de estanqueidad periódica; servicio
+completo cada 4–5 años para mantener precisión.
+
 
 #pagebreak()
 
 #image("supersharkomatic_back.jpeg", width: 100%, height: 50%, fit: "cover")
 
 #place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
-La trasera ciega presenta un grabado exclusivo de un tiburón, 
-símbolo de potencia y dominio marino. Un diver de autor creado 
-por y para la comunidad HdR.
+Proyecto comunitario RSWC (HdR). Serie limitada de 150 unidades, con dos variantes: *Cyclops “Original”* y
+*Standard*. Precio final 220 € con aduanas incluidas.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
