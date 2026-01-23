@@ -26,8 +26,10 @@
 #pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
-- Caja de acero inoxidable tipo "cushion" de 44 mm
-- Movimiento automático Seiko NH35
+- Caja de acero inoxidable 316L tipo "cushion" de 41 mm
+- Lug to lug: 46,5 mm
+- Grosor: 13,3 mm (cristal incluido)
+- Movimiento automático calibre PT5000 (clon del ETA 2824-2)
 - Con carga manual y parada de segundero
 - Cristal de zafiro con tratamiento antirreflejo
 - Bisel unidireccional de buceo
@@ -53,8 +55,8 @@ del agua.
 Su diseño combina elementos tradicionales con tecnología 
 moderna, como el lumen BGW-9 y el cristal zafiro.
 
-La elección del movimiento Seiko NH35 garantiza 
-fiabilidad y facilidad de mantenimiento, mientras que 
+La elección del movimiento PT5000 garantiza 
+fiabilidad y precisión, mientras que 
 el grabado del tiburón en la trasera refuerza su 
 identidad marina.
 
@@ -122,7 +124,7 @@ amantes de la estética vintage y la robustez mecánica.
 
 *INSTRUCCIONES DE USO*
 
-El movimiento Seiko NH35 es automático con posibilidad 
+El movimiento PT5000 es automático con posibilidad 
 de carga manual y parada de segundero. Puede cargarse 
 con el movimiento de la muñeca o girando la corona 
 manualmente (20-30 vueltas).
