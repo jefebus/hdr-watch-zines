@@ -88,6 +88,8 @@ HdR zines/
 │   └── heian zine.pdf
 ├── RSWC Salto de Fe/
 │   └── salto_de_fe zine.pdf
+├── RSWC Skygraph/
+│   └── skygraph zine.pdf
 ├── RSWC Suite Iberia/
 │   └── iberia zine.pdf
 ├── RSWC Vainqueur/
@@ -111,26 +113,32 @@ HdR zines/
 │   └── inmortal zine.pdf
 ├── SyS Inmortal Reserva Especial/
 │   └── inmortal_reserva_especial zine.pdf
-└── SyS Roquina/
-    └── roquina zine.pdf
+├── SyS Monumental/
+│   └── monumental zine.pdf
+├── SyS Roquina/
+│   └── roquina zine.pdf
+└── SyS Viajero/
+    └── viajero zine.pdf
 ```
 
 
 ## Creating Your Own Zine
 
-1. Copy an existing zine directory (e.g., `template/`)
-2. Modify the `.typ` file with your content
-3. Add your images
-4. Add a new target to the `Makefile`:
+1. Create a new directory in `hdr_zines_src/` (e.g., `hdr_zines_src/mywatch/`)
+2. Create your `.typ` file with the watch zine content following the 8-page structure
+3. Add your watch images (`mywatch_front.jpeg` and `mywatch_back.jpeg`)
+4. Add a new target to the `Makefile` TARGETS list:
    ```makefile
-   mywatch:
-       @echo "$(CYAN)=== Building mywatch ===$(NC)"
-       @mkdir -p "$(OUTPUT_DIR)/My Watch Name"
-       @$(TYPST) mywatch/mywatch.typ "$(OUTPUT_DIR)/My Watch Name/mywatch zine.pdf"
-       @echo "$(GREEN)✓ My Watch built: My Watch Name/mywatch zine.pdf$(NC)"
+   TARGETS := \
+       ... \
+       HdR\ zines/My\ Watch\ Name/mywatch\ zine.pdf
    ```
-5. Add `mywatch` to the `all` target dependencies
-6. Build: `make mywatch`
+5. Add the build rule after the TARGETS section:
+   ```makefile
+   HdR\ zines/My\ Watch\ Name/mywatch\ zine.pdf: $(wildcard hdr_zines_src/mywatch/*.typ hdr_zines_src/mywatch/*.jpeg) $(SRC_LIB)
+       @mkdir -p "HdR zines/My Watch Name"
+       $(TYPST) hdr_zines_src/mywatch/mywatch.typ "$@"
+   ```
 
 
 # License Notice
