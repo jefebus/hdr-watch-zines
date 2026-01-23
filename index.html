@@ -102,15 +102,34 @@
         .zine-card {
             background: #313131;
             border-radius: 8px;
-            padding: 20px;
+            padding: 0;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid #444444;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            min-height: 180px;
         }
         
         .zine-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            background: #2c2c2c;
+        }
+        
+        .zine-card-image {
+            width: 120px;
+            min-width: 120px;
+            height: 100%;
+            object-fit: cover;
+            background: #1a1a1a;
+        }
+        
+        .zine-card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
         }
         
         .zine-card h3 {
@@ -124,6 +143,7 @@
             font-size: 0.85em;
             margin-bottom: 12px;
             line-height: 1.4;
+            flex: 1;
         }
         
         .download-btn {
@@ -186,98 +206,148 @@
             
             <div class="zines-grid">
                 <div class="zine-card">
-                    <h3>Ferroviario</h3>
-                    <p id="ferroviario-desc"></p>
-                    <a href="HdR zines/Ferroviario/ferroviario zine.pdf" class="download-btn" download><span id="download-btn-ferrov">📥 Descargar</span></a>
+                    <img src="ferroviario/ferroviario_front.jpeg" alt="Ferroviario" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>Ferroviario 🛌️</h3>
+                        <p id="ferroviario-desc"></p>
+                        <a href="HdR zines/Ferroviario/ferroviario zine.pdf" class="download-btn" download><span id="download-btn-ferrov">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Bushido 🗡️🌿</h3>
-                    <p id="bushido-desc"></p>
-                    <a href="HdR zines/RSWC Bushido/bushido zine.pdf" class="download-btn" download><span id="download-btn-bushido">📥 Descargar</span></a>
+                    <img src="bushido/bushido_front.jpeg" alt="Bushido" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Bushido 🗡️🌿</h3>
+                        <p id="bushido-desc"></p>
+                        <a href="HdR zines/RSWC Bushido/bushido zine.pdf" class="download-btn" download><span id="download-btn-bushido">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Forest Defender 🚒</h3>
-                    <p id="forest-defender-desc"></p>
-                    <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
+                    <img src="forest_defender/forest_defender_front.jpeg" alt="Forest Defender" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Forest Defender 🚒</h3>
+                        <p id="forest-defender-desc"></p>
+                        <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Salto de Fe 🐕</h3>
-                    <p id="salto-de-fe-desc"></p>
-                    <a href="HdR zines/RSWC Salto de Fe/salto_de_fe zine.pdf" class="download-btn" download><span id="download-btn-sdf">📥 Descargar</span></a>
+                    <img src="salto_de_fe/salto_de_fe_front.jpeg" alt="Salto de Fe" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Salto de Fe 🐕</h3>
+                        <p id="salto-de-fe-desc"></p>
+                        <a href="HdR zines/RSWC Salto de Fe/salto_de_fe zine.pdf" class="download-btn" download><span id="download-btn-sdf">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Suite Iberia 🎹</h3>
-                    <p id="iberia-desc"></p>
-                    <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download><span id="download-btn">📥 Descargar</span></a>
+                    <img src="iberia/iberia_front.jpeg" alt="Suite Iberia" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Suite Iberia 🎹</h3>
+                        <p id="iberia-desc"></p>
+                        <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download><span id="download-btn">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Supersharkomatic 🦈</h3>
-                    <p id="supersharkomatic-desc"></p>
-                    <a href="HdR zines/RSWC Supersharkomatic/supersharkomatic zine.pdf" class="download-btn" download><span id="download-btn-shark">📥 Descargar</span></a>
+                    <img src="supersharkomatic/supersharkomatic_front.jpeg" alt="Supersharkomatic" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Supersharkomatic 🦈</h3>
+                        <p id="supersharkomatic-desc"></p>
+                        <a href="HdR zines/RSWC Supersharkomatic/supersharkomatic zine.pdf" class="download-btn" download><span id="download-btn-shark">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Super Stellar Ala 14 ✈️</h3>
-                    <p id="ala14-desc"></p>
-                    <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download><span id="download-btn-2">📥 Descargar</span></a>
+                    <img src="ala14/ala14_front.jpeg" alt="Ala 14" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Super Stellar Ala 14 ✈️</h3>
+                        <p id="ala14-desc"></p>
+                        <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download><span id="download-btn-2">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Super Stellar Typhoon ✈️</h3>
-                    <p id="typhoon-desc"></p>
-                    <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download><span id="download-btn-3">📥 Descargar</span></a>
+                    <img src="typhoon/typhoon_front.jpeg" alt="Typhoon" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Super Stellar Typhoon ✈️</h3>
+                        <p id="typhoon-desc"></p>
+                        <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download><span id="download-btn-3">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Vainqueur 🏎️</h3>
-                    <p id="vainqueur-desc"></p>
-                    <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download><span id="download-es">📥 Descargar ES</span></a>
-                    <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download><span id="download-de">📥 Descargar DE</span></a>
+                    <img src="vainqueur/vainqueur_front.jpeg" alt="Vainqueur" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Vainqueur 🏎️</h3>
+                        <p id="vainqueur-desc"></p>
+                        <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download><span id="download-es">📥 Descargar ES</span></a>
+                        <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download><span id="download-de">📥 Descargar DE</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWC Verne</h3>
-                    <p id="verne-desc"></p>
-                    <a href="HdR zines/RSWC Verne/verne zine.pdf" class="download-btn" download><span id="download-btn-verne">📥 Descargar</span></a>
+                    <img src="verne/verne_front.jpeg" alt="Verne" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Verne 🌊</h3>
+                        <p id="verne-desc"></p>
+                        <a href="HdR zines/RSWC Verne/verne zine.pdf" class="download-btn" download><span id="download-btn-verne">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>RSWF Ichi</h3>
-                    <p id="ichi-desc"></p>
-                    <a href="HdR zines/RSWF Ichi/ichi zine.pdf" class="download-btn" download><span id="download-btn-ichi">📥 Descargar</span></a>
+                    <img src="ichi/ichi_front.jpeg" alt="Ichi" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWF Ichi</h3>
+                        <p id="ichi-desc"></p>
+                        <a href="HdR zines/RSWF Ichi/ichi zine.pdf" class="download-btn" download><span id="download-btn-ichi">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>Sol y Sombra Caballero</h3>
-                    <p id="caballero-desc"></p>
-                    <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download><span id="download-btn-4">📥 Descargar</span></a>
+                    <img src="caballero/caballero_front.jpeg" alt="Caballero" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>Sol y Sombra Caballero</h3>
+                        <p id="caballero-desc"></p>
+                        <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download><span id="download-btn-4">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>Sol y Sombra Digimático</h3>
-                    <p id="digimatico-desc"></p>
-                    <a href="HdR zines/SyS Digimático/digimatico zine.pdf" class="download-btn" download><span id="download-btn-6">📥 Descargar</span></a>
+                    <img src="digimatico/digimatico_front.jpeg" alt="Digimático" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>Sol y Sombra Digimático</h3>
+                        <p id="digimatico-desc"></p>
+                        <a href="HdR zines/SyS Digimático/digimatico zine.pdf" class="download-btn" download><span id="download-btn-6">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
                 <div class="zine-card">
-                    <h3>Sol y Sombra Inmortal</h3>
-                    <p id="inmortal-sys-desc"></p>
-                    <a href="HdR zines/SyS Inmortal/inmortal zine.pdf" class="download-btn" download><span id="download-btn-inm-sys">📥 Descargar</span></a>
+                    <img src="inmortal/inmortal_front.jpeg" alt="Inmortal" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>Sol y Sombra Inmortal</h3>
+                        <p id="inmortal-sys-desc"></p>
+                        <a href="HdR zines/SyS Inmortal/inmortal zine.pdf" class="download-btn" download><span id="download-btn-inm-sys">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
-                <div class="zine-card">                    <h3>Sol y Sombra Inmortal Reserva Especial</h3>
-                    <p id="inmortal-reserva-desc"></p>
-                    <a href="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine.pdf" class="download-btn" download><span id="download-btn-inm">📥 Descargar</span></a>
+                <div class="zine-card">
+                    <img src="inmortal_reserva_especial/inmortal_reserva_especial_front.jpeg" alt="Inmortal Reserva Especial" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>Sol y Sombra Inmortal Reserva Especial</h3>
+                        <p id="inmortal-reserva-desc"></p>
+                        <a href="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine.pdf" class="download-btn" download><span id="download-btn-inm">📥 Descargar</span></a>
+                    </div>
                 </div>
                 
-                <div class="zine-card">                    <h3>Sol y Sombra Roquina</h3>
-                    <p id="roquina-desc"></p>
-                    <a href="HdR zines/SyS Roquina/roquina zine.pdf" class="download-btn" download><span id="download-btn-5">📥 Descargar</span></a>
+                <div class="zine-card">
+                    <img src="roquina/roquina_front.jpeg" alt="Roquina" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>Sol y Sombra Roquina</h3>
+                        <p id="roquina-desc"></p>
+                        <a href="HdR zines/SyS Roquina/roquina zine.pdf" class="download-btn" download><span id="download-btn-5">📥 Descargar</span></a>
+                    </div>
                 </div>
             </div>
         </div>
