@@ -21,3 +21,5 @@ __pycache__/
 # Typst build artifacts (if any)
 *.typst-cache
 
+# Commercial watch zines (not for public distribution)
+other/
