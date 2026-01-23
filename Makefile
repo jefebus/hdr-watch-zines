@@ -30,7 +30,8 @@ TARGETS := \
 	HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf \
 	HdR\ zines/RSWC\ Bushido/bushido\ zine.pdf \
 	HdR\ zines/RSWC\ Skygraph/skygraph\ zine.pdf \
-	HdR\ zines/SyS\ Monumental/monumental\ zine.pdf
+	HdR\ zines/SyS\ Monumental/monumental\ zine.pdf \
+	HdR\ zines/SyS\ Viajero/viajero\ zine.pdf
 
 all: $(TARGETS)
 
@@ -133,5 +134,9 @@ HdR\ zines/RSWC\ Skygraph/skygraph\ zine.pdf: $(wildcard hdr_zines_src/skygraph/
 HdR\ zines/SyS\ Monumental/monumental\ zine.pdf: $(wildcard hdr_zines_src/monumental/*.typ hdr_zines_src/monumental/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/SyS Monumental"
 	$(TYPST) hdr_zines_src/monumental/monumental.typ "$@"
+
+HdR\ zines/SyS\ Viajero/viajero\ zine.pdf: $(wildcard hdr_zines_src/viajero/*.typ hdr_zines_src/viajero/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/SyS Viajero"
+	$(TYPST) hdr_zines_src/viajero/viajero.typ "$@"
 
 
