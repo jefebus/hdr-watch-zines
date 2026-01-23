@@ -22,7 +22,8 @@ __pycache__/
 *.typst-cache
 
 # Commercial watch zines (not for public distribution)
-other/
+other_src
+other zines
 
 # support files not ready to share
 indice_proyectos.txt
