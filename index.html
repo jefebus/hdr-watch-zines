@@ -192,6 +192,12 @@
                 </div>
                 
                 <div class="zine-card">
+                    <h3>RSWC Bushido 🗡️🌿</h3>
+                    <p id="bushido-desc"></p>
+                    <a href="HdR zines/RSWC Bushido/bushido zine.pdf" class="download-btn" download><span id="download-btn-bushido">📥 Descargar</span></a>
+                </div>
+                
+                <div class="zine-card">
                     <h3>RSWC Forest Defender</h3>
                     <p id="forest-defender-desc"></p>
                     <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
@@ -291,6 +297,7 @@
                 headerSubtitle: 'Folletos de instrucciones imprimibles para aficionados a la relojería',
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
+                bushidoDesc: 'Homenaje a los 47 Ronin y al Seiko 62MAS. Versión roja limitada (47 ud) y verde Midori',
                 ferroviarioDesc: 'Homenaje al primer ferrocarril iberoamericano. Carga manual Seagull TY3620-2',
                 forestDefenderDesc: 'Cronógrafo de bomberos con escala especial y pulsómetro',
                 saltoDeFeDesc: 'El proyecto más secreto de HdR. Guau guau guau guau guau',
@@ -319,6 +326,7 @@
                 headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
                 introText1: 'Lade druckfertige Zines für deine Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
                 introText2: 'Jedes Zine ist so gestaltet, dass es zu einem kompakten Heft gefaltet werden kann, das perfekt in dein Uhrenetui passt.',
+                bushidoDesc: 'Hommage an die 47 Ronin und die Seiko 62MAS. Rote limitierte (47 Stk.) und grüne Midori-Version',
                 ferroviarioDesc: 'Hommage an die erste iberoamerikanische Eisenbahn. Handaufzug Seagull TY3620-2',
                 forestDefenderDesc: 'Feuerwehr-Chronograph mit Spezialskala und Pulsmesser',
                 saltoDeFeDesc: 'Das geheimste HdR-Projekt. Wau wau wau wau wau',
@@ -347,6 +355,7 @@
                 headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
                 introText1: 'Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.',
                 introText2: 'Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.',
+                bushidoDesc: 'Tribute to the 47 Ronin and Seiko 62MAS. Red limited (47 units) and green Midori version',
                 ferroviarioDesc: 'Tribute to the first Iberoamerican railroad. Manual-wind Seagull TY3620-2',
                 forestDefenderDesc: 'Firefighter chronograph with special scale and pulsometer',
                 saltoDeFeDesc: 'The most secret HdR project. Woof woof woof woof woof',
@@ -385,6 +394,7 @@
             document.getElementById('header-subtitle').textContent = t.headerSubtitle;
             document.getElementById('intro-text-1').textContent = t.introText1;
             document.getElementById('intro-text-2').textContent = t.introText2;
+            document.getElementById('bushido-desc').textContent = t.bushidoDesc;
             document.getElementById('ferroviario-desc').textContent = t.ferroviarioDesc;
             document.getElementById('forest-defender-desc').textContent = t.forestDefenderDesc;
             document.getElementById('salto-de-fe-desc').textContent = t.saltoDeFeDesc;
@@ -403,6 +413,7 @@
             document.getElementById('download-es').textContent = t.downloadEs;
             document.getElementById('download-de').textContent = t.downloadDe;
             document.getElementById('download-btn-fd').textContent = t.downloadBtn;
+            document.getElementById('download-btn-bushido').textContent = t.downloadBtn;            
             document.getElementById('download-btn-sdf').textContent = t.downloadBtn;
             document.getElementById('download-btn-inm-sys').textContent = t.downloadBtn;
             document.getElementById('download-btn-inm').textContent = t.downloadBtn;

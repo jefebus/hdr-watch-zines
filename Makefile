@@ -26,7 +26,8 @@ TARGETS := \
 	HdR\ zines/RSWC\ Salto\ de\ Fe/salto_de_fe\ zine.pdf \
 	HdR\ zines/Ferroviario/ferroviario\ zine.pdf \
 	HdR\ zines/SyS\ Inmortal/inmortal\ zine.pdf \
-	HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf
+	HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf \
+	HdR\ zines/RSWC\ Bushido/bushido\ zine.pdf
 
 all: $(TARGETS)
 
@@ -110,5 +111,12 @@ HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf:
 	@mkdir -p "HdR zines/SyS Inmortal Reserva Especial"
 	$(TYPST) inmortal_reserva_especial/inmortal_reserva_especial.typ "$@"
 
+HdR\ zines/RSWC\ Bushido/bushido\ zine.pdf: $(wildcard bushido/*.typ bushido/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Bushido"
+	$(TYPST) bushido/bushido.typ "$@"
+
+HdR\ zines/RSWC\ Midori/bushido_midori\ zine.pdf: $(wildcard bushido/*.typ bushido/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Midori"
+	$(TYPST) bushido/bushido_midori.typ "$@"
 
 

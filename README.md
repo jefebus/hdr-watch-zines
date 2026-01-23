@@ -59,6 +59,7 @@ make
 **Build a specific zine:**
 ```bash
 make caballero              # SyS Caballero
+make bushido                # RSWC Bushido (versiones roja y Midori)
 make iberia                 # RSWC Suite Iberia
 make vainqueur              # RSWC Vainqueur (Spanish)
 make vainqueur_de           # RSWC Vainqueur (German)
@@ -93,6 +94,8 @@ PDFs are generated in the `HdR zines/` directory:
 HdR zines/
 ├── Ferroviario/
 │   └── ferroviario zine.pdf
+├── RSWC Bushido/
+│   └── bushido zine.pdf (versiones roja y Midori)
 ├── RSWC Forest Defender/
 │   └── forest_defender zine.pdf
 ├── RSWC Salto de Fe/
