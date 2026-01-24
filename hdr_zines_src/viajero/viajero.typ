@@ -149,10 +149,7 @@ inferior para poner a cero
 (solo con cronógrafo parado).
 
 *Ajustes:* Corona en primer 
-punto: cambio rápido de fecha. 
-Segundo punto: ajustar hora. 
-No ajustar fecha entre 21:00 
-y 03:00.
+punto: ajustar hora. 
 
 *Mantenimiento:* Resistente 50m. 
 No sumergir. Revisión cada 4-5 
