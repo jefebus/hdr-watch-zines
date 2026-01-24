@@ -1,4 +1,4 @@
-#import "lib.typ": watch_zine
+#import "../../src/lib.typ": watch_zine
 
 #set document(author: "Gasparacha", title: "RSWC Gamma Gibraltar")
 #set text(font: "Carlito", size: 7pt, lang: "es")

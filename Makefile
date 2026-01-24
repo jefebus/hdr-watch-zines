@@ -26,6 +26,8 @@ TARGETS := \
 	HdR\ zines/RSWC\ Salto\ de\ Fe/salto_de_fe\ zine.pdf \
 	HdR\ zines/RSWC\ Heian/heian\ zine.pdf \
 	HdR\ zines/Ferroviario/ferroviario\ zine.pdf \
+	HdR\ zines/Galeno/galeno\ zine.pdf \
+	HdR\ zines/RSWC\ Gamma\ Gibraltar/gamma_gibraltar\ zine.pdf \
 	HdR\ zines/SyS\ Inmortal/inmortal\ zine.pdf \
 	HdR\ zines/SyS\ Inmortal\ Reserva\ Especial/inmortal_reserva_especial\ zine.pdf \
 	HdR\ zines/RSWC\ Bushido/bushido\ zine.pdf \
@@ -110,6 +112,14 @@ HdR\ zines/RSWC\ Heian/heian\ zine.pdf: $(wildcard hdr_zines_src/heian/*.typ hdr
 HdR\ zines/Ferroviario/ferroviario\ zine.pdf: $(wildcard hdr_zines_src/ferroviario/*.typ hdr_zines_src/ferroviario/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/Ferroviario"
 	$(TYPST) hdr_zines_src/ferroviario/ferroviario.typ "$@"
+
+HdR\ zines/Galeno/galeno\ zine.pdf: $(wildcard hdr_zines_src/galeno/*.typ hdr_zines_src/galeno/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/Galeno"
+	$(TYPST) hdr_zines_src/galeno/galeno.typ "$@"
+
+HdR\ zines/RSWC\ Gamma\ Gibraltar/gamma_gibraltar\ zine.pdf: $(wildcard hdr_zines_src/gamma_gibraltar/*.typ hdr_zines_src/gamma_gibraltar/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Gamma Gibraltar"
+	$(TYPST) hdr_zines_src/gamma_gibraltar/gamma_gibraltar.typ "$@"
 
 HdR\ zines/SyS\ Inmortal/inmortal\ zine.pdf: $(wildcard hdr_zines_src/inmortal/*.typ hdr_zines_src/inmortal/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/SyS Inmortal"
