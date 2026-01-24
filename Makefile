@@ -12,6 +12,7 @@ SRC_LIB := $(wildcard src/*.typ)
 # Target list
 TARGETS := \
 	HdR\ zines/SyS\ Caballero/caballero\ zine.pdf \
+	HdR\ zines/SyS\ Competidor/competidor\ zine.pdf \
 	HdR\ zines/RSWC\ Suite\ Iberia/iberia\ zine.pdf \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur\ zine.pdf \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur_de\ zine.pdf \
@@ -56,6 +57,10 @@ clean:
 HdR\ zines/SyS\ Caballero/caballero\ zine.pdf: $(wildcard hdr_zines_src/caballero/*.typ hdr_zines_src/caballero/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/SyS Caballero"
 	$(TYPST) hdr_zines_src/caballero/caballero.typ "$@"
+
+HdR\ zines/SyS\ Competidor/competidor\ zine.pdf: $(wildcard hdr_zines_src/competidor/*.typ hdr_zines_src/competidor/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/SyS Competidor"
+	$(TYPST) hdr_zines_src/competidor/competidor.typ "$@"
 
 HdR\ zines/RSWC\ Suite\ Iberia/iberia\ zine.pdf: $(wildcard hdr_zines_src/iberia/*.typ hdr_zines_src/iberia/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Suite Iberia"
