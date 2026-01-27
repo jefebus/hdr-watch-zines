@@ -14,6 +14,7 @@ TARGETS := \
 	HdR\ zines/SyS\ Caballero/caballero\ zine.pdf \
 	HdR\ zines/SyS\ Competidor/competidor\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ Cosmotemp/cosmotemp\ zine.pdf \
+	HdR\ zines/RSWC\ Deco-Timer/decotimer\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ World\ Timer/world_timer\ zine.pdf \
 	HdR\ zines/RSWC\ Suite\ Iberia/iberia\ zine.pdf \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur\ zine.pdf \
@@ -66,6 +67,10 @@ HdR\ zines/SyS\ Competidor/competidor\ zine.pdf: $(wildcard hdr_zines_src/compet
 HdR\ zines/RSWC\ Super\ Stellar\ Cosmotemp/cosmotemp\ zine.pdf: $(wildcard hdr_zines_src/cosmotemp/*.typ hdr_zines_src/cosmotemp/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Super Stellar Cosmotemp"
 	$(TYPST) hdr_zines_src/cosmotemp/cosmotemp.typ "$@"
+
+HdR\ zines/RSWC\ Deco-Timer/decotimer\ zine.pdf: $(wildcard hdr_zines_src/decotimer/*.typ hdr_zines_src/decotimer/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Deco-Timer"
+	$(TYPST) hdr_zines_src/decotimer/decotimer.typ "$@"
 
 HdR\ zines/RSWC\ Super\ Stellar\ World\ Timer/world_timer\ zine.pdf: $(wildcard hdr_zines_src/world_timer/*.typ hdr_zines_src/world_timer/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Super Stellar World Timer"
