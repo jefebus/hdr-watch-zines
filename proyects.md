@@ -6,6 +6,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 - Airliner: I, II
 - **Bushido**: **Rönin**, **Midori**
+- **Deco Timer Challenger / Devil's Eye**
 - Eagle: One, Two
 - Escuadrón 312
 - **Forest Defender**
@@ -35,7 +36,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 - **Caballero**
 - **Competidor**: **Classic/Panda/Rally**, **Aquarally**
-- **Digimático**
+- Digimático (postponed)
 - **Inmortal**
 - **Inmortal Reserva Especial**
 - **Monumental Taurino**

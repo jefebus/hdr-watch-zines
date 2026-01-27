@@ -97,6 +97,32 @@
             .zines-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .page-gallery {
+                padding: 10px;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            
+            .page-gallery img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                max-height: 70vh;
+                aspect-ratio: 9 / 16;
+                object-fit: contain;
+                background: #1a1a1a;
+            }
+            
+            .page-nav {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .page-nav-btn {
+                width: 100%;
+            }
         }
         
         .zine-card {
@@ -184,6 +210,86 @@
         .hidden {
             display: none;
         }
+        
+        .unfold-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #444444;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85em;
+            transition: background 0.2s;
+            margin-top: 8px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .unfold-btn:hover {
+            background: #555555;
+        }
+        
+        .page-gallery {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 6px;
+        }
+        
+        .page-gallery.active {
+            display: flex;
+        }
+        
+        .page-gallery img {
+            height: 600px;
+            width: auto;
+            border-radius: 4px;
+            border: 1px solid #444444;
+            display: none;
+        }
+        
+        .page-gallery img.active-page {
+            display: block;
+        }
+        
+        .page-nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .page-nav-btn {
+            background: #0F82AF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        
+        .page-nav-btn:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+        
+        .page-nav-btn:disabled {
+            background: #444444;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .page-counter {
+            color: #dddddd;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -210,7 +316,26 @@
                     <div class="zine-card-content">
                         <h3>Ferroviario 🛌️</h3>
                         <p id="ferroviario-desc"></p>
-                        <a href="HdR zines/Ferroviario/ferroviario zine.pdf" class="download-btn" download><span id="download-btn-ferrov">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/Ferroviario/ferroviario zine.pdf" class="download-btn" download><span id="download-btn-ferrov">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('ferroviario-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ferroviario-pages" class="page-gallery">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-2.png" alt="Page 2">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-3.png" alt="Page 3">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-4.png" alt="Page 4">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-5.png" alt="Page 5">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-6.png" alt="Page 6">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-7.png" alt="Page 7">
+                    <img src="HdR zines/Ferroviario/ferroviario zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('ferroviario-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="ferroviario-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('ferroviario-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -219,7 +344,26 @@
                     <div class="zine-card-content">
                         <h3>Galeno 🩺</h3>
                         <p id="galeno-desc"></p>
-                        <a href="HdR zines/Galeno/galeno zine.pdf" class="download-btn" download><span id="download-btn-galeno">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/Galeno/galeno zine.pdf" class="download-btn" download><span id="download-btn-galeno">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('galeno-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="galeno-pages" class="page-gallery">
+                    <img src="HdR zines/Galeno/galeno zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/Galeno/galeno zine-2.png" alt="Page 2">
+                    <img src="HdR zines/Galeno/galeno zine-3.png" alt="Page 3">
+                    <img src="HdR zines/Galeno/galeno zine-4.png" alt="Page 4">
+                    <img src="HdR zines/Galeno/galeno zine-5.png" alt="Page 5">
+                    <img src="HdR zines/Galeno/galeno zine-6.png" alt="Page 6">
+                    <img src="HdR zines/Galeno/galeno zine-7.png" alt="Page 7">
+                    <img src="HdR zines/Galeno/galeno zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('galeno-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="galeno-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('galeno-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -228,7 +372,54 @@
                     <div class="zine-card-content">
                         <h3>RSWC Bushido 🗡️🌿</h3>
                         <p id="bushido-desc"></p>
-                        <a href="HdR zines/RSWC Bushido/bushido zine.pdf" class="download-btn" download><span id="download-btn-bushido">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Bushido/bushido zine.pdf" class="download-btn" download><span id="download-btn-bushido">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('bushido-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="bushido-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Bushido/bushido zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('bushido-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="bushido-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('bushido-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <img src="hdr_zines_src/decotimer/decotimer_front.jpeg" alt="Deco-Timer" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Deco-Timer 🌊🔦</h3>
+                        <p id="decotimer-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Deco-Timer/decotimer zine.pdf" class="download-btn" download><span id="download-btn-decotimer">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('decotimer-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="decotimer-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Deco-Timer/decotimer zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('decotimer-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="decotimer-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('decotimer-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -237,7 +428,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Forest Defender 🚒</h3>
                         <p id="forest-defender-desc"></p>
-                        <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="download-btn" download><span id="download-btn-fd">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('forest_defender-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="forest_defender-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Forest Defender/forest_defender zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('forest_defender-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="forest_defender-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('forest_defender-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -246,7 +456,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Gamma Gibraltar 🐟</h3>
                         <p id="gamma-gibraltar-desc"></p>
-                        <a href="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine.pdf" class="download-btn" download><span id="download-btn-gamma">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine.pdf" class="download-btn" download><span id="download-btn-gamma">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('gamma_gibraltar-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="gamma_gibraltar-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('gamma_gibraltar-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="gamma_gibraltar-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('gamma_gibraltar-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -255,7 +484,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Heian 🖋️</h3>
                         <p id="heian-desc"></p>
-                        <a href="HdR zines/RSWC Heian/heian zine.pdf" class="download-btn" download><span id="download-btn-heian">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Heian/heian zine.pdf" class="download-btn" download><span id="download-btn-heian">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('heian-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="heian-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Heian/heian zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Heian/heian zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Heian/heian zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Heian/heian zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Heian/heian zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Heian/heian zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Heian/heian zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Heian/heian zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('heian-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="heian-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('heian-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -264,7 +512,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Salto de Fe 🐕</h3>
                         <p id="salto-de-fe-desc"></p>
-                        <a href="HdR zines/RSWC Salto de Fe/salto_de_fe zine.pdf" class="download-btn" download><span id="download-btn-sdf">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Salto de Fe/salto_de_fe zine.pdf" class="download-btn" download><span id="download-btn-sdf">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('salto_de_fe-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="salto_de_fe-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('salto_de_fe-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="salto_de_fe-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('salto_de_fe-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -273,7 +540,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Skygraph 🚀</h3>
                         <p id="skygraph-desc"></p>
-                        <a href="HdR zines/RSWC Skygraph/skygraph zine.pdf" class="download-btn" download><span id="download-btn-skygraph">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Skygraph/skygraph zine.pdf" class="download-btn" download><span id="download-btn-skygraph">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('skygraph-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="skygraph-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Skygraph/skygraph zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('skygraph-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="skygraph-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('skygraph-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -282,16 +568,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Suite Iberia 🎹</h3>
                         <p id="iberia-desc"></p>
-                        <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download><span id="download-btn">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="download-btn" download><span id="download-btn">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('iberia-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="zine-card">
-                    <img src="hdr_zines_src/supersharkomatic/supersharkomatic_front.jpeg" alt="Supersharkomatic" class="zine-card-image">
-                    <div class="zine-card-content">
-                        <h3>RSWC Supersharkomatic 🦈</h3>
-                        <p id="supersharkomatic-desc"></p>
-                        <a href="HdR zines/RSWC Supersharkomatic/supersharkomatic zine.pdf" class="download-btn" download><span id="download-btn-shark">📥 Descargar</span></a>
+                <div id="iberia-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Suite Iberia/iberia zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('iberia-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="iberia-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('iberia-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -300,7 +596,54 @@
                     <div class="zine-card-content">
                         <h3>RSWC Super Stellar Ala 14 ✈️</h3>
                         <p id="ala14-desc"></p>
-                        <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download><span id="download-btn-2">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="download-btn" download><span id="download-btn-2">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('ala14-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ala14-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('ala14-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="ala14-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('ala14-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <img src="hdr_zines_src/cosmotemp/cosmotemp_front.jpeg" alt="Cosmotemp" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Super Stellar Cosmotemp 🌡️</h3>
+                        <p id="cosmotemp-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine.pdf" class="download-btn" download><span id="download-btn-cosmotemp">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('cosmotemp-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="cosmotemp-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('cosmotemp-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="cosmotemp-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('cosmotemp-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -309,7 +652,82 @@
                     <div class="zine-card-content">
                         <h3>RSWC Super Stellar Typhoon ✈️</h3>
                         <p id="typhoon-desc"></p>
-                        <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download><span id="download-btn-3">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="download-btn" download><span id="download-btn-3">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('typhoon-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="typhoon-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('typhoon-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="typhoon-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('typhoon-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <img src="hdr_zines_src/world_timer/world_timer_front.jpeg" alt="World Timer" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Super Stellar World Timer 🌍</h3>
+                        <p id="world-timer-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Super Stellar World Timer/world_timer zine.pdf" class="download-btn" download><span id="download-btn-world-timer">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('world_timer-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="world_timer-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('world_timer-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="world_timer-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('world_timer-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <img src="hdr_zines_src/supersharkomatic/supersharkomatic_front.jpeg" alt="Supersharkomatic" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Supersharkomatic 🦈</h3>
+                        <p id="supersharkomatic-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Supersharkomatic/supersharkomatic zine.pdf" class="download-btn" download><span id="download-btn-shark">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('supersharkomatic-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="supersharkomatic-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('supersharkomatic-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="supersharkomatic-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('supersharkomatic-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -318,8 +736,27 @@
                     <div class="zine-card-content">
                         <h3>RSWC Vainqueur 🏎️</h3>
                         <p id="vainqueur-desc"></p>
-                        <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download><span id="download-es">📥 Descargar ES</span></a>
-                        <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download><span id="download-de">📥 Descargar DE</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="download-btn" download><span id="download-es">📥 Descargar ES</span></a>
+                            <a href="HdR zines/RSWC Vainqueur/vainqueur_de zine.pdf" class="download-btn" download><span id="download-de">📥 Descargar DE</span></a>
+                            <button class="unfold-btn" onclick="togglePages('vainqueur-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="vainqueur-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Vainqueur/vainqueur zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('vainqueur-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="vainqueur-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('vainqueur-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -328,7 +765,26 @@
                     <div class="zine-card-content">
                         <h3>RSWC Verne 🌊</h3>
                         <p id="verne-desc"></p>
-                        <a href="HdR zines/RSWC Verne/verne zine.pdf" class="download-btn" download><span id="download-btn-verne">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWC Verne/verne zine.pdf" class="download-btn" download><span id="download-btn-verne">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('verne-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="verne-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Verne/verne zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Verne/verne zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Verne/verne zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Verne/verne zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Verne/verne zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Verne/verne zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Verne/verne zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Verne/verne zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('verne-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="verne-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('verne-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -337,7 +793,26 @@
                     <div class="zine-card-content">
                         <h3>RSWF Ichi 1️⃣</h3>
                         <p id="ichi-desc"></p>
-                        <a href="HdR zines/RSWF Ichi/ichi zine.pdf" class="download-btn" download><span id="download-btn-ichi">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/RSWF Ichi/ichi zine.pdf" class="download-btn" download><span id="download-btn-ichi">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('ichi-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ichi-pages" class="page-gallery">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWF Ichi/ichi zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('ichi-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="ichi-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('ichi-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -346,7 +821,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Caballero 🧐</h3>
                         <p id="caballero-desc"></p>
-                        <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download><span id="download-btn-4">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="download-btn" download><span id="download-btn-4">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('caballero-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="caballero-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Caballero/caballero zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Caballero/caballero zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Caballero/caballero zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Caballero/caballero zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Caballero/caballero zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Caballero/caballero zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Caballero/caballero zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Caballero/caballero zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('caballero-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="caballero-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('caballero-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -355,16 +849,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Competidor 🏁</h3>
                         <p id="competidor-desc"></p>
-                        <a href="HdR zines/SyS Competidor/competidor zine.pdf" class="download-btn" download><span id="download-btn-competidor">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Competidor/competidor zine.pdf" class="download-btn" download><span id="download-btn-competidor">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('competidor-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="zine-card">
-                    <img src="hdr_zines_src/digimatico/digimatico_front.jpeg" alt="Digimático" class="zine-card-image">
-                    <div class="zine-card-content">
-                        <h3>Sol y Sombra Digimático 🔢</h3>
-                        <p id="digimatico-desc"></p>
-                        <a href="HdR zines/SyS Digimático/digimatico zine.pdf" class="download-btn" download><span id="download-btn-6">📥 Descargar</span></a>
+                <div id="competidor-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Competidor/competidor zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Competidor/competidor zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Competidor/competidor zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Competidor/competidor zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Competidor/competidor zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Competidor/competidor zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Competidor/competidor zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Competidor/competidor zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('competidor-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="competidor-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('competidor-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -373,7 +877,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Inmortal 🍷</h3>
                         <p id="inmortal-sys-desc"></p>
-                        <a href="HdR zines/SyS Inmortal/inmortal zine.pdf" class="download-btn" download><span id="download-btn-inm-sys">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Inmortal/inmortal zine.pdf" class="download-btn" download><span id="download-btn-inm-sys">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('inmortal-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="inmortal-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Inmortal/inmortal zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('inmortal-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="inmortal-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('inmortal-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -382,7 +905,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Inmortal Reserva Especial 🍷</h3>
                         <p id="inmortal-reserva-desc"></p>
-                        <a href="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine.pdf" class="download-btn" download><span id="download-btn-inm">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine.pdf" class="download-btn" download><span id="download-btn-inm">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('inmortal_reserva_especial-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="inmortal_reserva_especial-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('inmortal_reserva_especial-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="inmortal_reserva_especial-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('inmortal_reserva_especial-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -391,7 +933,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Monumental 🐂</h3>
                         <p id="monumental-desc"></p>
-                        <a href="HdR zines/SyS Monumental/monumental zine.pdf" class="download-btn" download><span id="download-btn-monumental">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Monumental/monumental zine.pdf" class="download-btn" download><span id="download-btn-monumental">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('monumental-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="monumental-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Monumental/monumental zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Monumental/monumental zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Monumental/monumental zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Monumental/monumental zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Monumental/monumental zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Monumental/monumental zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Monumental/monumental zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Monumental/monumental zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('monumental-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="monumental-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('monumental-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -400,7 +961,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Roquina 💎</h3>
                         <p id="roquina-desc"></p>
-                        <a href="HdR zines/SyS Roquina/roquina zine.pdf" class="download-btn" download><span id="download-btn-5">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Roquina/roquina zine.pdf" class="download-btn" download><span id="download-btn-5">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('roquina-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="roquina-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Roquina/roquina zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Roquina/roquina zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Roquina/roquina zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Roquina/roquina zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Roquina/roquina zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Roquina/roquina zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Roquina/roquina zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Roquina/roquina zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('roquina-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="roquina-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('roquina-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -409,7 +989,26 @@
                     <div class="zine-card-content">
                         <h3>Sol y Sombra Viajero 🚗</h3>
                         <p id="viajero-desc"></p>
-                        <a href="HdR zines/SyS Viajero/viajero zine.pdf" class="download-btn" download><span id="download-btn-viajero">📥 Descargar</span></a>
+                        <div>
+                            <a href="HdR zines/SyS Viajero/viajero zine.pdf" class="download-btn" download><span id="download-btn-viajero">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('viajero-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="viajero-pages" class="page-gallery">
+                    <img src="HdR zines/SyS Viajero/viajero zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/SyS Viajero/viajero zine-2.png" alt="Page 2">
+                    <img src="HdR zines/SyS Viajero/viajero zine-3.png" alt="Page 3">
+                    <img src="HdR zines/SyS Viajero/viajero zine-4.png" alt="Page 4">
+                    <img src="HdR zines/SyS Viajero/viajero zine-5.png" alt="Page 5">
+                    <img src="HdR zines/SyS Viajero/viajero zine-6.png" alt="Page 6">
+                    <img src="HdR zines/SyS Viajero/viajero zine-7.png" alt="Page 7">
+                    <img src="HdR zines/SyS Viajero/viajero zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('viajero-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="viajero-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('viajero-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
             </div>
@@ -445,12 +1044,18 @@
                 vainqueurDesc: 'Cronógrafo automático inspirado en las carreras de Fórmula 1',
                 iberiaDesc: 'Reloj elegante de la colección RSWC',
                 ala14Desc: 'Reloj de piloto de combate validado por el Ejército del Aire',
+                cosmotempDesc: 'Primer digital RSWC con termómetro (-10°C/+50°C) y cronógrafo a 1/1000 seg. Homenaje a los Casio clásicos con cristal de zafiro y acero grado suizo',
+                decotimerDesc: 'Diver cushion con escala deco interna y dobles coronas con lumen. Dos variantes: Challenger Deep (azul) y Devil’s Eye (negro/rojo). Caja exclusiva Swiss grade, PT5000 certificado',
                 sharkomaticDesc: 'Diver vintage cushion 44mm con estética retro de los años 70',
                 typhoonDesc: 'Instrumento aeroespacial para condiciones extremas',
+                worldTimerDesc: 'Primer digital RSWC con 28 zonas horarias. Tributo a los Casio World Timer clásicos con materiales premium: cristal de zafiro y acero grado suizo',
                 caballeroDesc: 'Diseño clásico de la colección Sol y Sombra',
+                unfoldBtn: '📖 Ver páginas',
+                foldBtn: '🔼 Ocultar páginas',
+                prevBtn: 'Anterior',
+                nextBtn: 'Siguiente',
                 competidorDesc: 'Cronógrafo deportivo con bisel taquímetro. Cuatro variantes: Clásico, Panda, Rally Monegros y AquaRally',
                 roquinaDesc: 'Homenaje al cine español de los 70 con cristal facetado',
-                digimaticoDesc: 'Primer reloj digital mecánico español con movimiento automático',
                 verneDesc: 'Homenaje al Nautilus y a Julio Verne con diseño deportivo-elegante',
                 ichiDesc: 'Primer proyecto colaborativo HdR basado en Orient Mako. Rising Sun Watch Forum',
                 downloadEs: '📥 Descargar ES',
@@ -481,12 +1086,18 @@
                 vainqueurDesc: 'Automatik-Chronograph inspiriert von Formel-1-Rennen',
                 iberiaDesc: 'Elegante Uhr aus der RSWC-Kollektion',
                 ala14Desc: 'Kampfpilotenuhr validiert durch die spanische Luftwaffe',
+                cosmotempDesc: 'Erste RSWC Digital mit Thermometer (-10°C/+50°C) und 1/1000 Sek. Chronograph. Hommage an klassische Casio mit Saphirglas und Swiss-Grade-Stahl',
+                decotimerDesc: 'Cushion-Taucheruhr mit interner Deco-Skala und Doppelkronen mit Lumen. Zwei Varianten: Challenger Deep (blau) und Devil’s Eye (schwarz/rot). Exklusive Swiss-Grade-Gehäuse, PT5000 zertifiziert',
                 sharkomaticDesc: 'Vintage Cushion Taucheruhr 44mm mit Retro-Ästhetik der 70er',
                 typhoonDesc: 'Luft- und Raumfahrtinstrument für extreme Bedingungen',
+                worldTimerDesc: 'Erste RSWC Digital mit 28 Zeitzonen. Hommage an klassische Casio World Timer mit Premium-Materialien: Saphirglas und Swiss-Grade-Stahl',
                 caballeroDesc: 'Klassisches Design aus der Sol y Sombra Kollektion',
+                unfoldBtn: '📖 Seiten anzeigen',
+                foldBtn: '🔼 Seiten ausblenden',
+                prevBtn: 'Zurück',
+                nextBtn: 'Weiter',
                 competidorDesc: 'Sportchronograph mit Tachymeter-Lünette. Vier Varianten: Clásico, Panda, Rally Monegros und AquaRally',
                 roquinaDesc: 'Hommage an das spanische Kino der 70er mit facettiertem Glas',
-                digimaticoDesc: 'Erste spanische mechanische Digitaluhr mit Automatikwerk',
                 verneDesc: 'Hommage an den Nautilus und Jules Verne mit sportlich-elegantem Design',
                 ichiDesc: 'Erstes HdR-Gemeinschaftsprojekt basierend auf Orient Mako. Rising Sun Watch Forum',
                 downloadEs: '📥 Download ES',
@@ -517,12 +1128,18 @@
                 vainqueurDesc: 'Automatic chronograph inspired by Formula 1 racing',
                 iberiaDesc: 'Elegant timepiece from the RSWC collection',
                 ala14Desc: 'Fighter pilot watch validated by the Spanish Air Force',
-                sharkomaticDesc: 'Vintage cushion diver 44mm with 1970s retro aesthetics',
-                typhoonDesc: 'Aerospace-grade instrument for extreme conditions',
+                cosmotempDesc: 'First RSWC digital with thermometer (-10°C/+50°C) and 1/1000 sec chronograph. Tribute to classic Casio with sapphire crystal and Swiss-grade steel',
+                decotimerDesc: 'Cushion diver with internal deco scale and double crowns with lumen. Two variants: Challenger Deep (blue) and Devil’s Eye (black/red). Exclusive Swiss-grade case, certified PT5000',
+                sharkomaticDesc: 'Vintage cushion diver 44mm with 70s retro aesthetic',
+                typhoonDesc: 'Aerospace instrument for extreme conditions',
+                worldTimerDesc: 'First RSWC digital with 28 time zones. Tribute to classic Casio World Timer with premium materials: sapphire crystal and Swiss-grade steel',
                 caballeroDesc: 'Classic design from the Sol y Sombra collection',
+                unfoldBtn: '📖 View pages',
+                foldBtn: '🔼 Hide pages',
+                prevBtn: 'Previous',
+                nextBtn: 'Next',
                 competidorDesc: 'Racing chronograph with tachymeter bezel. Four variants: Clásico, Panda, Rally Monegros and AquaRally',
                 roquinaDesc: 'Tribute to 1970s Spanish cinema with faceted crystal',
-                digimaticoDesc: 'First Spanish mechanical digital watch with automatic movement',
                 verneDesc: 'Tribute to Nautilus and Jules Verne with sporty-elegant design',
                 ichiDesc: 'First HdR collaborative project based on Orient Mako. Rising Sun Watch Forum',
                 downloadEs: '📥 Download ES',
@@ -535,6 +1152,43 @@
                 footerDocs: 'Documentation'
             }
         };
+
+        function navigatePage(galleryId, direction) {
+            const gallery = document.getElementById(galleryId);
+            const images = gallery.querySelectorAll('img');
+            let currentIndex = -1;
+            
+            images.forEach((img, index) => {
+                if (img.classList.contains('active-page')) {
+                    currentIndex = index;
+                }
+            });
+            
+            const newIndex = currentIndex + direction;
+            if (newIndex >= 0 && newIndex < images.length) {
+                images[currentIndex].classList.remove('active-page');
+                images[newIndex].classList.add('active-page');
+                
+                // Update counter - derive counter ID from gallery ID
+                const counterId = galleryId.replace('-pages', '-counter');
+                document.getElementById(counterId).textContent = `${newIndex + 1} / ${images.length}`;
+            }
+        }
+
+        function togglePages(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const btn = event.target;
+            const lang = document.documentElement.lang || 'es';
+            const t = translations[lang];
+            
+            if (gallery.classList.contains('active')) {
+                gallery.classList.remove('active');
+                btn.textContent = t.unfoldBtn;
+            } else {
+                gallery.classList.add('active');
+                btn.textContent = t.foldBtn;
+            }
+        }
 
         function setLanguage(lang) {
             // Update active button
@@ -563,12 +1217,24 @@
             document.getElementById('vainqueur-desc').textContent = t.vainqueurDesc;
             document.getElementById('iberia-desc').textContent = t.iberiaDesc;
             document.getElementById('ala14-desc').textContent = t.ala14Desc;
+            document.getElementById('cosmotemp-desc').textContent = t.cosmotempDesc;
+            document.getElementById('decotimer-desc').textContent = t.decotimerDesc;
             document.getElementById('supersharkomatic-desc').textContent = t.sharkomaticDesc;
             document.getElementById('typhoon-desc').textContent = t.typhoonDesc;
+            document.getElementById('world-timer-desc').textContent = t.worldTimerDesc;
             document.getElementById('caballero-desc').textContent = t.caballeroDesc;
+            
+            // Update all unfold/fold buttons
+            document.querySelectorAll('.unfoldBtn').forEach(btn => {
+                const gallery = document.getElementById(btn.closest('button').getAttribute('onclick').match(/'([^']+)'/)[1]);
+                btn.textContent = gallery && gallery.classList.contains('active') ? t.foldBtn : t.unfoldBtn;
+            });
+            
+            // Update all prev/next buttons
+            document.querySelectorAll('.prevBtn').forEach(btn => btn.textContent = t.prevBtn);
+            document.querySelectorAll('.nextBtn').forEach(btn => btn.textContent = t.nextBtn);
             document.getElementById('competidor-desc').textContent = t.competidorDesc;
             document.getElementById('roquina-desc').textContent = t.roquinaDesc;
-            document.getElementById('digimatico-desc').textContent = t.digimaticoDesc;
             document.getElementById('verne-desc').textContent = t.verneDesc;
             document.getElementById('ichi-desc').textContent = t.ichiDesc;
             document.getElementById('download-es').textContent = t.downloadEs;
@@ -580,8 +1246,10 @@
             document.getElementById('download-btn-inm').textContent = t.downloadBtn;
             document.getElementById('download-btn').textContent = t.downloadBtn;
             document.getElementById('download-btn-2').textContent = t.downloadBtn;
+            document.getElementById('download-btn-cosmotemp').textContent = t.downloadBtn;
             document.getElementById('download-btn-shark').textContent = t.downloadBtn;
             document.getElementById('download-btn-3').textContent = t.downloadBtn;
+            document.getElementById('download-btn-world-timer').textContent = t.downloadBtn;
             document.getElementById('download-btn-4').textContent = t.downloadBtn;
             document.getElementById('download-btn-competidor').textContent = t.downloadBtn;
             document.getElementById('download-btn-5').textContent = t.downloadBtn;
