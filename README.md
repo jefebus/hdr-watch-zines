@@ -51,9 +51,31 @@ https://fonts.google.com/specimen/Carlito
 
 The project includes a `Makefile` for automated building:
 
-**Build all zines:**
+**Build all PDFs and PNGs:**
 ```bash
+make all
+# or simply:
 make
+```
+
+**Build only PDFs:**
+```bash
+make pdf-all
+```
+
+**Build only PNG pages:**
+```bash
+make png-all
+```
+
+**Build specific zine PDF:**
+```bash
+make pdf-caballero
+```
+
+**Build specific zine PNG pages:**
+```bash
+make png-caballero
 ```
 
 **Clean output directory:**
@@ -129,17 +151,22 @@ HdR zines/
 1. Create a new directory in `hdr_zines_src/` (e.g., `hdr_zines_src/mywatch/`)
 2. Create your `.typ` file with the watch zine content following the 8-page structure
 3. Add your watch images (`mywatch_front.jpeg` and `mywatch_back.jpeg`)
-4. Add a new target to the `Makefile` TARGETS list:
+4. Add your zine to the `pdf-all` and `png-all` target lists in the Makefile:
    ```makefile
-   TARGETS := \
-       ... \
-       HdR\ zines/My\ Watch\ Name/mywatch\ zine.pdf
+   pdf-all: pdf-caballero ... pdf-mywatch
+   png-all: png-caballero ... png-mywatch
    ```
-5. Add the build rule after the TARGETS section:
+5. Add the build rules following the pattern of existing zines:
    ```makefile
-   HdR\ zines/My\ Watch\ Name/mywatch\ zine.pdf: $(wildcard hdr_zines_src/mywatch/*.typ hdr_zines_src/mywatch/*.jpeg) $(SRC_LIB)
+   .PHONY: pdf-mywatch
+   pdf-mywatch: $(wildcard hdr_zines_src/mywatch/*.typ hdr_zines_src/mywatch/*.jpeg) $(SRC_LIB)
        @mkdir -p "HdR zines/My Watch Name"
-       $(TYPST) hdr_zines_src/mywatch/mywatch.typ "$@"
+       $(TYPST) --input digital=false hdr_zines_src/mywatch/mywatch.typ "HdR zines/My Watch Name/mywatch zine.pdf"
+   
+   .PHONY: png-mywatch
+   png-mywatch: $(wildcard hdr_zines_src/mywatch/*.typ hdr_zines_src/mywatch/*.jpeg) $(SRC_LIB)
+       @mkdir -p "HdR zines/My Watch Name"
+       $(TYPST) --input digital=true hdr_zines_src/mywatch/mywatch.typ "HdR zines/My Watch Name/mywatch zine-{p}.png"
    ```
 
 
