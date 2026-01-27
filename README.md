@@ -101,14 +101,16 @@ HdR zines/
 │   └── ichi zine.pdf
 ├── RSWC Super Stellar Ala 14/
 │   └── ala14 zine.pdf
-├── RSWC Supersharkomatic/
-│   └── supersharkomatic zine.pdf
+├── RSWC Super Stellar Cosmotemp/
+│   └── cosmotemp zine.pdf
 ├── RSWC Super Stellar Typhoon/
 │   └── typhoon zine.pdf
+├── RSWC Super Stellar World Timer/
+│   └── world_timer zine.pdf
+├── RSWC Supersharkomatic/
+│   └── supersharkomatic zine.pdf
 ├── SyS Caballero/
 │   └── caballero zine.pdf
-├── SyS Digimático/
-│   └── digimatico zine.pdf
 ├── SyS Inmortal/
 │   └── inmortal zine.pdf
 ├── SyS Inmortal Reserva Especial/

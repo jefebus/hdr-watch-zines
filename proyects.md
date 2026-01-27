@@ -35,7 +35,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 - **Caballero**
 - **Competidor**: **Classic/Panda/Rally**, **Aquarally**
-- **Digimático**
+- Digimático (postponed)
 - **Inmortal**
 - **Inmortal Reserva Especial**
 - **Monumental Taurino**

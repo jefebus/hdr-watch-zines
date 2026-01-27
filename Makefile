@@ -13,6 +13,8 @@ SRC_LIB := $(wildcard src/*.typ)
 TARGETS := \
 	HdR\ zines/SyS\ Caballero/caballero\ zine.pdf \
 	HdR\ zines/SyS\ Competidor/competidor\ zine.pdf \
+	HdR\ zines/RSWC\ Super\ Stellar\ Cosmotemp/cosmotemp\ zine.pdf \
+	HdR\ zines/RSWC\ Super\ Stellar\ World\ Timer/world_timer\ zine.pdf \
 	HdR\ zines/RSWC\ Suite\ Iberia/iberia\ zine.pdf \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur\ zine.pdf \
 	HdR\ zines/RSWC\ Vainqueur/vainqueur_de\ zine.pdf \
@@ -22,7 +24,6 @@ TARGETS := \
 	HdR\ zines/RSWC\ Supersharkomatic/supersharkomatic\ zine.pdf \
 	HdR\ zines/RSWC\ Super\ Stellar\ Typhoon/typhoon\ zine.pdf \
 	HdR\ zines/SyS\ Roquina/roquina\ zine.pdf \
-	HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf \
 	HdR\ zines/RSWC\ Forest\ Defender/forest_defender\ zine.pdf \
 	HdR\ zines/RSWC\ Salto\ de\ Fe/salto_de_fe\ zine.pdf \
 	HdR\ zines/RSWC\ Heian/heian\ zine.pdf \
@@ -62,6 +63,14 @@ HdR\ zines/SyS\ Competidor/competidor\ zine.pdf: $(wildcard hdr_zines_src/compet
 	@mkdir -p "HdR zines/SyS Competidor"
 	$(TYPST) hdr_zines_src/competidor/competidor.typ "$@"
 
+HdR\ zines/RSWC\ Super\ Stellar\ Cosmotemp/cosmotemp\ zine.pdf: $(wildcard hdr_zines_src/cosmotemp/*.typ hdr_zines_src/cosmotemp/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Super Stellar Cosmotemp"
+	$(TYPST) hdr_zines_src/cosmotemp/cosmotemp.typ "$@"
+
+HdR\ zines/RSWC\ Super\ Stellar\ World\ Timer/world_timer\ zine.pdf: $(wildcard hdr_zines_src/world_timer/*.typ hdr_zines_src/world_timer/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Super Stellar World Timer"
+	$(TYPST) hdr_zines_src/world_timer/world_timer.typ "$@"
+
 HdR\ zines/RSWC\ Suite\ Iberia/iberia\ zine.pdf: $(wildcard hdr_zines_src/iberia/*.typ hdr_zines_src/iberia/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Suite Iberia"
 	$(TYPST) hdr_zines_src/iberia/iberia.typ "$@"
@@ -97,10 +106,6 @@ HdR\ zines/RSWC\ Super\ Stellar\ Typhoon/typhoon\ zine.pdf: $(wildcard hdr_zines
 HdR\ zines/SyS\ Roquina/roquina\ zine.pdf: $(wildcard hdr_zines_src/roquina/*.typ hdr_zines_src/roquina/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/SyS Roquina"
 	$(TYPST) hdr_zines_src/roquina/roquina.typ "$@"
-
-HdR\ zines/SyS\ Digimático/digimatico\ zine.pdf: $(wildcard hdr_zines_src/digimatico/*.typ hdr_zines_src/digimatico/*.jpeg) $(SRC_LIB)
-	@mkdir -p "HdR zines/SyS Digimático"
-	$(TYPST) hdr_zines_src/digimatico/digimatico.typ "$@"
 
 HdR\ zines/RSWC\ Forest\ Defender/forest_defender\ zine.pdf: $(wildcard hdr_zines_src/forest_defender/*.typ hdr_zines_src/forest_defender/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Forest Defender"
