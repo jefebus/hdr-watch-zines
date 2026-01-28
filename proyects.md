@@ -7,6 +7,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Airliner: I, II
 - **Bushido**: **Rönin**, **Midori**
 - **Deco Timer Challenger / Devil's Eye**
+- **Dirty Fifteen**, **Afrika Korps**
 - Eagle: One, Two
 - Escuadrón 312
 - **Forest Defender**
@@ -51,14 +52,12 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 ## Other Projects
 
-- Afrika Korps
 - Agat: 194 4C, 195 4C
 - Apocalypse Now
 - B-Uhr Für Gradmaß
 - Comando G
 - Deco Timer Challenger
 - Devil's Eye
-- Dirty Fifteen
 - **Ferroviario**
 - G-Shock / Comando Rojo
 - Gagarin: 50 Aniversario, ¡Poyejali!

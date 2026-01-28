@@ -112,21 +112,17 @@ muy buscado en este tipo de relojes.
 
 #pagebreak()
 
-*PRECIO, ENVÍOS Y PLAZOS (SEGÚN HILO OFICIAL)*
+*MANUAL DE USO DEL ASMÓMETRO Y PULSÓMETRO*
 
-El hilo de condiciones fijó un precio base de 244 € y un precio
-para península/Baleares/CEE con IVA del 21% de 295 €.
+El Pulsómetro permite medir la frecuencia cardíaca. 
 
-Los envíos se organizaron con distintas opciones según destino:
-con tarifas diferenciadas y gestión aduanera cuando correspondía.
+Ponga en marcha el cronometraje, y cuando haya contado 15 pulsaciones, párelo. 
+La aguja trotadora señalará una cifra en la escala pulsométrica roja, que indica la frecuencia cardíaca de la persona en pulsaciones por minuto (pul/min).
 
-El plazo de ejecución estimado se situaba entre 6 y 6,5 meses,
-con previsión de prototipos y revisiones antes de aprobar la
-producción final. Se recordaba que los plazos podían variar y
-se iría informando en el propio hilo.
+El Asmómetro, permite medir la frecuencia respiratoria.
 
-Las formas de pago se establecieron por transferencia bancaria,
-incluyendo un plan de pago en cuotas para facilitar la participación.
+Ponga en marcha el cronometraje, y cuando haya contado 5 respiraciones, párelo. 
+La aguja trotadora señalará una cifra en la escala asmométrica azul, que indica la frecuencia respiratoria de la persona en respiraciones por minuto (res/min)
 
 #pagebreak()
 
