@@ -104,6 +104,8 @@ HdR zines/
 │   └── ferroviario zine.pdf
 ├── RSWC Bushido/
 │   └── bushido zine.pdf (versiones roja y Midori)
+├── RSWC Dirty Fifteen/
+│   └── dirty_fifteen zine.pdf
 ├── RSWC Forest Defender/
 │   └── forest_defender zine.pdf
 ├── RSWC Heian/

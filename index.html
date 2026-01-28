@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -420,6 +420,34 @@
                         <button class="page-nav-btn" onclick="navigatePage('decotimer-pages', -1)">← <span class="prevBtn">Anterior</span></button>
                         <span class="page-counter" id="decotimer-counter">1 / 8</span>
                         <button class="page-nav-btn" onclick="navigatePage('decotimer-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <img src="hdr_zines_src/dirty_fifteen/dirty_fifteen_front.jpeg" alt="Dirty Fifteen" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Dirty Fifteen ⚔️🏅</h3>
+                        <p id="dirty-fifteen-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine.pdf" class="download-btn" download><span id="download-btn-dirty-fifteen">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('dirty_fifteen-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="dirty_fifteen-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('dirty_fifteen-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="dirty_fifteen-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('dirty_fifteen-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
                     </div>
                 </div>
                 
@@ -1024,6 +1052,8 @@
     </div>
 
     <script>
+        let currentLanguage = 'es'; // Track current language globally
+        
         const translations = {
             es: {
                 headerSubtitle: 'Folletos de instrucciones imprimibles para aficionados a la relojería',
@@ -1046,6 +1076,7 @@
                 ala14Desc: 'Reloj de piloto de combate validado por el Ejército del Aire',
                 cosmotempDesc: 'Primer digital RSWC con termómetro (-10°C/+50°C) y cronógrafo a 1/1000 seg. Homenaje a los Casio clásicos con cristal de zafiro y acero grado suizo',
                 decotimerDesc: 'Diver cushion con escala deco interna y dobles coronas con lumen. Dos variantes: Challenger Deep (azul) y Devil’s Eye (negro/rojo). Caja exclusiva Swiss grade, PT5000 certificado',
+                dirtyFifteenDesc: 'Homenaje a la unidad militar de élite de 15 miembros. Diseño táctico con acabado militar',
                 sharkomaticDesc: 'Diver vintage cushion 44mm con estética retro de los años 70',
                 typhoonDesc: 'Instrumento aeroespacial para condiciones extremas',
                 worldTimerDesc: 'Primer digital RSWC con 28 zonas horarias. Tributo a los Casio World Timer clásicos con materiales premium: cristal de zafiro y acero grado suizo',
@@ -1089,6 +1120,7 @@
                 cosmotempDesc: 'Erste RSWC Digital mit Thermometer (-10°C/+50°C) und 1/1000 Sek. Chronograph. Hommage an klassische Casio mit Saphirglas und Swiss-Grade-Stahl',
                 decotimerDesc: 'Cushion-Taucheruhr mit interner Deco-Skala und Doppelkronen mit Lumen. Zwei Varianten: Challenger Deep (blau) und Devil’s Eye (schwarz/rot). Exklusive Swiss-Grade-Gehäuse, PT5000 zertifiziert',
                 sharkomaticDesc: 'Vintage Cushion Taucheruhr 44mm mit Retro-Ästhetik der 70er',
+                dirtyFifteenDesc: 'Hommage an die militärische Elite-Einheit von 15 Mitgliedern. Taktisches Design mit militärischem Finish',
                 typhoonDesc: 'Luft- und Raumfahrtinstrument für extreme Bedingungen',
                 worldTimerDesc: 'Erste RSWC Digital mit 28 Zeitzonen. Hommage an klassische Casio World Timer mit Premium-Materialien: Saphirglas und Swiss-Grade-Stahl',
                 caballeroDesc: 'Klassisches Design aus der Sol y Sombra Kollektion',
@@ -1133,6 +1165,7 @@
                 sharkomaticDesc: 'Vintage cushion diver 44mm with 70s retro aesthetic',
                 typhoonDesc: 'Aerospace instrument for extreme conditions',
                 worldTimerDesc: 'First RSWC digital with 28 time zones. Tribute to classic Casio World Timer with premium materials: sapphire crystal and Swiss-grade steel',
+                dirtyFifteenDesc: 'Tribute to the elite military unit of 15 members. Tactical design with military finish',
                 caballeroDesc: 'Classic design from the Sol y Sombra collection',
                 unfoldBtn: '📖 View pages',
                 foldBtn: '🔼 Hide pages',
@@ -1178,7 +1211,7 @@
         function togglePages(galleryId) {
             const gallery = document.getElementById(galleryId);
             const btn = event.target;
-            const lang = document.documentElement.lang || 'es';
+            const lang = currentLanguage; // Use tracked language instead of DOM attribute
             const t = translations[lang];
             
             if (gallery.classList.contains('active')) {
@@ -1187,15 +1220,28 @@
             } else {
                 gallery.classList.add('active');
                 btn.textContent = t.foldBtn;
+                
+                // If this is vainqueur gallery, update images based on current language
+                if (galleryId === 'vainqueur-pages') {
+                    const vainqueurSuffix = currentLanguage === 'de' ? 'vainqueur_de' : 'vainqueur';
+                    const vainqueurImages = gallery.querySelectorAll('img');
+                    vainqueurImages.forEach((img, index) => {
+                        img.src = `HdR zines/RSWC Vainqueur/${vainqueurSuffix} zine-${index + 1}.png`;
+                    });
+                }
             }
         }
 
         function setLanguage(lang) {
+            currentLanguage = lang; // Update global language variable
+            
             // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(`'${lang}'`)) {
+                    btn.classList.add('active');
+                }
             });
-            event.target.classList.add('active');
             
             // Update content
             const t = translations[lang];
@@ -1219,6 +1265,7 @@
             document.getElementById('ala14-desc').textContent = t.ala14Desc;
             document.getElementById('cosmotemp-desc').textContent = t.cosmotempDesc;
             document.getElementById('decotimer-desc').textContent = t.decotimerDesc;
+            document.getElementById('dirty-fifteen-desc').textContent = t.dirtyFifteenDesc;
             document.getElementById('supersharkomatic-desc').textContent = t.sharkomaticDesc;
             document.getElementById('typhoon-desc').textContent = t.typhoonDesc;
             document.getElementById('world-timer-desc').textContent = t.worldTimerDesc;
@@ -1263,6 +1310,18 @@
             document.getElementById('download-btn-skygraph').textContent = t.downloadBtn;
             document.getElementById('download-btn-monumental').textContent = t.downloadBtn;
             document.getElementById('download-btn-viajero').textContent = t.downloadBtn;
+            document.getElementById('download-btn-dirty-fifteen').textContent = t.downloadBtn;
+            
+            // Update Vainqueur images based on language
+            const vainqueurGallery = document.getElementById('vainqueur-pages');
+            if (vainqueurGallery) {
+                const vainqueurImages = vainqueurGallery.querySelectorAll('img');
+                const vainqueurSuffix = lang === 'de' ? 'vainqueur_de' : 'vainqueur';
+                vainqueurImages.forEach((img, index) => {
+                    img.src = `HdR zines/RSWC Vainqueur/${vainqueurSuffix} zine-${index + 1}.png`;
+                });
+            }
+            
             document.getElementById('footer-about').textContent = t.footerAbout;
             document.getElementById('footer-text-1').textContent = t.footerText1;
             document.getElementById('footer-text-2').textContent = t.footerText2;
@@ -1279,13 +1338,8 @@
         // Load saved language or default to Spanish
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-            const btn = document.querySelector(`.lang-btn[onclick="setLanguage('${savedLang}')"]`);
-            if (btn) {
-                btn.click();
-            } else {
-                setLanguage('es');
-            }
+            setLanguage(savedLang);
         });
     </script>
 </body>
-</html>
+</html> 
