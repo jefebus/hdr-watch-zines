@@ -10,14 +10,14 @@ TYPST := /snap/bin/typst compile --root . --font-path $(FONT_PATH)
 SRC_LIB := $(wildcard src/*.typ)
 
 # Target list - PDFs
-pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-world_timer \
+pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-dirty_fifteen pdf-world_timer \
 	pdf-iberia pdf-vainqueur pdf-vainqueur_de pdf-verne pdf-ichi pdf-ala14 \
 	pdf-supersharkomatic pdf-typhoon pdf-roquina pdf-forest_defender pdf-salto_de_fe \
 	pdf-heian pdf-ferroviario pdf-galeno pdf-gamma_gibraltar pdf-inmortal \
 	pdf-inmortal_reserva_especial pdf-bushido pdf-skygraph \
 	pdf-monumental pdf-viajero
 	
-png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-world_timer \
+png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-dirty_fifteen png-world_timer \
 	png-iberia png-vainqueur png-vainqueur_de png-verne png-ichi png-ala14 \
 	png-supersharkomatic png-typhoon png-roquina png-forest_defender png-salto_de_fe \
 	png-heian png-ferroviario png-galeno png-gamma_gibraltar png-inmortal \
@@ -42,7 +42,7 @@ help:
 	@echo "  help       Show this help message"
 	@echo ""
 	@echo "Available zines:"
-	@echo "  caballero, competidor, cosmotemp, decotimer, world_timer,"
+	@echo "  caballero, competidor, cosmotemp, decotimer, dirty_fifteen, world_timer,"
 	@echo "  iberia, vainqueur, vainqueur_de, verne, ichi, ala14,"
 	@echo "  supersharkomatic, typhoon, roquina, forest_defender, salto_de_fe,"
 	@echo "  heian, ferroviario, galeno, gamma_gibraltar, inmortal,"
@@ -93,6 +93,16 @@ pdf-decotimer: $(wildcard hdr_zines_src/decotimer/*.typ hdr_zines_src/decotimer/
 png-decotimer: $(wildcard hdr_zines_src/decotimer/*.typ hdr_zines_src/decotimer/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/RSWC Deco-Timer"
 	$(TYPST) --input digital=true hdr_zines_src/decotimer/decotimer.typ "HdR zines/RSWC Deco-Timer/decotimer zine-{p}.png"
+
+.PHONY: pdf-dirty_fifteen
+pdf-dirty_fifteen: $(wildcard hdr_zines_src/dirty_fifteen/*.typ hdr_zines_src/dirty_fifteen/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Dirty Fifteen"
+	$(TYPST) --input digital=false hdr_zines_src/dirty_fifteen/dirty_fifteen.typ "HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine.pdf"
+
+.PHONY: png-dirty_fifteen
+png-dirty_fifteen: $(wildcard hdr_zines_src/dirty_fifteen/*.typ hdr_zines_src/dirty_fifteen/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Dirty Fifteen"
+	$(TYPST) --input digital=true hdr_zines_src/dirty_fifteen/dirty_fifteen.typ "HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-{p}.png"
 
 .PHONY: pdf-world_timer
 pdf-world_timer: $(wildcard hdr_zines_src/world_timer/*.typ hdr_zines_src/world_timer/*.jpeg) $(SRC_LIB)
