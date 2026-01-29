@@ -1,6 +1,6 @@
 # Makefile for building watch zines with Typst
 
-.PHONY: all clean help png-all
+.PHONY: all clean help pdf-all png-all
 
 # Configuration
 FONT_PATH := $(HOME)/.local/share/fonts
@@ -13,14 +13,14 @@ SRC_LIB := $(wildcard src/*.typ)
 pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-dirty_fifteen pdf-world_timer \
 	pdf-iberia pdf-vainqueur pdf-vainqueur_de pdf-verne pdf-ichi pdf-ala14 \
 	pdf-supersharkomatic pdf-typhoon pdf-roquina pdf-forest_defender pdf-salto_de_fe \
-	pdf-heian pdf-ferroviario pdf-galeno pdf-gamma_gibraltar pdf-inmortal \
+	pdf-heian pdf-ferroviario pdf-galeno pdf-grand_belize pdf-gamma_gibraltar pdf-inmortal \
 	pdf-inmortal_reserva_especial pdf-bushido pdf-skygraph \
 	pdf-monumental pdf-viajero
 	
 png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-dirty_fifteen png-world_timer \
 	png-iberia png-vainqueur png-vainqueur_de png-verne png-ichi png-ala14 \
 	png-supersharkomatic png-typhoon png-roquina png-forest_defender png-salto_de_fe \
-	png-heian png-ferroviario png-galeno png-gamma_gibraltar png-inmortal \
+	png-heian png-ferroviario png-galeno png-grand_belize png-gamma_gibraltar png-inmortal \
 	png-inmortal_reserva_especial png-bushido png-skygraph \
 	png-monumental png-viajero
 
@@ -253,6 +253,16 @@ pdf-galeno: $(wildcard hdr_zines_src/galeno/*.typ hdr_zines_src/galeno/*.jpeg) $
 png-galeno: $(wildcard hdr_zines_src/galeno/*.typ hdr_zines_src/galeno/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/Galeno"
 	$(TYPST) --input digital=true hdr_zines_src/galeno/galeno.typ "HdR zines/Galeno/galeno zine-{p}.png"
+
+.PHONY: pdf-grand_belize
+pdf-grand_belize: $(wildcard hdr_zines_src/grand_belize/*.typ hdr_zines_src/grand_belize/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/Candino Grand Belize"
+	$(TYPST) --input digital=false hdr_zines_src/grand_belize/grand_belize.typ "HdR zines/Candino Grand Belize/grand_belize zine.pdf"
+
+.PHONY: png-grand_belize
+png-grand_belize: $(wildcard hdr_zines_src/grand_belize/*.typ hdr_zines_src/grand_belize/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/Candino Grand Belize"
+	$(TYPST) --input digital=true hdr_zines_src/grand_belize/grand_belize.typ "HdR zines/Candino Grand Belize/grand_belize zine-{p}.png"
 
 .PHONY: pdf-gamma_gibraltar
 pdf-gamma_gibraltar: $(wildcard hdr_zines_src/gamma_gibraltar/*.typ hdr_zines_src/gamma_gibraltar/*.jpeg) $(SRC_LIB)

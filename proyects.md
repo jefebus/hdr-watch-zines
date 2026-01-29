@@ -62,7 +62,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - G-Shock / Comando Rojo
 - Gagarin: 50 Aniversario, ¡Poyejali!
 - **Galeno**
-- Gran Belize Candino
+- **Candino Grand Belize**
 - Kaiju: Standard, Yuki-Otoko
 - Karusell Racing
 - Komarov ¡Poyajali!
@@ -82,5 +82,5 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 ## Statistics
 
 - **Total Projects**: 64
-- **Projects with Zines**: 24
-- **Coverage**: ~38%
+- **Projects with Zines**: 25
+- **Coverage**: ~39%

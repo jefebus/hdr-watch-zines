@@ -8,10 +8,12 @@ The watch descriptions for the RSWC and SyS (Sol y Sombra) zines are based on th
 
 Photographs featured in the zines were taken from the forum and were created by:
 - **@Gasparacha**
-- **@submariner**
-- **@Pirlo**
-- **@vegaban**
+- **@Girolamo**
+- **@luin**
 - **@Martins**
+- **@Pirlo**
+- **@submariner**
+- **@vegaban**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 
@@ -100,8 +102,12 @@ hdr_zines_src/
 ├── ...
 │
 HdR zines/
+├── Candino Grand Belize/
+│   └── grand_belize zine.pdf
 ├── Ferroviario/
 │   └── ferroviario zine.pdf
+├── Galeno/
+│   └── galeno zine.pdf
 ├── RSWC Bushido/
 │   └── bushido zine.pdf (versiones roja y Midori)
 ├── RSWC Dirty Fifteen/
