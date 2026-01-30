@@ -21,7 +21,6 @@
     inset: 8pt,
     radius: 4pt,
     text(white, size: 20pt, stroke: 0.5pt + black)[
-      *POLJOT*\ 
       *OKEAH*\
       *Final Edition*
     ]
@@ -131,5 +130,5 @@ Okeah Final Edition (2011-2012) cierra 35 años de historia del Okeah y calibre 
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_Poljot · Hablemos de Relojes_
+_OKEAH · Hablemos de Relojes_
 ])

@@ -23,9 +23,8 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Scaphandre: I, II, 3
 - **Skygraph**: **Yellow**, **Historical Colors**, **Silver**
 - **Super Stellar Ala 14**
-- Super Stellar Cosmotemp
+- **Super Stellar Cosmotemp**, **World Timer**
 - **Super Stellar Typhoon**
-- Super Stellar World Timer
 - Super Massive Colossus
 - **Supersharkomatic**
 - Typ VII-B
