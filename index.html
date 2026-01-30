@@ -592,6 +592,34 @@
                 </div>
                 
                 <div class="zine-card">
+                    <img src="hdr_zines_src/racing/racing_front.jpeg" alt="RSWC Racing" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Karussell & Moeris Lacus 🏁🚀</h3>
+                        <p id="racing-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Racing/RSWC Racing.pdf" class="download-btn" download><span id="download-btn-racing">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('racing-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="racing-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Racing/RSWC Racing-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('racing-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="racing-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('racing-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
                     <img src="hdr_zines_src/salto_de_fe/salto_de_fe_front.jpeg" alt="Salto de Fe" class="zine-card-image">
                     <div class="zine-card-content">
                         <h3>RSWC Salto de Fe 🐕</h3>
@@ -1124,6 +1152,7 @@
                 forestDefenderDesc: 'Cronógrafo de bomberos con escala especial y pulsómetro',
                 saltoDeFeDesc: 'El proyecto más secreto de HdR. Guau guau guau guau guau',
                 heianDesc: 'Homenaje a los relojes japoneses vintage de diario. Elegancia atemporal con movimiento Seiko NH36A doble calendario Kanji-Inglés e Instant Date.',
+                racingDesc: 'Dos cronógrafos solares en uno: Karusell Racing rinde homenaje al circuito de Nürburgring y al GP de Alemania 1968. Moeris Lacus Space celebra las misiones ExoMars de la ESA.',
                 skygraphDesc: 'Homenaje al Seiko 6139 "Pogue", primer cronógrafo automático en el espacio (Skylab 4, 1973). Cuatro variantes históricas con movimiento Peacock y bisel interno.',
                 monumentalDesc: 'Cronógrafo ST-1901 con cuatro trajes de luces. Bisel de zafiro funcional con capas del toro y suertes de la lidia. Última serie del mítico calibre.',
                 viajeroDesc: 'Cronógrafo ST-1901 panda vintage. Bisel de zafiro con ciudades españolas. Homenaje al espíritu viajero en Renault 4 por las carreteras nacionales.',
@@ -1169,6 +1198,7 @@
                 forestDefenderDesc: 'Feuerwehr-Chronograph mit Spezialskala und Pulsmesser',
                 saltoDeFeDesc: 'Das geheimste HdR-Projekt. Wau wau wau wau wau',
                 heianDesc: 'Hommage an japanische Vintage-Alltagsuhren. Zeitlose Eleganz mit Seiko NH36A Werk, doppeltem Kanji-Englisch-Kalender und Instant Date.',
+                racingDesc: 'Zwei Solar-Chronographen in einem: Karusell Racing ehrt die Nürburgring-Rennstrecke und den GP Deutschland 1968. Moeris Lacus Space feiert die ExoMars-Missionen der ESA.',
                 skygraphDesc: 'Hommage an die Seiko 6139 "Pogue", erster Automatikchronograph im Weltraum (Skylab 4, 1973). Vier historische Varianten mit Peacock-Werk und interner Lünette.',
                 monumentalDesc: 'ST-1901 Chronograph mit vier Torero-Anzügen. Funktionelle Saphirlünette mit Stierschichten und Kampfphasen. Letzte Serie des legendären Kalibers.',
                 viajeroDesc: 'ST-1901 Vintage Panda-Chronograph. Saphirlünette mit spanischen Städten. Hommage an den Reisegeist im Renault 4 auf den Nationalstraßen.',
@@ -1214,6 +1244,7 @@
                 forestDefenderDesc: 'Firefighter chronograph with special scale and pulsometer',
                 saltoDeFeDesc: 'The most secret HdR project. Woof woof woof woof woof',
                 heianDesc: 'Tribute to vintage Japanese daily-wear watches. Timeless elegance with Seiko NH36A movement, dual Kanji-English calendar and Instant Date.',
+                racingDesc: 'Two solar chronographs in one: Karusell Racing honors the Nürburgring circuit and 1968 German GP. Moeris Lacus Space celebrates ESA\'s ExoMars missions.',
                 skygraphDesc: 'Tribute to the Seiko 6139 "Pogue", first automatic chronograph in space (Skylab 4, 1973). Four historic variants with Peacock movement and internal bezel.',
                 monumentalDesc: 'ST-1901 chronograph with four bullfighter suits. Functional sapphire bezel with bull sections and bullfighting phases. Final series of the legendary caliber.',
                 viajeroDesc: 'ST-1901 vintage panda chronograph. Sapphire bezel with Spanish cities. Tribute to the traveling spirit in a Renault 4 on national roads.',
@@ -1319,6 +1350,7 @@
             document.getElementById('forest-defender-desc').textContent = t.forestDefenderDesc;
             document.getElementById('salto-de-fe-desc').textContent = t.saltoDeFeDesc;
             document.getElementById('heian-desc').textContent = t.heianDesc;
+            document.getElementById('racing-desc').textContent = t.racingDesc;
             document.getElementById('skygraph-desc').textContent = t.skygraphDesc;
             document.getElementById('monumental-desc').textContent = t.monumentalDesc;
             document.getElementById('viajero-desc').textContent = t.viajeroDesc;
@@ -1373,6 +1405,7 @@
             document.getElementById('download-btn-verne').textContent = t.downloadBtn;
             document.getElementById('download-btn-ichi').textContent = t.downloadBtn;
             document.getElementById('download-btn-heian').textContent = t.downloadBtn;
+            document.getElementById('download-btn-racing').textContent = t.downloadBtn;
             document.getElementById('download-btn-skygraph').textContent = t.downloadBtn;
             document.getElementById('download-btn-monumental').textContent = t.downloadBtn;
             document.getElementById('download-btn-viajero').textContent = t.downloadBtn;

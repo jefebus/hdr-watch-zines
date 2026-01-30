@@ -15,14 +15,14 @@ pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-dirty_fift
 	pdf-supersharkomatic pdf-typhoon pdf-roquina pdf-forest_defender pdf-salto_de_fe \
 	pdf-heian pdf-ferroviario pdf-galeno pdf-grand_belize pdf-gamma_gibraltar pdf-inmortal \
 	pdf-inmortal_reserva_especial pdf-bushido pdf-skygraph \
-	pdf-monumental pdf-okeah pdf-viajero
+	pdf-monumental pdf-okeah pdf-racing pdf-viajero
 	
 png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-dirty_fifteen png-world_timer \
 	png-iberia png-vainqueur png-vainqueur_de png-verne png-ichi png-ala14 \
 	png-supersharkomatic png-typhoon png-roquina png-forest_defender png-salto_de_fe \
 	png-heian png-ferroviario png-galeno png-grand_belize png-gamma_gibraltar png-inmortal \
 	png-inmortal_reserva_especial png-bushido png-skygraph \
-	png-monumental png-okeah png-viajero
+	png-monumental png-okeah png-racing png-viajero
 
 all: pdf-all png-all
 
@@ -47,7 +47,7 @@ help:
 	@echo "  supersharkomatic, typhoon, roquina, forest_defender, salto_de_fe,"
 	@echo "  heian, ferroviario, galeno, gamma_gibraltar, inmortal,"
 	@echo "  inmortal_reserva_especial, bushido, skygraph,"
-	@echo "  monumental, okeah, viajero"
+	@echo "  monumental, okeah, racing, viajero"
 
 # Clean target
 clean:
@@ -333,6 +333,16 @@ pdf-okeah: $(wildcard hdr_zines_src/okeah/*.typ hdr_zines_src/okeah/*.jpeg) $(SR
 png-okeah: $(wildcard hdr_zines_src/okeah/*.typ hdr_zines_src/okeah/*.jpeg) $(SRC_LIB)
 	@mkdir -p "HdR zines/Okeah Final Edition"
 	$(TYPST) --input digital=true hdr_zines_src/okeah/okeah.typ "HdR zines/Okeah Final Edition/okeah zine-{p}.png"
+
+.PHONY: pdf-racing
+pdf-racing: $(wildcard hdr_zines_src/racing/*.typ hdr_zines_src/racing/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Racing"
+	$(TYPST) --input digital=false hdr_zines_src/racing/racing.typ "HdR zines/RSWC Racing/RSWC Racing.pdf"
+
+.PHONY: png-racing
+png-racing: $(wildcard hdr_zines_src/racing/*.typ hdr_zines_src/racing/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWC Racing"
+	$(TYPST) --input digital=true hdr_zines_src/racing/racing.typ "HdR zines/RSWC Racing/RSWC Racing-{p}.png"
 
 .PHONY: pdf-viajero
 pdf-viajero: $(wildcard hdr_zines_src/viajero/*.typ hdr_zines_src/viajero/*.jpeg) $(SRC_LIB)

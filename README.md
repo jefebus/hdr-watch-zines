@@ -15,6 +15,7 @@ Photographs featured in the zines were taken from the forum and were created by:
 - **@Pirlo**
 - **@vegaban**
 - **@Drake**
+- **@stef**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 
@@ -117,8 +118,12 @@ HdR zines/
 │   └── dirty_fifteen zine.pdf
 ├── RSWC Forest Defender/
 │   └── forest_defender zine.pdf
+├── RSWC Gamma Gibraltar/
+│   └── gamma_gibraltar zine.pdf
 ├── RSWC Heian/
 │   └── heian zine.pdf
+├── RSWC Racing/
+│   └── RSWC Racing.pdf
 ├── RSWC Salto de Fe/
 │   └── salto_de_fe zine.pdf
 ├── RSWC Skygraph/

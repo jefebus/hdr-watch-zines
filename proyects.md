@@ -54,21 +54,19 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Apocalypse Now
 - B-Uhr Für Gradmaß
 - Comando G
-- Deco Timer Challenger
-- Devil's Eye
+- **Deco Timer Challenger**, **Devil's Eye**
 - **Ferroviario**
 - G-Shock / Comando Rojo
 - Gagarin: 50 Aniversario, ¡Poyejali!
 - **Galeno**
 - **Candino Grand Belize**
 - Kaiju: Standard, Yuki-Otoko
-- Karusell Racing
+- **Karusell Racing, Moeris Lacus**
 - Komarov ¡Poyajali!
 - Laco Squad HdR
 - Landeron Compressor
 - Leonov ¡Poyejali!
 - Luch Monoaguja
-- Moeris Lacus Space
 - **Okeah Final Edition**
 - Parnis: GMT Master II/Explorer Zulu, Marina Militare, Portuguese
 - Piloto Checo
