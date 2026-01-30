@@ -254,21 +254,46 @@
         }
 
         @media (max-width: 1200px) {
-            .timeline-headers,
-            .timeline-row {
-                grid-template-columns: 60px 1fr;
-                gap: 6px;
+            body {
+                padding: 10px;
             }
 
-            .timeline-headers > :nth-child(3),
-            .timeline-headers > :nth-child(4),
-            .timeline-row > :nth-child(3),
-            .timeline-row > :nth-child(4) {
-                display: none;
+            .container {
+                max-width: 100%;
+            }
+
+            .timeline-headers,
+            .timeline-row {
+                grid-template-columns: 50px 1fr 1fr 1fr;
+                gap: 4px;
+                font-size: 0.85em;
+            }
+
+            .date-marker {
+                font-size: 0.8em;
+            }
+
+            .swimlane-header {
+                font-size: 0.65em;
+                padding: 4px 2px;
+            }
+
+            .project-title {
+                font-size: 0.65em;
+            }
+
+            .project-link {
+                font-size: 0.6em;
+                padding: 3px 5px;
             }
 
             h1 {
                 font-size: 1.5em;
+            }
+
+            #sortToggle {
+                font-size: 0.8em;
+                padding: 8px 15px;
             }
         }
     </style>
