@@ -10,7 +10,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Dirty Fifteen** (May 2022), **Afrika Korps**
 - Eagle: One (Jan 2023), Two
 - Escuadrón 312 (Jun 2023)
-- **Forest Defender** (Oct 2025)
+- **Forest Defender** (Nov 2025)
 - **Gamma Gibraltar** (Aug 2023)
 - **Goldmaster** (Mar 2021): **Black, British Green**
 - Grande Épreuve (Jan 2022): Type I, Type II
@@ -20,8 +20,8 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - Rex Caeli (Sep 2023)
 - Rex Maris
 - Rex Terrae (Aug 2022)
-- **Salto de Fe** (Aug 2023)
-- Scaphandre I (Mar 2021), II (Aug 2022), 3 (Mar 2023)
+- **Salto de Fe** (Jul 2023)
+- Scaphandre I (Mar 2021), II (Oct 2022), 3 (Mar 2023)
 - **Skygraph** (Aug 2025): **Yellow**, **Historical Colors** (Sep 2025), **Silver**
 - **Super Stellar Ala 14**
 - **Super Stellar Cosmotemp**, **World Timer**
@@ -51,7 +51,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 ## Other Projects
 
-- Agat (Mar 2013): 194 4C, 195 4C
+- Agat (Nov 2014): 194 4C, 195 4C
 - Apocalypse Now (May 2020)
 - B-Uhr Für Gradmaß
 - Comando G
@@ -59,9 +59,9 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Ferroviario** (Jan 2020)
 - G-Shock / Comando Rojo
 - Gagarin: 50 Aniversario (Feb 2011), ¡Poyejali! (Apr 2021)
-- **Galeno** (Apr 2016)
-- **Candino Grand Belize** (Jul 2018)
-- Kaiju (Nov 2022): Standard, Yuki-Otoko (Jan 2022)
+- **Galeno** (May 2015)
+- **Candino Grand Belize** (2011)
+- Kaiju (Nov 2022): Standard, Yuki-Otoko (Jan 2023)
 - Komarov ¡Poyajali! (Apr 2021)
 - Laco Squad HdR
 - Landeron Compressor
@@ -70,7 +70,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Okeah Final Edition** (Nov 2011)
 - Parnis (Jun 2009): GMT Master II/Explorer Zulu, Marina Militare, Portuguese
 - Piloto Checo (Jun 2023)
-- Radio Room Operator (Nov 2007)
+- Radio Room Operator (Sep 2009)
 - Vostok: Amphibia AM 420, Amphibian AMM 710 (Oct 2012), K43 (Feb 2017)
 
 ---
