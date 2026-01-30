@@ -186,13 +186,11 @@ uso en mar. Limpiar con paño.
   image("goldmaster_back.jpeg", width: 100%, height: 50%, fit: "cover")
 })
 
-#place(top + left, dx: 5mm, dy: 40mm, box(width: 100% - 10mm, text(black, size: 7pt)[
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 *RSWC Goldmaster*
 
 Homenaje al reloj del gentleman. Un reloj submarinista profesional para
 el hombre de acción británico de los años 60.
-
-De las playas de Malibú a los casinos de Monte Carlo.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
