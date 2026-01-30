@@ -1,77 +1,77 @@
 # HdR Watch Projects
 
-Complete list of Hablemos de Relojes watch projects organized by brand/collection. **Bold entries** have zines available.
+Complete list of Hablemos de Relojes watch projects organized by brand/collection with creation dates. **Bold entries** have zines available.
 
 ## RSWC (Rising Sun Watch Company)
 
-- Airliner: I, II
-- **Bushido**: **Rönin**, **Midori**
-- **Deco Timer Challenger / Devil's Eye**
-- **Dirty Fifteen**, **Afrika Korps**
-- Eagle: One, Two
-- Escuadrón 312
-- **Forest Defender**
-- **Gamma Gibraltar**
-- **Goldmaster: Black, British Green**
-- Grande Épreuve: Type I, Type II
+- Airliner I (Mar 2021), II (May 2023)
+- **Bushido** (May 2024): **Rönin**, **Midori**
+- **Deco Timer** (Oct 2023): **Challenger / Devil's Eye**
+- **Dirty Fifteen** (May 2022), **Afrika Korps**
+- Eagle: One (Jan 2023), Two
+- Escuadrón 312 (Jun 2023)
+- **Forest Defender** (Oct 2025)
+- **Gamma Gibraltar** (Aug 2023)
+- **Goldmaster** (Mar 2021): **Black, British Green**
+- Grande Épreuve (Jan 2022): Type I, Type II
 - **Heian**
-- **Suite Iberia**
-- **Karusell Racing, Moeris Lacus**
-- Rex Caeli
+- **Suite Iberia** (Aug 2022)
+- **Karusell Racing, Moeris Lacus** (Mar 2023)
+- Rex Caeli (Sep 2023)
 - Rex Maris
-- Rex Terrae
-- **Salto de Fe**
-- Scaphandre: I, II, 3
-- **Skygraph**: **Yellow**, **Historical Colors**, **Silver**
+- Rex Terrae (Aug 2022)
+- **Salto de Fe** (Aug 2023)
+- Scaphandre I (Mar 2021), II (Aug 2022), 3 (Mar 2023)
+- **Skygraph** (Aug 2025): **Yellow**, **Historical Colors** (Sep 2025), **Silver**
 - **Super Stellar Ala 14**
 - **Super Stellar Cosmotemp**, **World Timer**
-- **Super Stellar Typhoon**
-- Super Massive Colossus
-- **Supersharkomatic**
-- Typ VII-B
-- UME: Tipo 1, Tipo 2, 3
-- **Vainqueur**
-- **Verne**
+- **Super Stellar Typhoon** (Jun 2025)
+- Super Massive Colossus (Jun 2024)
+- **Supersharkomatic** (May 2024 - Black, Dec 2024 - Blue Special Edition)
+- Typ VII-B (Dec 2022)
+- UME (Dec 2023): Tipo 1, Tipo 2, 3
+- **Vainqueur** (Apr 2025)
+- **Verne** (Sep 2021)
 
 ## Sol y Sombra
 
-- **Caballero**
-- **Competidor**: **Classic/Panda/Rally**, **Aquarally**
-- **Inmortal**
-- **Inmortal Reserva Especial**
-- **Monumental Taurino**
-- **Roquina**
-- **Viajero**
+- **Caballero** (Jan 2025)
+- **Competidor** (Mar 2024): **Classic/Panda/Rally**, **Aquarally**
+- **Inmortal** (Mar 2024)
+- **Inmortal Reserva Especial** (Jan 2025)
+- **Monumental Taurino** (Jan 2025)
+- **Roquina** (Jan 2026)
+- **Viajero** (Jan 2025)
 
 ## RSWF (Rising Sun Watch Forum)
 
-- **Ichi**
-- King Tuna
-- SevenSeas Monoblock
+- **Ichi** (Jun 2007)
+- King Tuna (Nov 2020)
+- SevenSeas Monoblock (Nov 2020)
 
 ## Other Projects
 
-- Agat: 194 4C, 195 4C
-- Apocalypse Now
+- Agat (Mar 2013): 194 4C, 195 4C
+- Apocalypse Now (May 2020)
 - B-Uhr Für Gradmaß
 - Comando G
 - **Deco Timer Challenger**, **Devil's Eye**
-- **Ferroviario**
+- **Ferroviario** (Jan 2020)
 - G-Shock / Comando Rojo
-- Gagarin: 50 Aniversario, ¡Poyejali!
-- **Galeno**
-- **Candino Grand Belize**
-- Kaiju: Standard, Yuki-Otoko
-- Komarov ¡Poyajali!
+- Gagarin: 50 Aniversario (Feb 2011), ¡Poyejali! (Apr 2021)
+- **Galeno** (Apr 2016)
+- **Candino Grand Belize** (Jul 2018)
+- Kaiju (Nov 2022): Standard, Yuki-Otoko (Jan 2022)
+- Komarov ¡Poyajali! (Apr 2021)
 - Laco Squad HdR
 - Landeron Compressor
-- Leonov ¡Poyejali!
-- Luch Monoaguja
-- **Okeah Final Edition**
-- Parnis: GMT Master II/Explorer Zulu, Marina Militare, Portuguese
-- Piloto Checo
-- Radio Room Operator
-- Vostok: Amphibia AM 420, Amphibian AMM 710, K43
+- Leonov ¡Poyejali! (Apr 2021)
+- Luch Monoaguja (Apr 2013)
+- **Okeah Final Edition** (Nov 2011)
+- Parnis (Jun 2009): GMT Master II/Explorer Zulu, Marina Militare, Portuguese
+- Piloto Checo (Jun 2023)
+- Radio Room Operator (Nov 2007)
+- Vostok: Amphibia AM 420, Amphibian AMM 710 (Oct 2012), K43 (Feb 2017)
 
 ---
 

@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HdR Watch Projects Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #222222;
+            color: #dddddd;
+            line-height: 1.6;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: #111111;
+            border-radius: 6px;
+            border: 1px solid #444444;
+        }
+
+        h1 {
+            font-size: 2.0em;
+            margin-bottom: 3px;
+            color: #dddddd;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 0.75em;
+            color: #dddddd;
+            margin-top: 3px;
+            opacity: 0.8;
+        }
+
+        .timeline-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .timeline-headers {
+            display: grid;
+            grid-template-columns: 65px 1fr 1fr 1fr;
+            gap: 6px;
+            position: sticky;
+            top: 0;
+            background: #222222;
+            z-index: 20;
+            padding: 4px 0;
+            margin-bottom: 4px;
+        }
+
+        .swimlane-header {
+            background: #1a1a1a;
+            padding: 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.75em;
+            font-weight: 600;
+            border: 2px solid;
+        }
+
+        .swimlane-header.rswc {
+            color: #0F82AF;
+            border-color: #0F82AF;
+        }
+
+        .swimlane-header.sys {
+            color: #e2a44a;
+            border-color: #e2a44a;
+        }
+
+        .swimlane-header.otros {
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 65px 1fr 1fr 1fr;
+            gap: 6px;
+            align-items: start;
+            margin-bottom: 3px;
+        }
+
+        .date-marker {
+            background: #1a1a1a;
+            padding: 3px 4px;
+            border-radius: 3px;
+            border-left: 2px solid #0F82AF;
+            position: sticky;
+            left: 0;
+            height: fit-content;
+            top: 35px;
+        }
+
+        .date-marker .month {
+            font-size: 0.85em;
+            color: #0F82AF;
+            font-weight: 600;
+            display: block;
+        }
+
+        .date-marker .year {
+            font-size: 1.0em;
+            color: #dddddd;
+            font-weight: 700;
+            display: block;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 3px;
+            padding: 2px;
+            border: 1px solid #444444;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(15, 130, 175, 0.3);
+            border-color: #0F82AF;
+        }
+
+        .project-image {
+            width: 55%;
+            aspect-ratio: 9/16;
+            position: relative;
+            border-radius: 2px;
+            overflow: hidden;
+            border: 1px solid #444444;
+            margin: 0 auto 4px auto;
+            background: #111111;
+        }
+
+        .project-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-card:hover .project-image {
+            border-color: #0F82AF;
+        }
+
+        .project-title {
+            font-size: 0.75em;
+            margin-bottom: 3px;
+            color: #dddddd;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .project-date {
+            color: #0F82AF;
+            font-size: 0.45em;
+            margin-bottom: 3px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 4px 8px;
+            background: #0F82AF;
+            color: #dddddd;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.7em;
+            transition: all 0.3s ease;
+            border: 1px solid #0F82AF;
+        }
+
+        .project-link:hover {
+            opacity: 0.9;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .project-link.pdf {
+            background: #e24a4a;
+            border-color: #e24a4a;
+        }
+
+        .project-link.pdf:hover {
+            background: #f55a5a;
+        }
+
+        .project-link.forum {
+            background: #7b68ee;
+            border-color: #7b68ee;
+        }
+
+        .project-link.forum:hover {
+            background: #8b78fe;
+        }
+
+        .no-zine {
+            opacity: 0.5;
+            font-style: italic;
+            color: #888;
+            text-align: center;
+            padding: 8px 5px;
+            border: 2px dashed #444444;
+            border-radius: 2px;
+            font-size: 0.6em;
+            aspect-ratio: 9/16;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #111111;
+            width: 55%;
+            margin: 0 auto 4px auto;
+        }
+
+        .empty-slot {
+            height: 20px;
+        }
+
+        .year-section {
+            display: contents;
+        }
+
+        @media (max-width: 1200px) {
+            .timeline-headers,
+            .timeline-row {
+                grid-template-columns: 60px 1fr;
+                gap: 6px;
+            }
+
+            .timeline-headers > :nth-child(3),
+            .timeline-headers > :nth-child(4),
+            .timeline-row > :nth-child(3),
+            .timeline-row > :nth-child(4) {
+                display: none;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 HdR Watch Projects Timeline ⌚</h1>
+            <p class="subtitle">Hablemos de Relojes - 2026 to 2007</p>
+            <button id="sortToggle" style="margin-top: 10px; padding: 10px 20px; background: #0F82AF; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9em; transition: opacity 0.2s;">🔄 Invertir orden</button>
+        </header>
+
+        <div class="timeline-wrapper">
+            <!-- Headers -->
+            <div class="timeline-headers">
+                <div></div>
+                <div class="swimlane-header rswc">RSWC / RSWF</div>
+                <div class="swimlane-header sys">Sol y Sombra</div>
+                <div class="swimlane-header otros">Otros</div>
+            </div>
+
+            <!-- Jan 2026 - Roquina -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2026</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Roquina/roquina zine-1.png" alt="Roquina">
+                    </div>
+                    <h3 class="project-title">Roquina</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Roquina/roquina zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/254341" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+            <!-- Jan 2025 - Viajero -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2025</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Viajero/viajero zine-1.png" alt="Viajero">
+                    </div>
+                    <h3 class="project-title">Viajero</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Viajero/viajero zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/254341" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Oct 2025 - Forest Defender -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Octubre</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Forest Defender/forest_defender zine-1.png" alt="Forest Defender">
+                    </div>
+                    <h3 class="project-title">Forest Defender</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Forest Defender/forest_defender zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/267870" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Aug 2025 - Skygraph -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Agosto</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Skygraph/skygraph zine-1.png" alt="Skygraph">
+                    </div>
+                    <h3 class="project-title">Skygraph (Yellow)</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Skygraph/skygraph zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/264729" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jun 2025 - Ala 14 -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Junio</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Super Stellar Ala 14/ala14 zine-1.png" alt="Ala 14">
+                    </div>
+                    <h3 class="project-title">Ala 14</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Super Stellar Ala 14/ala14 zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/261117" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jun 2025 - Typhoon -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Junio</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Super Stellar Typhoon/typhoon zine-1.png" alt="Typhoon">
+                    </div>
+                    <h3 class="project-title">Typhoon</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Super Stellar Typhoon/typhoon zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/261117" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Apr 2025 - Vainqueur -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Abril</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Vainqueur/vainqueur zine-1.png" alt="Vainqueur">
+                    </div>
+                    <h3 class="project-title">Vainqueur</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Vainqueur/vainqueur zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/258416" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+            <!-- Jan 2025 - Monumental -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2025</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Monumental/monumental zine-1.png" alt="Monumental">
+                    </div>
+                    <h3 class="project-title">Monumental</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Monumental/monumental zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/254341" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+            <!-- Jan 2025 - Inmortal RE -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2025</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine-1.png" alt="Inmortal RE">
+                    </div>
+                    <h3 class="project-title">Inmortal RE</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Inmortal Reserva Especial/inmortal_reserva_especial zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/254231" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+            <!-- Jan 2025 - Caballero -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2025</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Caballero/caballero zine-1.png" alt="Caballero">
+                    </div>
+                    <h3 class="project-title">Caballero</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Caballero/caballero zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/254083" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Sep 2024 - World Timer -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Septiembre</span>
+                    <span class="year">2024</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Super Stellar World Timer/world_timer zine-1.png" alt="World Timer">
+                    </div>
+                    <h3 class="project-title">World Timer</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Super Stellar World Timer/world_timer zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/249259" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Sep 2024 - Cosmotemp -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Septiembre</span>
+                    <span class="year">2024</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine-1.png" alt="Cosmotemp">
+                    </div>
+                    <h3 class="project-title">Cosmotemp</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Super Stellar Cosmotemp/cosmotemp zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/249259" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jun 2024 - Super Massive -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Junio</span>
+                    <span class="year">2024</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Super Massive</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/245703" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- May 2024 - Supersharkomatic -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Mayo</span>
+                    <span class="year">2024</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Supersharkomatic/supersharkomatic zine-1.png" alt="Supersharkomatic">
+                    </div>
+                    <h3 class="project-title">Supersharkomatic</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Supersharkomatic/supersharkomatic zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/244542" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- May 2024 - Bushido -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Mayo</span>
+                    <span class="year">2024</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Bushido/bushido zine-1.png" alt="Bushido">
+                    </div>
+                    <h3 class="project-title">Bushido</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Bushido/bushido zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/244362" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+            <!-- Mar 2024 - Inmortal -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Marzo</span>
+                    <span class="year">2024</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Inmortal/inmortal zine-1.png" alt="Inmortal">
+                    </div>
+                    <h3 class="project-title">Inmortal</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Inmortal/inmortal zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/242163" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+            <!-- Mar 2024 - Competidor -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Marzo</span>
+                    <span class="year">2024</span>
+                </div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/SyS Competidor/competidor zine-1.png" alt="Competidor">
+                    </div>
+                    <h3 class="project-title">Competidor</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/SyS Competidor/competidor zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/242163" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Dec 2023 - UME -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Diciembre</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">UME</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/238801" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Oct 2023 - Deco-Timer -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Octubre</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Deco-Timer/decotimer zine-1.png" alt="Deco-Timer">
+                    </div>
+                    <h3 class="project-title">Deco-Timer</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Deco-Timer/decotimer zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/236535" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Sep 2023 - Rex Caeli -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Septiembre</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Rex Caeli</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/235198" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Aug 2023 - Salto de Fe -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Agosto</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Salto de Fe/salto_de_fe zine-1.png" alt="Salto de Fe">
+                    </div>
+                    <h3 class="project-title">Salto de Fe</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Salto de Fe/salto_de_fe zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/234005" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Aug 2023 - Gamma Gibraltar -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Agosto</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine-1.png" alt="Gamma Gibraltar">
+                    </div>
+                    <h3 class="project-title">Gamma Gibraltar</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Gamma Gibraltar/gamma_gibraltar zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/234005" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jun 2023 - Escuadrón 312 -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Junio</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Escuadrón 312</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/233295" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- May 2023 - Airliner II -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Mayo</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Airliner II</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/232082" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Mar 2023 - Racing -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Marzo</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Racing/racing zine-1.png" alt="Racing">
+                    </div>
+                    <h3 class="project-title">Karusell Racing</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Racing/racing zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/230699" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Mar 2023 - Scaphandre 3 -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Marzo</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Scaphandre 3</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/230369" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jan 2023 - Eagle One -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2023</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Eagle One</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/228783" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Dec 2022 - Typ VII-B -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Diciembre</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Typ VII-B</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/228247" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Nov 2022 - Kaiju -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Noviembre</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Kaiju</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/227991" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Aug 2022 - Scaphandre 2 -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Agosto</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Scaphandre 2</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/226122" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Aug 2022 - Suite Iberia -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Agosto</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Suite Iberia/iberia zine-1.png" alt="Suite Iberia">
+                    </div>
+                    <h3 class="project-title">Suite Iberia</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Suite Iberia/iberia zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/225743" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Aug 2022 - Rex Terrae -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Agosto</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Rex Terrae</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/226214" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- May 2022 - Dirty Fifteen -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Mayo</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine-1.png" alt="Dirty Fifteen">
+                    </div>
+                    <h3 class="project-title">Dirty Fifteen / Afrika Korps</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Dirty Fifteen/dirty_fifteen zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/224474" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jan 2022 - Kaiju (Yuki-Otoko) -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Kaiju (Yuki-Otoko)</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/229369" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jan 2022 - Grande Épreuve -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2022</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">Grande Épreuve</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/115755" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Sep 2021 - Verne -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Septiembre</span>
+                    <span class="year">2021</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Verne/verne zine-1.png" alt="Verne">
+                    </div>
+                    <h3 class="project-title">RSWC Verne</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Verne/verne zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/115111" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apr 2021 - Gagarin Poyejali -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Abril</span>
+                    <span class="year">2021</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Gagarin ¡Poyejali!</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/113833" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Mar 2021 - Goldmaster -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Marzo</span>
+                    <span class="year">2021</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWC Goldmaster/goldmaster zine-1.png" alt="Goldmaster">
+                    </div>
+                    <h3 class="project-title">Goldmaster</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWC Goldmaster/goldmaster zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/113486" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Nov 2020 - King Tuna -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Noviembre</span>
+                    <span class="year">2020</span>
+                </div>
+                <div class="project-card">
+                    <div class="no-zine">King Tuna & SevenSeas</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/112428" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- May 2020 - Apocalypse Now -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Mayo</span>
+                    <span class="year">2020</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Apocalypse Now</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/110521" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 2020 - Ferroviario -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Enero</span>
+                    <span class="year">2020</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/Ferroviario/ferroviario zine-1.png" alt="Ferroviario">
+                    </div>
+                    <h3 class="project-title">Ferroviario</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/Ferroviario/ferroviario zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/109310" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jul 2018 - Grand Belize -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Julio</span>
+                    <span class="year">2018</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/Candino Grand Belize/grand_belize zine-1.png" alt="Grand Belize">
+                    </div>
+                    <h3 class="project-title">Candino Grand Belize</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/Candino Grand Belize/grand_belize zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/105642" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feb 2017 - Vostok K43 -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Febrero</span>
+                    <span class="year">2017</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Vostok K43</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/100300" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apr 2016 - Galeno -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Abril</span>
+                    <span class="year">2016</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/Galeno/galeno zine-1.png" alt="Galeno">
+                    </div>
+                    <h3 class="project-title">Galeno</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/Galeno/galeno zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/89777" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apr 2013 - Luch -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Abril</span>
+                    <span class="year">2013</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Luch Monoaguja</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/70271" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mar 2013 - Agat -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Marzo</span>
+                    <span class="year">2013</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Agat 194 4C / 195 4C</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/85402" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oct 2012 - Vostok Amphibia -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Octubre</span>
+                    <span class="year">2012</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Vostok Amphibia 5/6</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/66420" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nov 2011 - Okeah -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Noviembre</span>
+                    <span class="year">2011</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/Okeah Final Edition/okeah zine-1.png" alt="Okeah">
+                    </div>
+                    <h3 class="project-title">Okeah Final Edition</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/Okeah Final Edition/okeah zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/55510" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feb 2011 - Gagarin 50 -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Febrero</span>
+                    <span class="year">2011</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Gagarin 50 Aniversario</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/47219" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jun 2009 - Parnis Marina -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Junio</span>
+                    <span class="year">2009</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Parnis Marina / Marina Militare</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/32745" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nov 2007 - Radio Room Operator -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Noviembre</span>
+                    <span class="year">2007</span>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="project-card">
+                    <div class="no-zine">Radio Room Operator</div>
+                    <div class="project-links">
+                        <a href="https://www.hablemosderelojes.com/t/34845" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+                <div></div>
+                <div></div>
+            </div>
+            <!-- Jun 2007 - RSWF Ichi -->
+            <div class="timeline-row">
+                <div class="date-marker">
+                    <span class="month">Junio</span>
+                    <span class="year">2007</span>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HdR zines/RSWF Ichi/ichi zine-1.png" alt="RSWF Ichi">
+                    </div>
+                    <h3 class="project-title">RSWF Ichi</h3>
+                    <div class="project-links">
+                        <a href="HdR zines/RSWF Ichi/ichi zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="https://www.hablemosderelojes.com/t/20942" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Parse month names to numbers
+        const monthMap = {
+            'Enero': '01', 'Febrero': '02', 'Marzo': '03', 'Abril': '04',
+            'Mayo': '05', 'Junio': '06', 'Julio': '07', 'Agosto': '08',
+            'Septiembre': '09', 'Octubre': '10', 'Noviembre': '11', 'Diciembre': '12'
+        };
+
+        // Add data-date attribute to all timeline rows
+        function initializeDates() {
+            document.querySelectorAll('.timeline-row').forEach(row => {
+                const monthEl = row.querySelector('.date-marker .month');
+                const yearEl = row.querySelector('.date-marker .year');
+                if (monthEl && yearEl) {
+                    const month = monthMap[monthEl.textContent.trim()];
+                    const year = yearEl.textContent.trim();
+                    row.setAttribute('data-date', `${year}-${month}`);
+                }
+            });
+        }
+
+        // Sort timeline rows
+        let isDescending = true;
+        function sortTimeline() {
+            const wrapper = document.querySelector('.timeline-wrapper');
+            const rows = Array.from(wrapper.querySelectorAll('.timeline-row'));
+            const headers = wrapper.querySelector('.timeline-headers');
+            
+            rows.sort((a, b) => {
+                const dateA = a.getAttribute('data-date');
+                const dateB = b.getAttribute('data-date');
+                return isDescending ? dateB.localeCompare(dateA) : dateA.localeCompare(dateB);
+            });
+            
+            // Remove all rows
+            rows.forEach(row => row.remove());
+            
+            // Re-add sorted rows
+            rows.forEach(row => wrapper.appendChild(row));
+            
+            // Update subtitle
+            const subtitle = document.querySelector('.subtitle');
+            if (isDescending) {
+                subtitle.textContent = '2026 to 2007';
+            } else {
+                subtitle.textContent = '2007 to 2026';
+            }
+        }
+
+        // Toggle sort order
+        document.getElementById('sortToggle').addEventListener('click', () => {
+            isDescending = !isDescending;
+            sortTimeline();
+        });
+
+        // Initialize
+        initializeDates();
+        sortTimeline();
+
+        // Smooth scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
