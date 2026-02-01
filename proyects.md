@@ -14,7 +14,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Gamma Gibraltar** (Aug 2023)
 - **Goldmaster** (Mar 2021): **Black, British Green**
 - Grande Épreuve (Jan 2022): Type I, Type II
-- **Heian**
+- **Heian** (Nov 2020)
 - **Suite Iberia** (Aug 2022)
 - **Karusell Racing, Moeris Lacus** (Mar 2023)
 - Rex Caeli (Sep 2023)
@@ -23,8 +23,8 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Salto de Fe** (Jul 2023)
 - Scaphandre I (Mar 2021), II (Oct 2022), 3 (Mar 2023)
 - **Skygraph** (Aug 2025): **Yellow**, **Historical Colors** (Sep 2025), **Silver**
-- **Super Stellar Ala 14**
-- **Super Stellar Cosmotemp**, **World Timer**
+- **Super Stellar Ala 14** (Jun 2025)
+- **Super Stellar Cosmotemp**, **World Timer** (Sep 2024)
 - **Super Stellar Typhoon** (Jun 2025)
 - **Super Massive Colossus** (Jun 2024)
 - **Supersharkomatic** (May 2024 - Black, Dec 2024 - Blue Special Edition)
@@ -46,8 +46,8 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 ## RSWF (Rising Sun Watch Forum)
 
 - **Ichi** (Jun 2007)
-- King Tuna (Nov 2020)
-- SevenSeas Monoblock (Nov 2020)
+- **King Tuna Super Engineer** (Nov 2020)
+- **SevenSeas Monoblock** (Nov 2020)
 
 ## Other Projects
 

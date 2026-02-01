@@ -139,6 +139,10 @@ HdR zines/
 │   └── verne zine.pdf
 ├── RSWF Ichi/
 │   └── ichi zine.pdf
+├── RSWF King Tuna/
+│   └── kingtuna zine.pdf
+├── RSWF SevenSeas/
+│   └── sevenseas zine.pdf
 ├── RSWC Super Stellar Ala 14/
 │   └── ala14 zine.pdf
 ├── RSWC Super Stellar Cosmotemp/

@@ -17,14 +17,14 @@ pdf-all: pdf-caballero pdf-competidor pdf-cosmotemp pdf-decotimer pdf-dirty_fift
 	pdf-supersharkomatic pdf-typhoon pdf-roquina pdf-forest_defender pdf-salto_de_fe \
 	pdf-heian pdf-ferroviario pdf-galeno pdf-goldmaster pdf-grand_belize pdf-gamma_gibraltar pdf-inmortal \
 	pdf-inmortal_reserva_especial pdf-bushido pdf-skygraph \
-	pdf-monumental pdf-okeah pdf-racing pdf-viajero pdf-colossus
+	pdf-monumental pdf-okeah pdf-racing pdf-viajero pdf-colossus pdf-sevenseas pdf-kingtuna
 	
 png-all: png-caballero png-competidor png-cosmotemp png-decotimer png-dirty_fifteen png-world_timer \
 	png-iberia png-vainqueur png-vainqueur_de png-verne png-ichi png-ala14 \
 	png-supersharkomatic png-typhoon png-roquina png-forest_defender png-salto_de_fe \
 	png-heian png-ferroviario png-galeno png-goldmaster png-grand_belize png-gamma_gibraltar png-inmortal \
 	png-inmortal_reserva_especial png-bushido png-skygraph \
-	png-monumental png-okeah png-racing png-viajero png-colossus
+	png-monumental png-okeah png-racing png-viajero png-colossus png-sevenseas png-kingtuna
 
 
 # Help target
@@ -377,4 +377,25 @@ png-viajero: $(wildcard hdr_zines_src/viajero/*.typ hdr_zines_src/viajero/*.jpeg
 	@mkdir -p "HdR zines/SyS Viajero"
 	$(TYPST) --input digital=true hdr_zines_src/viajero/viajero.typ "HdR zines/SyS Viajero/viajero zine-{p}.png"
 
+# RSWF SevenSeas Monoblock
+.PHONY: pdf-sevenseas
+pdf-sevenseas: $(wildcard hdr_zines_src/sevenseas/*.typ hdr_zines_src/sevenseas/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWF SevenSeas"
+	$(TYPST) --input digital=false hdr_zines_src/sevenseas/sevenseas.typ "HdR zines/RSWF SevenSeas/sevenseas zine.pdf"
+
+.PHONY: png-sevenseas
+png-sevenseas: $(wildcard hdr_zines_src/sevenseas/*.typ hdr_zines_src/sevenseas/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWF SevenSeas"
+	$(TYPST) --input digital=true hdr_zines_src/sevenseas/sevenseas.typ "HdR zines/RSWF SevenSeas/sevenseas zine-{p}.png"
+
+# RSWF King Tuna Super Engineer
+.PHONY: pdf-kingtuna
+pdf-kingtuna: $(wildcard hdr_zines_src/kingtuna/*.typ hdr_zines_src/kingtuna/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWF King Tuna"
+	$(TYPST) --input digital=false hdr_zines_src/kingtuna/kingtuna.typ "HdR zines/RSWF King Tuna/kingtuna zine.pdf"
+
+.PHONY: png-kingtuna
+png-kingtuna: $(wildcard hdr_zines_src/kingtuna/*.typ hdr_zines_src/kingtuna/*.jpeg) $(SRC_LIB)
+	@mkdir -p "HdR zines/RSWF King Tuna"
+	$(TYPST) --input digital=true hdr_zines_src/kingtuna/kingtuna.typ "HdR zines/RSWF King Tuna/kingtuna zine-{p}.png"
 
