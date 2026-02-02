@@ -32,6 +32,7 @@ _deps/
 *.cmake
 !CMakeLists.txt
 .*.done
+Makefile
 
 # Commercial watch zines (not for public distribution)
 other_src

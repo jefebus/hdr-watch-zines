@@ -4,13 +4,15 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 
 ## RSWC (Rising Sun Watch Company)
 
-- Airliner I (Mar 2021), II (May 2023)
+- Airliner I (Mar 2021)
+- Airliner II (May 2023)
 - **Bushido** (May 2024): **Rönin**, **Midori**
 - **Deco Timer** (Oct 2023): **Challenger / Devil's Eye**
 - **Dirty Fifteen** (May 2022), **Afrika Korps**
-- Eagle: One (Jan 2023), Two
+- Eagle One (Jan 2023)
+- Eagle Two
 - **Majetek** (Jun 2023): **Piloto Checo, Escuadrón 312**
-- **Forest Defender** (Nov 2025)
+- **Forest Defender** (Nov 2025), **UME3** (pendiente actualización colores)
 - **Gamma Gibraltar** (Aug 2023)
 - **Goldmaster** (Mar 2021): **Black, British Green**
 - **Grande Épreuve** (Jan 2022)
@@ -19,9 +21,11 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Karusell Racing, Moeris Lacus** (Mar 2023)
 - **Rex Caeli** (Sep 2023)
 - Rex Maris
-- Rex Terrae (Aug 2022)
+- **Rex Terrae** (Aug 2022)
 - **Salto de Fe** (Jul 2023)
-- Scaphandre I (Mar 2021), II (Oct 2022), 3 (Mar 2023)
+- Scaphandre I (Mar 2021)
+- Scaphandre II (Oct 2022)
+- Scaphandre III (Mar 2023)
 - **Skygraph** (Aug 2025): **Yellow**, **Historical Colors** (Sep 2025), **Silver**
 - **Super Stellar Ala 14** (Jun 2025)
 - **Super Stellar Cosmotemp**, **World Timer** (Sep 2024)
@@ -29,7 +33,8 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Super Massive Colossus** (Jun 2024)
 - **Supersharkomatic** (May 2024 - Black, Dec 2024 - Blue Special Edition)
 - Typ VII-B (Dec 2022)
-- UME (Dec 2023): Tipo 1, Tipo 2, 3
+- UME 1 (Dec 2023)
+- UME 2 
 - **Vainqueur** (Apr 2025)
 - **Verne** (Sep 2021)
 

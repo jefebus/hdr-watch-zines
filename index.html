@@ -763,6 +763,34 @@
                 </div>
                 
                 <div class="zine-card">
+                    <img src="hdr_zines_src/rex_terrae/rex_terrae_front.jpeg" alt="Rex Terrae" class="zine-card-image">
+                    <div class="zine-card-content">
+                        <h3>RSWC Rex Terrae 🐻‍❄️🐧</h3>
+                        <p id="rex-terrae-desc"></p>
+                        <div>
+                            <a href="HdR zines/RSWC Rex Terrae/rex_terrae zine.pdf" class="download-btn" download><span id="download-btn-rex_terrae">📥 Descargar</span></a>
+                            <button class="unfold-btn" onclick="togglePages('rex_terrae-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="rex_terrae-pages" class="page-gallery">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-1.png" alt="Page 1" class="active-page">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-2.png" alt="Page 2">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-3.png" alt="Page 3">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-4.png" alt="Page 4">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-5.png" alt="Page 5">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-6.png" alt="Page 6">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-7.png" alt="Page 7">
+                    <img src="HdR zines/RSWC Rex Terrae/rex_terrae zine-8.png" alt="Page 8">
+                    <div class="page-nav">
+                        <button class="page-nav-btn" onclick="navigatePage('rex_terrae-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                        <span class="page-counter" id="rex_terrae-counter">1 / 8</span>
+                        <button class="page-nav-btn" onclick="navigatePage('rex_terrae-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
                     <img src="hdr_zines_src/salto_de_fe/salto_de_fe_front.jpeg" alt="Salto de Fe" class="zine-card-image">
                     <div class="zine-card-content">
                         <h3>RSWC Salto de Fe 🐕</h3>
@@ -1357,6 +1385,7 @@
                 majetekDesc: 'Homenaje a la Fuerza Aérea Checoslovaca. Dos variantes: Piloto Checo (dial negro, C3) y Escuadrón 312 (dial granate, BGW9). Movimiento Seagull ST17, 40mm',
                 racingDesc: 'Dos cronógrafos solares en uno: Karusell Racing rinde homenaje al circuito de Nürburgring y al GP de Alemania 1968. Moeris Lacus Space celebra las misiones ExoMars de la ESA.',
                 rexCaeliDesc: 'Reloj GMT worldtimer del 114º aniversario del primer vuelo motorizado en España. Bisel cerámico de 24 clics con mito de Ícaro. NH34, dial negro/amarillo 810C, 39.5mm. Tercero de la saga Rex.',
+                rexTerraeDesc: 'Reloj GMT del explorador. Dos versiones: North Pole (negro, lumen verde) y South Pole (blanco, lumen azul). Homenaje al oso polar y pingüino emperador. HZ 6460 GMT, 39mm, 200m.',
                 skygraphDesc: 'Homenaje al Seiko 6139 "Pogue", primer cronógrafo automático en el espacio (Skylab 4, 1973). Cuatro variantes históricas con movimiento Peacock y bisel interno.',
                 monumentalDesc: 'Cronógrafo ST-1901 con cuatro trajes de luces. Bisel de zafiro funcional con capas del toro y suertes de la lidia. Última serie del mítico calibre.',
                 viajeroDesc: 'Cronógrafo ST-1901 panda vintage. Bisel de zafiro con ciudades españolas. Homenaje al espíritu viajero en Renault 4 por las carreteras nacionales.',
@@ -1410,6 +1439,7 @@
                 majetekDesc: 'Hommage an die Tschechoslowakische Luftwaffe. Zwei Varianten: Piloto Checo (schwarzes Zifferblatt, C3) und Escuadrón 312 (granatfarbenes Zifferblatt, BGW9). Seagull ST17-Werk, 40mm',
                 racingDesc: 'Zwei Solar-Chronographen in einem: Karusell Racing ehrt die Nürburgring-Rennstrecke und den GP Deutschland 1968. Moeris Lacus Space feiert die ExoMars-Missionen der ESA.',
                 rexCaeliDesc: 'GMT-Weltzeituhr zum 114. Jahrestag des ersten motorisierten Fluges in Spanien. Keramik-Lünette mit 24 Klicks und Ikarus-Mythos. NH34, schwarz/gelbes 810C-Zifferblatt, 39,5mm. Dritter der Rex-Saga.',
+                rexTerraeDesc: 'Entdecker GMT-Uhr. Zwei Versionen: North Pole (schwarz, grünes Lumen) und South Pole (weiß, blaues Lumen). Hommage an Eisbär und Kaiserpinguin. HZ 6460 GMT, 39mm, 200m.',
                 skygraphDesc: 'Hommage an die Seiko 6139 "Pogue", erster Automatikchronograph im Weltraum (Skylab 4, 1973). Vier historische Varianten mit Peacock-Werk und interner Lünette.',
                 monumentalDesc: 'ST-1901 Chronograph mit vier Torero-Anzügen. Funktionelle Saphirlünette mit Stierschichten und Kampfphasen. Letzte Serie des legendären Kalibers.',
                 viajeroDesc: 'ST-1901 Vintage Panda-Chronograph. Saphirlünette mit spanischen Städten. Hommage an den Reisegeist im Renault 4 auf den Nationalstraßen.',
@@ -1463,6 +1493,7 @@
                 majetekDesc: 'Tribute to the Czechoslovak Air Force. Two variants: Piloto Checo (black dial, C3) and Escuadrón 312 (burgundy dial, BGW9). Seagull ST17 movement, 40mm',
                 racingDesc: 'Two solar chronographs in one: Karusell Racing honors the Nürburgring circuit and 1968 German GP. Moeris Lacus Space celebrates ESA\'s ExoMars missions.',
                 rexCaeliDesc: 'GMT worldtimer for the 114th anniversary of Spain\'s first powered flight. 24-click ceramic bezel with Icarus myth. NH34, black/yellow 810C dial, 39.5mm. Third of the Rex saga.',
+                rexTerraeDesc: 'Explorer GMT watch. Two versions: North Pole (black, green lume) and South Pole (white, blue lume). Tribute to the polar bear and emperor penguin. HZ 6460 GMT, 39mm, 200m.',
                 skygraphDesc: 'Tribute to the Seiko 6139 "Pogue", first automatic chronograph in space (Skylab 4, 1973). Four historic variants with Peacock movement and internal bezel.',
                 monumentalDesc: 'ST-1901 chronograph with four bullfighter suits. Functional sapphire bezel with bull sections and bullfighting phases. Final series of the legendary caliber.',
                 viajeroDesc: 'ST-1901 vintage panda chronograph. Sapphire bezel with Spanish cities. Tribute to the traveling spirit in a Renault 4 on national roads.',
@@ -1576,6 +1607,7 @@
             document.getElementById('majetek-desc').textContent = t.majetekDesc;
             document.getElementById('racing-desc').textContent = t.racingDesc;
             document.getElementById('rex-caeli-desc').textContent = t.rexCaeliDesc;
+            document.getElementById('rex-terrae-desc').textContent = t.rexTerraeDesc;
             document.getElementById('skygraph-desc').textContent = t.skygraphDesc;
             document.getElementById('monumental-desc').textContent = t.monumentalDesc;
             document.getElementById('viajero-desc').textContent = t.viajeroDesc;
