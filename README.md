@@ -18,6 +18,8 @@ Photographs featured in the zines were taken from the forum and were created by:
 - **@stef**
 - **@RubenG**
 - **@syncro**
+- **@pguirado**
+- **@verni**
 
 All content is used with appreciation for the collaborative spirit of the watch enthusiast community.
 

@@ -33,8 +33,8 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Super Massive Colossus** (Jun 2024)
 - **Supersharkomatic** (May 2024 - Black, Dec 2024 - Blue Special Edition)
 - Typ VII-B (Dec 2022)
-- UME 1 (Dec 2023)
-- UME 2 
+- **UME Tipo 1** (Dec 2023)
+- **UME Tipo 2** (Dec 2023)
 - **Vainqueur** (Apr 2025)
 - **Verne** (Sep 2021)
 
@@ -82,5 +82,5 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 ## Statistics
 
 - **Total Projects**: 63
-- **Projects with Zines**: 35
-- **Coverage**: ~56%
+- **Projects with Zines**: 37
+- **Coverage**: ~59%
