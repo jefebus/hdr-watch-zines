@@ -20,8 +20,8 @@
   image("typ_vii-b_front.jpeg", width: 100%, height: 100%, fit: "cover")
   place(top + center, dy: 6mm, box(
     text(white, stroke: 0.6pt + black)[
-      #text(size: 19pt)[*RSWC TYP VII-B*]\\
-      #text(size: 13pt)[*La Batalla del Atlántico*]
+      #text(size: 20pt)[*RSWC*]\ 
+      #text(size: 16pt)[*TYP VII-B*]
     ]
   ))
 })
@@ -142,12 +142,16 @@ objeto con identidad, contexto histórico y coherencia temática.
 ///////////////////////////////////////////////////////////////////////////////
 // 8) CONTRAPORTADA
 ///////////////////////////////////////////////////////////////////////////////
+
 #block({
-  image("typ_vii-b_back.jpeg", width: 100%, height: 100%, fit: "cover")
+  image("typ_vii-b_back.jpeg", width: 100%, height: 50%, fit: "cover")
 })
 
-#place(bottom + left, dx: 6mm, dy: -6mm, text(black, size: 7pt)[
-*RSWC Typ VII-B*  
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 Un homenaje a la guerra bajo el mar.  
 Acero, silencio y profundidad.
+]))
+
+#place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
+_RSWC · Hablemos de Relojes_  
 ])

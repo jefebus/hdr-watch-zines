@@ -24,7 +24,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Rex Terrae** (Aug 2022)
 - **Salto de Fe** (Jul 2023)
 - Scaphandre I (Mar 2021)
-- Scaphandre II (Oct 2022)
+- **Scaphandre II** (Oct 2022)
 - Scaphandre III (Mar 2023)
 - **Skygraph** (Aug 2025): **Yellow**, **Historical Colors** (Sep 2025), **Silver**
 - **Super Stellar Ala 14** (Jun 2025)
@@ -32,7 +32,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Super Stellar Typhoon** (Jun 2025)
 - **Super Massive Colossus** (Jun 2024)
 - **Supersharkomatic** (May 2024 - Black, Dec 2024 - Blue Special Edition)
-- Typ VII-B (Dec 2022)
+- **Typ VII-B** (Dec 2022)
 - **UME Tipo 1** (Dec 2023)
 - **UME Tipo 2** (Dec 2023)
 - **Vainqueur** (Apr 2025)
@@ -82,5 +82,5 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 ## Statistics
 
 - **Total Projects**: 63
-- **Projects with Zines**: 37
-- **Coverage**: ~59%
+- **Projects with Zines**: 39
+- **Coverage**: ~62%

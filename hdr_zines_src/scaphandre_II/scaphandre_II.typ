@@ -25,8 +25,8 @@
 
   place(top + center, dy: 6mm, box(
     text(white, stroke: 0.6pt + black)[
-      #text(size: 18pt)[*RSWC SCAPHANDRE II*]\\
-      #text(size: 14pt)[*La saga continúa*]
+      #text(size: 20pt)[*RSWC*]\ 
+      #text(size: 16pt)[*SCAPHANDRE II*]
     ]
   ))
 })
@@ -149,11 +149,14 @@ una herramienta extrema, con estética de exploración y combate contra la presi
 // 8) CONTRAPORTADA
 ///////////////////////////////////////////////////////////////////////////////
 #block({
-  image("scaphandre_II_back.jpeg", width: 100%, height: 100%, fit: "cover")
+  image("scaphandre_II_back.jpeg", width: 100%, height: 50%, fit: "cover")
 })
 
-#place(bottom + left, dx: 6mm, dy: -6mm, text(black, size: 7pt)[
-*RSWC Scaphandre II*  
+#place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 Un diver masivo nacido del legado Cousteau.  
 Acero, profundidad y leyenda submarina.
+]))
+
+#place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
+_RSWC · Hablemos de Relojes_
 ])
