@@ -9,8 +9,7 @@ Complete list of Hablemos de Relojes watch projects organized by brand/collectio
 - **Bushido** (May 2024): **Rönin**, **Midori**
 - **Deco Timer** (Oct 2023): **Challenger / Devil's Eye**
 - **Dirty Fifteen** (May 2022), **Afrika Korps**
-- Eagle One (Jan 2023)
-- Eagle Two
+- **Eagle One** y **Eagle Two** (Jan 2023)
 - **Majetek** (Jun 2023): **Piloto Checo, Escuadrón 312**
 - **Forest Defender** (Nov 2025), **UME3** (pendiente actualización colores)
 - **Gamma Gibraltar** (Aug 2023)
