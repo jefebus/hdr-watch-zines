@@ -126,19 +126,19 @@ el miedo a lo inmenso… y la fascinación por enfrentarlo.
 ///////////////////////////////////////////////////////////////////////////////
 *INSTRUCCIONES DE USO*
 
-*Carga:* Dar cuerda manual (20-30 vueltas, corona pegada) o llevar en muñeca. 
-El NH35 tiene aproximadamente 41 horas de reserva de marcha.
+*Carga:* Manual (20-30 vueltas) o automática. 
+El NH35 tiene aprox. 41 horas de reserva.
 
-*Corona:* Posición normal (pegada), posición 1 (ajuste de fecha), 
-posición 2 (ajuste de hora). No ajustar la fecha entre las 21:00 y las 03:00.
+*Corona:* Posición 0 (normal), 1 (fecha), 2 (hora). 
+No ajustar fecha entre 21:00–03:00.
 
-*Bisel:* Giratorio unidireccional con 120 clicks. Para medir tiempos de inmersión, 
-alinear el triángulo con el minutero.
+*Bisel:* Unidireccional, 120 clicks. Alinear triángulo 
+con minutero para medir tiempos.
 
-*Resistencia:* 200m. Apto para buceo recreativo. Comprobar estanqueidad 
-periódicamente.
+*Resistencia:* 200m, apto para buceo. Comprobar 
+estanqueidad periódicamente.
 
-*Mantenimiento:* Tras contacto con agua salada, enjuagar con agua dulce y secar. 
+*Mantenimiento:* Tras agua salada, enjuagar y secar. 
 Revisión cada 3-5 años recomendable.
 
 #pagebreak()
