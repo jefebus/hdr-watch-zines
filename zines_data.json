@@ -20,7 +20,8 @@
     "movement_id": "TY3620-2",
     "sourceFolder": "hdr_zines_src/ferroviario",
     "pdfFolder": "HdR zines/Ferroviario",
-    "movement_company": "Seagull"
+    "movement_company": "Seagull",
+    "lane_id": "otros"
   },
   {
     "id": "galeno",
@@ -42,7 +43,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/galeno",
-    "pdfFolder": "HdR zines/Galeno"
+    "pdfFolder": "HdR zines/Galeno",
+    "lane_id": "otros"
   },
   {
     "id": "grand_belize",
@@ -65,7 +67,8 @@
     "movement_id": "2824-2 COSC",
     "sourceFolder": "hdr_zines_src/grand_belize",
     "pdfFolder": "HdR zines/Candino Grand Belize",
-    "movement_company": "ETA"
+    "movement_company": "ETA",
+    "lane_id": "otros"
   },
   {
     "id": "okeah",
@@ -87,7 +90,8 @@
     "movement_type": "manual",
     "movement_id": "Poljot 3133",
     "sourceFolder": "hdr_zines_src/okeah",
-    "pdfFolder": "HdR zines/Okeah Final Edition"
+    "pdfFolder": "HdR zines/Okeah Final Edition",
+    "lane_id": "otros"
   },
   {
     "id": "apocalypse_now",
@@ -109,7 +113,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/apocalypse_now",
-    "pdfFolder": "HdR zines/Apocalypse Now"
+    "pdfFolder": "HdR zines/Apocalypse Now",
+    "lane_id": "otros"
   },
   {
     "id": "bushido",
@@ -131,7 +136,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/bushido",
-    "pdfFolder": "HdR zines/RSWC Bushido"
+    "pdfFolder": "HdR zines/RSWC Bushido",
+    "lane_id": "rswc"
   },
   {
     "id": "colossus",
@@ -154,7 +160,8 @@
     "movement_id": "ST1940",
     "sourceFolder": "hdr_zines_src/colossus",
     "pdfFolder": "HdR zines/RSWC Super Massive Colossus",
-    "movement_company": "Seagull"
+    "movement_company": "Seagull",
+    "lane_id": "rswc"
   },
   {
     "id": "decotimer",
@@ -176,7 +183,8 @@
     "movement_type": "automatic",
     "movement_id": "PT5000",
     "sourceFolder": "hdr_zines_src/decotimer",
-    "pdfFolder": "HdR zines/RSWC Deco-Timer"
+    "pdfFolder": "HdR zines/RSWC Deco-Timer",
+    "lane_id": "rswc"
   },
   {
     "id": "dirty_fifteen",
@@ -198,7 +206,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/dirty_fifteen",
-    "pdfFolder": "HdR zines/RSWC Dirty Fifteen"
+    "pdfFolder": "HdR zines/RSWC Dirty Fifteen",
+    "lane_id": "rswc"
   },
   {
     "id": "eagle_one",
@@ -221,7 +230,8 @@
     "movement_id": "ST3621",
     "sourceFolder": "hdr_zines_src/eagle_one",
     "pdfFolder": "HdR zines/RSWC Eagle One",
-    "movement_company": "Seagull"
+    "movement_company": "Seagull",
+    "lane_id": "rswc"
   },
   {
     "id": "eagle_two",
@@ -244,7 +254,8 @@
     "movement_id": "ST19",
     "sourceFolder": "hdr_zines_src/eagle_two",
     "pdfFolder": "HdR zines/RSWC Eagle Two",
-    "movement_company": "Seagull"
+    "movement_company": "Seagull",
+    "lane_id": "rswc"
   },
   {
     "id": "forest_defender",
@@ -266,7 +277,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/forest_defender",
-    "pdfFolder": "HdR zines/RSWC Forest Defender"
+    "pdfFolder": "HdR zines/RSWC Forest Defender",
+    "lane_id": "rswc"
   },
   {
     "id": "gamma_gibraltar",
@@ -288,7 +300,8 @@
     "movement_type": "automatic",
     "movement_id": "PT5000",
     "sourceFolder": "hdr_zines_src/gamma_gibraltar",
-    "pdfFolder": "HdR zines/RSWC Gamma Gibraltar"
+    "pdfFolder": "HdR zines/RSWC Gamma Gibraltar",
+    "lane_id": "rswc"
   },
   {
     "id": "goldmaster",
@@ -310,7 +323,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/goldmaster",
-    "pdfFolder": "HdR zines/RSWC Goldmaster"
+    "pdfFolder": "HdR zines/RSWC Goldmaster",
+    "lane_id": "rswc"
   },
   {
     "id": "grande_epreuve",
@@ -332,7 +346,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/grande_epreuve",
-    "pdfFolder": "HdR zines/RSWC Grande Épreuve"
+    "pdfFolder": "HdR zines/RSWC Grande Épreuve",
+    "lane_id": "rswc"
   },
   {
     "id": "heian",
@@ -354,7 +369,8 @@
     "movement_type": "automatic",
     "movement_id": "NH36A",
     "sourceFolder": "hdr_zines_src/heian",
-    "pdfFolder": "HdR zines/RSWC Heian"
+    "pdfFolder": "HdR zines/RSWC Heian",
+    "lane_id": "rswc"
   },
   {
     "id": "kaiju",
@@ -376,7 +392,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/kaiju",
-    "pdfFolder": "HdR zines/RSWC Kaiju"
+    "pdfFolder": "HdR zines/RSWC Kaiju",
+    "lane_id": "rswc"
   },
   {
     "id": "majetek",
@@ -399,7 +416,8 @@
     "movement_id": "ST17",
     "sourceFolder": "hdr_zines_src/majetek",
     "pdfFolder": "HdR zines/RSWC Majetek",
-    "movement_company": "Seagull"
+    "movement_company": "Seagull",
+    "lane_id": "rswc"
   },
   {
     "id": "racing",
@@ -421,7 +439,8 @@
     "movement_type": "solar",
     "movement_id": "VD53",
     "sourceFolder": "hdr_zines_src/racing",
-    "pdfFolder": "HdR zines/RSWC Racing"
+    "pdfFolder": "HdR zines/RSWC Racing",
+    "lane_id": "rswc"
   },
   {
     "id": "rex_caeli",
@@ -443,7 +462,8 @@
     "movement_type": "automatic",
     "movement_id": "NH34",
     "sourceFolder": "hdr_zines_src/rex_caeli",
-    "pdfFolder": "HdR zines/RSWC Rex Caeli"
+    "pdfFolder": "HdR zines/RSWC Rex Caeli",
+    "lane_id": "rswc"
   },
   {
     "id": "rex_maris",
@@ -465,7 +485,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/rex_maris",
-    "pdfFolder": "HdR zines/RSWC Rex Maris"
+    "pdfFolder": "HdR zines/RSWC Rex Maris",
+    "lane_id": "rswc"
   },
   {
     "id": "rex_terrae",
@@ -487,7 +508,8 @@
     "movement_type": "automatic",
     "movement_id": "HZ 6460 GMT",
     "sourceFolder": "hdr_zines_src/rex_terrae",
-    "pdfFolder": "HdR zines/RSWC Rex Terrae"
+    "pdfFolder": "HdR zines/RSWC Rex Terrae",
+    "lane_id": "rswc"
   },
   {
     "id": "salto_de_fe",
@@ -509,7 +531,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/salto_de_fe",
-    "pdfFolder": "HdR zines/RSWC Salto de Fe"
+    "pdfFolder": "HdR zines/RSWC Salto de Fe",
+    "lane_id": "rswc"
   },
   {
     "id": "scaphandre_II",
@@ -531,7 +554,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/scaphandre_II",
-    "pdfFolder": "HdR zines/RSWC Scaphandre II"
+    "pdfFolder": "HdR zines/RSWC Scaphandre II",
+    "lane_id": "rswc"
   },
   {
     "id": "skygraph",
@@ -554,7 +578,8 @@
     "movement_id": "SL1826",
     "sourceFolder": "hdr_zines_src/skygraph",
     "pdfFolder": "HdR zines/RSWC Skygraph",
-    "movement_company": "Peacock"
+    "movement_company": "Peacock",
+    "lane_id": "rswc"
   },
   {
     "id": "iberia",
@@ -576,7 +601,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/iberia",
-    "pdfFolder": "HdR zines/RSWC Suite Iberia"
+    "pdfFolder": "HdR zines/RSWC Suite Iberia",
+    "lane_id": "rswc"
   },
   {
     "id": "ala14",
@@ -605,7 +631,8 @@
     "movement_company": [
       "SKMEI",
       "Miyota"
-    ]
+    ],
+    "lane_id": "rswc"
   },
   {
     "id": "cosmotemp",
@@ -628,7 +655,8 @@
     "movement_id": "SKMEI 2198",
     "sourceFolder": "hdr_zines_src/cosmotemp",
     "pdfFolder": "HdR zines/RSWC Super Stellar Cosmotemp",
-    "movement_company": "SKMEI"
+    "movement_company": "SKMEI",
+    "lane_id": "rswc"
   },
   {
     "id": "typhoon",
@@ -657,7 +685,8 @@
     "movement_company": [
       "SKMEI",
       "Miyota"
-    ]
+    ],
+    "lane_id": "rswc"
   },
   {
     "id": "typ_vii-b",
@@ -679,7 +708,8 @@
     "movement_type": "automatic",
     "movement_id": "PT5000",
     "sourceFolder": "hdr_zines_src/typ_vii-b",
-    "pdfFolder": "HdR zines/RSWC Typ VII-B"
+    "pdfFolder": "HdR zines/RSWC Typ VII-B",
+    "lane_id": "rswc"
   },
   {
     "id": "ume_1",
@@ -702,7 +732,8 @@
     "movement_id": "YN55A",
     "sourceFolder": "hdr_zines_src/ume_1",
     "pdfFolder": "HdR zines/RSWC UME Tipo 1",
-    "movement_company": "Orient"
+    "movement_company": "Orient",
+    "lane_id": "rswc"
   },
   {
     "id": "ume_2",
@@ -724,7 +755,8 @@
     "movement_type": "automatic",
     "movement_id": "NH34",
     "sourceFolder": "hdr_zines_src/ume_2",
-    "pdfFolder": "HdR zines/RSWC UME Tipo 2"
+    "pdfFolder": "HdR zines/RSWC UME Tipo 2",
+    "lane_id": "rswc"
   },
   {
     "id": "world_timer",
@@ -747,7 +779,8 @@
     "movement_id": "SKMEI 1338",
     "sourceFolder": "hdr_zines_src/world_timer",
     "pdfFolder": "HdR zines/RSWC Super Stellar World Timer",
-    "movement_company": "SKMEI"
+    "movement_company": "SKMEI",
+    "lane_id": "rswc"
   },
   {
     "id": "supersharkomatic",
@@ -769,7 +802,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35",
     "sourceFolder": "hdr_zines_src/supersharkomatic",
-    "pdfFolder": "HdR zines/RSWC Supersharkomatic"
+    "pdfFolder": "HdR zines/RSWC Supersharkomatic",
+    "lane_id": "rswc"
   },
   {
     "id": "vainqueur",
@@ -792,7 +826,8 @@
     "movement_id": "ST1940",
     "sourceFolder": "hdr_zines_src/vainqueur",
     "pdfFolder": "HdR zines/RSWC Vainqueur",
-    "movement_company": "Seagull"
+    "movement_company": "Seagull",
+    "lane_id": "rswc"
   },
   {
     "id": "verne",
@@ -814,7 +849,8 @@
     "movement_type": "automatic",
     "movement_id": "PT5000",
     "sourceFolder": "hdr_zines_src/verne",
-    "pdfFolder": "HdR zines/RSWC Verne"
+    "pdfFolder": "HdR zines/RSWC Verne",
+    "lane_id": "rswc"
   },
   {
     "id": "ichi",
@@ -837,7 +873,8 @@
     "movement_id": "46943",
     "sourceFolder": "hdr_zines_src/ichi",
     "pdfFolder": "HdR zines/RSWF Ichi",
-    "movement_company": "Orient"
+    "movement_company": "Orient",
+    "lane_id": "otros"
   },
   {
     "id": "kingtuna",
@@ -859,7 +896,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35A",
     "sourceFolder": "hdr_zines_src/kingtuna",
-    "pdfFolder": "HdR zines/RSWF King Tuna"
+    "pdfFolder": "HdR zines/RSWF King Tuna",
+    "lane_id": "otros"
   },
   {
     "id": "sevenseas",
@@ -881,7 +919,8 @@
     "movement_type": "automatic",
     "movement_id": "NH35A",
     "sourceFolder": "hdr_zines_src/sevenseas",
-    "pdfFolder": "HdR zines/RSWF SevenSeas"
+    "pdfFolder": "HdR zines/RSWF SevenSeas",
+    "lane_id": "otros"
   },
   {
     "id": "caballero",
@@ -903,7 +942,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1701",
     "sourceFolder": "hdr_zines_src/caballero",
-    "pdfFolder": "HdR zines/SyS Caballero"
+    "pdfFolder": "HdR zines/SyS Caballero",
+    "lane_id": "sys"
   },
   {
     "id": "competidor",
@@ -925,7 +965,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/competidor",
-    "pdfFolder": "HdR zines/SyS Competidor"
+    "pdfFolder": "HdR zines/SyS Competidor",
+    "lane_id": "sys"
   },
   {
     "id": "inmortal",
@@ -947,7 +988,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1701",
     "sourceFolder": "hdr_zines_src/inmortal",
-    "pdfFolder": "HdR zines/SyS Inmortal"
+    "pdfFolder": "HdR zines/SyS Inmortal",
+    "lane_id": "sys"
   },
   {
     "id": "inmortal_reserva_especial",
@@ -969,7 +1011,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/inmortal_reserva_especial",
-    "pdfFolder": "HdR zines/SyS Inmortal Reserva Especial"
+    "pdfFolder": "HdR zines/SyS Inmortal Reserva Especial",
+    "lane_id": "sys"
   },
   {
     "id": "monumental",
@@ -991,7 +1034,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/monumental",
-    "pdfFolder": "HdR zines/SyS Monumental"
+    "pdfFolder": "HdR zines/SyS Monumental",
+    "lane_id": "sys"
   },
   {
     "id": "roquina",
@@ -1013,7 +1057,8 @@
     "movement_type": "manual",
     "movement_id": "ST-1701",
     "sourceFolder": "hdr_zines_src/roquina",
-    "pdfFolder": "HdR zines/SyS Roquina"
+    "pdfFolder": "HdR zines/SyS Roquina",
+    "lane_id": "sys"
   },
   {
     "id": "viajero",
@@ -1035,6 +1080,7 @@
     "movement_type": "manual",
     "movement_id": "ST-1901",
     "sourceFolder": "hdr_zines_src/viajero",
-    "pdfFolder": "HdR zines/SyS Viajero"
+    "pdfFolder": "HdR zines/SyS Viajero",
+    "lane_id": "sys"
   }
 ]

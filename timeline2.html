@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HdR Watch Projects Timeline</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #222222;
+            color: #dddddd;
+            line-height: 1.6;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: #111111;
+            border-radius: 6px;
+            border: 1px solid #444444;
+        }
+
+        h1 {
+            font-size: 2.0em;
+            margin-bottom: 3px;
+            color: #dddddd;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 0.75em;
+            color: #dddddd;
+            margin-top: 3px;
+            opacity: 0.8;
+        }
+
+        .timeline-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .timeline-headers {
+            display: grid;
+            grid-template-columns: 65px 1fr 1fr 1fr;
+            gap: 6px;
+            position: sticky;
+            top: 0;
+            background: #222222;
+            z-index: 20;
+            padding: 4px 0;
+            margin-bottom: 4px;
+        }
+
+        .swimlane-header {
+            background: #1a1a1a;
+            padding: 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.75em;
+            font-weight: 600;
+            border: 2px solid;
+        }
+
+        .swimlane-header.rswc {
+            color: #0F82AF;
+            border-color: #0F82AF;
+        }
+
+        .swimlane-header.sys {
+            color: #e2a44a;
+            border-color: #e2a44a;
+        }
+
+        .swimlane-header.otros {
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 65px 1fr 1fr 1fr;
+            gap: 6px;
+            align-items: start;
+            margin-bottom: 3px;
+        }
+
+        .date-marker {
+            background: #1a1a1a;
+            padding: 3px 4px;
+            border-radius: 3px;
+            border-left: 2px solid #0F82AF;
+            position: sticky;
+            left: 0;
+            height: fit-content;
+            top: 35px;
+        }
+
+        .date-marker .month {
+            font-size: 0.85em;
+            color: #0F82AF;
+            font-weight: 600;
+            display: block;
+        }
+
+        .date-marker .year {
+            font-size: 1.0em;
+            color: #dddddd;
+            font-weight: 700;
+            display: block;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 3px;
+            padding: 8px;
+            border: 1px solid #444444;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(15, 130, 175, 0.3);
+            border-color: #0F82AF;
+        }
+
+        .project-image {
+            width: 55%;
+            aspect-ratio: 9/16;
+            position: relative;
+            border-radius: 2px;
+            overflow: hidden;
+            border: 1px solid #444444;
+            margin: 0 auto 4px auto;
+            background: #111111;
+        }
+
+        .project-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-card:hover .project-image {
+            border-color: #0F82AF;
+        }
+
+        .project-title {
+            font-size: 1em;
+            margin-bottom: 8px;
+            color: #dddddd;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+            order: -1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 4px 8px;
+            background: #0F82AF;
+            color: #dddddd;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.7em;
+            transition: all 0.3s ease;
+            border: 1px solid #0F82AF;
+        }
+
+        .project-link:hover {
+            opacity: 0.9;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .project-link.pdf {
+            background: #e24a4a;
+            border-color: #e24a4a;
+        }
+
+        .project-link.pdf:hover {
+            background: #f55a5a;
+        }
+
+        .project-link.forum {
+            background: #7b68ee;
+            border-color: #7b68ee;
+        }
+
+        .project-link.forum:hover {
+            background: #8b78fe;
+        }
+
+        .empty-slot {
+            height: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .timeline-headers,
+            .timeline-row {
+                grid-template-columns: 50px 1fr 1fr 1fr;
+                gap: 4px;
+                font-size: 0.85em;
+            }
+
+            .date-marker {
+                font-size: 0.8em;
+            }
+
+            .swimlane-header {
+                font-size: 0.65em;
+                padding: 4px 2px;
+            }
+
+            .project-title {
+                font-size: 0.65em;
+            }
+
+            .project-link {
+                font-size: 0.6em;
+                padding: 3px 5px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⏱️ HdR Watch Projects Timeline</h1>
+            <p class="subtitle">From 2017 to 2026</p>
+        </header>
+
+        <div class="timeline-wrapper">
+            <div class="timeline-headers">
+                <div></div>
+                <div class="swimlane-header rswc">RSWC Collection</div>
+                <div class="swimlane-header sys">Sol y Sombra</div>
+                <div class="swimlane-header otros">Other Projects</div>
+            </div>
+
+            <div id="timeline-content">
+                <div class="loading">Cargando cronología...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let ZINES_DATA = [];
+        
+        const monthNames = {
+            es: ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+                 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+        };
+
+        // Fetch and render timeline
+        async function loadTimeline() {
+            try {
+                const response = await fetch('zines_data.json');
+                ZINES_DATA = await response.json();
+                renderTimeline();
+            } catch (error) {
+                console.error('Error loading zines data:', error);
+                document.getElementById('timeline-content').innerHTML = 
+                    '<p class="loading">Error al cargar los datos de la cronología.</p>';
+            }
+        }
+
+        function renderTimeline() {
+            // Group zines by year-month
+            const timelineData = {};
+            
+            ZINES_DATA.forEach(zine => {
+                const key = `${zine.year}-${String(zine.month).padStart(2, '0')}`;
+                if (!timelineData[key]) {
+                    timelineData[key] = {
+                        year: zine.year,
+                        month: zine.month,
+                        rswc: null,
+                        sys: null,
+                        otros: null
+                    };
+                }
+                
+                const laneId = zine.lane_id || 'otros';
+                // Handle multiple zines in same month/swimlane by keeping only the latest processed
+                // In a real scenario, you might want to handle this differently
+                timelineData[key][laneId] = zine;
+            });
+
+            // Sort by date (descending - newest first)
+            const sortedKeys = Object.keys(timelineData).sort((a, b) => b.localeCompare(a));
+
+            // Render timeline rows
+            const content = document.getElementById('timeline-content');
+            content.innerHTML = '';
+
+            sortedKeys.forEach(key => {
+                const data = timelineData[key];
+                const row = renderTimelineRow(data);
+                content.insertAdjacentHTML('beforeend', row);
+            });
+
+            // Initialize animations
+            initializeAnimations();
+        }
+
+        function renderTimelineRow(data) {
+            const monthName = monthNames.es[data.month];
+            
+            return `
+                <div class="timeline-row" data-date="${data.year}-${String(data.month).padStart(2, '0')}">
+                    <div class="date-marker">
+                        <span class="month">${monthName}</span>
+                        <span class="year">${data.year}</span>
+                    </div>
+                    ${renderProjectCard(data.rswc)}
+                    ${renderProjectCard(data.sys)}
+                    ${renderProjectCard(data.otros)}
+                </div>
+            `;
+        }
+
+        function renderProjectCard(zine) {
+            if (!zine) {
+                return '<div></div>';
+            }
+
+            return `
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="${zine.pdfFolder}/${zine.id} zine-1.png" alt="${zine.title}">
+                    </div>
+                    <h3 class="project-title">${zine.title}</h3>
+                    <div class="project-links">
+                        <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="project-link pdf" download>📥 PDF</a>
+                        <a href="${zine.hdr_link}" class="project-link forum" target="_blank">💬 HdR</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.project-card').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+        }
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadTimeline);
+    </script>
+</body>
+</html>
