@@ -269,6 +269,11 @@
             h1 {
                 font-size: 1.5em;
             }
+
+            #sortToggle {
+                font-size: 0.8em;
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -282,8 +287,9 @@
                 <a href="https://www.hablemosderelojes.com/t//268418" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 6px;">Índice alfabético (@JOSERRA100)</a> · 
                 <a href="https://www.hablemosderelojes.com/t/228190/71" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 6px;">Cronología (@soymicmic)</a>
             </div>
-            <div style="margin-top: 10px;">
+            <div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                 <a href="index.html" style="display: inline-block; padding: 10px 20px; background: #0F82AF; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9em; transition: opacity 0.2s;">📖 Ver Zines</a>
+                <button id="sortToggle" style="padding: 10px 20px; background: #0F82AF; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9em; transition: opacity 0.2s;">🔄 Invertir orden</button>
             </div>
         </header>
 
@@ -332,16 +338,15 @@
                     timelineData[key] = {
                         year: zine.year,
                         month: zine.month,
-                        rswc: null,
-                        sys: null,
-                        otros: null
+                        rswc: [],
+                        sys: [],
+                        otros: []
                     };
                 }
                 
                 const laneId = zine.lane_id || 'otros';
-                // Handle multiple zines in same month/swimlane by keeping only the latest processed
-                // In a real scenario, you might want to handle this differently
-                timelineData[key][laneId] = zine;
+                // Add watch to array for this month/lane
+                timelineData[key][laneId].push(zine);
             });
 
             // Sort by date (descending - newest first)
@@ -357,7 +362,8 @@
                 content.insertAdjacentHTML('beforeend', row);
             });
 
-            // Initialize animations
+            // Apply initial sort and initialize animations
+            sortTimeline();
             initializeAnimations();
         }
 
@@ -370,18 +376,25 @@
                         <span class="month">${monthName}</span>
                         <span class="year">${data.year}</span>
                     </div>
-                    ${renderProjectCard(data.rswc)}
-                    ${renderProjectCard(data.sys)}
-                    ${renderProjectCard(data.otros)}
+                    ${renderProjectCards(data.rswc)}
+                    ${renderProjectCards(data.sys)}
+                    ${renderProjectCards(data.otros)}
                 </div>
             `;
         }
 
-        function renderProjectCard(zine) {
-            if (!zine) {
+        function renderProjectCards(zines) {
+            if (!zines || zines.length === 0) {
                 return '<div></div>';
             }
 
+            // Render all watches in this month/lane
+            return '<div style="display: flex; flex-direction: column; gap: 6px;">' + 
+                zines.map(zine => renderSingleCard(zine)).join('') + 
+                '</div>';
+        }
+
+        function renderSingleCard(zine) {
             // Check if the watch has a zine
             const hasZine = zine.has_zine !== false;
 
@@ -435,8 +448,47 @@
             });
         }
 
+        // Sort timeline rows
+        let isDescending = true;
+        function sortTimeline() {
+            const wrapper = document.querySelector('.timeline-wrapper');
+            const rows = Array.from(wrapper.querySelectorAll('.timeline-row'));
+            const headers = wrapper.querySelector('.timeline-headers');
+            
+            rows.sort((a, b) => {
+                const dateA = a.getAttribute('data-date');
+                const dateB = b.getAttribute('data-date');
+                return isDescending ? dateB.localeCompare(dateA) : dateA.localeCompare(dateB);
+            });
+            
+            // Remove all rows
+            rows.forEach(row => row.remove());
+            
+            // Re-add sorted rows
+            rows.forEach(row => wrapper.appendChild(row));
+            
+            // Update subtitle
+            const subtitle = document.querySelector('.subtitle');
+            if (isDescending) {
+                subtitle.textContent = 'Hablemos de Relojes - 2026 to 2017';
+            } else {
+                subtitle.textContent = 'Hablemos de Relojes - 2017 to 2026';
+            }
+        }
+
+        // Toggle sort order
+        function setupSortToggle() {
+            document.getElementById('sortToggle').addEventListener('click', () => {
+                isDescending = !isDescending;
+                sortTimeline();
+            });
+        }
+
         // Load data on page load
-        document.addEventListener('DOMContentLoaded', loadTimeline);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTimeline();
+            setupSortToggle();
+        });
     </script>
 </body>
 </html>
