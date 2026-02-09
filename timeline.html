@@ -382,6 +382,22 @@
                 return '<div></div>';
             }
 
+            // Check if the watch has a zine
+            const hasZine = zine.has_zine !== false;
+
+            if (!hasZine) {
+                // Watches without zines - show only title and forum link
+                return `
+                    <div class="project-card">
+                        <h3 class="project-title">${zine.title}</h3>
+                        <div class="project-links">
+                            <a href="${zine.hdr_link}" class="project-link forum" target="_blank">💬 HdR</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Watches with zines - show full card
             return `
                 <div class="project-card">
                     <div class="project-image">

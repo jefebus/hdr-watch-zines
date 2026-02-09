@@ -413,7 +413,8 @@
             
             grid.innerHTML = '';
             
-            ZINES_DATA.forEach(zine => {
+            // Only show watches that have zines
+            ZINES_DATA.filter(zine => zine.has_zine !== false).forEach(zine => {
                 grid.insertAdjacentHTML('beforeend', renderZineCard(zine));
                 grid.insertAdjacentHTML('beforeend', renderGallery(zine));
             });
