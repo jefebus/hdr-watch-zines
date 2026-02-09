@@ -99,51 +99,77 @@
                 grid-template-columns: 1fr;
             }
             
-            header h1 {
-                font-size: 1.8em;
+            .page-gallery {
+                padding: 10px;
+                gap: 10px;
+                margin-top: 10px;
             }
             
-            .lang-switcher {
-                position: static;
-                justify-content: center;
-                margin-bottom: 20px;
+            .page-gallery img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                aspect-ratio: 9 / 16;
+                object-fit: contain;
+                background: #1a1a1a;
+            }
+            
+            .page-nav {
+                flex-direction: row;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .page-nav-btn {
+                flex: 1;
             }
         }
         
         .zine-card {
-            background: #333333;
+            background: #313131;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 0;
             transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #444444;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            min-height: 180px;
         }
         
         .zine-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         
         .zine-card-image {
-            width: 100%;
-            height: 200px;
+            width: 120px;
+            min-width: 120px;
+            height: 100%;
             object-fit: cover;
+            background: #1a1a1a;
         }
         
         .zine-card-content {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
         }
         
         .zine-card h3 {
-            margin-bottom: 10px;
-            color: #dddddd;
-            font-size: 1.2em;
+            color: #099dd7;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
         
         .zine-card p {
-            color: #bbbbbb;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-            line-height: 1.5;
+            color: #dddddd;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex: 1;
         }
         
         .download-btn {
@@ -155,24 +181,21 @@
             border-radius: 6px;
             font-weight: 600;
             font-size: 0.85em;
-            transition: background 0.2s;
+            transition: opacity 0.2s;
+            margin-top: 8px;
             margin-right: 8px;
         }
         
         .download-btn:hover {
-            background: #0d6a8f;
+            opacity: 0.9;
         }
         
         footer {
+            text-align: center;
+            padding: 30px;
             background: #111111;
             color: #dddddd;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        footer p {
-            margin: 5px 0;
-            opacity: 0.9;
+            font-size: 0.9em;
         }
         
         footer a {
@@ -280,24 +303,24 @@
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: opacity 0.2s;
         }
         
-        .page-nav-btn:hover {
-            background: #0d6a8f;
+        .page-nav-btn:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+        
+        .page-nav-btn:disabled {
+            background: #444444;
+            cursor: not-allowed;
+            opacity: 0.5;
         }
         
         .page-counter {
+            color: #dddddd;
             font-weight: 600;
-            min-width: 50px;
+            min-width: 80px;
             text-align: center;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2em;
-            color: #999;
         }
     </style>
 </head>
@@ -310,7 +333,7 @@
                 <button class="lang-btn" onclick="setLanguage('en')">EN</button>
             </div>
             <h1>⌚ HdR Watch Zines</h1>
-            <p id="header-subtitle">Folletos de instrucciones imprimibles para aficionados a la relojería</p>
+            <p id="header-subtitle"></p>
             <div style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">
                 📚 Fuentes: 
                 <a href="https://www.hablemosderelojes.com/t//268418" target="_blank" style="color: #0F82AF; text-decoration: none; margin: 0 8px;">Índice alfabético (@JOSERRA100)</a> · 
@@ -323,12 +346,14 @@
         
         <div class="content">
             <div class="intro">
-                <p id="intro-text-1">Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".</p>
-                <p id="intro-text-2">Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.</p>
+                <p id="intro-text-1"></p>
+                <p id="intro-text-2"></p>
             </div>
             
             <div class="zines-grid" id="zines-grid">
-                <div class="loading">Cargando zines...</div>
+                
+                <!-- Zine cards and galleries are generated dynamically by JavaScript -->
+            
             </div>
         </div>
         
@@ -336,212 +361,509 @@
             <p><strong id="footer-about"></strong></p>
             <p id="footer-text-1"></p>
             <p id="footer-text-2"></p>
-            <p><a href="https://github.com/jlcases/HdR_zines" target="_blank" id="footer-github">Ver en GitHub</a> | 
-               <a href="https://coda.io/d/_dI_CRGnK7b9" id="footer-docs">Documentación</a></p>
+            <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank" id="footer-github">Ver en GitHub</a> | 
+               <a href="README.md" id="footer-docs">Documentación</a></p>
         </footer>
     </div>
 
     <script>
-        let ZINES_DATA = [];
-        let currentLanguage = 'es';
+        const ZINES_DATA = [
+            {"id":"ferroviario","title":"Ferroviario","emoji":"🛌️","sourceFolder":"hdr_zines_src/ferroviario","pdfFolder":"HdR zines/Ferroviario"},
+            {"id":"galeno","title":"Galeno","emoji":"🩺","sourceFolder":"hdr_zines_src/galeno","pdfFolder":"HdR zines/Galeno"},
+            {"id":"grand_belize","title":"Candino Grand Belize","emoji":"⚓","sourceFolder":"hdr_zines_src/grand_belize","pdfFolder":"HdR zines/Candino Grand Belize"},
+            {"id":"okeah","title":"Okeah Final Edition","emoji":"🐻","sourceFolder":"hdr_zines_src/okeah","pdfFolder":"HdR zines/Okeah Final Edition"},
+            {"id":"apocalypse_now","title":"Apocalypse Now","emoji":"🎬","sourceFolder":"hdr_zines_src/apocalypse_now","pdfFolder":"HdR zines/Apocalypse Now"},
+            {"id":"bushido","title":"RSWC Bushido","emoji":"🗡️🌿","sourceFolder":"hdr_zines_src/bushido","pdfFolder":"HdR zines/RSWC Bushido"},
+            {"id":"colossus","title":"RSWC Super Massive Colossus","emoji":"🦣","sourceFolder":"hdr_zines_src/colossus","pdfFolder":"HdR zines/RSWC Super Massive Colossus"},
+            {"id":"decotimer","title":"RSWC Deco-Timer","emoji":"🌊🔦","sourceFolder":"hdr_zines_src/decotimer","pdfFolder":"HdR zines/RSWC Deco-Timer"},
+            {"id":"dirty_fifteen","title":"RSWC Dirty Fifteen","emoji":"⚔️🏅","sourceFolder":"hdr_zines_src/dirty_fifteen","pdfFolder":"HdR zines/RSWC Dirty Fifteen"},
+            {"id":"eagle_one","title":"RSWC Eagle One","emoji":"🦅","sourceFolder":"hdr_zines_src/eagle_one","pdfFolder":"HdR zines/RSWC Eagle One"},
+            {"id":"eagle_two","title":"RSWC Eagle Two","emoji":"🦅⏱️","sourceFolder":"hdr_zines_src/eagle_two","pdfFolder":"HdR zines/RSWC Eagle Two"},
+            {"id":"forest_defender","title":"RSWC Forest Defender","emoji":"🚒","sourceFolder":"hdr_zines_src/forest_defender","pdfFolder":"HdR zines/RSWC Forest Defender"},
+            {"id":"gamma_gibraltar","title":"RSWC Gamma Gibraltar","emoji":"🐟","sourceFolder":"hdr_zines_src/gamma_gibraltar","pdfFolder":"HdR zines/RSWC Gamma Gibraltar"},
+            {"id":"goldmaster","title":"RSWC Goldmaster","emoji":"🎩","sourceFolder":"hdr_zines_src/goldmaster","pdfFolder":"HdR zines/RSWC Goldmaster"},
+            {"id":"grande_epreuve","title":"RSWC Grande Épreuve","emoji":"🏁","sourceFolder":"hdr_zines_src/grande_epreuve","pdfFolder":"HdR zines/RSWC Grande Épreuve"},
+            {"id":"heian","title":"RSWC Heian","emoji":"🖋️","sourceFolder":"hdr_zines_src/heian","pdfFolder":"HdR zines/RSWC Heian"},
+            {"id":"kaiju","title":"RSWC Kaiju","emoji":"🦖","sourceFolder":"hdr_zines_src/kaiju","pdfFolder":"HdR zines/RSWC Kaiju"},
+            {"id":"majetek","title":"RSWC Majetek","emoji":"✈️🇨🇿","sourceFolder":"hdr_zines_src/majetek","pdfFolder":"HdR zines/RSWC Majetek"},
+            {"id":"racing","title":"RSWC Karussell & Moeris Lacus","emoji":"🏁🚀","sourceFolder":"hdr_zines_src/racing","pdfFolder":"HdR zines/RSWC Racing"},
+            {"id":"rex_caeli","title":"RSWC Rex Caeli","emoji":"✈️","sourceFolder":"hdr_zines_src/rex_caeli","pdfFolder":"HdR zines/RSWC Rex Caeli"},
+            {"id":"rex_maris","title":"RSWC Rex Maris","emoji":"🐬","sourceFolder":"hdr_zines_src/rex_maris","pdfFolder":"HdR zines/RSWC Rex Maris"},
+            {"id":"rex_terrae","title":"RSWC Rex Terrae","emoji":"🐻‍❄️🐧","sourceFolder":"hdr_zines_src/rex_terrae","pdfFolder":"HdR zines/RSWC Rex Terrae"},
+            {"id":"salto_de_fe","title":"RSWC Salto de Fe","emoji":"🐕","sourceFolder":"hdr_zines_src/salto_de_fe","pdfFolder":"HdR zines/RSWC Salto de Fe"},
+            {"id":"scaphandre_II","title":"RSWC Scaphandre II","emoji":"🤿","sourceFolder":"hdr_zines_src/scaphandre_II","pdfFolder":"HdR zines/RSWC Scaphandre II"},
+            {"id":"skygraph","title":"RSWC Skygraph","emoji":"🚀","sourceFolder":"hdr_zines_src/skygraph","pdfFolder":"HdR zines/RSWC Skygraph"},
+            {"id":"iberia","title":"RSWC Suite Iberia","emoji":"🎹","sourceFolder":"hdr_zines_src/iberia","pdfFolder":"HdR zines/RSWC Suite Iberia"},
+            {"id":"ala14","title":"RSWC Super Stellar Ala 14","emoji":"✈️","sourceFolder":"hdr_zines_src/ala14","pdfFolder":"HdR zines/RSWC Super Stellar Ala 14"},
+            {"id":"cosmotemp","title":"RSWC Super Stellar Cosmotemp","emoji":"🌡️","sourceFolder":"hdr_zines_src/cosmotemp","pdfFolder":"HdR zines/RSWC Super Stellar Cosmotemp"},
+            {"id":"typhoon","title":"RSWC Super Stellar Typhoon","emoji":"✈️","sourceFolder":"hdr_zines_src/typhoon","pdfFolder":"HdR zines/RSWC Super Stellar Typhoon"},
+            {"id":"typ_vii-b","title":"RSWC Typ VII-B","emoji":"⚓","sourceFolder":"hdr_zines_src/typ_vii-b","pdfFolder":"HdR zines/RSWC Typ VII-B"},
+            {"id":"ume_1","title":"RSWC UME Tipo 1","emoji":"🚒","sourceFolder":"hdr_zines_src/ume_1","pdfFolder":"HdR zines/RSWC UME Tipo 1"},
+            {"id":"ume_2","title":"RSWC UME Tipo 2","emoji":"🚒🌍","sourceFolder":"hdr_zines_src/ume_2","pdfFolder":"HdR zines/RSWC UME Tipo 2"},
+            {"id":"world_timer","title":"RSWC Super Stellar World Timer","emoji":"🌍","sourceFolder":"hdr_zines_src/world_timer","pdfFolder":"HdR zines/RSWC Super Stellar World Timer"},
+            {"id":"supersharkomatic","title":"RSWC Supersharkomatic","emoji":"🦈","sourceFolder":"hdr_zines_src/supersharkomatic","pdfFolder":"HdR zines/RSWC Supersharkomatic"},
+            {"id":"vainqueur","title":"RSWC Vainqueur","emoji":"🏎️","sourceFolder":"hdr_zines_src/vainqueur","pdfFolder":"HdR zines/RSWC Vainqueur"},
+            {"id":"verne","title":"RSWC Verne","emoji":"🌊","sourceFolder":"hdr_zines_src/verne","pdfFolder":"HdR zines/RSWC Verne"},
+            {"id":"ichi","title":"RSWF Ichi","emoji":"1️⃣","sourceFolder":"hdr_zines_src/ichi","pdfFolder":"HdR zines/RSWF Ichi"},
+            {"id":"kingtuna","title":"RSWF King Tuna","emoji":"🦈","sourceFolder":"hdr_zines_src/kingtuna","pdfFolder":"HdR zines/RSWF King Tuna"},
+            {"id":"sevenseas","title":"RSWF SevenSeas","emoji":"🌊","sourceFolder":"hdr_zines_src/sevenseas","pdfFolder":"HdR zines/RSWF SevenSeas"},
+            {"id":"caballero","title":"Sol y Sombra Caballero","emoji":"🧐","sourceFolder":"hdr_zines_src/caballero","pdfFolder":"HdR zines/SyS Caballero"},
+            {"id":"competidor","title":"Sol y Sombra Competidor","emoji":"🏁","sourceFolder":"hdr_zines_src/competidor","pdfFolder":"HdR zines/SyS Competidor"},
+            {"id":"inmortal","title":"Sol y Sombra Inmortal","emoji":"🍷","sourceFolder":"hdr_zines_src/inmortal","pdfFolder":"HdR zines/SyS Inmortal"},
+            {"id":"inmortal_reserva_especial","title":"Sol y Sombra Inmortal Reserva Especial","emoji":"🍷","sourceFolder":"hdr_zines_src/inmortal_reserva_especial","pdfFolder":"HdR zines/SyS Inmortal Reserva Especial"},
+            {"id":"monumental","title":"Sol y Sombra Monumental","emoji":"🐂","sourceFolder":"hdr_zines_src/monumental","pdfFolder":"HdR zines/SyS Monumental"},
+            {"id":"roquina","title":"Sol y Sombra Roquina","emoji":"💎","sourceFolder":"hdr_zines_src/roquina","pdfFolder":"HdR zines/SyS Roquina"},
+            {"id":"viajero","title":"Sol y Sombra Viajero","emoji":"🚗","sourceFolder":"hdr_zines_src/viajero","pdfFolder":"HdR zines/SyS Viajero"}];
 
-        // Fetch zines data from JSON
-        async function loadZinesData() {
-            try {
-                const response = await fetch('zines_data.json');
-                ZINES_DATA = await response.json();
-                renderAllZines();
-                
-                // Set language after loading data
-                const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-                setLanguage(savedLang);
-            } catch (error) {
-                console.error('Error loading zines data:', error);
-                document.getElementById('zines-grid').innerHTML = '<p class="loading">Error al cargar los datos de los zines.</p>';
-            }
-        }
 
-        function renderZineCard(zine) {
-            const descriptionKey = `description_${currentLanguage}`;
-            const description = zine[descriptionKey] || zine.description_es || '';
-            
-            return `
-                <div class="zine-card">
-                    <img src="${zine.sourceFolder}/${zine.id}_front.jpeg" alt="${zine.title}" class="zine-card-image">
-                    <div class="zine-card-content">
-                        <h3>${zine.title} ${zine.emoji}</h3>
-                        <p class="zine-description" data-id="${zine.id}">${description}</p>
-                        <div>
-                            <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" download>
-                                <span class="download-btn-text">📥 Descargar</span>
-                            </a>
-                            <button class="unfold-btn" onclick="togglePages('${zine.id}-pages')">
-                                <span class="unfold-btn-text">📖 Ver páginas</span>
-                            </button>
-                        </div>
-                    </div>
+function renderZineCard(zine) {
+    return `
+        <div class="zine-card">
+            <img src="${zine.sourceFolder}/${zine.id}_front.jpeg" alt="${zine.id}" class="zine-card-image">
+            <div class="zine-card-content">
+                <h3>${zine.title} ${zine.emoji}</h3>
+                <p id="${zine.id}-desc"></p>
+                <div>
+                    <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" download><span id="download-btn-${zine.id}">📥 Descargar</span></a>
+                    <button class="unfold-btn" onclick="togglePages('${zine.id}-pages')"><span class="unfoldBtn">📖 Ver páginas</span></button>
                 </div>
-            `;
-        }
+            </div>
+        </div>
+    `;
+}
 
-        function renderGallery(zine) {
-            let imagesHTML = '';
-            for (let i = 1; i <= 8; i++) {
-                const activeClass = i === 1 ? ' class="active-page"' : '';
-                imagesHTML += `<img src="${zine.pdfFolder}/${zine.id} zine-${i}.png" alt="Page ${i}"${activeClass}>\n            `;
-            }
-            
-            return `
-                <div id="${zine.id}-pages" class="page-gallery">
-                    <button class="page-gallery-close" onclick="closeGallery('${zine.id}-pages')">✕</button>
-                    ${imagesHTML}
-                    <div class="page-nav">
-                        <button class="page-nav-btn" onclick="navigatePage('${zine.id}-pages', -1)">← <span class="prev-btn-text">Anterior</span></button>
-                        <span class="page-counter" id="${zine.id}-counter">1 / 8</span>
-                        <button class="page-nav-btn" onclick="navigatePage('${zine.id}-pages', 1)"><span class="next-btn-text">Siguiente</span> →</button>
-                    </div>
-                </div>
-            `;
-        }
+function renderGallery(zine) {
+    let imagesHTML = '';
+    for (let i = 1; i <= 8; i++) {
+        const activeClass = i === 1 ? ' class="active-page"' : '';
+        imagesHTML += `<img src="${zine.pdfFolder}/${zine.id} zine-${i}.png" alt="Page ${i}"${activeClass}>\n                    `;
+    }
+    
+    return `
+        <div id="${zine.id}-pages" class="page-gallery">
+            <button class="page-gallery-close" onclick="closeGallery('${zine.id}-pages')">✕</button>
+            ${imagesHTML}
+            <div class="page-nav">
+                <button class="page-nav-btn" onclick="navigatePage('${zine.id}-pages', -1)">← <span class="prevBtn">Anterior</span></button>
+                <span class="page-counter" id="${zine.id}-counter">1 / 8</span>
+                <button class="page-nav-btn" onclick="navigatePage('${zine.id}-pages', 1)"><span class="nextBtn">Siguiente</span> →</button>
+            </div>
+        </div>
+    `;
+}
 
-        function renderAllZines() {
-            const grid = document.getElementById('zines-grid');
-            if (!grid) {
-                console.error('Zines grid not found!');
-                return;
-            }
-            
-            grid.innerHTML = '';
-            
-            // Only show watches that have zines
-            ZINES_DATA.filter(zine => zine.has_zine !== false).forEach(zine => {
-                grid.insertAdjacentHTML('beforeend', renderZineCard(zine));
-                grid.insertAdjacentHTML('beforeend', renderGallery(zine));
-            });
-        }
+// Render all zines on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('zines-grid');
+    if (!grid) {
+        console.error('Zines grid not found!');
+        return;
+    }
+    
+    ZINES_DATA.forEach(zine => {
+        grid.insertAdjacentHTML('beforeend', renderZineCard(zine));
+        grid.insertAdjacentHTML('beforeend', renderGallery(zine));
+    });
+    
+    // Update language after rendering
+    const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+    setLanguage(savedLang);
+});
 
-        function togglePages(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            if (gallery) {
-                gallery.classList.toggle('active');
-            }
-        }
-
-        function closeGallery(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            if (gallery) {
-                gallery.classList.remove('active');
-            }
-        }
-
-        function navigatePage(galleryId, direction) {
-            const gallery = document.getElementById(galleryId);
-            if (!gallery) return;
-            
-            const images = gallery.querySelectorAll('img');
-            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active-page'));
-            
-            images[currentIndex].classList.remove('active-page');
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            images[currentIndex].classList.add('active-page');
-            
-            const counter = gallery.querySelector('.page-counter');
-            if (counter) {
-                counter.textContent = `${currentIndex + 1} / ${images.length}`;
-            }
-        }
-
+        let currentLanguage = 'es'; // Track current language globally
+        
         const translations = {
             es: {
                 headerSubtitle: 'Folletos de instrucciones imprimibles para aficionados a la relojería',
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
-                downloadBtn: '📥 Descargar',
+                bushidoDesc: 'Homenaje a los 47 Ronin y al Seiko 62MAS. Versión roja limitada (47 ud) y verde Midori',
+                colossusDesc: 'El cronógrafo más grande y robusto de la colección RSWC. Inspirado en la fuerza y resistencia de los colosos, edición limitada con movimiento mecánico de alta precisión.',
+                ferroviarioDesc: 'Homenaje al primer ferrocarril iberoamericano. Carga manual Seagull TY3620-2',
+                galenoDesc: 'Cronógrafo médico con escalas de pulsómetro. Movimiento ST-1901 bicompax',
+                goldmasterDesc: 'Reloj de buzo británico de los 60. Dos ediciones: Negro (100 uds.) y British Racing Green 75 (75 uds.). Movimiento NH35 y estilo gentleman',
+                grandBelizeDesc: 'Reloj diver profesional con certificación COSC. Siete años de desarrollo culminan en un Swiss Made de 300m con bisel de zafiro y edición limitada a 200 unidades. El proyecto más ambicioso de HdR',
+                grandeEpreuveDesc: 'Cronógrafo racing con movimiento ST1901 de cuerda manual. Homenaje a las grandes carreras automovilísticas clásicas con diseño vintage de los años 60-70. Disponible en diales panda y reverse panda',
+                okeahDesc: 'El último cronógrafo con calibre Poljot 3133. Homenaje al mítico Okeah de 1976, cierra 35 años de historia. Proyecto internacional con 300 unidades que agotaron el stock final de cajas y movimientos',
+                apocalypseNowDesc: 'Homenaje al Seiko 6105-8100 de la película. Diver 44mm con cubrecorona característico, corona a las 4 y bisel cerámico con lumen completo. NH35, 200m',
+                gammaGibraltarDesc: 'Homenaje a los buzos de combate italianos. Dial sandwich con Super-LumiNova C3',
+                forestDefenderDesc: 'Cronógrafo de bomberos con escala especial y pulsómetro',
+                saltoDeFeDesc: 'El proyecto más secreto de HdR. Guau guau guau guau guau',
+                scaphandreIIDesc: 'Reloj diver profesional de 1000m inspirado en Cousteau. Caja monobloque de 45mm, bisel cerámico de 120 clics, movimiento NH35. Homenaje al espíritu de exploración submarina francesa',
+                heianDesc: 'Homenaje a los relojes japoneses vintage de diario. Elegancia atemporal con movimiento Seiko NH36A doble calendario Kanji-Inglés e Instant Date.',
+                majetekDesc: 'Homenaje a la Fuerza Aérea Checoslovaca. Dos variantes: Piloto Checo (dial negro, C3) y Escuadrón 312 (dial granate, BGW9). Movimiento Seagull ST17, 40mm',
+                racingDesc: 'Dos cronógrafos solares en uno: Karusell Racing rinde homenaje al circuito de Nürburgring y al GP de Alemania 1968. Moeris Lacus Space celebra las misiones ExoMars de la ESA.',
+                rexCaeliDesc: 'Reloj GMT worldtimer del 114º aniversario del primer vuelo motorizado en España. Bisel cerámico de 24 clics con mito de Ícaro. NH34, dial negro/amarillo 810C, 39.5mm. Tercero de la saga Rex.',
+                rexMarisDesc: 'Diver profesional estilo Doxa con caja cushion. Cinco colores vibrantes (Black, Orange, Turquoise, Yellow, Caribbean Blue). Calendario luminoso, NH35, brazalete granos de arroz, 200m. Rey del mar.',
+                rexTerraeDesc: 'Reloj GMT del explorador. Dos versiones: North Pole (negro, lumen verde) y South Pole (blanco, lumen azul). Homenaje al oso polar y pingüino emperador. HZ 6460 GMT, 39mm, 200m.',
+                skygraphDesc: 'Homenaje al Seiko 6139 "Pogue", primer cronógrafo automático en el espacio (Skylab 4, 1973). Cuatro variantes históricas con movimiento Peacock y bisel interno.',
+                monumentalDesc: 'Cronógrafo ST-1901 con cuatro trajes de luces. Bisel de zafiro funcional con capas del toro y suertes de la lidia. Última serie del mítico calibre.',
+                viajeroDesc: 'Cronógrafo ST-1901 panda vintage. Bisel de zafiro con ciudades españolas. Homenaje al espíritu viajero en Renault 4 por las carreteras nacionales.',
+                inmortalSysDesc: 'Homenaje a los relojes clásicos españoles de los 60-70. Tres variantes',
+                inmortalReservaDesc: 'Cronógrafo de cuerda manual con calibre ST-1901 (última serie)',
+                vainqueurDesc: 'Cronógrafo automático inspirado en las carreras de Fórmula 1',
+                iberiaDesc: 'Reloj elegante de la colección RSWC',
+                ala14Desc: 'Reloj de piloto de combate validado por el Ejército del Aire',
+                cosmotempDesc: 'Primer digital RSWC con termómetro (-10°C/+50°C) y cronógrafo a 1/1000 seg. Homenaje a los Casio clásicos con cristal de zafiro y acero grado suizo',
+                decotimerDesc: 'Diver cushion con escala deco interna y dobles coronas con lumen. Dos variantes: Challenger Deep (azul) y Devil\'s Eye (negro/rojo). Caja exclusiva Swiss grade, PT5000 certificado',
+                dirtyFifteenDesc: 'Homenaje a la unidad militar de élite de 15 miembros. Diseño táctico con acabado militar',
+                eagleOneDesc: 'Flieger de 44.5mm con calibre Seagull ST3621 manual. Homenaje a la Batalla de Inglaterra 1940. Dial Fire Pattern marrón, lumen C3, 100m. Edición limitada 50 unidades',
+                eagleTwoDesc: 'Cronógrafo aviador ST19 con regulación cuello de cisne visible. Fondo de zafiro transparente. Homenaje a los pilotos de la RAF y Luftwaffe. 42mm, 50m. Edición limitada 50 unidades',
+                sharkomaticDesc: 'Diver vintage cushion 44mm con estética retro de los años 70',
+                typhoonDesc: 'Instrumento aeroespacial para condiciones extremas',
+                typViiBDesc: 'Tributo al submarino alemán Tipo VII-B. Reloj de buzo de 500m con válvula de helio, PT5000, esfera degradada azul marino y relieve de tiburón en trasera. Edición limitada de 50 unidades',
+                ume1Desc: 'Homenaje a la Unidad Militar de Emergencias. Reloj militar con especificaciones tácticas, Orient YN55A, 200m. Diseño robusto y legible',
+                ume2Desc: 'Versión GMT del homenaje a la UME. Seiko NH34 GMT para misiones internacionales con doble uso horario. Escudo oficial en trasera',
+                worldTimerDesc: 'Primer digital RSWC con 28 zonas horarias. Tributo a los Casio World Timer clásicos con materiales premium: cristal de zafiro y acero grado suizo',
+                caballeroDesc: 'Diseño clásico de la colección Sol y Sombra',
                 unfoldBtn: '📖 Ver páginas',
-                foldBtn: '📕 Ocultar páginas',
+                foldBtn: '🔼 Ocultar páginas',
                 prevBtn: 'Anterior',
                 nextBtn: 'Siguiente',
-                footerAbout: 'Sobre este proyecto',
-                footerText1: 'Los zines se generan con Typst usando la plantilla zen-zine.',
-                footerText2: 'Proyecto comunitario de Hablemos de Relojes.',
-                footerGithub: 'GitHub',
+                competidorDesc: 'Cronógrafo deportivo con bisel taquímetro. Cuatro variantes: Clásico, Panda, Rally Monegros y AquaRally',
+                roquinaDesc: 'Homenaje al cine español de los 70 con cristal facetado',
+                verneDesc: 'Homenaje al Nautilus y a Julio Verne con diseño deportivo-elegante',
+                ichiDesc: 'Primer proyecto colaborativo HdR basado en Orient Mako. Rising Sun Watch Forum',
+                kaijuDesc: 'Homenaje a Godzilla y el cine kaiju japonés. Reloj diver con skyline de Tokio en la trasera y cita de Nietzsche',
+                kingtunaDesc: 'Homenaje al Seiko Tuna con caja de 47mm y brazalete Super Engineer. Dos variantes: Deep Black y Marine Blue. NH35A, 300m',
+                sevenseasDesc: 'Diver con caja monoblock de una pieza. Guardián de los siete mares con construcción impenetrable. NH35A, 300m',
+                downloadEs: '📥 Descargar ES',
+                downloadDe: '📥 Descargar DE',
+                downloadBtn: '📥 Descargar',
+                footerAbout: 'Acerca de este proyecto:',
+                footerText1: 'Estos zines se crean con Typst usando la plantilla zen-zine.',
+                footerText2: 'Contenido basado en descripciones de la comunidad del foro "Hablemos de Relojes".',
+                footerGithub: 'Ver en GitHub',
                 footerDocs: 'Documentación'
             },
             de: {
                 headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
-                introText1: 'Laden Sie druckfertige Zines Ihrer Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
-                introText2: 'Jedes Zine ist so gestaltet, dass es sich zu einer kompakten Broschüre falten lässt, die perfekt in Ihr Uhrenetui passt.',
-                downloadBtn: '📥 Herunterladen',
-                unfoldBtn: '📖 Seiten ansehen',
-                foldBtn: '📕 Seiten ausblenden',
+                introText1: 'Lade druckfertige Zines für deine Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
+                introText2: 'Jedes Zine ist so gestaltet, dass es zu einem kompakten Heft gefaltet werden kann, das perfekt in dein Uhrenetui passt.',
+                bushidoDesc: 'Hommage an die 47 Ronin und die Seiko 62MAS. Rote limitierte (47 Stk.) und grüne Midori-Version',
+                colossusDesc: 'Der größte und robusteste Chronograph der RSWC-Kollektion. Inspiriert von der Kraft und Ausdauer der Kolosse, limitierte Edition mit hochpräzisem mechanischem Werk.',
+                ferroviarioDesc: 'Hommage an die erste iberoamerikanische Eisenbahn. Handaufzug Seagull TY3620-2',
+                galenoDesc: 'Medizinischer Chronograph mit Pulsmesser-Skalen. ST-1901 Bicompax-Werk',
+                goldmasterDesc: 'Britischer Gentleman-Taucher der 60er. Zwei Editionen: Schwarz (100 Stk.) und British Racing Green 75 (75 Stk.). NH35-Werk und Gentleman-Stil',
+                grandBelizeDesc: 'Professionelle Taucheruhr mit COSC-Zertifizierung. Sieben Jahre Entwicklung gipfeln in einer Swiss Made 300m-Uhr mit Saphirlünette, limitiert auf 200 Einheiten. Das ehrgeizigste HdR-Projekt',
+                grandeEpreuveDesc: 'Racing-Chronograph mit ST1901 Handaufzugswerk. Hommage an die großen klassischen Autorennen mit Vintage-Design der 60er-70er Jahre. Erhältlich in Panda- und Reverse-Panda-Zifferblättern',
+                okeahDesc: 'Der letzte Chronograph mit Poljot 3133 Kaliber. Hommage an den legendären Okeah von 1976, beendet 35 Jahre Geschichte. Internationales Projekt mit 300 Einheiten, das den finalen Bestand an Gehäusen und Werken erschöpfte',
+                apocalypseNowDesc: 'Hommage an die Seiko 6105-8100 aus dem Film. 44mm Taucher mit charakteristischem Kronenschutz, Krone bei 4 und Keramiklünette mit vollem Lumen. NH35, 200m',
+                gammaGibraltarDesc: 'Hommage an italienische Kampftaucher. Sandwich-Zifferblatt mit Super-LumiNova C3',
+                forestDefenderDesc: 'Feuerwehr-Chronograph mit Spezialskala und Pulsmesser',
+                saltoDeFeDesc: 'Das geheimste HdR-Projekt. Wau wau wau wau wau',
+                scaphandreIIDesc: 'Professionelle 1000m-Taucheruhr inspiriert von Cousteau. Monoblock-Gehäuse 45mm, 120-Klick-Keramiklünette, NH35-Werk. Hommage an den französischen Taucherforschergeist',
+                heianDesc: 'Hommage an japanische Vintage-Alltagsuhren. Zeitlose Eleganz mit Seiko NH36A Werk, doppeltem Kanji-Englisch-Kalender und Instant Date.',
+                majetekDesc: 'Hommage an die Tschechoslowakische Luftwaffe. Zwei Varianten: Piloto Checo (schwarzes Zifferblatt, C3) und Escuadrón 312 (granatfarbenes Zifferblatt, BGW9). Seagull ST17-Werk, 40mm',
+                racingDesc: 'Zwei Solar-Chronographen in einem: Karusell Racing ehrt die Nürburgring-Rennstrecke und den GP Deutschland 1968. Moeris Lacus Space feiert die ExoMars-Missionen der ESA.',
+                rexCaeliDesc: 'GMT-Weltzeituhr zum 114. Jahrestag des ersten motorisierten Fluges in Spanien. Keramik-Lünette mit 24 Klicks und Ikarus-Mythos. NH34, schwarz/gelbes 810C-Zifferblatt, 39,5mm. Dritter der Rex-Saga.',
+                rexMarisDesc: 'Professionelle Taucheruhr im Doxa-Stil mit Cushion-Gehäuse. Fünf lebendige Farben (Schwarz, Orange, Türkis, Gelb, Karibikblau). Leuchtendes Datum, NH35, Reiskorn-Armband, 200m. König des Meeres.',
+                rexTerraeDesc: 'Entdecker GMT-Uhr. Zwei Versionen: North Pole (schwarz, grünes Lumen) und South Pole (weiß, blaues Lumen). Hommage an Eisbär und Kaiserpinguin. HZ 6460 GMT, 39mm, 200m.',
+                skygraphDesc: 'Hommage an die Seiko 6139 "Pogue", erster Automatikchronograph im Weltraum (Skylab 4, 1973). Vier historische Varianten mit Peacock-Werk und interner Lünette.',
+                monumentalDesc: 'ST-1901 Chronograph mit vier Torero-Anzügen. Funktionelle Saphirlünette mit Stierschichten und Kampfphasen. Letzte Serie des legendären Kalibers.',
+                viajeroDesc: 'ST-1901 Vintage Panda-Chronograph. Saphirlünette mit spanischen Städten. Hommage an den Reisegeist im Renault 4 auf den Nationalstraßen.',
+                inmortalSysDesc: 'Hommage an klassische spanische Uhren der 60-70er. Drei Varianten',
+                inmortalReservaDesc: 'Handaufzug-Chronograph mit ST-1901-Kaliber (letzte Serie)',
+                vainqueurDesc: 'Automatik-Chronograph inspiriert von Formel-1-Rennen',
+                iberiaDesc: 'Elegante Uhr aus der RSWC-Kollektion',
+                ala14Desc: 'Kampfpilotenuhr validiert durch die spanische Luftwaffe',
+                cosmotempDesc: 'Erste RSWC Digital mit Thermometer (-10°C/+50°C) und 1/1000 Sek. Chronograph. Hommage an klassische Casio mit Saphirglas und Swiss-Grade-Stahl',
+                decotimerDesc: 'Cushion-Taucheruhr mit interner Deco-Skala und Doppelkronen mit Lumen. Zwei Varianten: Challenger Deep (blau) und Devil\'s Eye (schwarz/rot). Exklusive Swiss-Grade-Gehäuse, PT5000 zertifiziert',
+                dirtyFifteenDesc: 'Hommage an die militärische Elite-Einheit von 15 Mitgliedern. Taktisches Design mit militärischem Finish',
+                eagleOneDesc: 'Fliegeruhr 44,5mm mit Seagull ST3621 Handaufzug. Hommage an die Luftschlacht um England 1940. Fire Pattern braunes Zifferblatt, C3-Lumen, 100m. Limitiert auf 50 Stück',
+                eagleTwoDesc: 'Flieger-Chronograph ST19 mit sichtbarer Schwanenhals-Regulierung. Transparenter Saphirboden. Hommage an RAF und Luftwaffe-Piloten. 42mm, 50m. Limitiert auf 50 Stück',
+                sharkomaticDesc: 'Vintage Cushion Taucheruhr 44mm mit Retro-Ästhetik der 70er',
+                typhoonDesc: 'Luft- und Raumfahrtinstrument für extreme Bedingungen',
+                typViiBDesc: 'Hommage an das deutsche U-Boot Typ VII-B. 500m-Taucheruhr mit Heliumventil, PT5000, marineblauem Verlaufszifferblatt und Hai-Relief auf Rückseite. Limitiert auf 50 Einheiten',
+                ume1Desc: 'Hommage an die Militärische Notfalleinheit. Militäruhr mit taktischen Spezifikationen, Orient YN55A, 200m. Robustes und lesbares Design',
+                ume2Desc: 'GMT-Version der UME-Hommage. Seiko NH34 GMT für internationale Missionen mit doppelter Zeitzone. Offizielles Wappen auf Rückseite',
+                worldTimerDesc: 'Erste RSWC Digital mit 28 Zeitzonen. Hommage an klassische Casio World Timer mit Premium-Materialien: Saphirglas und Swiss-Grade-Stahl',
+                caballeroDesc: 'Klassisches Design aus der Sol y Sombra Kollektion',
+                unfoldBtn: '📖 Seiten anzeigen',
+                foldBtn: '🔼 Seiten ausblenden',
                 prevBtn: 'Zurück',
                 nextBtn: 'Weiter',
-                footerAbout: 'Über dieses Projekt',
-                footerText1: 'Die Zines werden mit Typst mit dem zen-zine Template generiert.',
-                footerText2: 'Gemeinschaftsprojekt von Hablemos de Relojes.',
-                footerGithub: 'GitHub',
+                competidorDesc: 'Sportchronograph mit Tachymeter-Lünette. Vier Varianten: Clásico, Panda, Rally Monegros und AquaRally',
+                roquinaDesc: 'Hommage an das spanische Kino der 70er mit facettiertem Glas',
+                verneDesc: 'Hommage an den Nautilus und Jules Verne mit sportlich-elegantem Design',
+                ichiDesc: 'Erstes HdR-Gemeinschaftsprojekt basierend auf Orient Mako. Rising Sun Watch Forum',
+                kaijuDesc: 'Hommage an Godzilla und japanische Kaiju-Filme. Taucheruhr mit Tokio-Skyline auf der Rückseite und Nietzsche-Zitat',
+                kingtunaDesc: 'Hommage an die Seiko Tuna mit 47mm-Gehäuse und Super Engineer-Armband. Zwei Varianten: Deep Black und Marine Blue. NH35A, 300m',
+                sevenseasDesc: 'Taucheruhr mit Monoblock-Gehäuse aus einem Stück. Wächter der sieben Meere mit undurchdringlicher Konstruktion. NH35A, 300m',
+                downloadEs: '📥 Download ES',
+                downloadDe: '📥 Download DE',
+                downloadBtn: '📥 Download',
+                footerAbout: 'Über dieses Projekt:',
+                footerText1: 'Diese Zines werden mit Typst unter Verwendung der zen-zine-Vorlage erstellt.',
+                footerText2: 'Inhalte basierend auf Beschreibungen aus der "Hablemos de Relojes" Forum-Community.',
+                footerGithub: 'Auf GitHub ansehen',
                 footerDocs: 'Dokumentation'
             },
             en: {
                 headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
-                introText1: 'Download print-ready zines of your favorite watches from the "Hablemos de Relojes" community.',
-                introText2: 'Each zine is designed to fold into a compact booklet that fits perfectly in your watch case.',
-                downloadBtn: '📥 Download',
+                introText1: 'Download ready-to-print zines for your favorite watches from the "Hablemos de Relojes" community.',
+                introText2: 'Each zine is designed to be folded into a compact booklet that fits perfectly in your watch case.',
+                bushidoDesc: 'Tribute to the 47 Ronin and Seiko 62MAS. Red limited (47 units) and green Midori version',
+                colossusDesc: 'The largest and most robust chronograph in the RSWC collection. Inspired by the strength and endurance of colossi, limited edition with high-precision mechanical movement.',
+                ferroviarioDesc: 'Tribute to the first Iberoamerican railroad. Manual-wind Seagull TY3620-2',
+                galenoDesc: 'Medical chronograph with pulsometer scales. ST-1901 bicompax movement',
+                goldmasterDesc: 'British gentleman diver from the 60s. Two editions: Black (100 units) and British Racing Green 75 (75 units). NH35 movement and gentleman style',
+                grandBelizeDesc: 'Professional diver watch with COSC certification. Seven years of development culminate in a Swiss Made 300m watch with sapphire bezel, limited to 200 units. HdR\'s most ambitious project',
+                grandeEpreuveDesc: 'Racing chronograph with ST1901 manual-wind movement. Tribute to the great classic motor races with vintage 60s-70s design. Available in panda and reverse panda dials',
+                okeahDesc: 'The last chronograph with Poljot 3133 caliber. Tribute to the legendary 1976 Okeah, closing 35 years of history. International project with 300 units that exhausted the final stock of cases and movements',
+                apocalypseNowDesc: 'Tribute to the Seiko 6105-8100 from the movie. 44mm diver with characteristic crown shroud, crown at 4 and ceramic bezel with full lume. NH35, 200m',
+                eagleOneDesc: 'Flieger 44.5mm with Seagull ST3621 manual-wind caliber. Tribute to the Battle of Britain 1940. Fire Pattern brown dial, C3 lume, 100m. Limited edition 50 units',
+                eagleTwoDesc: 'Aviation chronograph ST19 with visible swan neck regulation. Transparent sapphire caseback. Tribute to RAF and Luftwaffe pilots. 42mm, 50m. Limited edition 50 units',
+                forestDefenderDesc: 'Firefighter chronograph with special scale and pulsometer',
+                gammaGibraltarDesc: 'Tribute to Italian combat divers. Sandwich dial with Super-LumiNova C3',
+                saltoDeFeDesc: 'The most secret HdR project. Woof woof woof woof woof',
+                scaphandreIIDesc: 'Professional 1000m diver inspired by Cousteau. 45mm monoblock case, 120-click ceramic bezel, NH35 movement. Tribute to French underwater exploration spirit',
+                heianDesc: 'Tribute to vintage Japanese daily-wear watches. Timeless elegance with Seiko NH36A movement, dual Kanji-English calendar and Instant Date.',
+                majetekDesc: 'Tribute to the Czechoslovak Air Force. Two variants: Piloto Checo (black dial, C3) and Escuadrón 312 (burgundy dial, BGW9). Seagull ST17 movement, 40mm',
+                racingDesc: 'Two solar chronographs in one: Karusell Racing honors the Nürburgring circuit and 1968 German GP. Moeris Lacus Space celebrates ESA\'s ExoMars missions.',
+                rexCaeliDesc: 'GMT worldtimer for the 114th anniversary of Spain\'s first powered flight. 24-click ceramic bezel with Icarus myth. NH34, black/yellow 810C dial, 39.5mm. Third of the Rex saga.',
+                rexMarisDesc: 'Professional Doxa-style diver with cushion case. Five vibrant colors (Black, Orange, Turquoise, Yellow, Caribbean Blue). Luminous date, NH35, beads of rice bracelet, 200m. King of the sea.',
+                rexTerraeDesc: 'Explorer GMT watch. Two versions: North Pole (black, green lume) and South Pole (white, blue lume). Tribute to the polar bear and emperor penguin. HZ 6460 GMT, 39mm, 200m.',
+                skygraphDesc: 'Tribute to the Seiko 6139 "Pogue", first automatic chronograph in space (Skylab 4, 1973). Four historic variants with Peacock movement and internal bezel.',
+                monumentalDesc: 'ST-1901 chronograph with four bullfighter suits. Functional sapphire bezel with bull sections and bullfighting phases. Final series of the legendary caliber.',
+                viajeroDesc: 'ST-1901 vintage panda chronograph. Sapphire bezel with Spanish cities. Tribute to the traveling spirit in a Renault 4 on national roads.',
+                inmortalSysDesc: 'Tribute to classic Spanish watches from the 60s-70s. Three variants',
+                inmortalReservaDesc: 'Manual-wind chronograph with ST-1901 caliber (final series)',
+                vainqueurDesc: 'Automatic chronograph inspired by Formula 1 racing',
+                iberiaDesc: 'Elegant timepiece from the RSWC collection',
+                ala14Desc: 'Fighter pilot watch validated by the Spanish Air Force',
+                cosmotempDesc: 'First RSWC digital with thermometer (-10°C/+50°C) and 1/1000 sec chronograph. Tribute to classic Casio with sapphire crystal and Swiss-grade steel',
+                decotimerDesc: 'Cushion diver with internal deco scale and double crowns with lumen. Two variants: Challenger Deep (blue) and Devil\'s Eye (black/red). Exclusive Swiss-grade case, certified PT5000',
+                dirtyFifteenDesc: 'Tribute to the elite military unit of 15 members. Tactical design with military finish',
+                eagleOneDesc: 'Flieger 44.5mm with Seagull ST3621 manual-wind caliber. Tribute to the Battle of Britain 1940. Fire Pattern brown dial, C3 lume, 100m. Limited edition 50 units',
+                eagleTwoDesc: 'Aviation chronograph ST19 with visible swan neck regulation. Transparent sapphire caseback. Tribute to RAF and Luftwaffe pilots. 42mm, 50m. Limited edition 50 units',
+                sharkomaticDesc: 'Vintage cushion diver 44mm with 70s retro aesthetic',
+                typhoonDesc: 'Aerospace instrument for extreme conditions',
+                typViiBDesc: 'Tribute to German Type VII-B submarine. 500m diver watch with helium valve, PT5000, gradient navy blue dial and shark relief caseback. Limited to 50 units',
+                ume1Desc: 'Tribute to the Military Emergency Unit. Military watch with tactical specifications, Orient YN55A, 200m. Robust and legible design',
+                ume2Desc: 'GMT version of the UME tribute. Seiko NH34 GMT for international missions with dual time zone. Official badge on caseback',
+                worldTimerDesc: 'First RSWC digital with 28 time zones. Tribute to classic Casio World Timer with premium materials: sapphire crystal and Swiss-grade steel',
+                caballeroDesc: 'Classic design from the Sol y Sombra collection',
                 unfoldBtn: '📖 View pages',
-                foldBtn: '📕 Hide pages',
+                foldBtn: '🔼 Hide pages',
                 prevBtn: 'Previous',
                 nextBtn: 'Next',
-                footerAbout: 'About this project',
-                footerText1: 'Zines are generated with Typst using the zen-zine template.',
-                footerText2: 'Community project by Hablemos de Relojes.',
-                footerGithub: 'GitHub',
+                competidorDesc: 'Racing chronograph with tachymeter bezel. Four variants: Clásico, Panda, Rally Monegros and AquaRally',
+                roquinaDesc: 'Tribute to 1970s Spanish cinema with faceted crystal',
+                verneDesc: 'Tribute to Nautilus and Jules Verne with sporty-elegant design',
+                ichiDesc: 'First HdR collaborative project based on Orient Mako. Rising Sun Watch Forum',
+                kaijuDesc: 'Tribute to Godzilla and Japanese kaiju cinema. Diver watch with Tokyo skyline on caseback and Nietzsche quote',
+                kingtunaDesc: 'Tribute to the Seiko Tuna with 47mm case and Super Engineer bracelet. Two variants: Deep Black and Marine Blue. NH35A, 300m',
+                sevenseasDesc: 'Diver with one-piece monoblock case. Guardian of the seven seas with impenetrable construction. NH35A, 300m',
+                downloadEs: '📥 Download ES',
+                downloadDe: '📥 Download DE',
+                downloadBtn: '📥 Download',
+                footerAbout: 'About this project:',
+                footerText1: 'These zines are created with Typst using the zen-zine template.',
+                footerText2: 'Content based on descriptions from the "Hablemos de Relojes" forum community.',
+                footerGithub: 'View on GitHub',
                 footerDocs: 'Documentation'
             }
         };
 
-        function setLanguage(lang) {
-            currentLanguage = lang;
+        function closeGallery(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            gallery.classList.remove('active');
+            
+            const btn = document.querySelector(`button[onclick*="${galleryId}"]`);
+            if (btn) {
+                const btnSpan = btn.querySelector('.unfoldBtn');
+                if (btnSpan) {
+                    const lang = currentLanguage;
+                    const t = translations[lang];
+                    btnSpan.textContent = t.unfoldBtn;
+                }
+            }
+        }
+
+        function navigatePage(galleryId, direction) {
+            const gallery = document.getElementById(galleryId);
+            const images = gallery.querySelectorAll('img');
+            let currentIndex = -1;
+            
+            images.forEach((img, index) => {
+                if (img.classList.contains('active-page')) {
+                    currentIndex = index;
+                }
+            });
+            
+            const newIndex = currentIndex + direction;
+            if (newIndex >= 0 && newIndex < images.length) {
+                images[currentIndex].classList.remove('active-page');
+                images[newIndex].classList.add('active-page');
+                
+                // Update counter - derive counter ID from gallery ID
+                const counterId = galleryId.replace('-pages', '-counter');
+                document.getElementById(counterId).textContent = `${newIndex + 1} / ${images.length}`;
+            }
+        }
+
+        function togglePages(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const btn = event.target.closest('button');
+            const btnSpan = btn.querySelector('.unfoldBtn');
+            const lang = currentLanguage;
             const t = translations[lang];
             
-            // Update language buttons
+            if (gallery.classList.contains('active')) {
+                gallery.classList.remove('active');
+                btnSpan.textContent = t.unfoldBtn;
+            } else {
+                // Close all other galleries first
+                document.querySelectorAll('.page-gallery.active').forEach(g => {
+                    if (g.id !== galleryId) {
+                        g.classList.remove('active');
+                        const otherGalleryBtn = document.querySelector(`button[onclick*="${g.id}"]`);
+                        if (otherGalleryBtn) {
+                            const otherBtnSpan = otherGalleryBtn.querySelector('.unfoldBtn');
+                            if (otherBtnSpan) {
+                                otherBtnSpan.textContent = t.unfoldBtn;
+                            }
+                        }
+                    }
+                });
+                
+                gallery.classList.add('active');
+                btnSpan.textContent = t.foldBtn;
+                
+                // If this is vainqueur gallery, update images based on current language
+                if (galleryId === 'vainqueur-pages') {
+                    const vainqueurSuffix = currentLanguage === 'de' ? 'vainqueur_de' : 'vainqueur';
+                    const vainqueurImages = gallery.querySelectorAll('img');
+                    vainqueurImages.forEach((img, index) => {
+                        img.src = `HdR zines/RSWC Vainqueur/${vainqueurSuffix} zine-${index + 1}.png`;
+                    });
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang; // Update global language variable
+            
+            // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(`'${lang}'`)) {
+                    btn.classList.add('active');
+                }
             });
-            event?.target?.classList.add('active') || document.querySelector(`.lang-btn[onclick*="${lang}"]`)?.classList.add('active');
             
-            // Update static text
+            // Update content
+            const t = translations[lang];
             document.getElementById('header-subtitle').textContent = t.headerSubtitle;
             document.getElementById('intro-text-1').textContent = t.introText1;
             document.getElementById('intro-text-2').textContent = t.introText2;
-            document.getElementById('footer-about').innerHTML = '<strong>' + t.footerAbout + '</strong>';
-            document.getElementById('footer-text-1').innerHTML = t.footerText1.replace('Typst', '<a href="https://github.com/typst/typst">Typst</a>').replace('zen-zine', '<em>zen-zine</em>');
-            document.getElementById('footer-text-2').innerHTML = t.footerText2.replace('Hablemos de Relojes', '<a href="https://www.hablemosderelojes.com">Hablemos de Relojes</a>');
-            document.getElementById('footer-github').textContent = t.footerGithub;
-            document.getElementById('footer-docs').textContent = t.footerDocs;
-            
-            // Update all download buttons
-            document.querySelectorAll('.download-btn-text').forEach(btn => {
-                btn.textContent = t.downloadBtn;
-            });
+            document.getElementById('bushido-desc').textContent = t.bushidoDesc;
+            document.getElementById('colossus-desc').textContent = t.colossusDesc;
+            document.getElementById('ferroviario-desc').textContent = t.ferroviarioDesc;
+            document.getElementById('galeno-desc').textContent = t.galenoDesc;
+            document.getElementById('goldmaster-desc').textContent = t.goldmasterDesc;
+            document.getElementById('grand_belize-desc').textContent = t.grandBelizeDesc;
+            document.getElementById('grande_epreuve-desc').textContent = t.grandeEpreuveDesc;
+            document.getElementById('okeah-desc').textContent = t.okeahDesc;
+            document.getElementById('apocalypse_now-desc').textContent = t.apocalypseNowDesc;
+            document.getElementById('gamma_gibraltar-desc').textContent = t.gammaGibraltarDesc;
+            document.getElementById('forest_defender-desc').textContent = t.forestDefenderDesc;
+            document.getElementById('salto_de_fe-desc').textContent = t.saltoDeFeDesc;
+            document.getElementById('scaphandre_II-desc').textContent = t.scaphandreIIDesc;
+            document.getElementById('heian-desc').textContent = t.heianDesc;
+            document.getElementById('majetek-desc').textContent = t.majetekDesc;
+            document.getElementById('racing-desc').textContent = t.racingDesc;
+            document.getElementById('rex_caeli-desc').textContent = t.rexCaeliDesc;
+            document.getElementById('rex_maris-desc').textContent = t.rexMarisDesc;
+            document.getElementById('rex_terrae-desc').textContent = t.rexTerraeDesc;
+            document.getElementById('skygraph-desc').textContent = t.skygraphDesc;
+            document.getElementById('monumental-desc').textContent = t.monumentalDesc;
+            document.getElementById('viajero-desc').textContent = t.viajeroDesc;
+            document.getElementById('inmortal-desc').textContent = t.inmortalSysDesc;
+            document.getElementById('inmortal_reserva_especial-desc').textContent = t.inmortalReservaDesc;
+            document.getElementById('vainqueur-desc').textContent = t.vainqueurDesc;
+            document.getElementById('iberia-desc').textContent = t.iberiaDesc;
+            document.getElementById('ala14-desc').textContent = t.ala14Desc;
+            document.getElementById('cosmotemp-desc').textContent = t.cosmotempDesc;
+            document.getElementById('decotimer-desc').textContent = t.decotimerDesc;
+            document.getElementById('dirty_fifteen-desc').textContent = t.dirtyFifteenDesc;
+            document.getElementById('eagle_one-desc').textContent = t.eagleOneDesc;
+            document.getElementById('eagle_two-desc').textContent = t.eagleTwoDesc;
+            document.getElementById('supersharkomatic-desc').textContent = t.sharkomaticDesc;
+            document.getElementById('typhoon-desc').textContent = t.typhoonDesc;
+            document.getElementById('typ_vii-b-desc').textContent = t.typViiBDesc;
+            document.getElementById('ume_1-desc').textContent = t.ume1Desc;
+            document.getElementById('ume_2-desc').textContent = t.ume2Desc;
+            document.getElementById('world_timer-desc').textContent = t.worldTimerDesc;
+            document.getElementById('caballero-desc').textContent = t.caballeroDesc;
             
             // Update all unfold/fold buttons
-            document.querySelectorAll('.unfold-btn-text').forEach(btn => {
+            document.querySelectorAll('.unfoldBtn').forEach(btn => {
                 const gallery = document.getElementById(btn.closest('button').getAttribute('onclick').match(/'([^']+)'/)[1]);
                 btn.textContent = gallery && gallery.classList.contains('active') ? t.foldBtn : t.unfoldBtn;
             });
             
             // Update all prev/next buttons
-            document.querySelectorAll('.prev-btn-text').forEach(btn => btn.textContent = t.prevBtn);
-            document.querySelectorAll('.next-btn-text').forEach(btn => btn.textContent = t.nextBtn);
+            document.querySelectorAll('.prevBtn').forEach(btn => btn.textContent = t.prevBtn);
+            document.querySelectorAll('.nextBtn').forEach(btn => btn.textContent = t.nextBtn);
+            document.getElementById('competidor-desc').textContent = t.competidorDesc;
+            document.getElementById('roquina-desc').textContent = t.roquinaDesc;
+            document.getElementById('verne-desc').textContent = t.verneDesc;
+            document.getElementById('ichi-desc').textContent = t.ichiDesc;
+            document.getElementById('kaiju-desc').textContent = t.kaijuDesc;
+            document.getElementById('kingtuna-desc').textContent = t.kingtunaDesc;
+            document.getElementById('sevenseas-desc').textContent = t.sevenseasDesc;
+            document.getElementById('download-es').textContent = t.downloadEs;
+            document.getElementById('download-de').textContent = t.downloadDe;
+            document.getElementById('download-btn-fd').textContent = t.downloadBtn;
+            document.getElementById('download-btn-bushido').textContent = t.downloadBtn;            
+            document.getElementById('download-btn-sdf').textContent = t.downloadBtn;
+            document.getElementById('download-btn-inm-sys').textContent = t.downloadBtn;
+            document.getElementById('download-btn-inm').textContent = t.downloadBtn;
+            document.getElementById('download-btn').textContent = t.downloadBtn;
+            document.getElementById('download-btn-2').textContent = t.downloadBtn;
+            document.getElementById('download-btn-cosmotemp').textContent = t.downloadBtn;
+            document.getElementById('download-btn-shark').textContent = t.downloadBtn;
+            document.getElementById('download-btn-3').textContent = t.downloadBtn;
+            document.getElementById('download-btn-world-timer').textContent = t.downloadBtn;
+            document.getElementById('download-btn-4').textContent = t.downloadBtn;
+            document.getElementById('download-btn-competidor').textContent = t.downloadBtn;
+            document.getElementById('download-btn-5').textContent = t.downloadBtn;
+            document.getElementById('download-btn-6').textContent = t.downloadBtn;
+            document.getElementById('download-btn-ferrov').textContent = t.downloadBtn;
+            document.getElementById('download-btn-galeno').textContent = t.downloadBtn;
+            document.getElementById('download-btn-goldmaster').textContent = t.downloadBtn;
+            document.getElementById('download-btn-grand_belize').textContent = t.downloadBtn;
+            document.getElementById('download-btn-grande_epreuve').textContent = t.downloadBtn;
+            document.getElementById('download-btn-okeah').textContent = t.downloadBtn;
+            document.getElementById('download-btn-gamma').textContent = t.downloadBtn;
+            document.getElementById('download-btn-verne').textContent = t.downloadBtn;
+            document.getElementById('download-btn-ichi').textContent = t.downloadBtn;
+            document.getElementById('download-btn-heian').textContent = t.downloadBtn;
+            document.getElementById('download-btn-racing').textContent = t.downloadBtn;
+            document.getElementById('download-btn-skygraph').textContent = t.downloadBtn;
+            document.getElementById('download-btn-monumental').textContent = t.downloadBtn;
+            document.getElementById('download-btn-viajero').textContent = t.downloadBtn;
+            document.getElementById('download-btn-dirty-fifteen').textContent = t.downloadBtn;
+            document.getElementById('download-btn-eagle_one').textContent = t.downloadBtn;
+            document.getElementById('download-btn-eagle_two').textContent = t.downloadBtn;
             
-            // Update all zine descriptions
-            ZINES_DATA.forEach(zine => {
-                const descElem = document.querySelector(`.zine-description[data-id="${zine.id}"]`);
-                if (descElem) {
-                    const descriptionKey = `description_${lang}`;
-                    descElem.textContent = zine[descriptionKey] || zine.description_es || '';
-                }
-            });
+            // Update Vainqueur images based on language
+            const vainqueurGallery = document.getElementById('vainqueur-pages');
+            if (vainqueurGallery) {
+                const vainqueurImages = vainqueurGallery.querySelectorAll('img');
+                const vainqueurSuffix = lang === 'de' ? 'vainqueur_de' : 'vainqueur';
+                vainqueurImages.forEach((img, index) => {
+                    img.src = `HdR zines/RSWC Vainqueur/${vainqueurSuffix} zine-${index + 1}.png`;
+                });
+            }
+            
+            document.getElementById('footer-about').textContent = t.footerAbout;
+            document.getElementById('footer-text-1').textContent = t.footerText1;
+            document.getElementById('footer-text-2').textContent = t.footerText2;
+            document.getElementById('footer-github').textContent = t.footerGithub;
+            document.getElementById('footer-docs').textContent = t.footerDocs;
             
             // Update HTML lang attribute
             document.documentElement.lang = lang;
@@ -549,9 +871,6 @@
             // Save preference
             localStorage.setItem('preferredLanguage', lang);
         }
-
-        // Load data on page load
-        document.addEventListener('DOMContentLoaded', loadZinesData);
     </script>
 </body>
-</html>
+</html> 
