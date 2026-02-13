@@ -371,8 +371,7 @@
             <p><strong id="footer-about"></strong></p>
             <p id="footer-text-1"></p>
             <p id="footer-text-2"></p>
-            <p><a href="https://github.com/jlcases/HdR_zines" target="_blank" id="footer-github">Ver en GitHub</a> | 
-               <a href="https://coda.io/d/_dI_CRGnK7b9" id="footer-docs">Documentación</a></p>
+            <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank" id="footer-github">Ver en GitHub</a></p>
         </footer>
     </div>
 
@@ -499,8 +498,7 @@
                 footerAbout: 'Sobre este proyecto',
                 footerText1: 'Los zines se generan con Typst usando la plantilla zen-zine.',
                 footerText2: 'Proyecto comunitario de Hablemos de Relojes.',
-                footerGithub: 'GitHub',
-                footerDocs: 'Documentación'
+                footerGithub: 'GitHub'
             },
             de: {
                 headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
@@ -514,8 +512,7 @@
                 footerAbout: 'Über dieses Projekt',
                 footerText1: 'Die Zines werden mit Typst mit dem zen-zine Template generiert.',
                 footerText2: 'Gemeinschaftsprojekt von Hablemos de Relojes.',
-                footerGithub: 'GitHub',
-                footerDocs: 'Dokumentation'
+                footerGithub: 'GitHub'
             },
             en: {
                 headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
@@ -529,8 +526,7 @@
                 footerAbout: 'About this project',
                 footerText1: 'Zines are generated with Typst using the zen-zine template.',
                 footerText2: 'Community project by Hablemos de Relojes.',
-                footerGithub: 'GitHub',
-                footerDocs: 'Documentation'
+                footerGithub: 'GitHub'
             }
         };
 
@@ -552,7 +548,6 @@
             document.getElementById('footer-text-1').innerHTML = t.footerText1.replace('Typst', '<a href="https://github.com/typst/typst">Typst</a>').replace('zen-zine', '<em>zen-zine</em>');
             document.getElementById('footer-text-2').innerHTML = t.footerText2.replace('Hablemos de Relojes', '<a href="https://www.hablemosderelojes.com">Hablemos de Relojes</a>');
             document.getElementById('footer-github').textContent = t.footerGithub;
-            document.getElementById('footer-docs').textContent = t.footerDocs;
             
             // Update all download buttons
             document.querySelectorAll('.download-btn-text').forEach(btn => {
