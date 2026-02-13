@@ -1406,4 +1406,30 @@
     "lane_id": "otros",
     "has_zine": false
   }
-]
+    },
+    {
+      "id": "scaphandre_iii",
+      "title": "RSWC Scaphandre III",
+      "brand": "RSWC",
+      "model": "Scaphandre III",
+      "emoji": "🤿",
+      "year": 2023,
+      "month": 3,
+      "category": "diver",
+      "description_es": "Tercera entrega de la saga Scaphandre, homenaje a la exploración submarina y al legado de Cousteau. Caja Turtle 44mm, 1200m, NH35, bisel cerámico azul, lumen BGW9, brazalete Superengineer y dos correas de goma. Inspirado en el Steeldive SD1985.",
+      "description_de": "Dritter Teil der Scaphandre-Saga, Hommage an die Unterwasserforschung und Cousteaus Vermächtnis. Turtle-Gehäuse 44mm, 1200m, NH35, blaue Keramiklünette, BGW9-Lume, Superengineer-Armband und zwei Gummibänder. Inspiriert von der Steeldive SD1985.",
+      "description_en": "Third chapter of the Scaphandre saga, tribute to underwater exploration and Cousteau's legacy. Turtle case 44mm, 1200m, NH35, blue ceramic bezel, BGW9 lume, Superengineer bracelet and two rubber straps. Inspired by Steeldive SD1985.",
+      "hdr_link": "https://www.hablemosderelojes.com/t/230369",
+      "price": 205,
+      "case_diameter": 44,
+      "case_height": 13.85,
+      "strap_width": 22,
+      "movement_type": "automatic",
+      "movement_id": "NH35",
+      "sourceFolder": "hdr_zines_src/scaphandre_iii",
+      "pdfFolder": "HdR zines/RSWC Scaphandre III",
+      "movement_company": "Seiko",
+      "lane_id": "rswc",
+      "has_zine": true
+    }
+  ]

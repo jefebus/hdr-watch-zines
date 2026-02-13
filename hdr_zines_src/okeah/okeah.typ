@@ -128,5 +128,5 @@ Okeah Final Edition (2011-2012) cierra 35 años de historia del Okeah y calibre 
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_OKEAH · Hablemos de Relojes_
+_Hablemos de Relojes_
 ])
