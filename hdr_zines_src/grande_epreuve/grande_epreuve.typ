@@ -28,66 +28,87 @@
 })#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
-- Caja en acero inoxidable 316L
-- Diámetro: 40mm, espesor: 13.5mm
-- Corona roscada
-- Resistencia: 100 metros
-- Movimiento cronógrafo Seagull ST1901
-- 21 rubíes, cuerda manual
-- Reserva de marcha: 42 horas
-- Cristal de zafiro con AR interno
-- Fondo trasero exhibition
-- Bisel taquimétrico
-- Correa de piel de cocodrilo
-- Ancho de asas: 20mm
-- Disponible en dial blanco (panda) y negro (reverse panda)
+
+- Caja acero 316L
+- Diámetro: 40mm (41mm bisel)
+- Espesor: 14mm
+- Corona firmada no roscada
+- Pulsadores roscados
+- Tapa roscada grabada
+- Resistencia: 100m / 10 ATM
+- Cronógrafo Seagull ST19
+- Cuerda manual, 21 rubíes
+- Cristal zafiro AR interno
+- Bisel cerámico taquimétrico
+- Lumen BGW-9 azul
+- Brazalete Oyster
+- Paso correa: 20mm
+- Peso: 160g aprox.
+- Dial blanco/negro (panda)
 #pagebreak()
 
 *LA GRAN PRUEBA*
 
-El proyecto Grande Épreuve ("Gran Prueba") nació en 2022 
-como homenaje al automovilismo clásico. Su diseño evoca 
-los cronógrafos de pilotos de los años 1960-70, cuando 
-hombres y máquinas se enfrentaban en las grandes pruebas.
+Grande Épreuve ("Gran Prueba")
+nació en 2022 como homenaje
+al automovilismo clásico.
 
-El nombre rinde tributo a las legendarias carreras: Le Mans, 
-Mille Miglia, Targa Florio. Eventos donde la precisión del 
-cronometraje era tan crucial como el coraje de los pilotos.
+Su diseño evoca los
+cronógrafos de pilotos de
+los años 60-70, cuando
+hombres y máquinas se
+enfrentaban en carreras
+legendarias.
 
-Este cronógrafo captura la esencia de aquella época dorada, 
-cuando los relojes eran herramientas esenciales en el circuito.
+Le Mans, Mille Miglia,
+Targa Florio. Eventos donde
+la precisión era tan crucial
+como el coraje.
+
+Este cronógrafo captura la
+esencia de aquella época,
+cuando los relojes eran
+herramientas esenciales.
 #pagebreak()
 
 *DISEÑO CLÁSICO*
 
-El Grande Épreuve presenta un diseño limpio y funcional inspirado 
-en cronógrafos automovilísticos vintage. La esfera de dos 
-contadores muestra su herencia racing con claridad y elegancia.
+Diseño limpio y funcional
+inpirado en cronógrafos
+automovilísticos vintage.
 
-El bisel taquimétrico permite calcular velocidades hasta 
-400 km/h. Los sub-diales a las 3 y 9 registran minutos y 
-segundos pequeños respectivamente, con fecha a las 6.
+Esfera de dos contadores
+muestra herencia racing con
+claridad y elegancia.
 
-La caja de 40mm ofrece proporciones perfectas. Las asas cortas 
-y el perfil alto de 13.5mm recuerdan a los cronógrafos clásicos 
-de cuerda manual, antes de que la miniaturización dominara 
-el diseño relojero.
+Bisel cerámico taquimétrico
+permite calcular velocidades.
+Sin fechador: pureza total.
+
+Caja de 40mm con
+proporciones perfectas.
+Perfil de 14mm evoca
+cronógrafos clásicos de
+cuerda manual.
+
+Logo aplicado con acabado
+pulido. Estética años 60.
 #pagebreak()
 
-*MOVIMIENTO ST1901*
+*MOVIMIENTO ST19*
 
-En el corazón late el Seagull ST1901, versión china del 
+En el corazón late el Seagull ST19, versión china del 
 legendario Venus 175. Este calibre de cuerda manual con 
 disposición en columna ofrece cronometraje preciso y durabilidad 
 probada en millones de relojes.
 
-El fondo exhibition permite admirar el movimiento: la rueda 
-de pilares cromada, los puentes decorados, el volante oscilante. 
-Cada componente del ST1901 puede ser observado en acción a 
-través del cristal de zafiro.
+La tapa roscada de acero presenta un detallado grabado de dos 
+coches de carreras clásicos. Este diseño artístico ocupa toda 
+la trasera, combinando personalidad histórica con protección 
+del movimiento.
 
-Con 21 rubíes y 42 horas de reserva, este movimiento combina 
-tradición relojera con fiabilidad moderna, ideal para uso diario.
+Con 21 rubíes, este calibre combina tradición relojera con 
+fiabilidad moderna, ideal para uso diario.
 #pagebreak()
 
 *VERSATILIDAD Y ESTILO*
@@ -101,29 +122,32 @@ Ambas versiones comparten la misma calidad de construcción.
 Los sub-diales contrastantes mejoran la legibilidad y aportan 
 carácter deportivo clásico.
 
-Las correas de piel aportan lujo tradicional. El ancho de 20mm 
-permite infinitas opciones: NATO, rally, caucho. Cada correa 
-transforma el carácter del reloj.
+El brazalete Oyster de acero con cierre doble pulsador aporta 
+solidez y confort. El ancho de 20mm permite infinitas opciones: 
+NATO, rally, piel, caucho. Cada correa transforma el carácter 
+del reloj.
 #pagebreak()
 
 *INSTRUCCIONES DE USO*
 
-*CARGA:* Gire la corona en sentido horario 30-40 veces 
-hasta sentir resistencia. No fuerce.
+*CARGA:* Gire corona en
+sentido horario 30-40 veces.
+No fuerce. Corona no roscada.
 
-*HORA:* Tire corona a posición 2, ajuste hora y minutos. 
-Empuje y enrosque.
+*HORA:* Tire corona, ajuste
+hora y minutos. Empuje.
 
-*CRONÓGRAFO:* Pulsador superior inicia/detiene. Inferior 
-pone a cero (solo con cronógrafo detenido).
+*CRONÓGRAFO:* Pulsador
+superior inicia/detiene.
+Inferior pone a cero (solo
+con cronógrafo detenido).
 
-*FECHA:* Tire corona a posición 1 y ajuste. No ajuste entre 
-21:00 y 03:00.
+*RESISTENCIA:* 100m (10 ATM).
+Apto natación. No buceo.
 
-*RESISTENCIA:* 100m (10 ATM). Apto para natación. No buceo.
-
-*MANTENIMIENTO:* Revise cada 3-5 años. Limpie con paño suave. 
-Evite campos magnéticos y golpes.
+*MANTENIMIENTO:* Revise cada
+3-5 años. Limpie con paño.
+Evite imanes y golpes.
 #pagebreak()
 
 // back cover
@@ -132,10 +156,10 @@ Evite campos magnéticos y golpes.
 })
 
 #place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
-La trasera roscada en acero 316L presenta un grabado 
-detallado de dos coches de carreras clásicos de principios del siglo XX. 
-Este relieve artístico ocupa toda la tapa, combinando 
-personalidad histórica con la estanqueidad de 100m.
+La tapa roscada presenta un grabado detallado de dos coches 
+de carreras clásicos. Este relieve artístico combina historia 
+automóvil con protección del movimiento ST19. 
+Cronógrafo de cuerda manual con alma racing.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
