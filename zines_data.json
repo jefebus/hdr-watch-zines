@@ -1405,10 +1405,9 @@
     "movement_company": "Vostok",
     "lane_id": "otros",
     "has_zine": false
-  }
-    },
-    {
-      "id": "scaphandre_iii",
+  },
+  {
+    "id": "scaphandre_iii",
       "title": "RSWC Scaphandre III",
       "brand": "RSWC",
       "model": "Scaphandre III",
