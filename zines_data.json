@@ -597,11 +597,11 @@
     "strap_width": 22,
     "movement_type": "automatic",
     "movement_id": "NH35",
-    "sourceFolder": null,
-    "pdfFolder": null,
+    "sourceFolder": "hdr_zines_src/kaiju_yuki_otoko",
+    "pdfFolder": "HdR zines/RSWC Kaiju Yuki-Otoko",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": false
+    "has_zine": true
   },
   {
     "id": "majetek",
