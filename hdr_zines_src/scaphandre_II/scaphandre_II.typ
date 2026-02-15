@@ -21,7 +21,7 @@
 // 1) PORTADA
 ///////////////////////////////////////////////////////////////////////////////
 #block({
-  image("scaphandre_II_front.jpeg", width: 100%, height: 100%, fit: "cover")
+  image("scaphandre_ii_front.jpeg", width: 100%, height: 100%, fit: "cover")
   place(top + center, dy: 3mm, box(
     fill: rgb(0, 0, 0, 150),
     inset: 8pt,
@@ -150,7 +150,7 @@ una herramienta extrema, con estética de exploración y combate contra la presi
 // 8) CONTRAPORTADA
 ///////////////////////////////////////////////////////////////////////////////
 #block({
-  image("scaphandre_II_back.jpeg", width: 100%, height: 50%, fit: "cover")
+  image("scaphandre_ii_back.jpeg", width: 100%, height: 50%, fit: "cover")
 })
 
 #place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
