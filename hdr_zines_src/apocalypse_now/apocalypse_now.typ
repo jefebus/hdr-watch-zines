@@ -141,5 +141,5 @@ Cine, herramienta y mito.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_Sol y Sombra · Hablemos de Relojes_
+_Hablemos de Relojes_
 ])

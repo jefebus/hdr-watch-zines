@@ -30,70 +30,128 @@
 
 // Especificaciones técnicas
 *ESPECIFICACIONES TÉCNICAS*
-Caja: acero 316L, 44mm diámetro
-Grosor: 13,85mm
-Lug to lug: 50mm
-Ancho correa: 22mm
-Bisel cerámico unidireccional
-Cristal zafiro AR
-Sumergible 1200m
-Movimiento: Seiko NH35 automático
-Brazalete Superengineer + 2 correas goma
-Lumen BGW9
-Corona roscada
-Fondo atornillado
-Precio: 205€
+
+- Modelo: Scaphandre III
+- Base: Steeldive SD1985
+- Caja: acero 316L Turtle
+- Diámetro: 44 mm
+- Grosor: 13,85 mm
+- L2L: 50 mm / Paso: 22 mm
+- Bisel cerámico azul
+- Cristal zafiro AR interno
+- Hermeticidad: 1200 m
+- Movimiento: Seiko NH35
+- Lumen: BGW9 azul
+- Corona roscada 4h
+- Brazalete Superengineer
+- Extra: 2 correas goma
 #pagebreak()
 
 // Historia
-*LA SAGA SCAPHANDRE Y COUSTEAU*
-La trilogía Scaphandre rinde homenaje
-a la exploración submarina y al legado
-de Cousteau. Inspirada en los relojes
-de buceo profesionales y en la pasión
-por el océano, cada modelo representa
-un capítulo en la aventura de descubrir
-las profundidades. El Scaphandre III
-cierra la saga con un diseño robusto,
-hermeticidad extrema y detalles que
-recuerdan a los grandes hitos del buceo.
+*TRILOGÍA SCAPHANDRE*
+
+2021: Scaphandre I. Homenaje
+Omega Ploprof 600. 56 mm,
+forma masiva. Espíritu 70.
+
+2022: Scaphandre II. Inspirado
+Seamaster 1000. 45 mm
+monobloque. 1000m, equipo
+Cousteau.
+
+2023: Scaphandre III. Cierre
+de la saga. 44 mm Turtle.
+1200m, equilibrio perfecto.
+
+Tres capítulos. Una pasión:
+el abismo.
 #pagebreak()
 
-// Diseño y detalles
-*DISEÑO Y DETALLES*
-Caja tipo Turtle de 44mm, bisel cerámico
-azul, cristal zafiro, lumen BGW9 y
-brazalete Superengineer. Incluye dos
-correas de goma (azul y negra). Edición
-limitada, fondo grabado y numerado.
-Inspiración en el Steeldive SD1985.
+// Diseño
+*DISEÑO TURTLE*
+
+La caja Turtle evoca las
+formas orgánicas de los
+divers japoneses clásicos.
+Curvas suaves, protección
+natural de corona a las 4.
+
+Dial azul profundo con índices
+aplicados y agujas anchas.
+Fecha a las 3 enmarcada.
+
+Bisel cerámico azul con
+marcas luminosas BGW9 en todo
+el perímetro. Inserto con
+números cada 10 minutos.
+
+Cristal zafiro abombado con
+AR interno. Refleja la luz
+como superficie del agua.
+
+Brazalete Superengineer: eslabones
+sólidos, cierre deployante.
 #pagebreak()
 
-// Características destacadas
-*CARACTERÍSTICAS DESTACADAS*
-Hermeticidad 1200m, válvula de helio,
-corona y fondo roscados, bisel cerámico
-luminoso, lumen BGW9, movimiento NH35,
-acero 316L, brazalete sólido, edición
-numerada. Ideal para buceo extremo.
+// Profundidad
+*1200 METROS*
+
+Récord escafandra: 332m
+(Ahmed Gabr, 2014). Récord
+apnea: 253m (Herbert Nitsch).
+
+Los 1200m superan todo
+límite humano. ¿Por qué?
+Margen de seguridad
+ingenieril.
+
+A 40m recreativos, el reloj
+trabaja al 3%. Sobre-diseño
+para décadas.
+
+NH35: 21.600 vph, 41h
+reserva. Juntas triple
+grosor. Un Scaphandre no
+falla.
 #pagebreak()
 
-// Créditos y agradecimientos
-*CRÉDITOS Y AGRADECIMIENTOS*
-Proyecto HdR y RSWC. Inspiración y
-apoyo de la comunidad. Diseño basado
-en Steeldive SD1985. Gracias a todos
-los foreros y colaboradores.
+// Proyecto
+*EL CIERRE DE LA SAGA*
+
+Tres años, tres relojes.
+Una misma filosofía: buceo
+extremo al alcance de los
+entusiastas.
+
+*Scaphandre I* (2021)
+56mm Ploprof tribute
+
+*Scaphandre II* (2022)
+45mm Seamaster 1000
+
+*Scaphandre III* (2023)
+44mm Turtle master
 #pagebreak()
 
-// Instrucciones de uso
+// Instrucciones
 *INSTRUCCIONES DE USO*
-Ajustar la hora desenroscando la corona.
-Evitar manipular bajo el agua. Lavar con
-agua dulce tras inmersión. Revisar juntas
-cada 2 años. No abrir la caja salvo por
-profesional. Cargar manualmente si se
-detiene. Mantener alejado de imanes.
+
+CARGA: automática NH35. Si
+se detiene: 20-30 giros
+sentido horario.
+
+AJUSTE: desenroscar corona,
+tirar, ajustar hora. NO
+entre 21:00-03:00.
+
+BUCEO: apretar corona antes
+de sumergir. NO manipular
+bajo agua. Lavar con agua
+dulce tras inmersión.
+
+MANTENIMIENTO: revisar juntas
+cada 2 años. Servicio cada 5.
+Evitar golpes e imanes.
 #pagebreak()
 
 // Contraportada
@@ -102,8 +160,9 @@ detiene. Mantener alejado de imanes.
 })
 
 #place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
-Fondo grabado y numerado. Inspiración
-Cousteau y buceo profesional extremo.
+Fondo grabado numerado. Forma
+Turtle, 1200m. Capítulo final
+de la saga. Legado Cousteau.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[

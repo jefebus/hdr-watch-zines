@@ -92,8 +92,9 @@ Dedicado a la memoria de Manuel Casva, cuyo trabajo desinteresado hizo posible e
 *INSTRUCCIONES DE USO*
 
 *Puesta en hora:* Desenroscar
-corona, extraer a 2ª posición,
-ajustar y enroscar.
+corona y extraer,
+ajustar hora, luego
+presionar y enroscar nuevamente.
 
 *Uso submarino:* Verificar
 corona roscada antes de

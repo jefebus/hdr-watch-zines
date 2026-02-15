@@ -105,7 +105,9 @@ suelen reservarse para relojes de lujo.
 
 RSWC ha conseguido integrar un Peacock SL4617 totalmente 
 funcional, un movimiento basado en el archiconocido Valjoux
-7750. Subcronógrafo de 30 minutos, precisión garantizada, 
+7750. 
+
+Subcronógrafo de 30 minutos, precisión garantizada, 
 durabilidad probada. Es un reloj para quienes buscan mecánica
 pura a un coste razonable.
 
@@ -123,8 +125,7 @@ Gira hacia adelante para avanzar fecha.
 Uso del cronógrafo: Pulsa el botón de las 2 para iniciar, pulsa de nuevo para parar. 
 Pulsa el botón de las 4 para resetear. 
 En uso normal se recomienda mantener el crono parado: 
-la aguja central del segundero permanecerá parada mientras que el segundero 
-a las 9 es el que marcará los segundos del reloj.
+la aguja central del segundero permanecerá parada mientras que el segundero a las 9 es el que marcará los segundos del reloj.
 
 #pagebreak()
 

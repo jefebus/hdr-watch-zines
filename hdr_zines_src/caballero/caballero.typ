@@ -28,6 +28,7 @@
 })#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
+
 - Caja de acero 316L, caja: 35×34mm, espesor: 13,2mm, lug to lug: 46mm, anchura de asas: 22mm
 - Cristal de zafiro curvo con tratamiento antirreflejos (AR) interno
 - Calibre: Sellita SW-200, automático suizo con 28.800 alternancias/h
@@ -51,51 +52,50 @@ La tapa trasera con cristal permite admirar el movimiento Sellita SW-200.
 
 #pagebreak()
 
-*LA ESPAÑA DE UNA ÉPOCA*
+*LA ESFERA*
 
-Sol y Sombra evoca una época de contrastes entre tradición y modernidad.
-El reloj habla de identidad, dualidad y el equilibrio entre fuerzas 
-opuestas que definen tanto la naturaleza como la experiencia humana.
+La esfera del Caballero presenta un delicado acabado plateado con 
+textura rayos de sol que captura la luz de manera singular.
 
-En la trasera se encuentra grabado un epitafio que constituye un 
-homenaje al patrimonio cultural que inspira el proyecto y al 
-concepto de dualidad que define su identidad.
+Las agujas dauphine pulidas se deslizan elegantemente sobre los índices 
+aplicados, también pulidos y ligeramente curvados, creando una lectura 
+precisa y refinada.
 
-Es una pequeña obra de arte que trasciende su función de 
-marcar el tiempo, invitándote a reflexionar sobre los 
-contrastes que nos rodean.
+La ventana de fecha a las 3 cuenta con un marco metálico pulido que 
+aporta distinción. El logo Sol y Sombra está aplicado en la esfera.
+
+Los tres acabados disponibles (Clásico, Deportivo y Moderno) se 
+reflejan en la esfera, dando a cada versión un carácter único.
 
 #pagebreak()
 
-*DETALLES CONSTRUCTIVOS*
+*EL CALIBRE SELLITA SW-200*
 
-El Sol y Sombra Caballero toma como base el Sellita SW-200, 
-aprovechando su confiabilidad y precisión suiza.
+Fabricado en Suiza, el Sellita SW-200 es reconocido por su fiabilidad 
+y precisión. Con 26 rubíes, oscila a 28.800 alternancias por hora.
 
-Los índices aplicados crean guías visuales claras por donde 
-viajan las agujas, generando una lectura precisa y elegante.
+Su sistema de carga bidireccional optimiza la eficiencia. La reserva 
+de marcha alcanza 38 horas. Permite también carga manual mediante corona.
 
-El cristal sobredimensionado y curvo protege con elegancia, 
-capturando luz de forma singular. La corona es suave y precisa.
-La correa de piel se adapta a cualquier estación y 
-complementa perfectamente la estética del reloj.
+Con 25,6 mm de diámetro y 4,6 mm de grosor, su arquitectura robusta 
+lo convierte en un "caballo de batalla" de la relojería contemporánea.
+
+Marcas como Oris, Sinn o Christopher Ward confían en este calibre.
+El Caballero lo monta sin personalizar, tal como sale de fábrica.
 
 #pagebreak()
 
 // --- ESPIRITU VINTAGE ---
 *ESPÍRITU VINTAGE CON MATERIALES MODERNOS*
 
-El Sol y Sombra Caballero es un homenaje al Duward Diplomatic 
-cuadrado, manteniendo la esencia de aquella estética que marcó una época.
+El Sol y Sombra Caballero rinde homenaje al Duward Diplomatic cuadrado, 
+manteniendo la esencia de aquella estética que marcó una época.
 
-Se recoge ese carácter de un diseño histórico que muchos siguen apreciando hoy.
+Su construcción y proporciones honran aquel espíritu original con 
+materiales y movimiento suizo contemporáneos.
 
-Su construcción y proporciones buscan honrar aquel espíritu original con materiales 
-y movimientos contemporáneos, dando como resultado un reloj para quienes valoran 
-la continuidad histórica con visión moderna.
-
-Un proyecto que rescata la sabiduría del pasado y la trae al presente con
-respeto y coherencia.
+Un reloj para quienes valoran la continuidad histórica con visión moderna.
+Un proyecto que rescata el pasado y lo trae al presente con respeto.
 
 #pagebreak()
 

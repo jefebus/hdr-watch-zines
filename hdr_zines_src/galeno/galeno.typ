@@ -136,5 +136,5 @@ debate y la ilusión de la comunidad HdR.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
-_Galeno · Proyecto HdR_
+_Hablemos de Relojes_
 ])
