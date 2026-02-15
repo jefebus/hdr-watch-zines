@@ -1052,9 +1052,10 @@
         otrosCumulative += otrosByYear[key] || 0;
 
         // Push data for every year to maintain continuity
-        rswcData.push({ x: year, y: rswcCumulative });
-        sysData.push({ x: year, y: sysCumulative });
-        otrosData.push({ x: year, y: otrosCumulative });
+        // Store both cumulative (for display) and yearly count (for tooltip)
+        rswcData.push({ x: year, y: rswcCumulative, yearlyCount: rswcByYear[key] || 0 });
+        sysData.push({ x: year, y: sysCumulative, yearlyCount: sysByYear[key] || 0 });
+        otrosData.push({ x: year, y: otrosCumulative, yearlyCount: otrosByYear[key] || 0 });
       }
 
       const ctx = document.getElementById("yearlyChart");
@@ -1172,17 +1173,17 @@
               callbacks: {
                 title(items) { 
                   const year = items[0].parsed.x;
-                  return `Hasta ${year}`; 
+                  return `Año ${year}`; 
                 },
                 label(context) { 
-                  const cumulative = context.parsed.y;
+                  const yearlyCount = context.raw.yearlyCount || 0;
                   const lane = context.dataset.label;
-                  return `${lane}: ${cumulative} ${cumulative === 1 ? "reloj" : "relojes"}`;
+                  return `${lane}: ${yearlyCount} ${yearlyCount === 1 ? "reloj" : "relojes"}`;
                 },
                 footer(items) {
-                  // Calculate total across all lanes
-                  const total = items.reduce((sum, item) => sum + item.parsed.y, 0);
-                  return `Total: ${total} ${total === 1 ? "reloj" : "relojes"}`;
+                  // Calculate total for the specific year across all lanes
+                  const total = items.reduce((sum, item) => sum + (item.raw.yearlyCount || 0), 0);
+                  return `Total ese año: ${total} ${total === 1 ? "reloj" : "relojes"}`;
                 }
               },
             },
