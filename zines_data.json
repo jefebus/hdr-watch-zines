@@ -16,7 +16,10 @@
     "case_height": 17,
     "strap_width": 24,
     "movement_type": "automatic",
-    "movement_id": ["2409", "2415"],
+    "movement_id": [
+      "2409",
+      "2415"
+    ],
     "sourceFolder": null,
     "pdfFolder": null,
     "movement_company": "Vostok",
@@ -133,14 +136,14 @@
     "description_en": "Chronograph project honoring Yuri Gagarin. Let's go!",
     "hdr_link": "https://www.hablemosderelojes.com/t/113833",
     "price": 98,
-      "case_diameter": 38,
-      "case_height": 11.5,
-      "strap_width": 18,
-      "movement_type": "manual",
-      "movement_id": "2609",
+    "case_diameter": 38,
+    "case_height": 11.5,
+    "strap_width": 18,
+    "movement_type": "manual",
+    "movement_id": "2609",
     "sourceFolder": null,
     "pdfFolder": null,
-      "movement_company": "Poljot",
+    "movement_company": "Poljot",
     "lane_id": "rswc",
     "has_zine": false
   },
@@ -158,7 +161,8 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/89777",
     "price": 244,
     "case_diameter": 42,
-    "case_height": null,
+    "lug_to_lug": 49,
+    "case_height": 13.2,
     "strap_width": 22,
     "movement_type": "manual",
     "movement_id": "ST-1901",
@@ -361,7 +365,8 @@
     "pdfFolder": "HdR zines/RSWC Deco-Timer",
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 49
   },
   {
     "id": "dirty_fifteen",
@@ -409,7 +414,8 @@
     "pdfFolder": "HdR zines/RSWC Eagle One",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 54.2
   },
   {
     "id": "eagle_two",
@@ -433,7 +439,8 @@
     "pdfFolder": "HdR zines/RSWC Eagle Two",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 51
   },
   {
     "id": "forest_defender",
@@ -457,7 +464,8 @@
     "pdfFolder": "HdR zines/RSWC Forest Defender",
     "movement_company": "Peacock",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 51
   },
   {
     "id": "gamma_gibraltar",
@@ -505,7 +513,8 @@
     "pdfFolder": "HdR zines/RSWC Goldmaster",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 49
   },
   {
     "id": "grande_epreuve",
@@ -529,7 +538,8 @@
     "pdfFolder": "HdR zines/RSWC Grande Épreuve",
     "movement_company": "Seagull",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 48.5
   },
   {
     "id": "heian",
@@ -577,7 +587,8 @@
     "pdfFolder": "HdR zines/RSWC Kaiju",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 50
   },
   {
     "id": "kaiju_yuki_otoko",
@@ -601,7 +612,8 @@
     "pdfFolder": "HdR zines/RSWC Kaiju Yuki-Otoko",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 50
   },
   {
     "id": "majetek",
@@ -747,7 +759,6 @@
     "lane_id": "rswc",
     "has_zine": true
   },
-  
   {
     "id": "scaphandre_i",
     "title": "RSWC Scaphandre I",
@@ -797,32 +808,31 @@
     "lane_id": "rswc",
     "has_zine": true
   },
-  
   {
     "id": "scaphandre_iii",
-      "title": "RSWC Scaphandre III",
-      "brand": "RSWC",
-      "model": "Scaphandre III",
-      "emoji": "🤿",
-      "year": 2023,
-      "month": 3,
-      "category": "diver",
-      "description_es": "Tercera entrega de la saga Scaphandre, homenaje a la exploración submarina y al legado de Cousteau. Caja Turtle 44mm, 1200m, NH35, bisel cerámico azul, lumen BGW9, brazalete Superengineer y dos correas de goma. Inspirado en el Steeldive SD1985.",
-      "description_de": "Dritter Teil der Scaphandre-Saga, Hommage an die Unterwasserforschung und Cousteaus Vermächtnis. Turtle-Gehäuse 44mm, 1200m, NH35, blaue Keramiklünette, BGW9-Lume, Superengineer-Armband und zwei Gummibänder. Inspiriert von der Steeldive SD1985.",
-      "description_en": "Third chapter of the Scaphandre saga, tribute to underwater exploration and Cousteau's legacy. Turtle case 44mm, 1200m, NH35, blue ceramic bezel, BGW9 lume, Superengineer bracelet and two rubber straps. Inspired by Steeldive SD1985.",
-      "hdr_link": "https://www.hablemosderelojes.com/t/230369",
-      "price": 205,
-      "case_diameter": 44,
-      "case_height": 13.85,
-      "strap_width": 22,
-      "movement_type": "automatic",
-      "movement_id": "NH35",
-      "sourceFolder": "hdr_zines_src/scaphandre_iii",
-      "pdfFolder": "HdR zines/RSWC Scaphandre III",
-      "movement_company": "Seiko",
-      "lane_id": "rswc",
-      "has_zine": true
-    },
+    "title": "RSWC Scaphandre III",
+    "brand": "RSWC",
+    "model": "Scaphandre III",
+    "emoji": "🤿",
+    "year": 2023,
+    "month": 3,
+    "category": "diver",
+    "description_es": "Tercera entrega de la saga Scaphandre, homenaje a la exploración submarina y al legado de Cousteau. Caja Turtle 44mm, 1200m, NH35, bisel cerámico azul, lumen BGW9, brazalete Superengineer y dos correas de goma. Inspirado en el Steeldive SD1985.",
+    "description_de": "Dritter Teil der Scaphandre-Saga, Hommage an die Unterwasserforschung und Cousteaus Vermächtnis. Turtle-Gehäuse 44mm, 1200m, NH35, blaue Keramiklünette, BGW9-Lume, Superengineer-Armband und zwei Gummibänder. Inspiriert von der Steeldive SD1985.",
+    "description_en": "Third chapter of the Scaphandre saga, tribute to underwater exploration and Cousteau's legacy. Turtle case 44mm, 1200m, NH35, blue ceramic bezel, BGW9 lume, Superengineer bracelet and two rubber straps. Inspired by Steeldive SD1985.",
+    "hdr_link": "https://www.hablemosderelojes.com/t/230369",
+    "price": 205,
+    "case_diameter": 44,
+    "case_height": 13.85,
+    "strap_width": 22,
+    "movement_type": "automatic",
+    "movement_id": "NH35",
+    "sourceFolder": "hdr_zines_src/scaphandre_iii",
+    "pdfFolder": "HdR zines/RSWC Scaphandre III",
+    "movement_company": "Seiko",
+    "lane_id": "rswc",
+    "has_zine": true
+  },
   {
     "id": "skygraph",
     "title": "RSWC Skygraph",
@@ -845,7 +855,8 @@
     "pdfFolder": "HdR zines/RSWC Skygraph",
     "movement_company": "Peacock",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 49
   },
   {
     "id": "iberia",
@@ -893,7 +904,8 @@
     "pdfFolder": "HdR zines/RSWC Super Massive Colossus",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 56
   },
   {
     "id": "ala14",
@@ -921,7 +933,8 @@
     "movement_company": "Miyota",
     "lane_id": "rswc",
     "has_zine": true,
-    "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon"
+    "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon",
+    "lug_to_lug": 48
   },
   {
     "id": "cosmotemp",
@@ -945,7 +958,8 @@
     "pdfFolder": "HdR zines/RSWC Super Stellar Cosmotemp",
     "movement_company": "SKMEI",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 52
   },
   {
     "id": "typhoon",
@@ -972,7 +986,8 @@
     "pdfFolder": "HdR zines/RSWC Super Stellar Typhoon",
     "movement_company": "Miyota",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 52
   },
   {
     "id": "world_timer",
@@ -996,7 +1011,8 @@
     "pdfFolder": "HdR zines/RSWC Super Stellar World Timer",
     "movement_company": "SKMEI",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 52
   },
   {
     "id": "supersharkomatic",
@@ -1020,7 +1036,8 @@
     "pdfFolder": "HdR zines/RSWC Supersharkomatic",
     "movement_company": "Seiko",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 46.5
   },
   {
     "id": "typ_vii-b",
@@ -1116,7 +1133,8 @@
     "pdfFolder": "HdR zines/RSWC Vainqueur",
     "movement_company": "Peacock",
     "lane_id": "rswc",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 46.5
   },
   {
     "id": "verne",
@@ -1261,7 +1279,8 @@
     "pdfFolder": "HdR zines/SyS Competidor",
     "movement_company": "Seagull",
     "lane_id": "sys",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 47
   },
   {
     "id": "inmortal",
@@ -1285,7 +1304,8 @@
     "pdfFolder": "HdR zines/SyS Inmortal",
     "movement_company": "Seagull",
     "lane_id": "sys",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 49
   },
   {
     "id": "inmortal_reserva_especial",
@@ -1358,7 +1378,8 @@
     "pdfFolder": "HdR zines/SyS Roquina",
     "movement_company": "Seiko",
     "lane_id": "sys",
-    "has_zine": true
+    "has_zine": true,
+    "lug_to_lug": 46
   },
   {
     "id": "viajero",
