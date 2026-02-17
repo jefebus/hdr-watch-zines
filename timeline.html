@@ -491,7 +491,7 @@
         function renderSingleCard(zine) {
             // Check if the watch has a zine
             const hasZine = zine.has_zine !== false;
-            const statusBadge = zine.project_status ? 
+            const statusBadge = (zine.project_status && zine.project_status !== 'delivered') ? 
                 `<span class="project-status status-${zine.project_status}">${getStatusLabel(zine.project_status)}</span>` : 
                 '';
 
