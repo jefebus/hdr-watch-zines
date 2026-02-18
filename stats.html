@@ -273,7 +273,7 @@
           <option value="diameter-lug">Diámetro vs Lug to Lug</option>
           <option value="yearly-cumulative">Relojes por año (acumulado)</option>
           <option value="price">Distribución de precios</option>
-          <option value="water-resist">Resistencia al agua</option>
+          <option value="water-resist">Hermeticidad</option>
           <option value="movement-type">Tipos de movimiento</option>
           <option value="movement-company">Fabricante de calibre</option>
         </select>
@@ -345,11 +345,11 @@
           <!-- Water Resistance Chart -->
           <section class="stats-card chart-section" id="water-resist">
             <div>
-              <h2>Resistencia al agua</h2>
-              <p class="stats-meta">Distribución de resistencia al agua en metros (escala logarítmica). Cada punto representa un reloj. Colores por colección.</p>
+              <h2>Hermeticidad</h2>
+              <p class="stats-meta">Distribución de hermeticidad como medida de presión en metros de columna de agua (escala logarítmica). Cada punto representa un reloj. Colores por colección.</p>
             </div>
             <div class="chart-container">
-              <canvas id="waterResistChart" aria-label="Distribución de resistencia al agua" role="img"></canvas>
+              <canvas id="waterResistChart" aria-label="Distribución de hermeticidad" role="img"></canvas>
             </div>
             <div id="water-resist-error" class="error-banner"></div>
           </section>
@@ -596,9 +596,16 @@
           const avgPrice = prices.length > 0 ? Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) : 0;
           const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
           const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
-          const rswcWithPrice = watches.filter(w => w.lane_id === "rswc" && w.price != null && w.price !== "" && typeof w.price === 'number').length;
-          const sysWithPrice = watches.filter(w => w.lane_id === "sys" && w.price != null && w.price !== "" && typeof w.price === 'number').length;
-          const otrosWithPrice = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.price != null && w.price !== "" && typeof w.price === 'number').length;
+          
+          const rswcPrices = watches.filter(w => w.lane_id === "rswc" && w.price != null && w.price !== "" && typeof w.price === 'number').map(w => w.price);
+          const avgRswcWithPrice = rswcPrices.length > 0 ? Math.round(rswcPrices.reduce((a, b) => a + b, 0) / rswcPrices.length) : 0;
+          
+          const sysPrices = watches.filter(w => w.lane_id === "sys" && w.price != null && w.price !== "" && typeof w.price === 'number').map(w => w.price);
+          const avgSysWithPrice = sysPrices.length > 0 ? Math.round(sysPrices.reduce((a, b) => a + b, 0) / sysPrices.length) : 0;
+          
+          const otrosPrices = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.price != null && w.price !== "" && typeof w.price === 'number').map(w => w.price);
+          const avgOtrosWithPrice = otrosPrices.length > 0 ? Math.round(otrosPrices.reduce((a, b) => a + b, 0) / otrosPrices.length) : 0;
+          
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -617,16 +624,16 @@
               <span class="summary-value">${minPrice}€ - ${maxPrice}€</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">RSWC</span>
-              <span class="summary-value">${rswcWithPrice}</span>
+              <span class="summary-label">Precio medio RSWC</span>
+              <span class="summary-value">${avgRswcWithPrice}€</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">Sol y Sombra</span>
-              <span class="summary-value">${sysWithPrice}</span>
+              <span class="summary-label">Precio medio Sol y Sombra</span>
+              <span class="summary-value">${avgSysWithPrice}€</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">Otros</span>
-              <span class="summary-value">${otrosWithPrice}</span>
+              <span class="summary-label">Precio medio Otros</span>
+              <span class="summary-value">${avgOtrosWithPrice}€</span>
             </div>
           `;
           break;
@@ -646,11 +653,11 @@
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">Con resistencia</span>
+              <span class="summary-label">Con hermeticidad</span>
               <span class="summary-value">${withWaterResist}</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">Resistencia media</span>
+              <span class="summary-label">Hermeticidad media</span>
               <span class="summary-value">${avgWR}m</span>
             </div>
             <div class="summary-row">
@@ -676,7 +683,9 @@
           const withMovType = watches.filter(w => w.movement_type != null && w.movement_type !== "").length;
           const movTypes = [...new Set(watches.filter(w => w.movement_type != null && w.movement_type !== "").map(w => w.movement_type))];
           const automatic = watches.filter(w => w.movement_type === "automatic").length;
+          const manual = watches.filter(w => w.movement_type === "manual").length;
           const quartz = watches.filter(w => w.movement_type === "quartz").length;
+          const solar = watches.filter(w => w.movement_type === "solar").length;
           const rswcMovType = watches.filter(w => w.lane_id === "rswc" && w.movement_type != null && w.movement_type !== "").length;
           const sysMovType = watches.filter(w => w.lane_id === "sys" && w.movement_type != null && w.movement_type !== "").length;
           html = `
@@ -697,8 +706,16 @@
               <span class="summary-value">${automatic}</span>
             </div>
             <div class="summary-row">
+              <span class="summary-label">Manuales</span>
+              <span class="summary-value">${manual}</span>
+            </div>
+            <div class="summary-row">
               <span class="summary-label">Cuarzo</span>
               <span class="summary-value">${quartz}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Solar</span>
+              <span class="summary-value">${solar}</span>
             </div>
           `;
           break;
@@ -708,6 +725,7 @@
           const movComps = [...new Set(watches.filter(w => w.movement_company != null && w.movement_company !== "").map(w => w.movement_company))];
           const rswcMovComp = watches.filter(w => w.lane_id === "rswc" && w.movement_company != null && w.movement_company !== "").length;
           const sysMovComp = watches.filter(w => w.lane_id === "sys" && w.movement_company != null && w.movement_company !== "").length;
+          const otrosMovComp = watches.filter(w => w.lane_id === "otros" && w.movement_company != null && w.movement_company !== "").length;
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -728,6 +746,10 @@
             <div class="summary-row">
               <span class="summary-label">Sol y Sombra</span>
               <span class="summary-value">${sysMovComp}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros</span>
+              <span class="summary-value">${otrosMovComp}</span>
             </div>
           `;
           break;
@@ -2586,8 +2608,6 @@
     }
 
     async function init() {
-      setupChartSelector();
-
       let data;
       try {
         const response = await fetch("zines_data.json", { cache: "no-store" });
@@ -2605,7 +2625,7 @@
         return;
       }
 
-      // Store data globally
+      // Store data globally BEFORE setting up chart selector
       globalWatchData = data;
 
       // Build all charts
@@ -2647,8 +2667,8 @@
         });
       } catch (e) { console.error(e); }
 
-      // Update summary for initial chart
-      updateSummaryForChart('diameter-strap', data);
+      // Setup chart selector AFTER data is loaded so saved selection has data available
+      setupChartSelector();
     }
 
     document.addEventListener("DOMContentLoaded", init);
