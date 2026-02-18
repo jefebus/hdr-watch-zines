@@ -2137,17 +2137,40 @@
               min: Math.max(1, minWR / 2),
               max: maxWR * 2,
               ticks: {
-                color: "#9ca3af",
-                font: { size: 10 },
-                callback: function(value) {
-                  // Show only clean logarithmic values
+                color: function(context) {
+                  const value = context.tick.value;
                   const logVal = Math.log10(value);
+                  // Major ticks (powers of 10) in brighter color
+                  if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
+                    return "#9ca3af";
+                  }
+                  // Minor ticks in dimmer color
+                  return "#6b7280";
+                },
+                font: function(context) {
+                  const value = context.tick.value;
+                  const logVal = Math.log10(value);
+                  // Major ticks larger
+                  if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
+                    return { size: 10, weight: '600' };
+                  }
+                  // Minor ticks smaller
+                  return { size: 9 };
+                },
+                callback: function(value) {
+                  const logVal = Math.log10(value);
+                  // Always show powers of 10
                   if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
                     return value + 'm';
                   }
-                  // Also show some intermediate values
+                  // Show intermediate common values
                   if (value === 20 || value === 30 || value === 50 || value === 70 ||
-                      value === 200 || value === 300 || value === 500 || value == 1200) {
+                      value === 200 || value === 300 || value === 500 || value === 1200) {
+                    return value + 'm';
+                  }
+                  // Show 2, 3, 5, 7 multiples of powers of 10
+                  if (value === 2 || value === 3 || value === 5 || value === 7 ||
+                      value === 2000 || value === 3000 || value === 5000 || value === 7000) {
                     return value + 'm';
                   }
                   return '';
@@ -2158,17 +2181,32 @@
                 color: function(context) {
                   const value = context.tick.value;
                   const logVal = Math.log10(value);
-                  // Highlight powers of 10 with stronger lines
+                  // Major grid lines (powers of 10)
                   if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
                     return "rgba(148, 163, 184, 0.5)";
                   }
-                  return "rgba(55, 65, 81, 0.2)";
+                  // Minor grid lines for intermediate values
+                  if (value === 20 || value === 30 || value === 50 || value === 70 ||
+                      value === 200 || value === 300 || value === 500 || value === 1200 ||
+                      value === 2 || value === 3 || value === 5 || value === 7 ||
+                      value === 2000 || value === 3000 || value === 5000 || value === 7000) {
+                    return "rgba(100, 116, 139, 0.3)";
+                  }
+                  return "rgba(55, 65, 81, 0.15)";
                 },
                 lineWidth: function(context) {
                   const value = context.tick.value;
                   const logVal = Math.log10(value);
+                  // Major grid lines thicker
                   if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
                     return 1.5;
+                  }
+                  // Intermediate values medium thickness
+                  if (value === 20 || value === 30 || value === 50 || value === 70 ||
+                      value === 200 || value === 300 || value === 500 || value === 1200 ||
+                      value === 2 || value === 3 || value === 5 || value === 7 ||
+                      value === 2000 || value === 3000 || value === 5000 || value === 7000) {
+                    return 1;
                   }
                   return 0.5;
                 }
