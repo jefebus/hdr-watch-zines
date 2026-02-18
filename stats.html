@@ -416,6 +416,18 @@
     // Global variable to store watch data
     let globalWatchData = [];
 
+    // Simple hash function to generate deterministic pseudo-random values from watch IDs
+    function hashString(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+      // Return value between 0 and 1
+      return Math.abs(hash) / 2147483647;
+    }
+
     // Chart selector functionality
     function setupChartSelector() {
       const select = document.getElementById('chartSelect');
@@ -1820,8 +1832,8 @@
           const count = priceCount.get(price) || 0;
           priceCount.set(price, count + 1);
           
-          // Add jitter based on how many watches have this price
-          const jitter = (Math.random() - 0.5) * jitterAmount * 2;
+          // Add deterministic jitter based on watch ID
+          const jitter = (hashString(info.id) - 0.5) * jitterAmount * 2;
           return { x: price, y: baseY + jitter };
         });
       };
@@ -2042,7 +2054,8 @@
           const count = wrCount.get(wr) || 0;
           wrCount.set(wr, count + 1);
           
-          const jitter = (Math.random() - 0.5) * jitterAmount * 2;
+          // Add deterministic jitter based on watch ID
+          const jitter = (hashString(info.id) - 0.5) * jitterAmount * 2;
           return { x: baseY + jitter, y: wr };
         });
       };
