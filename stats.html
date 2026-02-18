@@ -273,6 +273,7 @@
           <option value="diameter-lug">Diámetro vs Lug to Lug</option>
           <option value="yearly-cumulative">Relojes por año (acumulado)</option>
           <option value="price">Distribución de precios</option>
+          <option value="water-resist">Resistencia al agua</option>
           <option value="movement-type">Tipos de movimiento</option>
           <option value="movement-company">Fabricante de calibre</option>
         </select>
@@ -339,6 +340,18 @@
               <canvas id="priceChart" aria-label="Distribución de precios" role="img"></canvas>
             </div>
             <div id="price-error" class="error-banner"></div>
+          </section>
+
+          <!-- Water Resistance Chart -->
+          <section class="stats-card chart-section" id="water-resist">
+            <div>
+              <h2>Resistencia al agua</h2>
+              <p class="stats-meta">Distribución de resistencia al agua en metros (escala logarítmica). Cada punto representa un reloj. Colores por colección.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="waterResistChart" aria-label="Distribución de resistencia al agua" role="img"></canvas>
+            </div>
+            <div id="water-resist-error" class="error-banner"></div>
           </section>
 
           <!-- Movement Type Chart -->
@@ -590,6 +603,47 @@
             <div class="summary-row">
               <span class="summary-label">Otros</span>
               <span class="summary-value">${otrosWithPrice}</span>
+            </div>
+          `;
+          break;
+
+        case 'water-resist':
+          const withWaterResist = watches.filter(w => w.water_resist != null && w.water_resist !== "" && typeof w.water_resist === 'number').length;
+          const waterResists = watches.filter(w => w.water_resist != null && w.water_resist !== "" && typeof w.water_resist === 'number').map(w => w.water_resist);
+          const avgWR = waterResists.length > 0 ? Math.round(waterResists.reduce((a, b) => a + b, 0) / waterResists.length) : 0;
+          const minWR = waterResists.length > 0 ? Math.min(...waterResists) : 0;
+          const maxWR = waterResists.length > 0 ? Math.max(...waterResists) : 0;
+          const rswcWithWR = watches.filter(w => w.lane_id === "rswc" && w.water_resist != null && w.water_resist !== "" && typeof w.water_resist === 'number').length;
+          const sysWithWR = watches.filter(w => w.lane_id === "sys" && w.water_resist != null && w.water_resist !== "" && typeof w.water_resist === 'number').length;
+          const otrosWithWR = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.water_resist != null && w.water_resist !== "" && typeof w.water_resist === 'number').length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con resistencia</span>
+              <span class="summary-value">${withWaterResist}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Resistencia media</span>
+              <span class="summary-value">${avgWR}m</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Rango</span>
+              <span class="summary-value">${minWR}m - ${maxWR}m</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC</span>
+              <span class="summary-value">${rswcWithWR}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra</span>
+              <span class="summary-value">${sysWithWR}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros</span>
+              <span class="summary-value">${otrosWithWR}</span>
             </div>
           `;
           break;
@@ -1918,6 +1972,240 @@
       });
     }
 
+    function buildWaterResistChart(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("water-resist-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group watches by lane_id with water_resist data
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const w of watches) {
+        if (!w) continue;
+        const waterResist = w.water_resist;
+        if (waterResist === null || waterResist === undefined || waterResist === "") continue;
+        if (typeof waterResist !== "number" || !Number.isFinite(waterResist) || waterResist <= 0) continue;
+
+        const info = {
+          id: w.id || "(sin id)",
+          model: w.model || w.title || w.id || "?",
+          brand: w.brand || "",
+          water_resist: waterResist
+        };
+
+        const laneId = w.lane_id || "otros";
+        if (laneId === "rswc") {
+          rswcInfo.push(info);
+        } else if (laneId === "sys") {
+          sysInfo.push(info);
+        } else {
+          otrosInfo.push(info);
+        }
+      }
+
+      const totalCount = rswcInfo.length + sysInfo.length + otrosInfo.length;
+      if (totalCount === 0) {
+        showError("water-resist-error", "No se han encontrado valores de resistencia al agua válidos.");
+        return;
+      }
+
+      // Sort each group by water resistance
+      rswcInfo.sort((a, b) => a.water_resist - b.water_resist);
+      sysInfo.sort((a, b) => a.water_resist - b.water_resist);
+      otrosInfo.sort((a, b) => a.water_resist - b.water_resist);
+
+      // Create scatter data with jitter to prevent overlapping
+      const jitterAmount = 0.3;
+      
+      const createScatterPoints = (infoArray, baseY) => {
+        const wrCount = new Map();
+        return infoArray.map(info => {
+          const wr = info.water_resist;
+          const count = wrCount.get(wr) || 0;
+          wrCount.set(wr, count + 1);
+          
+          const jitter = (Math.random() - 0.5) * jitterAmount * 2;
+          return { x: baseY + jitter, y: wr };
+        });
+      };
+
+      // Assign different X levels for each lane
+      if (rswcInfo.length > 0) {
+        rswcData.push(...createScatterPoints(rswcInfo, 2));
+      }
+      if (sysInfo.length > 0) {
+        sysData.push(...createScatterPoints(sysInfo, 1));
+      }
+      if (otrosInfo.length > 0) {
+        otrosData.push(...createScatterPoints(otrosInfo, 0));
+      }
+
+      // Get water resistance range
+      const allWR = [...rswcInfo, ...sysInfo, ...otrosInfo].map(i => i.water_resist);
+      const minWR = Math.min(...allWR);
+      const maxWR = Math.max(...allWR);
+
+      const ctx = document.getElementById("waterResistChart");
+      if (!ctx) {
+        showError("water-resist-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+      const allInfo = [];
+
+      if (otrosData.length > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.7)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
+          dataStartIndex: 0
+        });
+        allInfo.push(...otrosInfo);
+      }
+
+      if (sysData.length > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.7)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
+          dataStartIndex: otrosInfo.length
+        });
+        allInfo.push(...sysInfo);
+      }
+
+      if (rswcData.length > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.7)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
+          dataStartIndex: otrosInfo.length + sysInfo.length
+        });
+        allInfo.push(...rswcInfo);
+      }
+
+      new Chart(ctx, {
+        type: "scatter",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              display: false, // Hide X axis as it's just for jitter
+              min: -0.5,
+              max: 2.5,
+            },
+            y: {
+              type: 'logarithmic',
+              min: Math.max(1, minWR / 2),
+              max: maxWR * 2,
+              ticks: {
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  // Show only clean logarithmic values
+                  const logVal = Math.log10(value);
+                  if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
+                    return value + 'm';
+                  }
+                  // Also show some intermediate values
+                  if (value === 30 || value === 50 || value === 200 || value === 300 || value === 500) {
+                    return value + 'm';
+                  }
+                  return '';
+                }
+              },
+              title: { display: true, text: "Resistencia al agua (m, escala logarítmica)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { 
+                color: function(context) {
+                  const value = context.tick.value;
+                  const logVal = Math.log10(value);
+                  // Highlight powers of 10 with stronger lines
+                  if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
+                    return "rgba(148, 163, 184, 0.5)";
+                  }
+                  return "rgba(55, 65, 81, 0.2)";
+                },
+                lineWidth: function(context) {
+                  const value = context.tick.value;
+                  const logVal = Math.log10(value);
+                  if (Math.abs(logVal - Math.round(logVal)) < 0.01) {
+                    return 1.5;
+                  }
+                  return 0.5;
+                }
+              },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) {
+                  const dataset = items[0].dataset;
+                  const idx = items[0].dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  return info ? info.id : "?";
+                },
+                label(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const displayName = info && info.brand ? `${info.brand} ${info.model}` : (info ? info.model : "?");
+                  return displayName;
+                },
+                afterLabel(context) {
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  const wr = info ? info.water_resist : context.parsed.y;
+                  const atm = Math.round(wr / 10);
+                  return [
+                    `Resistencia: ${wr}m (${atm} ATM)`
+                  ];
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
     function buildCaseDiameterScatter(watches) {
       if (!Array.isArray(watches) || watches.length === 0) {
         showError("case-diameter-error", "No hay datos disponibles.");
@@ -2234,6 +2522,8 @@
       try { buildYearlyAccumulatedChart(data); } catch (e) { console.error(e); }
 
       try { buildPriceLine(data); } catch (e) { console.error(e); }
+
+      try { buildWaterResistChart(data); } catch (e) { console.error(e); }
 
       try {
         buildChart(data, {
