@@ -421,8 +421,20 @@
       const select = document.getElementById('chartSelect');
       const chartSections = document.querySelectorAll('.chart-section');
 
+      // Restore last selection from localStorage
+      const savedChart = localStorage.getItem('hdr-stats-selected-chart');
+      if (savedChart) {
+        select.value = savedChart;
+        // Trigger change to show the saved chart
+        const event = new Event('change');
+        select.dispatchEvent(event);
+      }
+
       select.addEventListener('change', (e) => {
         const selectedChart = e.target.value;
+        
+        // Save selection to localStorage
+        localStorage.setItem('hdr-stats-selected-chart', selectedChart);
         
         // Hide all charts
         chartSections.forEach(section => {
