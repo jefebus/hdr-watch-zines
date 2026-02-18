@@ -7,6 +7,18 @@ set(QPDF_COMMAND "qpdf" CACHE STRING "Path to qpdf executable")
 set(FONT_PATH "$ENV{HOME}/.local/share/fonts" CACHE STRING "Font path for typst")
 set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/HdR zines" CACHE STRING "Output directory for zines")
 
+# Get git version tag
+execute_process(
+    COMMAND git describe --tags --always
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    OUTPUT_VARIABLE GIT_VERSION
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    ERROR_QUIET
+)
+if(NOT GIT_VERSION)
+    set(GIT_VERSION "v 01.00")
+endif()
+
 # Source library files
 file(GLOB SRC_LIB "${CMAKE_SOURCE_DIR}/src/*.typ")
 
@@ -32,6 +44,7 @@ function(add_hdr_zine ZINE_ID SOURCE_DIR OUTPUT_SUBDIR SOURCE_FILE)
             --root "${CMAKE_SOURCE_DIR}"
             --font-path "${FONT_PATH}"
             --input digital=false
+            --input git_version="${GIT_VERSION}"
             "${CMAKE_SOURCE_DIR}/hdr_zines_src/${SOURCE_DIR}/${SOURCE_FILE}"
             "${TEMP_PDF}"
         COMMAND ${QPDF_COMMAND} --deterministic-id --linearize "${TEMP_PDF}" "${PDF_OUTPUT}"
@@ -51,6 +64,7 @@ function(add_hdr_zine ZINE_ID SOURCE_DIR OUTPUT_SUBDIR SOURCE_FILE)
             --root "${CMAKE_SOURCE_DIR}"
             --font-path "${FONT_PATH}"
             --input digital=true
+            --input git_version="${GIT_VERSION}"
             "${CMAKE_SOURCE_DIR}/hdr_zines_src/${SOURCE_DIR}/${SOURCE_FILE}"
             "${PNG_OUTPUT}"
         COMMAND ${CMAKE_COMMAND} -E touch "${PNG_MARKER}"

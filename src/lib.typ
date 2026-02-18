@@ -238,14 +238,30 @@
   // wrap pages in zine-page
   let last = contents.len() - 1
   let contents = contents.enumerate().map(
-    ((i, content))=> zine-page(
-      height: zine-page-height,
-      width: zine-page-width,
-      page-number: i+1,
-      margin: if i == 0 or i == last { 0pt } else { 5mm },
-      ..zine-page-kwargs,
-      content
-    )
+    ((i, content))=> {
+      // Add version tag to last page
+      let page-content = if i == last {
+        // Get git version from inputs, fallback to "v 01.00"
+        let git-version = sys.inputs.at("git_version", default: "v 01.00")
+        content + place(
+          bottom + right,
+          dx: -3mm,
+          dy: -1mm,
+          text(size: 4pt, fill: gray.darken(20%))[Jefebus - #git-version]
+        )
+      } else {
+        content
+      }
+      
+      zine-page(
+        height: zine-page-height,
+        width: zine-page-width,
+        page-number: i+1,
+        margin: if i == 0 or i == last { 0pt } else { 5mm },
+        ..zine-page-kwargs,
+        page-content
+      )
+    }
   )
 
   // Set minimum 20mm page margins for printing
