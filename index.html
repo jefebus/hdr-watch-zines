@@ -382,7 +382,7 @@
         // Fetch zines data from JSON
         async function loadZinesData() {
             try {
-                const response = await fetch('zines_data.json');
+                const response = await fetch(`zines_data.json?v=${Date.now()}`);
                 ZINES_DATA = await response.json();
                 renderAllZines();
                 
@@ -447,8 +447,10 @@
             
             grid.innerHTML = '';
             
-            // Only show watches that have zines
-            ZINES_DATA.filter(zine => zine.has_zine !== false).forEach(zine => {
+            // Only show watches that have zines, sorted alphabetically by title
+            ZINES_DATA.filter(zine => zine.has_zine !== false)
+                      .sort((a, b) => a.title.localeCompare(b.title, 'es'))
+                      .forEach(zine => {
                 grid.insertAdjacentHTML('beforeend', renderZineCard(zine));
                 grid.insertAdjacentHTML('beforeend', renderGallery(zine));
             });
