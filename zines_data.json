@@ -13,7 +13,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/85402",
     "price": 325,
     "case_diameter": 46,
-    "case_height": 17,
+    "case_height": 15.8,
     "strap_width": 24,
     "movement_type": "automatic",
     "movement_id": [
@@ -25,7 +25,8 @@
     "movement_company": "Vostok",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "apocalypse_now",
@@ -41,7 +42,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/110521",
     "price": 77,
     "case_diameter": 44,
-    "case_height": 13.5,
+    "case_height": 14.0,
     "strap_width": 20,
     "movement_type": "automatic",
     "movement_id": "NH35",
@@ -50,7 +51,8 @@
     "movement_company": "Seiko",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "grand_belize",
@@ -65,7 +67,7 @@
     "description_en": "Professional diver watch with COSC certification. Seven years of development culminate in a Swiss Made 300m watch with sapphire bezel, limited to 200 units. HdR's most ambitious project",
     "hdr_link": "https://www.hablemosderelojes.com/t/105642",
     "price": null,
-    "case_diameter": 43,
+    "case_diameter": 44,
     "case_height": 12.7,
     "strap_width": 20,
     "movement_type": "automatic",
@@ -76,7 +78,8 @@
     "lane_id": "otros",
     "has_zine": true,
     "notes": "Grand Belize Candino COSC certified, 7-year project. Price not found in thread 105642",
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 300
   },
   {
     "id": "ferroviario",
@@ -90,7 +93,7 @@
     "description_de": "Hommage an die erste iberoamerikanische Eisenbahn. Handaufzug Seagull TY3620-2",
     "description_en": "Tribute to the first Iberoamerican railroad. Manual-wind Seagull TY3620-2",
     "hdr_link": "https://www.hablemosderelojes.com/t/109310",
-    "price": 195,
+    "price": 212,
     "case_diameter": 43,
     "case_height": 12,
     "strap_width": 22,
@@ -101,7 +104,8 @@
     "movement_company": "Seagull",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "gagarin_50",
@@ -115,7 +119,7 @@
     "description_de": "Gagarin 50. Jubiläum Projekt. Russische Militäruhr mit weißem oder schwarzem Zifferblatt.",
     "description_en": "Gagarin 50th Anniversary project. Russian military watch with white or black dial.",
     "hdr_link": "https://www.hablemosderelojes.com/t/47219",
-    "price": 278,
+    "price": 212,
     "case_diameter": 38,
     "case_height": 11.5,
     "strap_width": 18,
@@ -126,7 +130,8 @@
     "movement_company": "Poljot",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 30
   },
   {
     "id": "gagarin_poyejali",
@@ -141,7 +146,7 @@
     "description_en": "Chronograph project honoring Yuri Gagarin. Let's go!",
     "hdr_link": "https://www.hablemosderelojes.com/t/113833",
     "price": 98,
-    "case_diameter": 38,
+    "case_diameter": 45,
     "case_height": 11.5,
     "strap_width": 18,
     "movement_type": "manual",
@@ -151,7 +156,8 @@
     "movement_company": "Poljot",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "galeno",
@@ -165,10 +171,10 @@
     "description_de": "Medizinischer Chronograph mit Pulsmesser-Skalen. ST-1901 Bicompax-Werk",
     "description_en": "Medical chronograph with pulsometer scales. ST-1901 bicompax movement",
     "hdr_link": "https://www.hablemosderelojes.com/t/89777",
-    "price": 244,
+    "price": 350,
     "case_diameter": 42,
     "lug_to_lug": 49,
-    "case_height": 13.2,
+    "case_height": 12.0,
     "strap_width": 22,
     "movement_type": "manual",
     "movement_id": "ST-1901",
@@ -177,7 +183,8 @@
     "movement_company": "Seagull",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "luch_monoaguja",
@@ -192,9 +199,9 @@
     "description_de": "HdR-Projekt zum 60. Jubiläum der Luch-Fabrik in Minsk. 200 Einheiten Einzeiger mit In-House-Kaliber 1801.1, Symbol für ruhige Zeitmessung und die Philosophie der wesentlichen Zeit. Champagner- und schwarze Zifferblätter.",
     "description_en": "HdR project for the 60th anniversary of the Luch factory in Minsk. 200 single-hand units with in-house caliber 1801.1, symbol of unhurried horology and the philosophy of essential time. Champagne and black dials.",
     "hdr_link": "https://www.hablemosderelojes.com/t/70271",
-    "price": 44,
+    "price": 52,
     "case_diameter": 36,
-    "case_height": 10.2,
+    "case_height": 8.0,
     "strap_width": 20,
     "movement_type": "manual",
     "movement_id": "1801.1",
@@ -204,7 +211,8 @@
     "lane_id": "otros",
     "has_zine": true,
     "lug_to_lug": 44,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "okeah",
@@ -218,9 +226,9 @@
     "description_de": "Der letzte Chronograph mit Poljot 3133 Kaliber. Hommage an den legendären Okeah von 1976, beendet 35 Jahre Geschichte. Internationales Projekt mit 300 Einheiten, das den finalen Bestand an Gehäusen und Werken erschöpfte",
     "description_en": "The last chronograph with Poljot 3133 caliber. Tribute to the legendary 1976 Okeah, closing 35 years of history. International project with 300 units that exhausted the final stock of cases and movements",
     "hdr_link": "https://www.hablemosderelojes.com/t/55510",
-    "price": 348,
+    "price": 355,
     "case_diameter": 39,
-    "case_height": null,
+    "case_height": 14.0,
     "strap_width": 20,
     "movement_type": "manual",
     "movement_id": "3133",
@@ -229,7 +237,8 @@
     "movement_company": "Poljot",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 30
   },
   {
     "id": "parnis_marina",
@@ -244,7 +253,7 @@
     "description_en": "Parnis Marina Militare project. Inspired by classic Italian watches.",
     "hdr_link": "https://www.hablemosderelojes.com/t/32745",
     "price": 39,
-    "case_diameter": null,
+    "case_diameter": 44,
     "case_height": null,
     "strap_width": null,
     "movement_type": "automatic",
@@ -255,7 +264,8 @@
     "lane_id": "otros",
     "has_zine": true,
     "notes": "Specs refer to X002 model with HdR personalization. Project included multiple Parnis models.",
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 10
   },
   {
     "id": "radio_room_operator",
@@ -280,7 +290,8 @@
     "movement_company": "ETA",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "airliner",
@@ -306,7 +317,8 @@
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "airliner_ii",
@@ -332,7 +344,8 @@
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "bushido",
@@ -358,7 +371,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "decotimer",
@@ -374,7 +388,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/236535",
     "price": 210,
     "case_diameter": 42,
-    "case_height": 14.8,
+    "case_height": 15.8,
     "strap_width": 22,
     "movement_type": "automatic",
     "movement_id": "PT5000",
@@ -384,7 +398,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 49,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "dirty_fifteen",
@@ -400,7 +415,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/224474",
     "price": 125,
     "case_diameter": 42,
-    "case_height": 11.6,
+    "case_height": 12.0,
     "strap_width": 20,
     "movement_type": "manual",
     "movement_id": "ST3620",
@@ -409,7 +424,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "eagle_one",
@@ -435,7 +451,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 54.2,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "eagle_two",
@@ -461,7 +478,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 51,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "forest_defender",
@@ -487,7 +505,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 51,
-    "project_status": "payment"
+    "project_status": "payment",
+    "water_resist": 100
   },
   {
     "id": "gamma_gibraltar",
@@ -503,7 +522,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/234005",
     "price": 133,
     "case_diameter": 44,
-    "case_height": null,
+    "case_height": 12.3,
     "strap_width": 24,
     "movement_type": "manual",
     "movement_id": "ST3600",
@@ -512,7 +531,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "goldmaster",
@@ -538,7 +558,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 49,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "grande_epreuve",
@@ -564,7 +585,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 48.5,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "heian",
@@ -579,7 +601,7 @@
     "description_en": "Tribute to vintage Japanese daily-wear watches. Timeless elegance with Seiko NH36A movement, dual Kanji-English calendar and Instant Date.",
     "hdr_link": "https://www.hablemosderelojes.com/t/112428",
     "price": 74,
-    "case_diameter": 38,
+    "case_diameter": 40,
     "case_height": null,
     "strap_width": 20,
     "movement_type": "automatic",
@@ -589,7 +611,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "kaiju",
@@ -615,7 +638,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 50,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "kaiju_yuki_otoko",
@@ -641,7 +665,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 50,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "majetek",
@@ -657,7 +682,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/233295",
     "price": 113,
     "case_diameter": 40,
-    "case_height": null,
+    "case_height": 11.5,
     "strap_width": 22,
     "movement_type": "automatic",
     "movement_id": "ST17",
@@ -666,7 +691,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "racing",
@@ -682,7 +708,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/230699",
     "price": 132,
     "case_diameter": 42,
-    "case_height": 12.5,
+    "case_height": 13.0,
     "strap_width": 22,
     "movement_type": "solar",
     "movement_id": "VS75",
@@ -691,7 +717,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "rex_caeli",
@@ -716,7 +743,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "rex_maris",
@@ -741,7 +769,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "rex_terrae",
@@ -755,7 +784,7 @@
     "description_de": "Entdecker GMT-Uhr. Zwei Versionen: North Pole (schwarz, grünes Lumen) und South Pole (weiß, blaues Lumen). Hommage an Eisbär und Kaiserpinguin. HZ 6460 GMT, 39mm, 200m.",
     "description_en": "Explorer GMT watch. Two versions: North Pole (black, green lume) and South Pole (white, blue lume). Tribute to the polar bear and emperor penguin. HZ 6460 GMT, 39mm, 200m.",
     "hdr_link": "https://www.hablemosderelojes.com/t/226214",
-    "price": 246,
+    "price": 240,
     "case_diameter": 39,
     "case_height": 12.5,
     "strap_width": 20,
@@ -767,7 +796,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 48.5,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "salto_de_fe",
@@ -792,7 +822,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "scaphandre_i",
@@ -818,7 +849,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 1200
   },
   {
     "id": "scaphandre_ii",
@@ -843,7 +875,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 1000
   },
   {
     "id": "scaphandre_iii",
@@ -869,7 +902,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 1200
   },
   {
     "id": "skygraph",
@@ -895,7 +929,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 49,
-    "project_status": "production"
+    "project_status": "production",
+    "water_resist": 70
   },
   {
     "id": "iberia",
@@ -911,7 +946,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/225743",
     "price": 205,
     "case_diameter": 37,
-    "case_height": 11.4,
+    "case_height": 12.0,
     "lug_to_lug": 42,
     "strap_width": 18,
     "movement_type": "automatic",
@@ -921,7 +956,8 @@
     "movement_company": "Seagull",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "colossus",
@@ -947,7 +983,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 56,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 10000
   },
   {
     "id": "ala14",
@@ -977,7 +1014,8 @@
     "has_zine": true,
     "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon",
     "lug_to_lug": 52,
-    "project_status": "production"
+    "project_status": "production",
+    "water_resist": 100
   },
   {
     "id": "cosmotemp",
@@ -992,7 +1030,7 @@
     "description_en": "First RSWC digital with thermometer (-10°C/+50°C) and 1/1000 sec chronograph. Tribute to classic Casio with sapphire crystal and Swiss-grade steel",
     "hdr_link": "https://www.hablemosderelojes.com/t/249259",
     "price": 105,
-    "case_diameter": 42,
+    "case_diameter": 37,
     "case_height": 11,
     "strap_width": 18,
     "movement_type": "anadigi",
@@ -1003,7 +1041,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 52,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "typhoon",
@@ -1032,7 +1071,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 52,
-    "project_status": "production"
+    "project_status": "production",
+    "water_resist": 100
   },
   {
     "id": "world_timer",
@@ -1047,7 +1087,7 @@
     "description_en": "First RSWC digital with 28 time zones. Tribute to classic Casio World Timer with premium materials: sapphire crystal and Swiss-grade steel",
     "hdr_link": "https://www.hablemosderelojes.com/t/249259",
     "price": 85,
-    "case_diameter": 42,
+    "case_diameter": 37,
     "case_height": 11,
     "strap_width": 18,
     "movement_type": "digital",
@@ -1058,7 +1098,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 52,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "supersharkomatic",
@@ -1084,7 +1125,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 46.5,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "typ_vii-b",
@@ -1099,7 +1141,7 @@
     "description_en": "Tribute to German Type VII-B submarine. 500m diver watch with helium valve, PT5000, gradient navy blue dial and shark relief caseback. Limited to 50 units",
     "hdr_link": "https://www.hablemosderelojes.com/t/228247",
     "price": 227,
-    "case_diameter": 42,
+    "case_diameter": 45,
     "case_height": null,
     "strap_width": 20,
     "movement_type": "automatic",
@@ -1109,7 +1151,8 @@
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 500
   },
   {
     "id": "ume_1",
@@ -1134,7 +1177,8 @@
     "movement_company": "Orient",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "ume_2",
@@ -1148,7 +1192,7 @@
     "description_de": "GMT-Version der UME-Hommage. Seiko NH34 GMT für internationale Missionen mit doppelter Zeitzone. Offizielles Wappen auf Rückseite",
     "description_en": "GMT version of the UME tribute. Seiko NH34 GMT for international missions with dual time zone. Official badge on caseback",
     "hdr_link": "https://www.hablemosderelojes.com/t/238801",
-    "price": 98,
+    "price": 82,
     "case_diameter": 40,
     "case_height": 14.4,
     "strap_width": 20,
@@ -1159,7 +1203,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "vainqueur",
@@ -1186,7 +1231,8 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 46.5,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "verne",
@@ -1211,7 +1257,8 @@
     "movement_company": "Hangzhou",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "ichi",
@@ -1226,7 +1273,7 @@
     "description_en": "First HdR collaborative project based on Orient Mako. Rising Sun Watch Forum",
     "hdr_link": "https://www.hablemosderelojes.com/t/20942",
     "price": 200,
-    "case_diameter": 42,
+    "case_diameter": 41,
     "case_height": null,
     "strap_width": 22,
     "movement_type": "automatic",
@@ -1237,7 +1284,8 @@
     "movement_company": "Orient",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "kingtuna",
@@ -1253,7 +1301,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/112428",
     "price": 87,
     "case_diameter": 47,
-    "case_height": null,
+    "case_height": 15.2,
     "strap_width": 22,
     "movement_type": "automatic",
     "movement_id": "NH35A",
@@ -1262,7 +1310,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 300
   },
   {
     "id": "sevenseas",
@@ -1278,7 +1327,7 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/112428",
     "price": 99,
     "case_diameter": 44,
-    "case_height": null,
+    "case_height": 17.2,
     "strap_width": 20,
     "movement_type": "automatic",
     "movement_id": "NH35A",
@@ -1287,7 +1336,8 @@
     "movement_company": "Seiko",
     "lane_id": "rswc",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 300
   },
   {
     "id": "caballero",
@@ -1314,7 +1364,8 @@
     "movement_company": "Sellita",
     "lane_id": "sys",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "competidor",
@@ -1340,7 +1391,8 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 49,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "inmortal",
@@ -1366,7 +1418,8 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 47,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "inmortal_reserva_especial",
@@ -1392,7 +1445,8 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 48,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 50
   },
   {
     "id": "monumental",
@@ -1406,9 +1460,9 @@
     "description_de": "ST-1901 Chronograph mit vier Torero-Anzügen. Funktionelle Saphirlünette mit Stierschichten und Kampfphasen. Letzte Serie des legendären Kalibers.",
     "description_en": "ST-1901 chronograph with four bullfighter suits. Functional sapphire bezel with bull sections and bullfighting phases. Final series of the legendary caliber.",
     "hdr_link": "https://www.hablemosderelojes.com/t/254341",
-    "price": null,
-    "case_diameter": 40,
-    "case_height": 14.7,
+    "price": 240,
+    "case_diameter": 41,
+    "case_height": 15.1,
     "lug_to_lug": 48,
     "strap_width": 20,
     "movement_type": "manual",
@@ -1419,7 +1473,8 @@
     "lane_id": "sys",
     "has_zine": true,
     "notes": "Price not explicitly stated in thread 254341. Monumental and Viajero presented together with ST-1901",
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "roquina",
@@ -1445,7 +1500,8 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 44.5,
-    "project_status": "payment"
+    "project_status": "payment",
+    "water_resist": 50
   },
   {
     "id": "viajero",
@@ -1459,9 +1515,9 @@
     "description_de": "ST-1901 Vintage Panda-Chronograph. Saphirlünette mit spanischen Städten. Hommage an den Reisegeist im Renault 4 auf den Nationalstraßen.",
     "description_en": "ST-1901 vintage panda chronograph. Sapphire bezel with Spanish cities. Tribute to the traveling spirit in a Renault 4 on national roads.",
     "hdr_link": "https://www.hablemosderelojes.com/t/254341",
-    "price": null,
-    "case_diameter": 40,
-    "case_height": 14.7,
+    "price": 240,
+    "case_diameter": 41,
+    "case_height": 12.3,
     "strap_width": 20,
     "movement_type": "manual",
     "movement_id": "ST19",
@@ -1472,7 +1528,8 @@
     "has_zine": true,
     "lug_to_lug": 48,
     "notes": "Price not explicitly stated in thread 254341. Viajero presented with Monumental but no individual pricing",
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 100
   },
   {
     "id": "vostok_amphibia_5_6",
@@ -1499,7 +1556,8 @@
     "lane_id": "otros",
     "has_zine": true,
     "notes": "Design by @El_Monitor. Dial design inspired by USSR commemorative postal stamps celebrating the Vostok 5/6 missions. Water resistance: 20 ATM (200m).",
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   },
   {
     "id": "vostok_k43",
@@ -1514,8 +1572,8 @@
     "description_en": "Vostok Retro project. Vintage military customization.",
     "hdr_link": "https://www.hablemosderelojes.com/t/100300",
     "price": 172,
-    "case_diameter": null,
-    "case_height": null,
+    "case_diameter": 42,
+    "case_height": 12.0,
     "strap_width": null,
     "movement_type": "manual",
     "movement_id": "2415",
@@ -1524,6 +1582,7 @@
     "movement_company": "Vostok",
     "lane_id": "otros",
     "has_zine": true,
-    "project_status": "delivered"
+    "project_status": "delivered",
+    "water_resist": 200
   }
 ]
