@@ -31,7 +31,7 @@
 - Caja en acero quirúrgico 316L
 - Diámetro: 42mm, espesor: 11mm
 - Corona y tapa roscadas
-- Resistencia: 100 metros
+- Resistencia: 200 metros
 - Movimiento automático PT5000 con calendario
 - Cristal de zafiro con AR interno
 - Esfera con surcos longitudinales

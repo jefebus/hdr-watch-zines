@@ -29,7 +29,7 @@
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero 316L acabado pulido
-- Diámetro: 41mm, espesor: 14,7mm incluido cristal
+- Diámetro: 40mm, espesor: 14,7mm incluido cristal
 - Lug to lug: 48mm, anchura de asas: 22mm
 - Corona grabada de 8mm de diámetro
 - Cristal de zafiro domed con AR interno

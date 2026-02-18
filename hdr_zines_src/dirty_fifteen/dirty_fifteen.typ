@@ -37,7 +37,7 @@
 - Edición aniversario HdR (15º): homenaje al reloj de oficiales británicos (2GM)
 - Esfera: negra (versión negra)
 - Caja: acero, 42 mm
-- Grosor: 11,6 mm
+- Grosor: 12,0 mm
 - Corona: estriada
 - Cristal frontal: zafiro “domed” con antirreflejos interior incoloro
 - Hermeticidad: WR 50 metros

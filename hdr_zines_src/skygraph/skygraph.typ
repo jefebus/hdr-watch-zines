@@ -35,7 +35,7 @@ acabado brushed y pulido. 42mm
 sin coronas, 49mm lug to lug,  
 16mm altura. Ancho asas 20mm. 
 Dobles coronas roscadas 
-firmadas. Resistencia 100m.
+firmadas. Resistencia 70m.
 
 Bisel exterior aluminio. Bisel 
 interno bidireccional, corona 

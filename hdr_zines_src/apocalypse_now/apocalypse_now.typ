@@ -40,7 +40,7 @@
 
 - Concepto: homenaje al Seiko 6105-8100, apodado “Apocalypse Now” 
 - Diámetro de caja: 44 mm (sin corona).
-- Grosor: 13,5 mm. 
+- Grosor: 14,0 mm. 
 - Ancho entre asas: 20 mm (en el original, 19 mm).
 - Bisel: unidireccional, 120 clics; inserto cerámico y “full lume”.
 - Cristal: zafiro con AR interior (tinte azulado).

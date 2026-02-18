@@ -28,8 +28,8 @@
 })#pagebreak()
 
 *ESPECIFICACIONES TÉCNICAS*
-- Caja de acero 316L Swiss Grade, 10 ATM
-- 40mm sin corona, lug to lug: 44.5mm, espesor: 14mm
+- Caja de acero 316L Swiss Grade, 5 ATM
+- 40mm sin corona, lug to lug: 44.5mm, espesor: 16,5mm
 - Asas: 20mm, corona roscada 6mm con logo SyS
 - Superluminova Swiss C3
 - Cristal de zafiro facetado con TT/AA azulado

@@ -37,7 +37,7 @@ Abyss Automatic 10000m
 
 Dimensiones:
 - Diámetro: 46,5 mm
-- Grosor: 14 mm
+- Grosor: 22,0 mm
 - Lug to lug: 56 mm
 - Ancho correa: 24 mm
 - Cristal: Zafiro 8 mm grosor

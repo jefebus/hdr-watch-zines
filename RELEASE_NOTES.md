@@ -19,7 +19,6 @@
 - Candino Radio Room Operator 📻
 - Ferroviario 🛌️
 - Gagarin 50 Aniversario 🚀
-- RSWC Gagarin ¡Poyejali! 🚀
 - Galeno 🩺
 - Luch Monoaguja ⌚
 - Okeah Final Edition 🐻

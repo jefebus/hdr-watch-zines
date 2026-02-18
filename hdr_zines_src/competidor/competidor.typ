@@ -29,7 +29,7 @@
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero 316L acabado cepillado
-- Diámetro: 41mm, espesor: 12,3mm
+- Diámetro: 40mm, espesor: 15,1mm
 - Lug to lug: 49mm, anchura asas: 20mm
 - Bisel bidireccional 120 clicks taquígrafo
 - Cristal zafiro domed con AR interno

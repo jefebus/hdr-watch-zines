@@ -32,7 +32,7 @@
 
 - Marca: Zlatoust (Agat reedición)
 - Diámetro: 46 mm (sin corona)
-- Grosor: 17 mm estimado
+- Grosor: 15,8 mm estimado
 - Caja: Acero inoxidable masivo
 - Cristal: Mineral reforzado
 - Corona: Izquierda o derecha (opcional)

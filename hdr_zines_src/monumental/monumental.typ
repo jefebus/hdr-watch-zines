@@ -29,7 +29,7 @@
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja de acero 316L acabado pulido
-- Diámetro: 41mm, espesor: 14,7mm
+- Diámetro: 41mm, espesor: 15,1mm
 - Lug to lug: 48mm, anchura asas: 22mm
 - Corona grabada de 8mm de diámetro
 - Cristal zafiro domed con AR interno
@@ -38,7 +38,7 @@
 - Calibre Seagull ST-1901 carga manual
 - Cronógrafo mecánico, 21.600 VPH
 - Tapa trasera roscada zafiro
-- Resistencia al agua: 50 metros
+- Resistencia al agua: 100 metros
 - Correa piel con hebilla firmada
 #pagebreak()
 

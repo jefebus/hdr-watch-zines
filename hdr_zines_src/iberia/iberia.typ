@@ -32,11 +32,11 @@
 
 *ESPECIFICACIONES TÉCNICAS*
 
-- Caja de acero 316L, diámetro caja: 37mm, espesor: 11,4mm, lug to lug: 42mm, anchura de asas: 18mm
+- Caja de acero 316L, diámetro caja: 37mm, espesor: 12,0mm, lug to lug: 42mm, anchura de asas: 18mm
 - Cristal de zafiro abovedado con tratamiento antirreflejos (AR) en el interior
 - Calibre: Seagull ST2836, automático  con 28.800 alternancias/h
 - Fecha y día
-- Resistencia al agua: 50 metros
+- Resistencia al agua: 100 metros
 - Peso: 67,5 gramos
 
 #pad(

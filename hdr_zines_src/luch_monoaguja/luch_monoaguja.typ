@@ -31,7 +31,7 @@
 *ESPECIFICACIONES TÉCNICAS*
 
 - Caja cromada de 36mm
-- Grosor: 10.2mm (versión 2021: acero, 37.6mm)
+- Grosor: 8,0mm (versión 2021: acero, 37.6mm)
 - Entre garras: 20mm
 - Lug to lug: 44mm
 - Movimiento mecánico manual Luch 1801.1
@@ -40,7 +40,7 @@
 - Frecuencia: 21.600 alt/h
 - Reserva de marcha: 38-43h
 - Cristal mineral
-- Resistencia al agua: 3 ATM (versión 2021)
+- Resistencia al agua: 10 ATM (versión 2021)
 - Ventana de exhibición trasera
 
 Disponible en diales champán y negro metalizado.
