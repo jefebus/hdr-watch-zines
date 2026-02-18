@@ -65,9 +65,8 @@ españolas. Eran relojes de gama media, ni caros ni baratos,
 fabricados en Suiza con movimientos de batalla.
 
 Gracias a grandes campañas publicitarias en radio y prensa, 
-unidos a precios contenidos, gozaron de gran popularidad. 
-Era lo que el español de clase media podía permitirse, 
-y no sin muchísimo esfuerzo.
+lograron gran popularidad. Era lo que el español de clase 
+media podía permitirse, y no sin muchísimo esfuerzo.
 
 Con la crisis del cuarzo en los años 70 estas marcas 
 desaparecieron como tantas otras. Ahora no nos queda más 

@@ -60,8 +60,8 @@ entre comunidades relojeras internacionales.
 *EL ORIENT MAKO*
 
 La base del proyecto es el Orient Mako, un reloj diver 
-automático japonés reconocido por su excelente relación 
-calidad-precio.
+automático japonés reconocido por su excelente calidad 
+y fiabilidad.
 
 El Mako monta el calibre F6922 de Orient, un movimiento 
 robusto de 22 joyas con cuerda automática unidireccional.

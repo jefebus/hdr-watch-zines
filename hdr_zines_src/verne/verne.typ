@@ -125,8 +125,8 @@ original pero con identidad propia.
 
 Basado en un San Martin de excelente calidad, el Verne se 
 convirtió junto al Airliner en uno de los mejores RSWC 
-producidos hasta la fecha, gracias al diseño acertado, calidad 
-superior y precio ajustado.
+producidos hasta la fecha, gracias al diseño acertado y 
+calidad superior.
 
 Como dijo Julio Verne: "Prestando atención a los locos se hacen 
 los grandes descubrimientos."

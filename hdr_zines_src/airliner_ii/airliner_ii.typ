@@ -50,7 +50,8 @@
 
 Tras éxito Airliner original (92 unidades 2021), RSWC presenta segunda generación con mejoras significativas.
 
-Salto estético 70 años evolución relojera. Uno de GMT más espectaculares que hombre pobre puede comprar en este rango precios.
+Salto estético 70 años evolución relojera. Uno de los GMT 
+más espectaculares en su categoría.
 
 Homenaje continuo a instrumento pilotos todas aerolíneas mundo. Icono relojería desde años cincuenta.
 

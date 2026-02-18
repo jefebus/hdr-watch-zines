@@ -84,7 +84,7 @@ Se han contado aquí increíbles historias relojeras y personales. Se han forjad
 
 El SevenSeas es para los precavidos que admiran la imponente estructura del castillo desde la distancia.
 
-Su correa de goma hace el precio más accesible sin sacrificar calidad. Compatible con cualquier brazalete de 20mm.
+Su correa de goma es práctica y funcional sin sacrificar calidad. Compatible con cualquier brazalete de 20mm.
 #pagebreak()
 
 *INSTRUCCIONES DE USO*

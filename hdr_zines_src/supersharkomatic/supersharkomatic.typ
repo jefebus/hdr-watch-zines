@@ -40,7 +40,6 @@
 - Resistencia al agua: 200 metros
 - Estuche: cofrecito negro clásico RSWC
 - Serie limitada: 150 unidades (agotada)
-- Precio final: 220 € (aduanas incluidas)
 
 #pagebreak()
 
@@ -65,7 +64,7 @@ de una conversación informal entre foreros ("noche de WhatsApp" convertida en f
 gracias a las reservas en firme y coordinación colectiva.
 
 No es catálogo ni "encargo a fábrica": es pieza 100% RSWC, con decisiones de diseño tomadas por y para
-la comunidad, con apoyo de Astar para materializarlo con calidad al precio más ajustado.
+la comunidad, con apoyo de Astar para materializarlo con máxima calidad.
 
 Resultado: uno de los modelos con mayor demanda en la historia de la marca, en tirada limitada ya agotada.
 
@@ -116,7 +115,7 @@ completo cada 4–5 años para mantener precisión.
 
 #place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
 Proyecto comunitario RSWC (HdR). Serie limitada de 150 unidades, con dos variantes: *Cyclops “Original”* y
-*Standard*. Precio final 220 € con aduanas incluidas.
+*Standard*.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[

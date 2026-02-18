@@ -60,9 +60,7 @@ El Seiko 6139-6005 amarillo
 del coronel William Pogue en 
 la misión Skylab 4 (1973) es 
 legendario: primer cronógrafo 
-automático en el espacio. 
-Pogue lo compró a plazos por 
-64 dólares un año antes.
+automático en el espacio.
 
 Junto al Movado Datachron HS 
 360 del comandante Gerald P. 

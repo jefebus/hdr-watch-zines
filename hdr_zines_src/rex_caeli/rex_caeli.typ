@@ -139,9 +139,6 @@ y todos los foreros de HdR.
 Fabricado por San Martín
 en colaboración con Astar.
 
-Precio: 208€ incluyendo
-costes y aduanas.
-
 Tras el cielo, el hombre puso
 sus ojos en las estrellas...
 

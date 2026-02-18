@@ -66,7 +66,7 @@ Tras negociar, se fabricaron esferas, biseles y agujas según diseño 1976.
 
 Fin de 35 años de historia (1976-2011).
 
-Precio: 348 €, sin lucro. Reservas agotadas en 6 días (nov 2011). Entrega junio 2012.
+Reservas agotadas en 6 días (nov 2011). Entrega junio 2012.
 
 Proyecto internacional: HdR, FdR Italia, Watchuseek USA, Forum Montres Russes Francia.
 #pagebreak()

@@ -98,10 +98,10 @@ respeta su legado.
 
 *CRONÓGRAFO AUTOMÁTICO*
 
-Producir un cronógrafo automático a precio accesible no es
-sencillo. Los movimientos de cronógrafo automático son 
-complejos y caros de fabricar, lo que explica por qué 
-suelen reservarse para relojes de lujo.
+Producir un cronógrafo automático no es sencillo. Los 
+movimientos de cronógrafo automático son complejos y 
+costosos de fabricar, lo que explica por qué suelen 
+reservarse para relojes de lujo.
 
 RSWC ha conseguido integrar un Peacock SL4617 totalmente 
 funcional, un movimiento basado en el archiconocido Valjoux
