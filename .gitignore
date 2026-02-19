@@ -34,9 +34,8 @@ _deps/
 .*.done
 Makefile
 
-# Commercial watch zines (not for public distribution)
-other_src
-other zines
+# not for public distribution
+private
 
 # support files not ready to share
 indice_proyectos.txt
