@@ -104,22 +104,20 @@ Peacock SL-4601: Cronógrafo mecánico automático con 28 rubíes,
 
 #pagebreak()
 
-*TRES VERSIONES DISPONIBLES*
+*CINCO VERSIONES DISPONIBLES*
 
-UME3: Edición especial 20 aniversario de la UME. Escudo grabado 
-en la cara frontal de la caja. Bisel con escala de bomberos. 
-Homenaje a la Unidad Militar de Emergencias.
+UME3: Edición especial 20º aniversario UME en DLC negro. Escudo 
+grabado en cara frontal. Bisel escala de bomberos.
 
-Forest Defender Firefighter: Bisel con escala de bomberos (verde/rojo). 
-Dedicado a bomberos civiles, forestales, BRIF y todos los que luchan 
-contra incendios.
+Forest Defender Firefighter: Bisel escala bomberos (verde/rojo). 
+Dedicado a bomberos civiles, forestales, BRIF. Disponible en 
+DLC negro y acabado acero.
 
-Forest Defender Professional: Bisel táctico de cuenta regresiva. 
-Homenaje a Guardia Civil, Policía, Protección Civil, voluntarios y 
-servicios de rescate.
+Forest Defender Professional: Bisel táctico cuenta regresiva. 
+Homenaje a Guardia Civil, Policía, Protección Civil, voluntarios, 
+rescate. Disponible en DLC negro y acabado acero.
 
-Todas con especificaciones técnicas idénticas. Limited Edition 
-numerada según unidades fabricadas de cada modelo.
+Especificaciones técnicas idénticas. Limited Edition numerada.
 
 #pagebreak()
 
