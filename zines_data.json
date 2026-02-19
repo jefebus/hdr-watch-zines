@@ -198,7 +198,7 @@
     "project_status": "delivered",
     "water_resist": 50,
     "models": [
-      "Dial blanco (2 ediciones)",
+      "Dial blanco",
       "Dial negro"
     ],
     "units": [
@@ -268,7 +268,7 @@
     "project_status": "delivered",
     "water_resist": 30,
     "models": [
-      "Poljot 3133"
+      ""
     ],
     "units": [
       300
@@ -430,7 +430,7 @@
     "project_status": "delivered",
     "water_resist": 200,
     "models": [
-      "Airmaster Pepsi"
+      ""
     ],
     "units": [
       92
@@ -463,7 +463,7 @@
     "project_status": "delivered",
     "water_resist": 200,
     "models": [
-      "Verde"
+      ""
     ],
     "units": [
       30
@@ -531,8 +531,8 @@
     "project_status": "delivered",
     "water_resist": 200,
     "models": [
-      "Challenger Deep Azul",
-      "Devil's Eye Rojo"
+      "Challenger Deep",
+      "Devil's Eye"
     ],
     "units": [
       135,
@@ -664,7 +664,21 @@
     "has_zine": true,
     "lug_to_lug": 51,
     "project_status": "payment",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "UME 3",
+      "Firefighter",
+      "Firefighter Steel",
+      "Professional",
+      "Professional Steel"
+    ],
+    "units": [
+      105,
+      13,
+      5,
+      46,
+      24
+    ]
   },
   {
     "id": "gamma_gibraltar",
@@ -796,8 +810,8 @@
     "project_status": "delivered",
     "water_resist": 100,
     "models": [
-      "Reverse Panda negro",
-      "Panda blanco"
+      "Reverse Panda",
+      "Panda"
     ],
     "units": [
       40,
@@ -928,7 +942,7 @@
     "project_status": "delivered",
     "water_resist": 100,
     "models": [
-      "Escuadrón 312 Burdeos"
+      "Escuadrón 312"
     ],
     "units": [
       50
@@ -1067,8 +1081,8 @@
     "project_status": "delivered",
     "water_resist": 200,
     "models": [
-      "South Pole Pingüino blanco",
-      "North Pole Oso Polar negro"
+      "South Pole",
+      "North Pole"
     ],
     "units": [
       50,
@@ -1203,7 +1217,7 @@
     "project_status": "delivered",
     "water_resist": 1200,
     "models": [
-      "3"
+      ""
     ],
     "units": [
       93
@@ -1236,10 +1250,10 @@
     "project_status": "production",
     "water_resist": 70,
     "models": [
-      "Tradicional amarillo",
-      "Cevert azul",
-      "Space Cowboy azul",
-      "Silver Grey plata"
+      "Pogue",
+      "Cevert",
+      "Space Cowboy",
+      "Silver Grey"
     ],
     "units": [
       200,
@@ -1345,7 +1359,7 @@
     "project_status": "production",
     "water_resist": 100,
     "models": [
-      "Anadigi"
+      ""
     ],
     "units": [
       115
@@ -1378,7 +1392,7 @@
     "project_status": "delivered",
     "water_resist": 50,
     "models": [
-      "Digital"
+      ""
     ],
     "units": [
       223
@@ -1414,7 +1428,7 @@
     "project_status": "production",
     "water_resist": 100,
     "models": [
-      "Anadigi"
+      ""
     ],
     "units": [
       130
@@ -1783,8 +1797,8 @@
     "project_status": "delivered",
     "water_resist": 300,
     "models": [
-      "Dial azul",
-      "Dial negro"
+      "Azul",
+      "Negro"
     ],
     "units": [
       45,
@@ -1817,8 +1831,8 @@
     "project_status": "delivered",
     "water_resist": 300,
     "models": [
-      "Dial azul",
-      "Dial negro"
+      "Azul",
+      "Negro"
     ],
     "units": [
       74,
@@ -2004,10 +2018,10 @@
     "project_status": "delivered",
     "water_resist": 100,
     "models": [
-      "Fortuna Oro",
-      "Grana Oro",
+      "Fortuna y Oro",
+      "Grana y Oro",
       "Mal Fario",
-      "Tabaco Oro"
+      "Tabaco y Oro"
     ],
     "units": [
       18,
