@@ -26,7 +26,15 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Manual",
+      "Automático"
+    ],
+    "units": [
+      15,
+      10
+    ]
   },
   {
     "id": "apocalypse_now",
@@ -52,7 +60,15 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Azul",
+      "Negro"
+    ],
+    "units": [
+      125,
+      243
+    ]
   },
   {
     "id": "grand_belize",
@@ -79,7 +95,13 @@
     "has_zine": true,
     "notes": "Grand Belize Candino COSC certified, 7-year project. Price not found in thread 105642",
     "project_status": "delivered",
-    "water_resist": 300
+    "water_resist": 300,
+    "models": [
+      ""
+    ],
+    "units": [
+      200
+    ]
   },
   {
     "id": "ferroviario",
@@ -105,7 +127,15 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Caja pulida",
+      "Caja arenada"
+    ],
+    "units": [
+      55,
+      95
+    ]
   },
   {
     "id": "gagarin_50",
@@ -131,7 +161,15 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 30
+    "water_resist": 30,
+    "models": [
+      "Dial blanco",
+      "Dial negro"
+    ],
+    "units": [
+      60,
+      50
+    ]
   },
   {
     "id": "galeno",
@@ -158,7 +196,15 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Dial blanco (2 ediciones)",
+      "Dial negro"
+    ],
+    "units": [
+      390,
+      75
+    ]
   },
   {
     "id": "luch_monoaguja",
@@ -186,7 +232,15 @@
     "has_zine": true,
     "lug_to_lug": 44,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Dial champán",
+      "Dial negro"
+    ],
+    "units": [
+      125,
+      75
+    ]
   },
   {
     "id": "okeah",
@@ -212,7 +266,13 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 30
+    "water_resist": 30,
+    "models": [
+      "Poljot 3133"
+    ],
+    "units": [
+      300
+    ]
   },
   {
     "id": "parnis_gmt",
@@ -238,7 +298,13 @@
     "has_zine": false,
     "notes": "Collaborative purchase with 246 units total across different models",
     "project_status": "delivered",
-    "water_resist": 30
+    "water_resist": 30,
+    "models": [
+      ""
+    ],
+    "units": [
+      246
+    ]
   },
   {
     "id": "parnis_marina",
@@ -265,7 +331,13 @@
     "has_zine": true,
     "notes": "Specs refer to X002 model with HdR personalization. Project included multiple Parnis models.",
     "project_status": "delivered",
-    "water_resist": 10
+    "water_resist": 10,
+    "models": [
+      ""
+    ],
+    "units": [
+      246
+    ]
   },
   {
     "id": "parnis_portuguese",
@@ -291,7 +363,13 @@
     "has_zine": false,
     "notes": "Collaborative personalized purchase. 100 units with 35% discount on standard price",
     "project_status": "delivered",
-    "water_resist": 10
+    "water_resist": 10,
+    "models": [
+      ""
+    ],
+    "units": [
+      100
+    ]
   },
   {
     "id": "radio_room_operator",
@@ -317,7 +395,13 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      ""
+    ],
+    "units": [
+      63
+    ]
   },
   {
     "id": "airliner",
@@ -344,7 +428,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Airmaster Pepsi"
+    ],
+    "units": [
+      92
+    ]
   },
   {
     "id": "airliner_ii",
@@ -371,7 +461,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Verde"
+    ],
+    "units": [
+      30
+    ]
   },
   {
     "id": "bushido",
@@ -398,7 +494,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Rönin Rojo",
+      "Midori Verde"
+    ],
+    "units": [
+      47,
+      126
+    ]
   },
   {
     "id": "decotimer",
@@ -425,7 +529,15 @@
     "has_zine": true,
     "lug_to_lug": 49,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Challenger Deep Azul",
+      "Devil's Eye Rojo"
+    ],
+    "units": [
+      135,
+      135
+    ]
   },
   {
     "id": "dirty_fifteen",
@@ -451,7 +563,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "42mm",
+      "36mm"
+    ],
+    "units": [
+      63,
+      34
+    ]
   },
   {
     "id": "eagle_one",
@@ -478,7 +598,13 @@
     "has_zine": true,
     "lug_to_lug": 54.2,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "eagle_two",
@@ -505,7 +631,13 @@
     "has_zine": true,
     "lug_to_lug": 51,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "forest_defender",
@@ -558,7 +690,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      ""
+    ],
+    "units": [
+      114
+    ]
   },
   {
     "id": "gshock_dw6900",
@@ -584,7 +722,17 @@
     "has_zine": false,
     "notes": "Three editions: 13 units (2008), 22 units (2010), 12 units (2012). Collaborative purchases with HdR personalization",
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "2008",
+      "Rojo 2010",
+      "30th Anniversary 2012"
+    ],
+    "units": [
+      13,
+      22,
+      12
+    ]
   },
   {
     "id": "goldmaster",
@@ -611,7 +759,15 @@
     "has_zine": true,
     "lug_to_lug": 49,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Negro",
+      "Verde"
+    ],
+    "units": [
+      67,
+      70
+    ]
   },
   {
     "id": "grande_epreuve",
@@ -638,7 +794,15 @@
     "has_zine": true,
     "lug_to_lug": 48.5,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Reverse Panda negro",
+      "Panda blanco"
+    ],
+    "units": [
+      40,
+      39
+    ]
   },
   {
     "id": "heian",
@@ -664,7 +828,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      ""
+    ],
+    "units": [
+      101
+    ]
   },
   {
     "id": "kaiju",
@@ -691,7 +861,13 @@
     "has_zine": true,
     "lug_to_lug": 50,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      ""
+    ],
+    "units": [
+      63
+    ]
   },
   {
     "id": "kaiju_yuki_otoko",
@@ -718,7 +894,13 @@
     "has_zine": true,
     "lug_to_lug": 50,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "majetek",
@@ -744,7 +926,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Escuadrón 312 Burdeos"
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "racing",
@@ -770,7 +958,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Karusell",
+      "Moeris Lacus Space"
+    ],
+    "units": [
+      280,
+      170
+    ]
   },
   {
     "id": "rex_caeli",
@@ -796,7 +992,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "rex_maris",
@@ -822,7 +1024,21 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Amarillo",
+      "Azul Caribe",
+      "Negro",
+      "Naranja",
+      "Turquesa"
+    ],
+    "units": [
+      53,
+      104,
+      36,
+      84,
+      37
+    ]
   },
   {
     "id": "rex_terrae",
@@ -849,7 +1065,15 @@
     "has_zine": true,
     "lug_to_lug": 48.5,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "South Pole Pingüino blanco",
+      "North Pole Oso Polar negro"
+    ],
+    "units": [
+      50,
+      50
+    ]
   },
   {
     "id": "salto_de_fe",
@@ -875,7 +1099,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "pulsera",
+      "bolsillo"
+    ],
+    "units": [
+      35,
+      7
+    ]
   },
   {
     "id": "scaphandre_i",
@@ -902,7 +1134,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 1200
+    "water_resist": 1200,
+    "models": [
+      ""
+    ],
+    "units": [
+      98
+    ]
   },
   {
     "id": "scaphandre_ii",
@@ -928,7 +1166,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 1000
+    "water_resist": 1000,
+    "models": [
+      "Purista corona 9h",
+      "Prototipo corona 3h"
+    ],
+    "units": [
+      105,
+      26
+    ]
   },
   {
     "id": "scaphandre_iii",
@@ -955,7 +1201,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 1200
+    "water_resist": 1200,
+    "models": [
+      "3"
+    ],
+    "units": [
+      93
+    ]
   },
   {
     "id": "skygraph",
@@ -982,7 +1234,19 @@
     "has_zine": true,
     "lug_to_lug": 49,
     "project_status": "production",
-    "water_resist": 70
+    "water_resist": 70,
+    "models": [
+      "Tradicional amarillo",
+      "Cevert azul",
+      "Space Cowboy azul",
+      "Silver Grey plata"
+    ],
+    "units": [
+      200,
+      26,
+      92,
+      51
+    ]
   },
   {
     "id": "iberia",
@@ -1009,7 +1273,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      ""
+    ],
+    "units": [
+      43
+    ]
   },
   {
     "id": "colossus",
@@ -1036,7 +1306,13 @@
     "has_zine": true,
     "lug_to_lug": 56,
     "project_status": "delivered",
-    "water_resist": 10000
+    "water_resist": 10000,
+    "models": [
+      ""
+    ],
+    "units": [
+      58
+    ]
   },
   {
     "id": "ala14",
@@ -1067,7 +1343,13 @@
     "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon",
     "lug_to_lug": 52,
     "project_status": "production",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Anadigi"
+    ],
+    "units": [
+      115
+    ]
   },
   {
     "id": "cosmotemp",
@@ -1094,7 +1376,13 @@
     "has_zine": true,
     "lug_to_lug": 52,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Digital"
+    ],
+    "units": [
+      223
+    ]
   },
   {
     "id": "typhoon",
@@ -1124,7 +1412,13 @@
     "has_zine": true,
     "lug_to_lug": 52,
     "project_status": "production",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Anadigi"
+    ],
+    "units": [
+      130
+    ]
   },
   {
     "id": "world_timer",
@@ -1151,7 +1445,13 @@
     "has_zine": true,
     "lug_to_lug": 52,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      ""
+    ],
+    "units": [
+      195
+    ]
   },
   {
     "id": "supersharkomatic",
@@ -1178,7 +1478,15 @@
     "has_zine": true,
     "lug_to_lug": 46.5,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Azul",
+      "Negro"
+    ],
+    "units": [
+      44,
+      149
+    ]
   },
   {
     "id": "typ_vii-b",
@@ -1204,7 +1512,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 500
+    "water_resist": 500,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "ume_1",
@@ -1230,7 +1544,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      ""
+    ],
+    "units": [
+      160
+    ]
   },
   {
     "id": "ume_2",
@@ -1256,7 +1576,13 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      ""
+    ],
+    "units": [
+      148
+    ]
   },
   {
     "id": "vainqueur",
@@ -1284,7 +1610,21 @@
     "has_zine": true,
     "lug_to_lug": 46.5,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Bleu de France",
+      "Côte d'Azur Mónaco",
+      "Negro",
+      "Púrpura",
+      "Rosso Italia"
+    ],
+    "units": [
+      70,
+      156,
+      34,
+      44,
+      39
+    ]
   },
   {
     "id": "verne",
@@ -1310,7 +1650,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Verde",
+      "Azul"
+    ],
+    "units": [
+      53,
+      72
+    ]
   },
   {
     "id": "ichi",
@@ -1337,7 +1685,13 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "Mako"
+    ],
+    "units": [
+      12
+    ]
   },
   {
     "id": "laco_squad",
@@ -1363,7 +1717,13 @@
     "has_zine": false,
     "notes": "Collaborative project with RelojesDe.es, personalized rotor with HdR branding",
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      ""
+    ],
+    "units": [
+      15
+    ]
   },
   {
     "id": "landeron_compressor",
@@ -1389,7 +1749,13 @@
     "has_zine": false,
     "notes": "Collaborative purchase project, compressor-style cases",
     "project_status": "delivered",
-    "water_resist": 30
+    "water_resist": 30,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "kingtuna",
@@ -1415,7 +1781,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 300
+    "water_resist": 300,
+    "models": [
+      "Dial azul",
+      "Dial negro"
+    ],
+    "units": [
+      45,
+      73
+    ]
   },
   {
     "id": "sevenseas",
@@ -1441,7 +1815,15 @@
     "lane_id": "rswc",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 300
+    "water_resist": 300,
+    "models": [
+      "Dial azul",
+      "Dial negro"
+    ],
+    "units": [
+      74,
+      77
+    ]
   },
   {
     "id": "caballero",
@@ -1469,7 +1851,17 @@
     "lane_id": "sys",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Clásico dorado",
+      "Deportivo acero/oro",
+      "Moderno acero"
+    ],
+    "units": [
+      28,
+      24,
+      34
+    ]
   },
   {
     "id": "competidor",
@@ -1496,7 +1888,19 @@
     "has_zine": true,
     "lug_to_lug": 49,
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Panda",
+      "Clásico",
+      "Rally 43 Monegros",
+      "Aquarally 50 Mequinenza"
+    ],
+    "units": [
+      21,
+      66,
+      43,
+      50
+    ]
   },
   {
     "id": "inmortal",
@@ -1523,7 +1927,17 @@
     "has_zine": true,
     "lug_to_lug": 47,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Clásico dorado",
+      "Deportivo acero/oro",
+      "Moderno acero"
+    ],
+    "units": [
+      42,
+      24,
+      19
+    ]
   },
   {
     "id": "inmortal_reserva_especial",
@@ -1550,7 +1964,17 @@
     "has_zine": true,
     "lug_to_lug": 48,
     "project_status": "delivered",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Clásico dorado",
+      "Deportivo acero/oro",
+      "Moderno acero"
+    ],
+    "units": [
+      21,
+      35,
+      28
+    ]
   },
   {
     "id": "monumental",
@@ -1578,7 +2002,19 @@
     "has_zine": true,
     "notes": "Price not explicitly stated in thread 254341. Monumental and Viajero presented together with ST-1901",
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      "Fortuna Oro",
+      "Grana Oro",
+      "Mal Fario",
+      "Tabaco Oro"
+    ],
+    "units": [
+      18,
+      24,
+      25,
+      27
+    ]
   },
   {
     "id": "roquina",
@@ -1605,7 +2041,17 @@
     "has_zine": true,
     "lug_to_lug": 44.5,
     "project_status": "payment",
-    "water_resist": 50
+    "water_resist": 50,
+    "models": [
+      "Azul",
+      "Verde",
+      "Castizo"
+    ],
+    "units": [
+      25,
+      52,
+      46
+    ]
   },
   {
     "id": "viajero",
@@ -1633,7 +2079,13 @@
     "lug_to_lug": 48,
     "notes": "Price not explicitly stated in thread 254341. Viajero presented with Monumental but no individual pricing",
     "project_status": "delivered",
-    "water_resist": 100
+    "water_resist": 100,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   },
   {
     "id": "vostok_amphibia_5_6",
@@ -1661,7 +2113,23 @@
     "has_zine": true,
     "notes": "Design by @El_Monitor. Dial design inspired by USSR commemorative postal stamps celebrating the Vostok 5/6 missions. Water resistance: 20 ATM (200m).",
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      "AM 420 Negro",
+      "AM 420 Azul",
+      "AM 420 Rojo",
+      "AMM 710 Rojo",
+      "AMM 710 Azul",
+      "AMM 710 Negro"
+    ],
+    "units": [
+      15,
+      38,
+      17,
+      53,
+      71,
+      50
+    ]
   },
   {
     "id": "vostok_k43",
@@ -1687,6 +2155,12 @@
     "lane_id": "otros",
     "has_zine": true,
     "project_status": "delivered",
-    "water_resist": 200
+    "water_resist": 200,
+    "models": [
+      ""
+    ],
+    "units": [
+      50
+    ]
   }
 ]

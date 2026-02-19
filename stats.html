@@ -276,6 +276,7 @@
           <option value="water-resist">Hermeticidad</option>
           <option value="movement-type">Tipos de movimiento</option>
           <option value="movement-company">Fabricante de calibre</option>
+          <option value="units-production">Unidades producidas (por modelo)</option>
         </select>
       </div>
 
@@ -376,6 +377,18 @@
               <canvas id="movementCompanyChart" aria-label="Distribución por fabricante de calibre" role="img"></canvas>
             </div>
             <div id="movement-company-error" class="error-banner"></div>
+          </section>
+
+          <!-- Units Production Chart -->
+          <section class="stats-card chart-section" id="units-production">
+            <div>
+              <h2>Unidades producidas por modelo</h2>
+              <p class="stats-meta">Cantidad de unidades fabricadas de cada reloj, desglosadas por modelo cuando hay múltiples variantes.</p>
+            </div>
+            <div class="chart-container" style="height: 600px;">
+              <canvas id="unitsProductionChart" aria-label="Unidades producidas por modelo" role="img"></canvas>
+            </div>
+            <div id="units-production-error" class="error-banner"></div>
           </section>
         </div>
 
@@ -487,6 +500,20 @@
             w.case_diameter != null && w.case_diameter !== "" &&
             w.strap_width != null && w.strap_width !== ""
           ).length;
+          
+          // Calculate averages by group
+          const rswcDiamStrap = watches.filter(w => w.lane_id === "rswc" && w.case_diameter != null && w.case_diameter !== "" && w.strap_width != null && w.strap_width !== "");
+          const rswcAvgDiam = rswcDiamStrap.length > 0 ? (rswcDiamStrap.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / rswcDiamStrap.length).toFixed(1) : "-";
+          const rswcAvgStrap = rswcDiamStrap.length > 0 ? (rswcDiamStrap.reduce((sum, w) => sum + parseFloat(String(w.strap_width).replace(",", ".")), 0) / rswcDiamStrap.length).toFixed(1) : "-";
+          
+          const sysDiamStrap = watches.filter(w => w.lane_id === "sys" && w.case_diameter != null && w.case_diameter !== "" && w.strap_width != null && w.strap_width !== "");
+          const sysAvgDiam = sysDiamStrap.length > 0 ? (sysDiamStrap.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / sysDiamStrap.length).toFixed(1) : "-";
+          const sysAvgStrap = sysDiamStrap.length > 0 ? (sysDiamStrap.reduce((sum, w) => sum + parseFloat(String(w.strap_width).replace(",", ".")), 0) / sysDiamStrap.length).toFixed(1) : "-";
+          
+          const otrosDiamStrap = watches.filter(w => w.lane_id === "otros" && w.case_diameter != null && w.case_diameter !== "" && w.strap_width != null && w.strap_width !== "");
+          const otrosAvgDiam = otrosDiamStrap.length > 0 ? (otrosDiamStrap.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / otrosDiamStrap.length).toFixed(1) : "-";
+          const otrosAvgStrap = otrosDiamStrap.length > 0 ? (otrosDiamStrap.reduce((sum, w) => sum + parseFloat(String(w.strap_width).replace(",", ".")), 0) / otrosDiamStrap.length).toFixed(1) : "-";
+          
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -504,6 +531,18 @@
               <span class="summary-label">Con ambos datos</span>
               <span class="summary-value">${withBoth}</span>
             </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC: Ø medio / ancho</span>
+              <span class="summary-value">${rswcAvgDiam}mm / ${rswcAvgStrap}mm</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">SyS: Ø medio / ancho</span>
+              <span class="summary-value">${sysAvgDiam}mm / ${sysAvgStrap}mm</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros: Ø medio / ancho</span>
+              <span class="summary-value">${otrosAvgDiam}mm / ${otrosAvgStrap}mm</span>
+            </div>
           `;
           break;
 
@@ -513,6 +552,20 @@
             w.case_diameter != null && w.case_diameter !== "" &&
             w.case_height != null && w.case_height !== "" && w.case_height > 0
           ).length;
+          
+          // Calculate averages by group
+          const rswcDiamHeight = watches.filter(w => w.lane_id === "rswc" && w.case_diameter != null && w.case_diameter !== "" && w.case_height != null && w.case_height !== "" && w.case_height > 0);
+          const rswcAvgDiamH = rswcDiamHeight.length > 0 ? (rswcDiamHeight.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / rswcDiamHeight.length).toFixed(1) : "-";
+          const rswcAvgHeight = rswcDiamHeight.length > 0 ? (rswcDiamHeight.reduce((sum, w) => sum + parseFloat(String(w.case_height).replace(",", ".")), 0) / rswcDiamHeight.length).toFixed(1) : "-";
+          
+          const sysDiamHeight = watches.filter(w => w.lane_id === "sys" && w.case_diameter != null && w.case_diameter !== "" && w.case_height != null && w.case_height !== "" && w.case_height > 0);
+          const sysAvgDiamH = sysDiamHeight.length > 0 ? (sysDiamHeight.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / sysDiamHeight.length).toFixed(1) : "-";
+          const sysAvgHeight = sysDiamHeight.length > 0 ? (sysDiamHeight.reduce((sum, w) => sum + parseFloat(String(w.case_height).replace(",", ".")), 0) / sysDiamHeight.length).toFixed(1) : "-";
+          
+          const otrosDiamHeight = watches.filter(w => w.lane_id === "otros" && w.case_diameter != null && w.case_diameter !== "" && w.case_height != null && w.case_height !== "" && w.case_height > 0);
+          const otrosAvgDiamH = otrosDiamHeight.length > 0 ? (otrosDiamHeight.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / otrosDiamHeight.length).toFixed(1) : "-";
+          const otrosAvgHeight = otrosDiamHeight.length > 0 ? (otrosDiamHeight.reduce((sum, w) => sum + parseFloat(String(w.case_height).replace(",", ".")), 0) / otrosDiamHeight.length).toFixed(1) : "-";
+          
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -530,6 +583,18 @@
               <span class="summary-label">Con ambos datos</span>
               <span class="summary-value">${withDiamHeight}</span>
             </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC: Ø medio / grosor</span>
+              <span class="summary-value">${rswcAvgDiamH}mm / ${rswcAvgHeight}mm</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">SyS: Ø medio / grosor</span>
+              <span class="summary-value">${sysAvgDiamH}mm / ${sysAvgHeight}mm</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros: Ø medio / grosor</span>
+              <span class="summary-value">${otrosAvgDiamH}mm / ${otrosAvgHeight}mm</span>
+            </div>
           `;
           break;
 
@@ -539,6 +604,20 @@
             w.case_diameter != null && w.case_diameter !== "" &&
             w.lug_to_lug != null && w.lug_to_lug !== "" && w.lug_to_lug > 0
           ).length;
+          
+          // Calculate averages by group
+          const rswcDiamLug = watches.filter(w => w.lane_id === "rswc" && w.case_diameter != null && w.case_diameter !== "" && w.lug_to_lug != null && w.lug_to_lug !== "" && w.lug_to_lug > 0);
+          const rswcAvgDiamL = rswcDiamLug.length > 0 ? (rswcDiamLug.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / rswcDiamLug.length).toFixed(1) : "-";
+          const rswcAvgLug = rswcDiamLug.length > 0 ? (rswcDiamLug.reduce((sum, w) => sum + parseFloat(String(w.lug_to_lug).replace(",", ".")), 0) / rswcDiamLug.length).toFixed(1) : "-";
+          
+          const sysDiamLug = watches.filter(w => w.lane_id === "sys" && w.case_diameter != null && w.case_diameter !== "" && w.lug_to_lug != null && w.lug_to_lug !== "" && w.lug_to_lug > 0);
+          const sysAvgDiamL = sysDiamLug.length > 0 ? (sysDiamLug.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / sysDiamLug.length).toFixed(1) : "-";
+          const sysAvgLug = sysDiamLug.length > 0 ? (sysDiamLug.reduce((sum, w) => sum + parseFloat(String(w.lug_to_lug).replace(",", ".")), 0) / sysDiamLug.length).toFixed(1) : "-";
+          
+          const otrosDiamLug = watches.filter(w => w.lane_id === "otros" && w.case_diameter != null && w.case_diameter !== "" && w.lug_to_lug != null && w.lug_to_lug !== "" && w.lug_to_lug > 0);
+          const otrosAvgDiamL = otrosDiamLug.length > 0 ? (otrosDiamLug.reduce((sum, w) => sum + parseFloat(String(w.case_diameter).replace(",", ".")), 0) / otrosDiamLug.length).toFixed(1) : "-";
+          const otrosAvgLug = otrosDiamLug.length > 0 ? (otrosDiamLug.reduce((sum, w) => sum + parseFloat(String(w.lug_to_lug).replace(",", ".")), 0) / otrosDiamLug.length).toFixed(1) : "-";
+          
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -555,6 +634,18 @@
             <div class="summary-row">
               <span class="summary-label">Con ambos datos</span>
               <span class="summary-value">${withDiamLug}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC: Ø medio / lug2lug</span>
+              <span class="summary-value">${rswcAvgDiamL}mm / ${rswcAvgLug}mm</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">SyS: Ø medio / lug2lug</span>
+              <span class="summary-value">${sysAvgDiamL}mm / ${sysAvgLug}mm</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros: Ø medio / lug2lug</span>
+              <span class="summary-value">${otrosAvgDiamL}mm / ${otrosAvgLug}mm</span>
             </div>
           `;
           break;
@@ -686,6 +777,8 @@
           const manual = watches.filter(w => w.movement_type === "manual").length;
           const quartz = watches.filter(w => w.movement_type === "quartz").length;
           const solar = watches.filter(w => w.movement_type === "solar").length;
+          const anadigi = watches.filter(w => w.movement_type === "anadigi").length;
+          const digital = watches.filter(w => w.movement_type === "digital").length;
           const rswcMovType = watches.filter(w => w.lane_id === "rswc" && w.movement_type != null && w.movement_type !== "").length;
           const sysMovType = watches.filter(w => w.lane_id === "sys" && w.movement_type != null && w.movement_type !== "").length;
           html = `
@@ -717,15 +810,38 @@
               <span class="summary-label">Solar</span>
               <span class="summary-value">${solar}</span>
             </div>
+            <div class="summary-row">
+              <span class="summary-label">Anadigi</span>
+              <span class="summary-value">${anadigi}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Digital</span>
+              <span class="summary-value">${digital}</span>
+            </div>
           `;
           break;
 
         case 'movement-company':
           const withMovComp = watches.filter(w => w.movement_company != null && w.movement_company !== "").length;
           const movComps = [...new Set(watches.filter(w => w.movement_company != null && w.movement_company !== "").map(w => w.movement_company))];
-          const rswcMovComp = watches.filter(w => w.lane_id === "rswc" && w.movement_company != null && w.movement_company !== "").length;
-          const sysMovComp = watches.filter(w => w.lane_id === "sys" && w.movement_company != null && w.movement_company !== "").length;
-          const otrosMovComp = watches.filter(w => w.lane_id === "otros" && w.movement_company != null && w.movement_company !== "").length;
+          
+          // Get most common manufacturer per group
+          const getMostCommon = (arr) => {
+            if (arr.length === 0) return "-";
+            const counts = {};
+            arr.forEach(item => counts[item] = (counts[item] || 0) + 1);
+            return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+          };
+          
+          const rswcComps = watches.filter(w => w.lane_id === "rswc" && w.movement_company != null && w.movement_company !== "").map(w => w.movement_company);
+          const rswcMostCommon = getMostCommon(rswcComps);
+          
+          const sysComps = watches.filter(w => w.lane_id === "sys" && w.movement_company != null && w.movement_company !== "").map(w => w.movement_company);
+          const sysMostCommon = getMostCommon(sysComps);
+          
+          const otrosComps = watches.filter(w => w.lane_id === "otros" && w.movement_company != null && w.movement_company !== "").map(w => w.movement_company);
+          const otrosMostCommon = getMostCommon(otrosComps);
+          
           html = `
             <div class="summary-row">
               <span class="summary-label">Total de relojes</span>
@@ -740,17 +856,88 @@
               <span class="summary-value">${movComps.length}</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">RSWC</span>
-              <span class="summary-value">${rswcMovComp}</span>
+              <span class="summary-label">RSWC más común</span>
+              <span class="summary-value">${rswcMostCommon}</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">Sol y Sombra</span>
-              <span class="summary-value">${sysMovComp}</span>
+              <span class="summary-label">SyS más común</span>
+              <span class="summary-value">${sysMostCommon}</span>
             </div>
             <div class="summary-row">
-              <span class="summary-label">Otros</span>
-              <span class="summary-value">${otrosMovComp}</span>
+              <span class="summary-label">Otros más común</span>
+              <span class="summary-value">${otrosMostCommon}</span>
             </div>
+          `;
+          break;
+
+        case 'units-production':
+          // Filter watches with units data
+          const watchesWithUnits = watches.filter(w => w && w.units && Array.isArray(w.units) && w.units.length > 0);
+          
+          // Calculate total units per group
+          const rswcWatchesWithUnits = watchesWithUnits.filter(w => w.lane_id === "rswc");
+          const sysWatchesWithUnits = watchesWithUnits.filter(w => w.lane_id === "sys");
+          const otrosWatchesWithUnits = watchesWithUnits.filter(w => w.lane_id === "otros");
+          
+          const rswcTotalUnits = rswcWatchesWithUnits.reduce((sum, w) => sum + w.units.reduce((s, u) => s + u, 0), 0);
+          const sysTotalUnits = sysWatchesWithUnits.reduce((sum, w) => sum + w.units.reduce((s, u) => s + u, 0), 0);
+          const otrosTotalUnits = otrosWatchesWithUnits.reduce((sum, w) => sum + w.units.reduce((s, u) => s + u, 0), 0);
+          
+          // Get all individual models with their units (excluding "otros" for rankings)
+          const modelsForRanking = [];
+          watchesWithUnits.forEach(w => {
+            if (w.models && w.units && w.models.length === w.units.length) {
+              w.models.forEach((model, idx) => {
+                const displayName = model && model.trim() ? `${w.title} - ${model}` : w.title;
+                if (w.lane_id !== "otros") {
+                  modelsForRanking.push({
+                    name: displayName,
+                    units: w.units[idx]
+                  });
+                }
+              });
+            }
+          });
+          
+          // Top 5 models by units
+          const top5 = [...modelsForRanking].sort((a, b) => b.units - a.units).slice(0, 5);
+          
+          // 5 most exclusive models (lowest units)
+          const exclusive5 = [...modelsForRanking].sort((a, b) => a.units - b.units).slice(0, 5);
+          
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">🏆 RSWC</span>
+              <span class="summary-value">${rswcWatchesWithUnits.length} relojes (${rswcTotalUnits} uds)</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">⚔️ Sol y Sombra</span>
+              <span class="summary-value">${sysWatchesWithUnits.length} relojes (${sysTotalUnits} uds)</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">🌍 Otros</span>
+              <span class="summary-value">${otrosWatchesWithUnits.length} relojes (${otrosTotalUnits} uds)</span>
+            </div>
+            <div class="summary-row" style="margin-top: 10px; border-top: 1px solid rgba(148, 163, 184, 0.2); padding-top: 10px;">
+              <span class="summary-label" style="font-weight: 600;">Top 5 modelos (RSWC/RSWF/SyS)</span>
+              <span class="summary-value"></span>
+            </div>
+            ${top5.map((m, i) => `
+              <div class="summary-row" style="font-size: 0.85em;">
+                <span class="summary-label">${i + 1}. ${m.name}</span>
+                <span class="summary-value">${m.units} uds</span>
+              </div>
+            `).join('')}
+            <div class="summary-row" style="margin-top: 10px; border-top: 1px solid rgba(148, 163, 184, 0.2); padding-top: 10px;">
+              <span class="summary-label" style="font-weight: 600;">5 más exclusivos (RSWC/RSWF/SyS)</span>
+              <span class="summary-value"></span>
+            </div>
+            ${exclusive5.map((m, i) => `
+              <div class="summary-row" style="font-size: 0.85em;">
+                <span class="summary-label">${i + 1}. ${m.name}</span>
+                <span class="summary-value">${m.units} uds</span>
+              </div>
+            `).join('')}
           `;
           break;
 
@@ -2607,6 +2794,249 @@
       });
     }
 
+    function buildUnitsProductionChart(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("units-production-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Filter watches with units data and sort by lane_id and total units
+      const watchesWithUnits = watches.filter(w => w && w.units && Array.isArray(w.units) && w.units.length > 0);
+      
+      if (watchesWithUnits.length === 0) {
+        showError("units-production-error", "No se han encontrado datos de unidades.");
+        return;
+      }
+
+      // Calculate total units for each watch
+      watchesWithUnits.forEach(w => {
+        w._totalUnits = w.units.reduce((sum, u) => sum + u, 0);
+      });
+
+      // Sort chronologically by year and month
+      watchesWithUnits.sort((a, b) => {
+        const yearA = a.year ?? 9999;
+        const yearB = b.year ?? 9999;
+        if (yearA !== yearB) return yearA - yearB;
+        const monthA = a.month ?? 12;
+        const monthB = b.month ?? 12;
+        return monthA - monthB;
+      });
+
+      // Prepare data for stacked chart - just use title for x-axis labels
+      const labels = watchesWithUnits.map(w => w.title || w.id);
+
+      // Define color scheme by lane_id with two opacity levels for stacking
+      const colorsByLane = {
+        rswc: {
+          light: "rgba(255, 215, 0, 0.5)",      // Bright gold, more transparent
+          dark: "rgba(184, 134, 11, 0.95)",     // Dark gold, nearly opaque
+          border: "rgba(218, 165, 32, 1)"
+        },
+        sys: {
+          light: "rgba(167, 139, 250, 0.5)",    // Light purple, more transparent
+          dark: "rgba(109, 40, 217, 0.95)",     // Dark purple, nearly opaque
+          border: "rgba(139, 92, 246, 1)"
+        },
+        otros: {
+          light: "rgba(252, 165, 165, 0.5)",    // Light red, more transparent
+          dark: "rgba(220, 38, 38, 0.95)",      // Dark red, nearly opaque
+          border: "rgba(239, 68, 68, 1)"
+        }
+      };
+
+      // Helper function to create striped pattern with specified stripe color
+      function createStripePattern(baseColor, stripeColor) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 10;
+        canvas.height = 10;
+        const ctx = canvas.getContext('2d');
+        
+        // Background - base color
+        ctx.fillStyle = baseColor;
+        ctx.fillRect(0, 0, 10, 10);
+        
+        // Diagonal stripes at 45°
+        ctx.strokeStyle = stripeColor;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, 10);
+        ctx.lineTo(10, 0);
+        ctx.moveTo(-5, 15);
+        ctx.lineTo(5, 5);
+        ctx.moveTo(5, 15);
+        ctx.lineTo(15, 5);
+        ctx.stroke();
+        
+        return ctx.createPattern(canvas, 'repeat');
+      }
+
+      // Create datasets - one per watch-model combination
+      const datasets = [];
+      
+      watchesWithUnits.forEach((watch, watchIdx) => {
+        if (!watch.models || !watch.units || watch.models.length === 0) return;
+        
+        const laneId = watch.lane_id || "otros";
+        const colors = colorsByLane[laneId] || colorsByLane.otros;
+        
+        // Create array of {modelName, units, index} and sort by units descending (most units first = bottom of stack)
+        const modelData = watch.models.map((modelName, idx) => ({
+          modelName: modelName,
+          units: watch.units[idx] || 0,
+          originalIndex: idx
+        })).sort((a, b) => b.units - a.units); // Sort descending
+        
+        modelData.forEach((model, sortedIdx) => {
+          let bgColor;
+          
+          // Pattern cycle: solid, white stripes, black stripes, repeat...
+          const patternIndex = sortedIdx % 3;
+          
+          if (patternIndex === 0) {
+            // Solid color
+            bgColor = colors.dark;
+          } else if (patternIndex === 1) {
+            // White stripes
+            bgColor = createStripePattern(colors.dark, 'rgba(255, 255, 255, 0.5)');
+          } else {
+            // Black stripes
+            bgColor = createStripePattern(colors.dark, 'rgba(0, 0, 0, 0.5)');
+          }
+          
+          // Create data array: only this watch's model has a value, others are 0
+          const data = watchesWithUnits.map((w, idx) => {
+            if (idx !== watchIdx) return 0;
+            return model.units;
+          });
+          
+          datasets.push({
+            label: model.modelName,
+            data: data,
+            backgroundColor: bgColor,
+            borderColor: colors.border,
+            borderWidth: 1,
+            borderRadius: 3,
+            _watchId: watch.id,
+            _watchTitle: watch.title
+          });
+        });
+      });
+
+      // Calculate statistics
+      const rswcWatches = watchesWithUnits.filter(w => w.lane_id === "rswc");
+      const sysWatches = watchesWithUnits.filter(w => w.lane_id === "sys");
+      const otrosWatches = watchesWithUnits.filter(w => w.lane_id === "otros");
+
+      // Get all individual models with their units (excluding "otros" category for top/exclusive lists)
+      const allModels = [];
+      const modelsForRanking = []; // Exclude "otros"
+      watchesWithUnits.forEach(w => {
+        if (w.models && w.units && w.models.length === w.units.length) {
+          w.models.forEach((model, idx) => {
+            // Format as "Title - Model" or just "Title" if model is empty
+            const displayName = model && model.trim() ? `${w.title} - ${model}` : w.title;
+            const modelData = {
+              name: displayName,
+              units: w.units[idx],
+              watchId: w.id,
+              title: w.title,
+              model: model
+            };
+            allModels.push(modelData);
+            // Only add to ranking if not "otros"
+            if (w.lane_id !== "otros") {
+              modelsForRanking.push(modelData);
+            }
+          });
+        }
+      });
+
+      const ctx = document.getElementById("unitsProductionChart");
+      if (!ctx) {
+        showError("units-production-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels,
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              stacked: true,
+              title: { display: true, text: "Reloj", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                font: { size: 8 },
+                maxRotation: 90,
+                minRotation: 45,
+                autoSkip: false,
+              },
+              grid: { display: false },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: { display: true, text: "Unidades producidas", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { color: "#9ca3af", precision: 0, font: { size: 10 } },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: false  // Too many models, hide legend
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  return items[0].label;  // Watch title
+                },
+                label(context) { 
+                  const modelName = context.dataset.label;
+                  const units = context.parsed.y;
+                  if (units === 0) return null;  // Don't show 0 values
+                  
+                  const watchIndex = context.dataIndex;
+                  const watch = watchesWithUnits[watchIndex];
+                  const watchTitle = watch.title || watch.id;
+                  
+                  // Format as "Title - Model" or just "Title" if model is empty
+                  const displayName = modelName && modelName.trim() 
+                    ? `${watchTitle} - ${modelName}` 
+                    : watchTitle;
+                  
+                  return `${displayName}: ${units} unidades`;
+                },
+                footer(items) {
+                  const watchIndex = items[0].dataIndex;
+                  const watch = watchesWithUnits[watchIndex];
+                  const total = watch._totalUnits;
+                  return `Total: ${total} unidades`;
+                }
+              },
+            },
+          },
+        },
+      });
+    }
+
     async function init() {
       let data;
       try {
@@ -2666,6 +3096,8 @@
           borderColor: "rgba(244, 63, 94, 0.95)"
         });
       } catch (e) { console.error(e); }
+
+      try { buildUnitsProductionChart(data); } catch (e) { console.error(e); }
 
       // Setup chart selector AFTER data is loaded so saved selection has data available
       setupChartSelector();
