@@ -272,6 +272,8 @@
           <option value="diameter-height">Diámetro vs Grosor (altura)</option>
           <option value="diameter-lug">Diámetro vs Lug to Lug</option>
           <option value="yearly-cumulative">Relojes por año (acumulado)</option>
+          <option value="yearly-units-cumulative">Unidades acumuladas por años</option>
+          <option value="yearly-volume-cumulative">Volumen contratado (€) acumulado por años</option>
           <option value="price">Distribución de precios</option>
           <option value="water-resist">Hermeticidad</option>
           <option value="movement-type">Tipos de movimiento</option>
@@ -329,6 +331,30 @@
               <canvas id="yearlyChart" aria-label="Gráfico acumulado por año" role="img"></canvas>
             </div>
             <div id="yearly-error" class="error-banner"></div>
+          </section>
+
+          <!-- Yearly Units Cumulative Chart -->
+          <section class="stats-card chart-section" id="yearly-units-cumulative">
+            <div>
+              <h2>Unidades acumuladas por años</h2>
+              <p class="stats-meta">Muestra el número total acumulado de unidades producidas año tras año. Incluye todas las variantes de cada reloj.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="yearlyUnitsChart" aria-label="Gráfico de unidades acumuladas por año" role="img"></canvas>
+            </div>
+            <div id="yearly-units-error" class="error-banner"></div>
+          </section>
+
+          <!-- Yearly Volume Cumulative Chart -->
+          <section class="stats-card chart-section" id="yearly-volume-cumulative">
+            <div>
+              <h2>Volumen contratado (€) acumulado por años</h2>
+              <p class="stats-meta">Muestra el valor total acumulado de proyectos (unidades × precio) año tras año. Solo incluye proyectos con precio conocido.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="yearlyVolumeChart" aria-label="Gráfico de volumen contratado acumulado por año" role="img"></canvas>
+            </div>
+            <div id="yearly-volume-error" class="error-banner"></div>
           </section>
 
           <!-- Price Chart -->
@@ -677,6 +703,87 @@
             <div class="summary-row">
               <span class="summary-label">Otros</span>
               <span class="summary-value">${otrosCount}</span>
+            </div>
+          `;
+          break;
+
+        case 'yearly-units-cumulative':
+          const unitsYears = watches.filter(w => w.year != null && w.year !== "").map(w => w.year);
+          const unitsMinYear = unitsYears.length > 0 ? Math.min(...unitsYears) : 0;
+          const unitsMaxYear = unitsYears.length > 0 ? Math.max(...unitsYears) : 0;
+          
+          // Calculate total units per lane
+          const rswcWatchesUnitsCum = watches.filter(w => w.lane_id === "rswc" && w.units && Array.isArray(w.units));
+          const sysWatchesUnitsCum = watches.filter(w => w.lane_id === "sys" && w.units && Array.isArray(w.units));
+          const otrosWatchesUnitsCum = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.units && Array.isArray(w.units));
+          
+          const rswcTotalUnitsCum = rswcWatchesUnitsCum.reduce((sum, w) => sum + w.units.reduce((s, u) => s + u, 0), 0);
+          const sysTotalUnitsCum = sysWatchesUnitsCum.reduce((sum, w) => sum + w.units.reduce((s, u) => s + u, 0), 0);
+          const otrosTotalUnitsCum = otrosWatchesUnitsCum.reduce((sum, w) => sum + w.units.reduce((s, u) => s + u, 0), 0);
+          const grandTotalUnits = rswcTotalUnitsCum + sysTotalUnitsCum + otrosTotalUnitsCum;
+          
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total unidades</span>
+              <span class="summary-value">${grandTotalUnits}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Periodo</span>
+              <span class="summary-value">${unitsMinYear} - ${unitsMaxYear}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC units</span>
+              <span class="summary-value">${rswcTotalUnitsCum}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra units</span>
+              <span class="summary-value">${sysTotalUnitsCum}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros units</span>
+              <span class="summary-value">${otrosTotalUnitsCum}</span>
+            </div>
+          `;
+          break;
+
+        case 'yearly-volume-cumulative':
+          const volumeYears = watches.filter(w => w.year != null && w.year !== "").map(w => w.year);
+          const volumeMinYear = volumeYears.length > 0 ? Math.min(...volumeYears) : 0;
+          const volumeMaxYear = volumeYears.length > 0 ? Math.max(...volumeYears) : 0;
+          
+          // Calculate total volume per lane (units × price)
+          const rswcWatchesVolume = watches.filter(w => w.lane_id === "rswc" && w.units && Array.isArray(w.units) && w.price != null && typeof w.price === 'number');
+          const sysWatchesVolume = watches.filter(w => w.lane_id === "sys" && w.units && Array.isArray(w.units) && w.price != null && typeof w.price === 'number');
+          const otrosWatchesVolume = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.units && Array.isArray(w.units) && w.price != null && typeof w.price === 'number');
+          
+          const rswcTotalVolume = rswcWatchesVolume.reduce((sum, w) => sum + (w.units.reduce((s, u) => s + u, 0) * w.price), 0);
+          const sysTotalVolume = sysWatchesVolume.reduce((sum, w) => sum + (w.units.reduce((s, u) => s + u, 0) * w.price), 0);
+          const otrosTotalVolume = otrosWatchesVolume.reduce((sum, w) => sum + (w.units.reduce((s, u) => s + u, 0) * w.price), 0);
+          const grandTotalVolume = rswcTotalVolume + sysTotalVolume + otrosTotalVolume;
+          
+          // Format numbers with thousand separators
+          const formatEuro = (n) => Math.round(n).toLocaleString('es-ES') + '€';
+          
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Volumen total</span>
+              <span class="summary-value">${formatEuro(grandTotalVolume)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Periodo</span>
+              <span class="summary-value">${volumeMinYear} - ${volumeMaxYear}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC volumen</span>
+              <span class="summary-value">${formatEuro(rswcTotalVolume)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra volumen</span>
+              <span class="summary-value">${formatEuro(sysTotalVolume)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros volumen</span>
+              <span class="summary-value">${formatEuro(otrosTotalVolume)}</span>
             </div>
           `;
           break;
@@ -1728,6 +1835,410 @@
                   // Calculate total for the specific year across all lanes
                   const total = items.reduce((sum, item) => sum + (item.raw.yearlyCount || 0), 0);
                   return `Total ese año: ${total} ${total === 1 ? "reloj" : "relojes"}`;
+                }
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildYearlyUnitsCumulative(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("yearly-units-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group by lane_id and year, summing units
+      const rswcByYear = Object.create(null);
+      const sysByYear = Object.create(null);
+      const otrosByYear = Object.create(null);
+      const allYears = new Set();
+
+      for (const w of watches) {
+        if (!w) continue;
+        const year = w.year;
+        if (year === null || year === undefined || year === "") continue;
+        if (typeof year !== "number" || !Number.isFinite(year)) continue;
+        
+        // Sum units from the units array
+        if (!w.units || !Array.isArray(w.units) || w.units.length === 0) continue;
+        const totalUnits = w.units.reduce((sum, u) => sum + u, 0);
+        if (totalUnits === 0) continue;
+
+        allYears.add(year);
+        const laneId = w.lane_id || "otros";
+        const key = year.toString();
+
+        if (laneId === "rswc") {
+          rswcByYear[key] = (rswcByYear[key] || 0) + totalUnits;
+        } else if (laneId === "sys") {
+          sysByYear[key] = (sysByYear[key] || 0) + totalUnits;
+        } else {
+          otrosByYear[key] = (otrosByYear[key] || 0) + totalUnits;
+        }
+      }
+
+      if (allYears.size === 0) {
+        showError("yearly-units-error", "No se han encontrado años válidos con datos de unidades.");
+        return;
+      }
+
+      const sortedYears = Array.from(allYears).sort((a, b) => a - b);
+      const minYear = Math.min(...sortedYears);
+      const maxYear = Math.max(...sortedYears);
+
+      // Calculate cumulative data for each lane (for stacking)
+      const rswcData = [];
+      const sysData = [];
+      const otrosData = [];
+      let rswcCumulative = 0;
+      let sysCumulative = 0;
+      let otrosCumulative = 0;
+
+      for (const year of sortedYears) {
+        const key = year.toString();
+        rswcCumulative += rswcByYear[key] || 0;
+        sysCumulative += sysByYear[key] || 0;
+        otrosCumulative += otrosByYear[key] || 0;
+
+        // Push data for every year to maintain continuity
+        // Store both cumulative (for display) and yearly count (for tooltip)
+        rswcData.push({ x: year, y: rswcCumulative, yearlyCount: rswcByYear[key] || 0 });
+        sysData.push({ x: year, y: sysCumulative, yearlyCount: sysByYear[key] || 0 });
+        otrosData.push({ x: year, y: otrosCumulative, yearlyCount: otrosByYear[key] || 0 });
+      }
+
+      const ctx = document.getElementById("yearlyUnitsChart");
+      if (!ctx) {
+        showError("yearly-units-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+
+      // Add datasets in stacking order (bottom to top)
+      if (otrosData.length > 0 && otrosCumulative > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.6)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(220, 38, 38, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      if (sysData.length > 0 && sysCumulative > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.6)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(109, 40, 217, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      if (rswcData.length > 0 && rswcCumulative > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.6)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: minYear - 1,
+              max: maxYear + 1,
+              ticks: {
+                stepSize: 1,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              title: { display: true, text: "Año", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: { display: true, text: "Unidades (acumulado)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const year = items[0].parsed.x;
+                  return `Año ${year}`; 
+                },
+                label(context) { 
+                  const yearlyCount = context.raw.yearlyCount || 0;
+                  const lane = context.dataset.label;
+                  return `${lane}: ${yearlyCount} ${yearlyCount === 1 ? "unidad" : "unidades"}`;
+                },
+                footer(items) {
+                  // Calculate total for the specific year across all lanes
+                  const total = items.reduce((sum, item) => sum + (item.raw.yearlyCount || 0), 0);
+                  return `Total ese año: ${total} ${total === 1 ? "unidad" : "unidades"}`;
+                }
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function buildYearlyVolumeCumulative(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("yearly-volume-error", "No hay datos disponibles.");
+        return;
+      }
+
+      // Group by lane_id and year, calculating volume (units × price)
+      const rswcByYear = Object.create(null);
+      const sysByYear = Object.create(null);
+      const otrosByYear = Object.create(null);
+      const allYears = new Set();
+
+      for (const w of watches) {
+        if (!w) continue;
+        const year = w.year;
+        if (year === null || year === undefined || year === "") continue;
+        if (typeof year !== "number" || !Number.isFinite(year)) continue;
+        
+        // Skip if no price or units
+        if (w.price === null || w.price === undefined || typeof w.price !== 'number') continue;
+        if (!w.units || !Array.isArray(w.units) || w.units.length === 0) continue;
+        
+        const totalUnits = w.units.reduce((sum, u) => sum + u, 0);
+        if (totalUnits === 0) continue;
+        
+        const volume = totalUnits * w.price;
+        if (volume === 0) continue;
+
+        allYears.add(year);
+        const laneId = w.lane_id || "otros";
+        const key = year.toString();
+
+        if (laneId === "rswc") {
+          rswcByYear[key] = (rswcByYear[key] || 0) + volume;
+        } else if (laneId === "sys") {
+          sysByYear[key] = (sysByYear[key] || 0) + volume;
+        } else {
+          otrosByYear[key] = (otrosByYear[key] || 0) + volume;
+        }
+      }
+
+      if (allYears.size === 0) {
+        showError("yearly-volume-error", "No se han encontrado años válidos con datos de precio y unidades.");
+        return;
+      }
+
+      const sortedYears = Array.from(allYears).sort((a, b) => a - b);
+      const minYear = Math.min(...sortedYears);
+      const maxYear = Math.max(...sortedYears);
+
+      // Calculate cumulative data for each lane (for stacking)
+      const rswcData = [];
+      const sysData = [];
+      const otrosData = [];
+      let rswcCumulative = 0;
+      let sysCumulative = 0;
+      let otrosCumulative = 0;
+
+      for (const year of sortedYears) {
+        const key = year.toString();
+        rswcCumulative += rswcByYear[key] || 0;
+        sysCumulative += sysByYear[key] || 0;
+        otrosCumulative += otrosByYear[key] || 0;
+
+        // Push data for every year to maintain continuity
+        // Store both cumulative (for display) and yearly count (for tooltip)
+        rswcData.push({ x: year, y: rswcCumulative, yearlyCount: rswcByYear[key] || 0 });
+        sysData.push({ x: year, y: sysCumulative, yearlyCount: sysByYear[key] || 0 });
+        otrosData.push({ x: year, y: otrosCumulative, yearlyCount: otrosByYear[key] || 0 });
+      }
+
+      const ctx = document.getElementById("yearlyVolumeChart");
+      if (!ctx) {
+        showError("yearly-volume-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      const datasets = [];
+
+      // Add datasets in stacking order (bottom to top)
+      if (otrosData.length > 0 && otrosCumulative > 0) {
+        datasets.push({
+          label: "Otros",
+          data: otrosData,
+          backgroundColor: "rgba(239, 68, 68, 0.6)",
+          borderColor: "rgba(239, 68, 68, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(220, 38, 38, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      if (sysData.length > 0 && sysCumulative > 0) {
+        datasets.push({
+          label: "Sol y Sombra",
+          data: sysData,
+          backgroundColor: "rgba(139, 92, 246, 0.6)",
+          borderColor: "rgba(139, 92, 246, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(109, 40, 217, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      if (rswcData.length > 0 && rswcCumulative > 0) {
+        datasets.push({
+          label: "RSWC",
+          data: rswcData,
+          backgroundColor: "rgba(218, 165, 32, 0.6)",
+          borderColor: "rgba(218, 165, 32, 0.95)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "rgba(184, 134, 11, 0.95)",
+          tension: 0,
+          fill: true,
+        });
+      }
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              type: 'linear',
+              min: minYear - 1,
+              max: maxYear + 1,
+              ticks: {
+                stepSize: 1,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : null;
+                }
+              },
+              title: { display: true, text: "Año", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.3)" },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: { display: true, text: "Volumen € (acumulado)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                precision: 0, 
+                font: { size: 10 },
+                callback: function(value) {
+                  // Format with thousand separators
+                  return Number.isInteger(value) ? value.toLocaleString('es-ES') + '€' : null;
+                }
+              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
+            },
+          },
+          plugins: {
+            legend: { 
+              display: true,
+              position: 'top',
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) { 
+                  const year = items[0].parsed.x;
+                  return `Año ${year}`; 
+                },
+                label(context) { 
+                  const yearlyCount = context.raw.yearlyCount || 0;
+                  const lane = context.dataset.label;
+                  return `${lane}: ${Math.round(yearlyCount).toLocaleString('es-ES')}€`;
+                },
+                footer(items) {
+                  // Calculate total for the specific year across all lanes
+                  const total = items.reduce((sum, item) => sum + (item.raw.yearlyCount || 0), 0);
+                  return `Total ese año: ${Math.round(total).toLocaleString('es-ES')}€`;
                 }
               },
             },
@@ -3066,6 +3577,10 @@
       try { buildDiameterLugCorrelation(data); } catch (e) { console.error(e); }
 
       try { buildYearlyAccumulatedChart(data); } catch (e) { console.error(e); }
+
+      try { buildYearlyUnitsCumulative(data); } catch (e) { console.error(e); }
+
+      try { buildYearlyVolumeCumulative(data); } catch (e) { console.error(e); }
 
       try { buildPriceLine(data); } catch (e) { console.error(e); }
 
