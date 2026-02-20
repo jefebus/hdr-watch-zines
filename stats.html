@@ -325,7 +325,7 @@
           <section class="stats-card chart-section" id="yearly-cumulative">
             <div>
               <h2>Evolución acumulada de proyectos por año</h2>
-              <p class="stats-meta">Muestra el número total acumulado de relojes HdR año tras año. Cada punto representa cuántos proyectos se habían completado hasta ese año.</p>
+              <p class="stats-meta">Muestra el número total acumulado de proyectos/relojes HdR año tras año. Cada punto representa cuántos proyectos se habían completado hasta ese año.</p>
             </div>
             <div class="chart-container">
               <canvas id="yearlyChart" aria-label="Gráfico acumulado por año" role="img"></canvas>
@@ -385,7 +385,7 @@
           <section class="stats-card chart-section" id="movement-type">
             <div>
               <h2>Tipos de movimiento</h2>
-              <p class="stats-meta">Conteo de relojes por tipo de movimiento (automático, cuarzo, etc.).</p>
+              <p class="stats-meta">Conteo de proyectos/relojes por tipo de movimiento (automático, cuarzo, etc.).</p>
             </div>
             <div class="chart-container">
               <canvas id="movementTypeChart" aria-label="Distribución por tipo de movimiento" role="img"></canvas>
@@ -397,7 +397,7 @@
           <section class="stats-card chart-section" id="movement-company">
             <div>
               <h2>Fabricante de calibre</h2>
-              <p class="stats-meta">Conteo de relojes por fabricante de movimiento (Seiko, Miyota, etc.).</p>
+              <p class="stats-meta">Conteo de proyectos/relojes por fabricante de movimiento (Seiko, Miyota, etc.).</p>
             </div>
             <div class="chart-container">
               <canvas id="movementCompanyChart" aria-label="Distribución por fabricante de calibre" role="img"></canvas>
@@ -425,7 +425,7 @@
           </div>
           <div class="summary-list">
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value" id="stat-total-watches">–</span>
             </div>
             <div class="summary-row">
@@ -542,7 +542,7 @@
           
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -594,7 +594,7 @@
           
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -646,7 +646,7 @@
           
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -685,7 +685,7 @@
           const otrosCount = watches.filter(w => !w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")).length;
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -806,7 +806,7 @@
           
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -847,7 +847,7 @@
           const otrosWithWR = watches.filter(w => (!w.lane_id || (w.lane_id !== "rswc" && w.lane_id !== "sys")) && w.water_resist != null && w.water_resist !== "" && typeof w.water_resist === 'number').length;
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de  relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -890,7 +890,7 @@
           const sysMovType = watches.filter(w => w.lane_id === "sys" && w.movement_type != null && w.movement_type !== "").length;
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -951,7 +951,7 @@
           
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
             <div class="summary-row">
@@ -1051,7 +1051,7 @@
         default:
           html = `
             <div class="summary-row">
-              <span class="summary-label">Total de relojes</span>
+              <span class="summary-label">Total de proyectos/relojes</span>
               <span class="summary-value">${watches.length}</span>
             </div>
           `;
@@ -1795,7 +1795,7 @@
             y: {
               stacked: true,
               beginAtZero: true,
-              title: { display: true, text: "Número de relojes (acumulado)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              title: { display: true, text: "Número acumulado de proyectos/relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
               ticks: { 
                 color: "#9ca3af", 
                 precision: 0, 
@@ -2327,7 +2327,7 @@
             },
             y: {
               beginAtZero: true,
-              title: { display: true, text: "Número de relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              title: { display: true, text: "Número de proyectos/relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
               ticks: { 
                 color: "#9ca3af", 
                 precision: 0, 
@@ -2448,7 +2448,7 @@
             },
             y: {
               beginAtZero: true,
-              title: { display: true, text: "Número de relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              title: { display: true, text: "Número de proyectos/relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
               ticks: { 
                 color: "#9ca3af", 
                 precision: 0, 
@@ -3103,7 +3103,7 @@
             },
             y: {
               beginAtZero: true,
-              title: { display: true, text: "Número de relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              title: { display: true, text: "Número de proyectos/relojes", color: "#e5e7eb", font: { size: 11, weight: "500" } },
               ticks: { 
                 color: "#9ca3af", 
                 precision: 0, 
@@ -3593,7 +3593,7 @@
           field: "movement_type",
           title: "Tipo",
           xLabel: "Tipo de movimiento",
-          yLabel: "Número de relojes",
+          yLabel: "Número de proyectos/relojes",
           color: "rgba(129, 140, 248, 0.45)",
           borderColor: "rgba(79, 70, 229, 0.95)"
         });
@@ -3606,7 +3606,7 @@
           field: "movement_company",
           title: "Fabricante",
           xLabel: "Fabricante de calibre",
-          yLabel: "Número de relojes",
+          yLabel: "Número de proyectos/relojes",
           color: "rgba(251, 113, 133, 0.45)",
           borderColor: "rgba(244, 63, 94, 0.95)"
         });
