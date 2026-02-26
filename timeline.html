@@ -251,6 +251,22 @@
             background: #8b78fe;
         }
 
+        .project-link.forum.active-project {
+            border: 3px solid #ff0000;
+            border-width: 3px;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            animation: pulse-red 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-red {
+            0%, 100% {
+                box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.9);
+            }
+        }
+
         .project-status {
             display: inline-flex;
             align-items: center;
@@ -479,11 +495,11 @@
         function getStatusLabel(status) {
             const labels = {
                 'delivered': 'Entregado',
-                'in_delivery': 'En reparto',
-                'production': 'Producción',
-                'prototyping': 'Prototipo',
-                'payment': 'Pago',
-                'active': 'Activo'
+                'in_delivery': 'Envío en curso',
+                'production': 'Fase de producción',
+                'prototyping': 'Fase de prototipo',
+                'payment': 'Pago y negociación',
+                'active': 'Activo para apuntarse'
             };
             return labels[status] || status;
         }
@@ -494,6 +510,8 @@
             const statusBadge = (zine.project_status && zine.project_status !== 'delivered') ? 
                 `<span class="project-status status-${zine.project_status}">${getStatusLabel(zine.project_status)}</span>` : 
                 '';
+            const isActive = zine.project_status === 'active';
+            const forumLinkClass = isActive ? 'project-link forum active-project' : 'project-link forum';
 
             if (!hasZine) {
                 // Watches without zines - show only title and forum link
@@ -501,7 +519,7 @@
                     <div class="project-card">
                         <h3 class="project-title">${zine.title}</h3>
                         <div class="project-links">
-                            <a href="${zine.hdr_link}" class="project-link forum" target="_blank">💬 HdR</a>
+                            <a href="${zine.hdr_link}" class="${forumLinkClass}" target="_blank">💬 HdR</a>
                             ${statusBadge}
                         </div>
                     </div>
@@ -517,7 +535,7 @@
                     <h3 class="project-title">${zine.title}</h3>
                     <div class="project-links">
                         <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="project-link pdf" download>📥 PDF</a>
-                        <a href="${zine.hdr_link}" class="project-link forum" target="_blank">💬 HdR</a>
+                        <a href="${zine.hdr_link}" class="${forumLinkClass}" target="_blank">💬 HdR</a>
                         ${statusBadge}
                     </div>
                 </div>

@@ -207,6 +207,41 @@
             background: #555555;
         }
         
+        .forum-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #7b68ee;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+            margin-right: 8px;
+            border: 1px solid #7b68ee;
+        }
+        
+        .forum-btn:hover {
+            background: #8b78fe;
+            transform: translateY(-2px);
+        }
+        
+        .forum-btn.active-project {
+            border: 3px solid #ff0000;
+            border-width: 3px;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            animation: pulse-red 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-red {
+            0%, 100% {
+                box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.9);
+            }
+        }
+        
         .page-gallery {
             display: none;
             flex-direction: column;
@@ -398,6 +433,8 @@
         function renderZineCard(zine) {
             const descriptionKey = `description_${currentLanguage}`;
             const description = zine[descriptionKey] || zine.description_es || '';
+            const isActive = zine.project_status === 'active';
+            const forumLinkClass = isActive ? 'forum-btn active-project' : 'forum-btn';
             
             return `
                 <div class="zine-card">
@@ -408,6 +445,9 @@
                         <div>
                             <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" download>
                                 <span class="download-btn-text">📥 Descargar</span>
+                            </a>
+                            <a href="${zine.hdr_link}" class="${forumLinkClass}" target="_blank">
+                                <span class="forum-btn-text">💬 HdR</span>
                             </a>
                             <button class="unfold-btn" onclick="togglePages('${zine.id}-pages')">
                                 <span class="unfold-btn-text">📖 Ver páginas</span>
@@ -493,6 +533,7 @@
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
                 downloadBtn: '📥 Descargar',
+                forumBtn: '💬 HdR',
                 unfoldBtn: '📖 Ver páginas',
                 foldBtn: '📕 Ocultar páginas',
                 prevBtn: 'Anterior',
@@ -507,6 +548,7 @@
                 introText1: 'Laden Sie druckfertige Zines Ihrer Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
                 introText2: 'Jedes Zine ist so gestaltet, dass es sich zu einer kompakten Broschüre falten lässt, die perfekt in Ihr Uhrenetui passt.',
                 downloadBtn: '📥 Herunterladen',
+                forumBtn: '💬 HdR',
                 unfoldBtn: '📖 Seiten ansehen',
                 foldBtn: '📕 Seiten ausblenden',
                 prevBtn: 'Zurück',
@@ -521,6 +563,7 @@
                 introText1: 'Download print-ready zines of your favorite watches from the "Hablemos de Relojes" community.',
                 introText2: 'Each zine is designed to fold into a compact booklet that fits perfectly in your watch case.',
                 downloadBtn: '📥 Download',
+                forumBtn: '💬 HdR',
                 unfoldBtn: '📖 View pages',
                 foldBtn: '📕 Hide pages',
                 prevBtn: 'Previous',
@@ -554,6 +597,11 @@
             // Update all download buttons
             document.querySelectorAll('.download-btn-text').forEach(btn => {
                 btn.textContent = t.downloadBtn;
+            });
+            
+            // Update all forum buttons
+            document.querySelectorAll('.forum-btn-text').forEach(btn => {
+                btn.textContent = t.forumBtn || '💬 HdR';
             });
             
             // Update all unfold/fold buttons
