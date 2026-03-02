@@ -361,7 +361,7 @@
           <section class="stats-card chart-section" id="price">
             <div>
               <h2>Distribución de precios</h2>
-              <p class="stats-meta">Cada punto representa un reloj individual. Líneas verticales cada 20€ marcan rangos de precio. Colores por colección.</p>
+              <p class="stats-meta">Precio de cada reloj en orden cronológico. Colores por colección (dorado=RSWC, morado=Sol y Sombra, rojo=Otros).</p>
             </div>
             <div class="chart-container">
               <canvas id="priceChart" aria-label="Distribución de precios" role="img"></canvas>
@@ -2499,80 +2499,62 @@
         return;
       }
 
-      // Group watches by lane_id with price data
-      const rswcData = [];
-      const rswcInfo = [];
-      const sysData = [];
-      const sysInfo = [];
-      const otrosData = [];
-      const otrosInfo = [];
-
-      for (const w of watches) {
-        if (!w) continue;
+      // Filter watches with price data
+      const watchesWithPrice = watches.filter(w => {
+        if (!w) return false;
         const price = w.price;
-        if (price === null || price === undefined || price === "") continue;
-        if (typeof price !== "number" || !Number.isFinite(price)) continue;
+        if (price === null || price === undefined || price === "") return false;
+        if (typeof price !== "number" || !Number.isFinite(price)) return false;
+        return true;
+      });
 
-        const info = {
-          id: w.id || "(sin id)",
-          model: w.model || w.title || w.id || "?",
-          brand: w.brand || "",
-          price: price
-        };
-
-        const laneId = w.lane_id || "otros";
-        if (laneId === "rswc") {
-          rswcInfo.push(info);
-        } else if (laneId === "sys") {
-          sysInfo.push(info);
-        } else {
-          otrosInfo.push(info);
-        }
-      }
-
-      const totalCount = rswcInfo.length + sysInfo.length + otrosInfo.length;
-      if (totalCount === 0) {
+      if (watchesWithPrice.length === 0) {
         showError("price-error", "No se han encontrado precios válidos.");
         return;
       }
 
-      // Sort each group by price
-      rswcInfo.sort((a, b) => a.price - b.price);
-      sysInfo.sort((a, b) => a.price - b.price);
-      otrosInfo.sort((a, b) => a.price - b.price);
+      // Sort chronologically by year and month
+      watchesWithPrice.sort((a, b) => {
+        const yearA = a.year ?? 9999;
+        const yearB = b.year ?? 9999;
+        if (yearA !== yearB) return yearA - yearB;
+        const monthA = a.month ?? 12;
+        const monthB = b.month ?? 12;
+        return monthA - monthB;
+      });
 
-      // Create scatter data with jitter to prevent overlapping
-      const jitterAmount = 0.3; // Small horizontal displacement
+      // Prepare data for bar chart
+      const labels = watchesWithPrice.map(w => w.title || w.id);
+      const prices = watchesWithPrice.map(w => w.price);
       
-      // Helper function to add jitter
-      const createScatterPoints = (infoArray, baseY) => {
-        const priceCount = new Map();
-        return infoArray.map(info => {
-          const price = info.price;
-          const count = priceCount.get(price) || 0;
-          priceCount.set(price, count + 1);
-          
-          // Add deterministic jitter based on watch ID
-          const jitter = (hashString(info.id) - 0.5) * jitterAmount * 2;
-          return { x: price, y: baseY + jitter };
-        });
+      // Define color scheme by lane_id
+      const colorsByLane = {
+        rswc: {
+          bg: "rgba(218, 165, 32, 0.8)",
+          border: "rgba(218, 165, 32, 1)"
+        },
+        sys: {
+          bg: "rgba(139, 92, 246, 0.8)",
+          border: "rgba(139, 92, 246, 1)"
+        },
+        otros: {
+          bg: "rgba(239, 68, 68, 0.8)",
+          border: "rgba(239, 68, 68, 1)"
+        }
       };
 
-      // Assign different X levels for each lane to spread them out
-      if (rswcInfo.length > 0) {
-        rswcData.push(...createScatterPoints(rswcInfo, 2).map(p => ({x: p.y, y: p.x})));
-      }
-      if (sysInfo.length > 0) {
-        sysData.push(...createScatterPoints(sysInfo, 1).map(p => ({x: p.y, y: p.x})));
-      }
-      if (otrosInfo.length > 0) {
-        otrosData.push(...createScatterPoints(otrosInfo, 0).map(p => ({x: p.y, y: p.x})));
-      }
+      // Create background and border color arrays based on lane_id
+      const backgroundColors = watchesWithPrice.map(w => {
+        const laneId = w.lane_id || "otros";
+        const colors = colorsByLane[laneId] || colorsByLane.otros;
+        return colors.bg;
+      });
 
-      // Get price range
-      const allPrices = [...rswcInfo, ...sysInfo, ...otrosInfo].map(i => i.price);
-      const minPrice = Math.min(...allPrices);
-      const maxPrice = Math.max(...allPrices);
+      const borderColors = watchesWithPrice.map(w => {
+        const laneId = w.lane_id || "otros";
+        const colors = colorsByLane[laneId] || colorsByLane.otros;
+        return colors.border;
+      });
 
       const ctx = document.getElementById("priceChart");
       if (!ctx) {
@@ -2580,62 +2562,18 @@
         return;
       }
 
-      const datasets = [];
-      const allInfo = [];
-
-      if (otrosData.length > 0) {
-        datasets.push({
-          label: "Otros",
-          data: otrosData,
-          backgroundColor: "rgba(239, 68, 68, 0.7)",
-          borderColor: "rgba(239, 68, 68, 0.95)",
-          borderWidth: 1.5,
-          pointRadius: 5,
-          pointHoverRadius: 7,
-          pointHoverBackgroundColor: "rgba(239, 68, 68, 0.95)",
-          dataStartIndex: 0
-        });
-        allInfo.push(...otrosInfo);
-      }
-
-      if (sysData.length > 0) {
-        datasets.push({
-          label: "Sol y Sombra",
-          data: sysData,
-          backgroundColor: "rgba(139, 92, 246, 0.7)",
-          borderColor: "rgba(139, 92, 246, 0.95)",
-          borderWidth: 1.5,
-          pointRadius: 5,
-          pointHoverRadius: 7,
-          pointHoverBackgroundColor: "rgba(139, 92, 246, 0.95)",
-          dataStartIndex: otrosInfo.length
-        });
-        allInfo.push(...sysInfo);
-      }
-
-      if (rswcData.length > 0) {
-        datasets.push({
-          label: "RSWC",
-          data: rswcData,
-          backgroundColor: "rgba(218, 165, 32, 0.7)",
-          borderColor: "rgba(218, 165, 32, 0.95)",
-          borderWidth: 1.5,
-          pointRadius: 5,
-          pointHoverRadius: 7,
-          pointHoverBackgroundColor: "rgba(218, 165, 32, 0.95)",
-          dataStartIndex: otrosInfo.length + sysInfo.length
-        });
-        allInfo.push(...rswcInfo);
-      }
-
-      // Calculate grid lines for 20€ intervals
-      const minGridPrice = Math.floor(minPrice / 20) * 20;
-      const maxGridPrice = Math.ceil(maxPrice / 20) * 20;
-
       new Chart(ctx, {
-        type: "scatter",
+        type: "bar",
         data: {
-          datasets: datasets,
+          labels: labels,
+          datasets: [{
+            label: "Precio",
+            data: prices,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 1.5,
+            borderRadius: 3,
+          }],
         },
         options: {
           responsive: true,
@@ -2643,39 +2581,32 @@
           layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
           scales: {
             x: {
-              display: false, // Hide X axis as it's just for jitter
-              min: -0.5,
-              max: 2.5,
+              title: { display: true, text: "Reloj", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
+                font: { size: 8 },
+                maxRotation: 90,
+                minRotation: 45,
+                autoSkip: false,
+              },
+              grid: { display: false },
             },
             y: {
-              type: 'linear',
-              min: Math.max(0, minGridPrice - 20),
-              max: maxGridPrice + 20,
-              ticks: {
-                stepSize: 20,
-                color: "#9ca3af",
+              beginAtZero: true,
+              title: { display: true, text: "Precio (€)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              ticks: { 
+                color: "#9ca3af", 
                 font: { size: 10 },
                 callback: function(value) {
                   return value + '€';
                 }
               },
-              title: { display: true, text: "Precio (€)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
-              grid: { 
-                color: function(context) {
-                  // Highlight every 20€ with a stronger line
-                  return context.tick.value % 20 === 0 ? "rgba(148, 163, 184, 0.4)" : "rgba(55, 65, 81, 0.2)";
-                },
-                lineWidth: function(context) {
-                  return context.tick.value % 20 === 0 ? 1.5 : 0.5;
-                }
-              },
+              grid: { color: "rgba(55, 65, 81, 0.6)" },
             },
           },
           plugins: {
             legend: { 
-              display: true,
-              position: 'top',
-              labels: { color: "#e5e7eb", font: { size: 10 } }
+              display: false  // Hide legend since colors represent collections
             },
             tooltip: {
               backgroundColor: "rgba(15, 23, 42, 0.96)",
@@ -2686,28 +2617,27 @@
               bodyColor: "#e5e7eb",
               callbacks: {
                 title(items) {
-                  const dataset = items[0].dataset;
-                  const idx = items[0].dataIndex + (dataset.dataStartIndex || 0);
-                  const info = allInfo[idx];
-                  return info ? info.id : "?";
+                  const watchIdx = items[0].dataIndex;
+                  const watch = watchesWithPrice[watchIdx];
+                  return watch.title || watch.id || "?";
                 },
                 label(context) {
-                  const dataset = context.dataset;
-                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
-                  const info = allInfo[idx];
-                  const displayName = info && info.brand ? `${info.brand} ${info.model}` : (info ? info.model : "?");
-                  return displayName;
+                  const watchIdx = context.dataIndex;
+                  const watch = watchesWithPrice[watchIdx];
+                  const price = context.parsed.y;
+                  const displayName = watch.brand ? `${watch.brand} ${watch.model}` : (watch.model || "");
+                  return `${displayName}: ${price}€`;
                 },
                 afterLabel(context) {
-                  const dataset = context.dataset;
-                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
-                  const info = allInfo[idx];
-                  const price = info ? info.price : context.parsed.y;
-                  const priceRange = Math.floor(price / 20) * 20;
-                  return [
-                    `Precio: ${price}€`,
-                    `Rango: ${priceRange}€ - ${priceRange + 20}€`
-                  ];
+                  const watchIdx = context.dataIndex;
+                  const watch = watchesWithPrice[watchIdx];
+                  const laneLabels = {
+                    rswc: "RSWC",
+                    sys: "Sol y Sombra",
+                    otros: "Otros"
+                  };
+                  const collection = laneLabels[watch.lane_id] || "Otros";
+                  return `Colección: ${collection}`;
                 },
               },
             },
