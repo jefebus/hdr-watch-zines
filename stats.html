@@ -472,35 +472,61 @@
       const select = document.getElementById('chartSelect');
       const chartSections = document.querySelectorAll('.chart-section');
 
-      select.addEventListener('change', (e) => {
-        const selectedChart = e.target.value;
-        
-        // Save selection to localStorage
-        localStorage.setItem('hdr-stats-selected-chart', selectedChart);
-        
+      // Function to show a specific chart
+      function showChart(chartId, updateHistory = true) {
         // Hide all charts
         chartSections.forEach(section => {
           section.classList.remove('active');
         });
 
         // Show selected chart
-        const targetSection = document.getElementById(selectedChart);
+        const targetSection = document.getElementById(chartId);
         if (targetSection) {
           targetSection.classList.add('active');
+          select.value = chartId;
+          
+          // Save selection to localStorage
+          localStorage.setItem('hdr-stats-selected-chart', chartId);
+          
+          // Update URL hash
+          if (updateHistory) {
+            window.location.hash = chartId;
+          }
+          
+          // Update summary sidebar
+          updateSummaryForChart(chartId, globalWatchData);
         }
+      }
 
-        // Update summary sidebar
-        updateSummaryForChart(selectedChart, globalWatchData);
+      // Handle select dropdown changes
+      select.addEventListener('change', (e) => {
+        showChart(e.target.value, true);
       });
 
-      // Restore last selection from localStorage (after listener is set up)
+      // Handle URL hash changes (browser back/forward)
+      window.addEventListener('hashchange', () => {
+        const hash = window.location.hash.substring(1); // Remove the '#'
+        if (hash && document.getElementById(hash)) {
+          showChart(hash, false); // Don't update history since we're already responding to a hash change
+        }
+      });
+
+      // Initialize: Check URL hash first, then localStorage, then default
+      const urlHash = window.location.hash.substring(1);
       const savedChart = localStorage.getItem('hdr-stats-selected-chart');
-      if (savedChart) {
-        select.value = savedChart;
-        // Trigger change to show the saved chart
-        const event = new Event('change');
-        select.dispatchEvent(event);
+      const defaultChart = 'diameter-strap';
+      
+      let initialChart = defaultChart;
+      
+      // Priority: URL hash > localStorage > default
+      if (urlHash && document.getElementById(urlHash)) {
+        initialChart = urlHash;
+      } else if (savedChart && document.getElementById(savedChart)) {
+        initialChart = savedChart;
       }
+      
+      // Show the initial chart (don't update history on initial load)
+      showChart(initialChart, false);
     }
 
     function showError(elementId, message) {
