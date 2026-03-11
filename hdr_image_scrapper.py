@@ -8,9 +8,9 @@ from datetime import datetime
 # -------- CONFIGURATION --------
 BASE_DOMAIN = "https://www.hablemosderelojes.com/"
 START_URLS = [
-   "https://www.hablemosderelojes.com/t/70271"
+   "https://www.hablemosderelojes.com/t/224985"
 ]
-OUTPUT_DIR = "hdr_images"
+OUTPUT_DIR = "c:\\tmp"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

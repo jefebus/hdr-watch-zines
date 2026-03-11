@@ -32,20 +32,21 @@
 
 *ESPECIFICACIONES TÉCNICAS*
 
-- Caja de Titanio grado 2 con tratamiento DLC (Diamond-Like Carbon)
+- Titanio grado 2 con DLC
 - Diámetro: 48 mm
 - Lug to lug: 52 mm
 - Ancho de asas: 24 mm
-- Cristal frontal: Zafiro plano con tratamiento AR azul
-- Cristal trasero: Zafiro irrayable (protección trasera)
+- Cristal frontal: Zafiro con AR azul
+- Cristal trasero: Zafiro
 - Esfera azul tono Aerospace
 - Full Super Luminova Swiss azul
-- Bisel giratorio interno bidireccional (corona a las 9)
+- Bisel interno bidireccional (corona 9h)
 - Impermeabilidad: 100 metros (10 bar)
 - Coronas roscadas
 - Correa NATO gris
-- Módulo digital multifunción SKMEI 2049
-- Módulo analógico Japan Miyota 2035
+- Módulo digital SKMEI 2049
+- Módulo analógico Miyota 2035
+- Baterías: CR2025 + SR626SW
 
 #pagebreak()
 
@@ -94,12 +95,12 @@ ENCENDIDO Y MODOS BÁSICOS
 PANTALLA HOME
 #v(-0.5em)
 
-- La pantalla principal muestra la hora, fecha y día de la semana
+- Muestra hora y día
 
 ALARMA
 #v(-0.5em)
 
-- En pantalla de alarma, pulsa SET para editar
+- Pulsa SET para editar
 - Usa START y LIGHT para cambiar
 - La alarma sonará diariamente a la hora programada
 - Desactiva en menú de alarma con el botón LIGHT
@@ -133,7 +134,12 @@ RETROILUMINACIÓN
 #v(-0.5em)
 
 - Pulsa LIGHT para activar luz de fondo
-- Duración limitada para conservar batería
+
+BATERÍA
+#v(-0.5em)
+
+- Módulo digital: CR2025 (3V)
+- Duración aproximada: 2-3 años
 
 #pagebreak()
 
