@@ -52,18 +52,18 @@
 
 *DESCRIPCIÓN E INSPIRACIÓN*
 
-El RSWC Super Stellar Ala 14 nace de la necesidad de crear un
-instrumento de vuelo moderno, preciso y fiable para los pilotos 
-de combate del Ala 14 del Ejército del Aire y del Espacio.
+El RSWC Super Stellar Ala 14 nace como un instrumento de vuelo 
+moderno y fiable para pilotos de combate del Ala 14 del Ejército 
+del Aire y del Espacio.
 
-La caja de titanio proporciona una ligereza excepcional sin 
-sacrificar resistencia estructural. El tratamiento DLC (Diamond-Like Carbon) 
-añade una capa de dureza extrema contra fricción y rayaduras.
+La caja de titanio ofrece ligereza excepcional sin sacrificar 
+resistencia estructural. El tratamiento DLC (Diamond-Like Carbon) 
+añade dureza extrema contra fricción y rayaduras.
 
-Módulo Híbrido: El módulo Skmei 2049 proporciona funciones digitales 
+Módulo Híbrido: El Skmei 2049 proporciona funciones digitales 
 críticas (alarma, cronógrafo split, dual time, cuenta regresiva) 
-mientras que el movimiento Miyota 2035 garantiza la precisión analógica 
-incluso bajo fuerzas G extremas de hasta 9G en la cabina del Typhoon.
+mientras que el Miyota 2035 garantiza precisión analógica incluso 
+bajo fuerzas G extremas de hasta 9G en la cabina del Typhoon.
 
 #pagebreak()
 

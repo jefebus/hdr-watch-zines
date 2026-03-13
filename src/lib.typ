@@ -240,16 +240,7 @@
   let contents = contents.enumerate().map(
     ((i, content))=> {
       // Add version tag to last page
-      let page-content = if i == last {
-        // Get git version from inputs, fallback to "v 01.00"
-        let git-version = sys.inputs.at("git_version", default: "v 01.00")
-        content + place(
-          bottom + right,
-          dx: -3mm,
-          dy: -1mm,
-          text(size: 4pt, fill: gray.darken(20%))[Jefebus - #git-version]
-        )
-      } else {
+      let page-content = {
         content
       }
       
