@@ -2054,7 +2054,7 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 44.5,
-    "project_status": "prototype",
+    "project_status": "prototyping",
     "water_resist": 50,
     "models": [
       "Azul",
