@@ -42,8 +42,8 @@
 - Full Super Luminova Swiss azul
 - Bisel interno bidireccional (corona 9h)
 - Impermeabilidad: 100 metros (10 bar)
-- Coronas roscadas
-- Correa NATO gris
+- Corona a las 9 roscada
+- Correa de nylon verde oliva con hebilla de titanio
 - Módulo digital SKMEI 2049
 - Módulo analógico Miyota 2035
 - Baterías: CR2025 + SR626SW
