@@ -84,62 +84,57 @@ Resultados: Aprobado con Excelencia
 
 *MÓDULO DIGITAL SKMEI 2049*
 
-ENCENDIDO Y MODOS BÁSICOS
+BOTONES
 #v(-0.5em)
 
-- Botón superior izquierda: LIGHT 
-- Botón superior derecha: MODE 
-- Botón inferior izquierda: START
-- Botón inferior derecha: SET 
+- Superior izq: LIGHT, der: START
+- Inferior izq: MODE, der: RESET
 
-PANTALLA HOME
+HOME Y AJUSTE DE HORA
 #v(-0.5em)
 
-- Muestra hora y día
+- Mantén RESET 3 seg. en modo hora para configurar
+- MODE selecciona (segundo/minuto/hora/año/mes/día)
+- START ajusta valores
 
 ALARMA
 #v(-0.5em)
 
-- Pulsa SET para editar
-- Usa START y LIGHT para cambiar
-- La alarma sonará diariamente a la hora programada
-- Desactiva en menú de alarma con el botón LIGHT
+- Mantén RESET 3 seg. para configurar
+- MODE selecciona campo, START ajusta
+- Activa/desactiva con RESET en modo alarma
 
 CRONÓGRAFO
 #v(-0.5em)
 
-- Pulsa START para iniciar/pausar
-- Pulsa MODE durante cronógrafo activo para tiempo de vuelta
-- Pulsa SET para reiniciar a cero
+- START: iniciar/pausar
+- RESET: split (activo) o reiniciar (parado)
 
 #pagebreak()
 
-*MÓDULO DIGITAL SKMEI 2049 (CONTINUACIÓN)*
+*MÓDULO DIGITAL (CONTINUACIÓN)*
 
 HORA DUAL
 #v(-0.5em)
 
-- Accede pulsando MODE hasta pantalla Dual Time
-- Pulsa SET para programar la segunda zona horaria
-- Muestra ambas horas simultáneamente
+- Accede con MODE hasta Dual Time
+- Mantén RESET 3 seg. para configurar
+- MODE selecciona, START ajusta
+- Muestra ambas zonas horarias simultáneamente
 
-CUENTA REGRESIVA (TIMER)
+TIMER (CUENTA REGRESIVA)
 #v(-0.5em)
 
-- Pantalla de temporizador para cuenta atrás
-- Pulsa SET para editar duración (horas:minutos:segundos)
-- Al terminar, emite alerta sonora
+- Accede con MODE hasta Timer
+- Mantén RESET 3 seg. para configurar
+- MODE selecciona segundo/minuto/hora, START ajusta
+- START inicia/pausa cuenta atrás
 
-RETROILUMINACIÓN
+OTROS
 #v(-0.5em)
 
-- Pulsa LIGHT para activar luz de fondo
-
-BATERÍA
-#v(-0.5em)
-
-- Módulo digital: CR2025 (3V)
-- Duración aproximada: 2-3 años
+- LIGHT: retroiluminación de fondo
+- Batería CR2025 (3V, duración 2-3 años)
 
 #pagebreak()
 
