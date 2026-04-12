@@ -1356,7 +1356,7 @@
     "has_zine": true,
     "notes": "Calculated price: 283€ pack - 155€ Typhoon = 128€. Ala 14 only available as pack with Typhoon",
     "lug_to_lug": 52,
-    "project_status": "in_delivery",
+    "project_status": "delivered",
     "water_resist": 100,
     "models": [
       ""
@@ -1425,7 +1425,7 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 52,
-    "project_status": "in_delivery",
+    "project_status": "delivered",
     "water_resist": 100,
     "models": [
       ""
