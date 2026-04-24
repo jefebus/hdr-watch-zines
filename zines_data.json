@@ -1525,7 +1525,7 @@
     "pdfFolder": "HdR zines/RSWC Takamori",
     "movement_company": "Miyota",
     "lane_id": "rswc",
-    "has_zine": false,
+    "has_zine": true,
     "lug_to_lug": 48,
     "project_status": "active",
     "water_resist": 200,
