@@ -1,17 +1,14 @@
-﻿## 🆕 Últimas actualizaciones (Febrero 2026)
+﻿## 🆕 Últimas actualizaciones (Abril 2026)
 
-¡¡He completado todos los folletos!! Ahora toca la fase de revisión y mantenimiento.
+### ⚔️🇯🇵 Nuevo zine: RSWC Takamori
+- **RSWC Takamori** — Homenaje a Saigō Takamori, el último samurái, en el 19º aniversario de HdR [Hilo en HdR](https://www.hablemosderelojes.com/t/274977)
 
+---
 :inbox_tray: Todos disponibles en: [Ir arriba](https://www.hablemosderelojes.com/t/los-zines-folletos-de-hdr/271233)
-
-### 📊 Mejoras en visualización de datos (stats.html)
-- **Gráfico de precios**
-- **Marcadores cuadrados**: Los relojes con caja cuadrada (Vainqueur 🏎️ y Caballero 🧐) ahora se representan con marcadores cuadrados en las gráficas de correlación de diámetro
-- **Diámetro vs Lug to Lug**
 
 ---
 
-## Catálogo **completo** de folletos (59):
+## Catálogo de folletos (60):
 
 - Agat 194 4C / 195 4C ⌚
 - Apocalypse Now 🎬
@@ -54,6 +51,7 @@
 - RSWC Super Stellar Typhoon ✈️
 - RSWC Super Stellar World Timer 🌍
 - RSWC Supersharkomatic 🦈
+- RSWC Takamori ⚔️🇯🇵
 - RSWC Typ VII-B ⚓
 - RSWC UME Tipo 1 🚒
 - RSWC UME Tipo 2 🚒🌍
