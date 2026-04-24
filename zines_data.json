@@ -1503,6 +1503,48 @@
     ]
   },
   {
+    "id": "takamori",
+    "title": "RSWC Takamori",
+    "brand": "RSWC",
+    "model": "Takamori",
+    "emoji": "⚔️🇯🇵",
+    "year": 2026,
+    "month": 4,
+    "category": "diver",
+    "description_es": "Homenaje a Saigō Takamori, el último samurái, en el 19º aniversario de HdR. Diver 43.8mm con Miyota 9015, cristal de zafiro, bisel cerámico BGW9, 200m. Cinco variantes: Murasaki (púrpura), Aiiro (índigo), Akoya (madreperla), Tsukimi (full lumen) y Bushidō (rojo)",
+    "description_de": "Hommage an Saigō Takamori, den letzten Samurai, zum 19. Jubiläum von HdR. 43,8mm Taucheruhr mit Miyota 9015, Saphirglas, Keramiklünette BGW9, 200m. Fünf Varianten: Murasaki (Lila), Aiiro (Indigo), Akoya (Perlmutt), Tsukimi (Voll-Lumen) und Bushidō (Rot)",
+    "description_en": "Tribute to Saigō Takamori, the last samurai, for HdR's 19th anniversary. 43.8mm diver with Miyota 9015, sapphire crystal, BGW9 ceramic bezel insert, 200m. Five variants: Murasaki (purple), Aiiro (indigo), Akoya (mother of pearl), Tsukimi (full lume) and Bushidō (red)",
+    "hdr_link": "https://www.hablemosderelojes.com/t/274977",
+    "price": 207,
+    "case_diameter": 43.8,
+    "case_height": 11.8,
+    "strap_width": 22,
+    "movement_type": "automatic",
+    "movement_id": "9015",
+    "sourceFolder": "hdr_zines_src/takamori",
+    "pdfFolder": "HdR zines/RSWC Takamori",
+    "movement_company": "Miyota",
+    "lane_id": "rswc",
+    "has_zine": false,
+    "lug_to_lug": 48,
+    "project_status": "active",
+    "water_resist": 200,
+    "models": [
+      "Murasaki",
+      "Aiiro",
+      "Akoya",
+      "Tsukimi",
+      "Bushidō"
+    ],
+    "units": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  {
     "id": "typ_vii-b",
     "title": "RSWC Typ VII-B",
     "brand": "RSWC",
