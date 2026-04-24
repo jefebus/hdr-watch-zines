@@ -124,6 +124,7 @@ add_hdr_zine(scaphandre_iii "scaphandre_iii" "RSWC Scaphandre III" "scaphandre_i
 add_hdr_zine(sevenseas "sevenseas" "RSWF SevenSeas" "sevenseas.typ")
 add_hdr_zine(skygraph "skygraph" "RSWC Skygraph" "skygraph.typ")
 add_hdr_zine(supersharkomatic "supersharkomatic" "RSWC Supersharkomatic" "supersharkomatic.typ")
+add_hdr_zine(takamori "takamori" "RSWC Takamori" "takamori.typ")
 add_hdr_zine(typ_vii-b "typ_vii-b" "RSWC Typ VII-B" "typ_vii-b.typ")
 add_hdr_zine(typhoon "typhoon" "RSWC Super Stellar Typhoon" "typhoon.typ")
 add_hdr_zine(vostok_amphibia_5_6 "vostok_amphibia_5_6" "Vostok Amphibia 5/6" "vostok_amphibia_5_6.typ")
