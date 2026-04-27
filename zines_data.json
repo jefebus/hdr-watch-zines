@@ -1247,7 +1247,7 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 49,
-    "project_status": "production",
+    "project_status": "in_delivery",
     "water_resist": 70,
     "models": [
       "Pogue",
