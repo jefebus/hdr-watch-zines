@@ -114,34 +114,27 @@ héroe trágico del Japón.
 #pagebreak()
 
 ///////////////////////////////////////////////////////////////////////////////
-// 5) LAS CINCO ESFERAS
+// 5) LAS SEIS ESFERAS
 ///////////////////////////////////////////////////////////////////////////////
-*CINCO ESFERAS, CINCO ALMAS*
+*SEIS ESFERAS, SEIS ALMAS*
 
-*Murasaki:* Púrpura imperial,
-reservado a la nobleza japonesa
-desde el periodo Heian. Rayos
-de sol esmaltados con degradado.
+*Murasaki:* Púrpura imperial.
+Rayos de sol con degradado.
 
-*Aiiro:* Índigo profundo, el
-"Azul Japón". Color de la
-armadura samurái, símbolo de
-victoria, pureza y protección.
+*Aiiro:* Índigo "Azul Japón".
+Armadura y victoria samurái.
 
-*Akoya:* Madreperla iridiscente
-de la ostra japonesa Pinctada
-fucata. No habrá dos Takamori
-Akoya idénticos.
+*Akoya:* Madreperla iridiscente.
+No hay dos Akoya idénticos.
 
-*Tsukimi:* Full lumen. Homenaje
-a la luna llena de otoño y la
-muerte de Saigō en vísperas
-del festival lunar.
+*Tsukimi:* Full lumen. Luna
+llena y muerte de Saigō.
 
-*Bushidō:* Rojo sangre y
-sacrificio. El color sagrado
-del coraje samurái y la lealtad
-inquebrantable al daimyo.
+*Bushidō:* Rojo sangre. Coraje
+y lealtad inquebrantable.
+
+*Kiiro:* Amarillo, color de la
+suerte samurái. Solo sin lupa.
 
 #pagebreak()
 

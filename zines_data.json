@@ -1527,21 +1527,23 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 48,
-    "project_status": "active",
+    "project_status": "payment",
     "water_resist": 200,
     "models": [
       "Murasaki",
       "Aiiro",
       "Akoya",
       "Tsukimi",
-      "Bushidō"
+      "Bushidō",
+      "Kiiro"
     ],
     "units": [
-      null,
-      null,
-      null,
-      null,
-      null
+      68,
+      39,
+      39,
+      96,
+      75,
+      35
     ]
   },
   {
