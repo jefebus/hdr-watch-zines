@@ -34,8 +34,7 @@ Caja acero 316L Swiss Grade,
 acabado brushed y pulido. 42mm 
 sin coronas, 49mm lug to lug,  
 16mm altura. Ancho asas 20mm. 
-Dobles coronas roscadas 
-firmadas. Resistencia 70m.
+Resistencia 70m.
 
 Bisel exterior aluminio. Bisel 
 interno bidireccional, corona 
@@ -159,10 +158,8 @@ eslabón, cinco puntos de micro
 ajuste.
 
 Corona del bisel roscada (a 
-las 9 y 3) para evitar giros 
-accidentales. Pulsadores ahora 
-integrados. Cada detalle 
-cuidado.
+las 9) para evitar giros 
+accidentales.
 
 Un homenaje al primer 
 cronógrafo automático en el 
@@ -175,28 +172,26 @@ espacio.
 
 *Carga:* Movimiento automático, 
 se carga con el movimiento de 
-la muñeca. Admite carga manual 
-girando la corona (roscada).
+la muñeca. Carga manual 
+girando la corona.
 
 *Cronógrafo:* Pulsador superior 
 start/stop. Pulsador inferior 
-reset (sólo con cronógrafo 
-parado).
+reset. No usar pulsadores bajo el agua.
+No pulsar reset con el cronógrafo en marcha.
 
-*Ajustes:* Desenroscar corona 
+*Ajustes:* Corona 
 a las 3. Primer punto: cambio 
-rápido de fecha (girar hacia 
-adelante) y día (hacia atrás). 
-Segundo punto: ajustar hora.
+de fecha (girar adelante) y día (atrás). 
+Segundo punto: ajustar hora. No 
+cambiar la fecha entre 9pm y 3am.
 
-*Bisel interno:* Desenroscar 
+*Bisel interno bidireccional:* Desenroscar 
 corona a las 9, tirar y girar. 
-Bidireccional para cálculos.
 
 *Mantenimiento:* Resistente 
 100m. Enjuagar tras agua 
-salada. Revisión anual de 
-juntas. Servicio cada 4-5 años.
+salada. Servicio cada 4-5 años.
 
 #pagebreak()
 
