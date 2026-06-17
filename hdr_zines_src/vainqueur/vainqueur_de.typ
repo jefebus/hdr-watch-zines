@@ -106,21 +106,24 @@ einem fairen Preis suchen.
 
 #pagebreak()
 
-*PFLEGE- UND WARTUNGS-HINWEISE*
+*PFLEGE- UND WARTUNGSHINWEISE*
 
-*Zeiteinstellung:* Ziehen Sie die Krone auf die zweite Position. 
-Drehen Sie sie vorsichtig auf die gewünschte Uhrzeit.
+*Zeiteinstellung:* Krone auf
+zweite Position ziehen;
+vorsichtig auf gewünschte
+Uhrzeit drehen.
 
-*Datumeinstellung:* Ziehen Sie die Krone auf die erste Position. 
-Drehen Sie sie vorwärts, um das Datum einzustellen. Vermeiden 
-Sie Änderungen zwischen 22:00 und 2:00 Uhr. 
+*Datumseinstellung:* Krone auf
+erste Position ziehen; vorwärts
+drehen. Keine Änderungen
+zwischen 22:00 und 2:00 Uhr.
 
-*Chronographen Funktion:* Drücken Sie den Drücker bei 2 Uhr, 
-um den Chronographen zu starten, und erneut, um ihn zu stoppen. 
-Drücken Sie den Drücker bei 4 Uhr, um den Chronographen zurückzusetzen. 
-Im Normalbetrieb wird empfohlen, den Chronographen angehalten zu lassen. 
-Der zentrale Sekunden-zeiger bleibt stehen, während der Sekundenzeiger 
-bei 9 Uhr die Sekunden auf der Uhr anzeigt.
+*Chronograph:* Drücker 2h
+startet und stoppt; Drücker 4h
+setzt zurück. Im Normalbetrieb
+Chrono anhalten: Zentralzeiger
+ruht, kleine Sekunde (9h)
+zeigt die laufende Zeit.
 
 #pagebreak()
 

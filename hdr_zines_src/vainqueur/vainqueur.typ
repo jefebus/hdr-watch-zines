@@ -122,10 +122,13 @@ Ajuste de fecha: Tira corona hasta la posición uno.
 Gira hacia adelante para avanzar fecha. 
 *Evita cambios entre 22h y 2h.*
 
-Uso del cronógrafo: Pulsa el botón de las 2 para iniciar, pulsa de nuevo para parar. 
-Pulsa el botón de las 4 para resetear. 
-En uso normal se recomienda mantener el crono parado: 
-la aguja central del segundero permanecerá parada mientras que el segundero a las 9 es el que marcará los segundos del reloj.
+Uso del cronógrafo: Pulsa las 2h
+para iniciar y de nuevo para parar.
+Pulsa las 4h para resetear.
+En uso normal mantén el crono
+parado: la aguja central queda
+detenida y el segundero a las
+9h marca el tiempo.
 
 #pagebreak()
 

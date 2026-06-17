@@ -430,6 +430,20 @@
             }
         }
 
+        function getZinePdfSuffix(zine, lang) {
+            if (lang !== 'es' && zine.pdf_langs && zine.pdf_langs.includes(lang)) {
+                return `_${lang}`;
+            }
+            return '';
+        }
+
+        function hasZineForLang(zine, lang) {
+            if (!zine.has_zine) return false;
+            if (lang === 'es') return true;
+            if (!zine.pdf_langs) return false;
+            return zine.pdf_langs.includes(lang);
+        }
+
         function renderZineCard(zine) {
             const descriptionKey = `description_${currentLanguage}`;
             const description = zine[descriptionKey] || zine.description_es || '';
@@ -443,13 +457,13 @@
                         <h3>${zine.title} ${zine.emoji}</h3>
                         <p class="zine-description" data-id="${zine.id}">${description}</p>
                         <div>
-                            <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" download>
+                            <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" data-zine-id="${zine.id}" download>
                                 <span class="download-btn-text">📥 Descargar</span>
                             </a>
                             <a href="${zine.hdr_link}" class="${forumLinkClass}" target="_blank">
                                 <span class="forum-btn-text">💬 HdR</span>
                             </a>
-                            <button class="unfold-btn" onclick="togglePages('${zine.id}-pages')">
+                            <button class="unfold-btn" data-zine-id="${zine.id}" onclick="togglePages('${zine.id}-pages')">
                                 <span class="unfold-btn-text">📖 Ver páginas</span>
                             </button>
                         </div>
@@ -620,6 +634,34 @@
                 if (descElem) {
                     const descriptionKey = `description_${lang}`;
                     descElem.textContent = zine[descriptionKey] || zine.description_es || '';
+                }
+            });
+
+            // Update download links and gallery for language-specific PDFs
+            ZINES_DATA.filter(z => z.has_zine !== false).forEach(zine => {
+                const downloadLink = document.querySelector(`.download-btn[data-zine-id="${zine.id}"]`);
+                const unfoldBtn = document.querySelector(`.unfold-btn[data-zine-id="${zine.id}"]`);
+                if (!downloadLink) return;
+                if (hasZineForLang(zine, lang)) {
+                    const suffix = getZinePdfSuffix(zine, lang);
+                    downloadLink.href = `${zine.pdfFolder}/${zine.id}${suffix} zine.pdf`;
+                    downloadLink.style.display = '';
+                    if (unfoldBtn) unfoldBtn.style.display = '';
+                    // Update gallery images to localized version
+                    const gallery = document.getElementById(`${zine.id}-pages`);
+                    if (gallery) {
+                        gallery.querySelectorAll('img').forEach((img, i) => {
+                            img.src = `${zine.pdfFolder}/${zine.id}${suffix} zine-${i + 1}.png?v=2`;
+                        });
+                    }
+                } else {
+                    downloadLink.style.display = 'none';
+                    if (unfoldBtn) {
+                        unfoldBtn.style.display = 'none';
+                        // Close gallery if currently open
+                        const gallery = document.getElementById(`${zine.id}-pages`);
+                        if (gallery) gallery.classList.remove('active');
+                    }
                 }
             });
             

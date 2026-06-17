@@ -139,6 +139,12 @@ add_hdr_zine(world_timer "world_timer" "RSWC Super Stellar World Timer" "world_t
 # Special target for Vainqueur German version
 add_hdr_zine(vainqueur_de "vainqueur" "RSWC Vainqueur" "vainqueur_de.typ")
 
+# German versions
+add_hdr_zine(typhoon_de "typhoon" "RSWC Super Stellar Typhoon" "typhoon_de.typ")
+add_hdr_zine(cosmotemp_de "cosmotemp" "RSWC Super Stellar Cosmotemp" "cosmotemp_de.typ")
+add_hdr_zine(racing_de "racing" "RSWC Racing" "racing_de.typ")
+add_hdr_zine(forest_defender_de "forest_defender" "RSWC Forest Defender" "forest_defender_de.typ")
+
 # Create master targets
 add_custom_target(pdf-all DEPENDS ${ALL_PDF_TARGETS})
 add_custom_target(png-all DEPENDS ${ALL_PNG_TARGETS})
