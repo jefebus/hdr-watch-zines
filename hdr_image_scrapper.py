@@ -12,7 +12,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # -------- CONFIGURATION --------
 BASE_DOMAIN = "https://www.hablemosderelojes.com/"
 START_URLS = [
-   "https://www.hablemosderelojes.com/t/224985"
+   "https://www.hablemosderelojes.com/t/264729"
 ]
 OUTPUT_DIR = "c:\\tmp"
 
