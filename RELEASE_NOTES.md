@@ -1,4 +1,21 @@
-﻿## 🆕 Últimas actualizaciones (Abril 2026)
+﻿## 🆕 Últimas actualizaciones (Junio 2026)
+
+### 🌍 Versiones en alemán
+- **RSWC Vainqueur** — versión en alemán ya disponible *(ya existía, ahora integrada en el sistema web)*
+- **RSWC Racing** (Karussell & Moeris Lacus) — nueva versión en alemán
+- **RSWC Super Stellar Typhoon** — nueva versión en alemán
+- **RSWC Super Stellar Cosmotemp** — nueva versión en alemán
+- **RSWC Forest Defender** — nueva versión en alemán
+
+### 🖥️ Mejoras en index.html y timeline.html
+- Soporte multiidioma para los folletos: si existe versión en alemán, el botón de descarga y las miniaturas apuntan al PDF/PNG localizado
+- Si no existe versión en el idioma seleccionado, se oculta el botón de descarga (index) o se muestra la miniatura en español sin enlace PDF (timeline)
+- timeline.html: selector de idioma ES/DE/EN añadido; las etiquetas de estado del proyecto se traducen al idioma activo
+- Corrección de duplicación de tarjetas en timeline.html al cambiar de idioma
+
+---
+
+## Actualizaciones anteriores (Abril 2026)
 
 ### ⚔️🇯🇵 Nuevo zine: RSWC Takamori
 - **RSWC Takamori** — Homenaje a Saigō Takamori, el último samurái, en el 19º aniversario de HdR [Hilo en HdR](https://www.hablemosderelojes.com/t/274977)
@@ -6,66 +23,3 @@
 ---
 :inbox_tray: Todos disponibles en: [Ir arriba](https://www.hablemosderelojes.com/t/los-zines-folletos-de-hdr/271233)
 
----
-
-## Catálogo de folletos (60):
-
-- Agat 194 4C / 195 4C ⌚
-- Apocalypse Now 🎬
-- Candino Grand Belize ⚓
-- Candino Radio Room Operator 📻
-- Ferroviario 🛌️
-- Gagarin 50 Aniversario 🚀
-- Galeno 🩺
-- Luch Monoaguja ⌚
-- Okeah Final Edition 🐻
-- Parnis Marina / Marina Militare ⚓
-- RSWC Airliner GMT ✈️🌍
-- RSWC Airliner II ✈️
-- RSWC Bushido 🗡️🌿
-- RSWC Deco-Timer 🌊🔦
-- RSWC Dirty Fifteen ⚔️🏅
-- RSWC Eagle One 🦅
-- RSWC Eagle Two 🦅⏱️
-- RSWC Forest Defender 🚒
-- RSWC Gamma Gibraltar 🐟
-- RSWC Goldmaster 🎩
-- RSWC Grande Épreuve 🏁
-- RSWC Heian 🖋️
-- RSWC Kaiju 🦖
-- RSWC Kaiju Yuki-Otoko ❄️
-- RSWC Majetek ✈️🇨🇿
-- RSWC Racing 🏁🚀
-- RSWC Rex Caeli ✈️
-- RSWC Rex Maris 🐬
-- RSWC Rex Terrae 🐻‍❄️🐧
-- RSWC Salto de Fe 🐕
-- RSWC Scaphandre I 🤿
-- RSWC Scaphandre II 🤿
-- RSWC Scaphandre III 🤿
-- RSWC Skygraph 🚀
-- RSWC Suite Iberia 🎹
-- RSWC Super Massive Colossus 🦣
-- RSWC Super Stellar Ala 14 ✈️
-- RSWC Super Stellar Cosmotemp 🌡️
-- RSWC Super Stellar Typhoon ✈️
-- RSWC Super Stellar World Timer 🌍
-- RSWC Supersharkomatic 🦈
-- RSWC Takamori ⚔️🇯🇵
-- RSWC Typ VII-B ⚓
-- RSWC UME Tipo 1 🚒
-- RSWC UME Tipo 2 🚒🌍
-- RSWC Vainqueur 🏎️
-- RSWC Verne 🌊
-- RSWF Ichi 1️⃣
-- RSWF King Tuna 🦈
-- RSWF SevenSeas 🌊
-- Sol y Sombra Caballero 🧐
-- Sol y Sombra Competidor 🏁
-- Sol y Sombra Inmortal 🍷
-- Sol y Sombra Inmortal Reserva Especial 🍷
-- Sol y Sombra Monumental 🐂
-- Sol y Sombra Roquina 💎
-- Sol y Sombra Viajero 🚗
-- Vostok Amphibia 5/6 🐸
-- Vostok K43 ⚙️
