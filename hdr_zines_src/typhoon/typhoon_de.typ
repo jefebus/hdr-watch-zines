@@ -66,7 +66,7 @@ Kratzer hinzu.
 
 Hybridmodul: Das SKMEI 2049 liefert 
 digitale Funktionen (Alarm, Split-Chrono, 
-Dual Time, Countdown), während der 
+Dual Time, Countdown), während das 
 Miyota 2035 analoge Präzision auch 
 unter extremen 9G-Kräften sicherstellt.
 
@@ -153,7 +153,7 @@ SONSTIGES
 EIGENSCHAFTEN
 #v(-0.5em)
 
-Der Miyota 2035 ist ein präzises Quarzwerk:
+Das Miyota 2035 ist ein präzises Quarzwerk:
 - Höchst zuverlässiges Rotorkaliber
 - Batterietyp: SR626SW / 377
 - Laufzeit: 24–36 Monate
