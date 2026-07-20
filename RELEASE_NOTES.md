@@ -1,4 +1,12 @@
-﻿## 🆕 Últimas actualizaciones (Junio 2026)
+﻿## 🆕 Últimas actualizaciones (Julio 2026)
+
+### 📖 Nuevo zine
+- **RSWC Potemkin** — nuevo folleto (*Zavod* y *Vintage*), homenaje al acorazado Potemkin de Serguéi Eisenstein y al Slava Sadko. Incluye historia, ficha técnica e inscripciones en cirílico con su traducción
+
+### 🌍 Versiones en alemán
+- **RSWC Potemkin** — nueva versión en alemán
+
+## 🆕 Últimas actualizaciones (Junio 2026)
 
 ### 🌍 Versiones en alemán
 - **RSWC Vainqueur** — versión en alemán ya disponible *(ya existía, ahora integrada en el sistema web)*

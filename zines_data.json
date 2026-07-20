@@ -372,6 +372,44 @@
     ]
   },
   {
+    "id": "potemkin",
+    "title": "RSWC Potemkin",
+    "brand": "RSWC",
+    "model": "Potemkin",
+    "emoji": "🚢",
+    "year": 2026,
+    "month": 7,
+    "category": "diver",
+    "description_es": "Homenaje al acorazado Potemkin de Eisenstein (1925-2026), reinterpretando la caja del Slava Sadko (inspirada en el Zodiac Olympos). Miyota 8205 con calendario doble en cirílico, cristal y bisel de zafiro, trasera oil press bicolor y brazalete milanesa. Dos versiones: Zavod (lume blanco) y Vintage (lume tostado). 300m",
+    "description_de": "Hommage an das Panzerschiff Potemkin von Eisenstein (1925-2026), das Gehäuse der Slava Sadko (inspiriert vom Zodiac Olympos) neu interpretiert. Miyota 8205 mit doppeltem Kalender in Kyrillisch, Saphirglas und -lünette, zweifarbiger Oil-Press-Boden und Milanaise-Armband. Zwei Versionen: Zavod (weißes Lumen) und Vintage (gealtertes Lumen). 300m",
+    "description_en": "Tribute to Eisenstein's battleship Potemkin (1925-2026), reinterpreting the Slava Sadko case (inspired by the Zodiac Olympos). Miyota 8205 with Cyrillic double calendar, sapphire crystal and bezel, bicolor oil press caseback and milanese bracelet. Two versions: Zavod (white lume) and Vintage (aged lume). 300m",
+    "hdr_link": "https://www.hablemosderelojes.com/t/277852",
+    "price": 183,
+    "case_diameter": 43.5,
+    "case_height": 14,
+    "lug_to_lug": 49,
+    "strap_width": 22,
+    "movement_type": "automatic",
+    "movement_id": "8205",
+    "sourceFolder": "hdr_zines_src/potemkin",
+    "pdfFolder": "HdR zines/RSWC Potemkin",
+    "movement_company": "Miyota",
+    "lane_id": "rswc",
+    "has_zine": true,
+    "pdf_langs": ["de"],
+    "notes": "Case measures 45mm tip-to-tip, 43.5mm at center; 15mm thick including crystal. Reservations open until 2026-07-26; units below are the 100/100 production targets from the official announcement (post #800 by Gasparacha, 2026-07-18), not final delivered figures.",
+    "project_status": "active",
+    "water_resist": 300,
+    "models": [
+      "Zavod",
+      "Vintage"
+    ],
+    "units": [
+      100,
+      100
+    ]
+  },
+  {
     "id": "radio_room_operator",
     "title": "Candino Radio Room Operator",
     "brand": "Candino",
