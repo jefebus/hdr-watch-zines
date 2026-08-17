@@ -398,7 +398,7 @@
     "has_zine": true,
     "pdf_langs": ["de"],
     "notes": "Case measures 45mm tip-to-tip, 43.5mm at center; 15mm thick including crystal. Reservations open until 2026-07-26; units below are the 100/100 production targets from the official announcement (post #800 by Gasparacha, 2026-07-18), not final delivered figures.",
-    "project_status": "active",
+    "project_status": "payment",
     "water_resist": 300,
     "models": [
       "Zavod",
@@ -702,7 +702,7 @@
     "has_zine": true,
     "pdf_langs": ["de"],
     "lug_to_lug": 51,
-    "project_status": "prototyping",
+    "project_status": "production",
     "water_resist": 100,
     "models": [
       "UME 3",
@@ -1287,7 +1287,7 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 49,
-    "project_status": "in_delivery",
+    "project_status": "delivered",
     "water_resist": 70,
     "models": [
       "Pogue",
@@ -1569,7 +1569,7 @@
     "lane_id": "rswc",
     "has_zine": true,
     "lug_to_lug": 48,
-    "project_status": "payment",
+    "project_status": "prototyping",
     "water_resist": 200,
     "models": [
       "Murasaki",
@@ -2141,7 +2141,7 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 44.5,
-    "project_status": "prototyping",
+    "project_status": "production",
     "water_resist": 50,
     "models": [
       "Azul",
