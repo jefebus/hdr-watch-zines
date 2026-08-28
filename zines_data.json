@@ -25,6 +25,7 @@
     "movement_company": "Vostok",
     "lane_id": "otros",
     "has_zine": true,
+      "_comment_project_status": "Valores válidos de project_status: active, payment, prototyping, production, in_delivery y delivered.",
     "project_status": "delivered",
     "water_resist": 200,
     "models": [
@@ -1741,8 +1742,9 @@
     "hdr_link": "https://www.hablemosderelojes.com/t/115111",
     "price": 162,
     "case_diameter": 42,
-    "case_height": 11.0,
+      "case_height": 10.8,
     "strap_width": 20,
+      "lug_to_lug": 44,
     "movement_type": "automatic",
     "movement_id": "PT5000",
     "sourceFolder": "hdr_zines_src/verne",
@@ -2141,7 +2143,7 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 44.5,
-    "project_status": "production",
+     "project_status": "in_delivery",
     "water_resist": 50,
     "models": [
       "Azul",

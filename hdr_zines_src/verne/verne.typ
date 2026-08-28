@@ -29,7 +29,7 @@
 
 *ESPECIFICACIONES TÉCNICAS*
 - Caja en acero quirúrgico 316L
-- Diámetro: 42mm, espesor: 11mm
+- Diámetro: 42mm, lug to lug: 44mm, espesor: 10,8mm
 - Corona y tapa roscadas
 - Resistencia: 200 metros
 - Movimiento automático PT5000 con calendario
