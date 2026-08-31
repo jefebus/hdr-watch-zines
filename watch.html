@@ -90,6 +90,15 @@
             opacity: 0.8;
         }
 
+        .nav-links a.current {
+            background: #666666;
+            cursor: default;
+        }
+
+        .nav-links a.current:hover {
+            opacity: 1;
+        }
+
         header h1 {
             font-size: 2em;
             margin-bottom: 8px;
@@ -435,6 +444,56 @@
             color: #099dd7;
         }
 
+        .directory-intro {
+            margin-bottom: 24px;
+        }
+
+        .directory-intro h2 {
+            font-size: 1.6em;
+            margin-bottom: 6px;
+        }
+
+        .directory-intro p {
+            color: #999999;
+        }
+
+        .directory {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .directory-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: #2b2b2b;
+            border: 1px solid #3d3d3d;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #dddddd;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .directory-item:hover {
+            background: #333333;
+            border-color: #0F82AF;
+        }
+
+        .directory-name {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .directory-meta {
+            color: #777777;
+            font-size: 0.85em;
+        }
+
         @media (max-width: 768px) {
             .lang-switcher {
                 position: static;
@@ -544,6 +603,7 @@
             <div class="nav-links">
                 <a href="index.html">📖 Zines</a>
                 <a href="timeline.html">📅 Timeline</a>
+                <a href="watch.html" class="current">📋 Fichas</a>
                 <a href="stats.html">📊 Stats</a>
             </div>
             <h1>⌚ HdR Watch Zines</h1>
@@ -571,9 +631,11 @@
         const translations = {
             es: {
                 headerSubtitle: 'Ficha de proyecto',
+                directorySubtitle: 'Fichas de proyecto',
+                directoryTitle: 'Fichas de proyecto',
+                directoryIntro: 'Ficha detallada de cada uno de los {n} proyectos: especificaciones, variantes, unidades y el contenido completo del zine.',
                 footerText: 'Proyecto comunitario de Hablemos de Relojes.',
                 notFound: 'No se ha encontrado ningún proyecto con ese identificador.',
-                backToIndex: 'Volver al índice de zines',
                 prev: 'Anterior',
                 next: 'Siguiente',
                 specs: 'Especificaciones',
@@ -589,7 +651,7 @@
                 pages: 'Páginas del zine',
                 download: '📥 Descargar zine (PDF)',
                 forum: '💬 Hilo en HdR',
-                backBtn: '← Todos los zines',
+                backBtn: '← Todas las fichas',
                 launchPrice: 'Precio de salida',
                 diameter: 'Diámetro',
                 height: 'Grosor',
@@ -610,9 +672,11 @@
             },
             de: {
                 headerSubtitle: 'Projektdatenblatt',
+                directorySubtitle: 'Projektdatenblätter',
+                directoryTitle: 'Projektdatenblätter',
+                directoryIntro: 'Ausführliches Datenblatt zu jedem der {n} Projekte: technische Daten, Varianten, Stückzahlen und der komplette Zine-Inhalt.',
                 footerText: 'Gemeinschaftsprojekt von Hablemos de Relojes.',
                 notFound: 'Kein Projekt mit dieser Kennung gefunden.',
-                backToIndex: 'Zurück zur Zine-Übersicht',
                 prev: 'Zurück',
                 next: 'Weiter',
                 specs: 'Technische Daten',
@@ -628,7 +692,7 @@
                 pages: 'Zine-Seiten',
                 download: '📥 Zine herunterladen (PDF)',
                 forum: '💬 HdR-Thread',
-                backBtn: '← Alle Zines',
+                backBtn: '← Alle Datenblätter',
                 launchPrice: 'Startpreis',
                 diameter: 'Durchmesser',
                 height: 'Höhe',
@@ -649,9 +713,11 @@
             },
             en: {
                 headerSubtitle: 'Project sheet',
+                directorySubtitle: 'Project sheets',
+                directoryTitle: 'Project sheets',
+                directoryIntro: 'A detailed sheet for each of the {n} projects: specifications, variants, units and the full zine content.',
                 footerText: 'Community project by Hablemos de Relojes.',
                 notFound: 'No project found with that identifier.',
-                backToIndex: 'Back to the zine index',
                 prev: 'Previous',
                 next: 'Next',
                 specs: 'Specifications',
@@ -667,7 +733,7 @@
                 pages: 'Zine pages',
                 download: '📥 Download zine (PDF)',
                 forum: '💬 HdR thread',
-                backBtn: '← All zines',
+                backBtn: '← All sheets',
                 launchPrice: 'Launch price',
                 diameter: 'Diameter',
                 height: 'Thickness',
@@ -954,16 +1020,33 @@
             const list = catalog();
             const index = list.findIndex(z => z.id === zine.id);
             if (index === -1) {
-                return `<div class="pager"><a class="pager-index" href="index.html">${escapeHtml(t.backBtn)}</a></div>`;
+                return `<div class="pager"><a class="pager-index" href="watch.html">${escapeHtml(t.backBtn)}</a></div>`;
             }
             const prev = list[(index - 1 + list.length) % list.length];
             const next = list[(index + 1) % list.length];
             return `
                 <div class="pager">
                     <a href="watch.html?id=${encodeURIComponent(prev.id)}">← ${escapeHtml(prev.title)}</a>
-                    <a class="pager-index" href="index.html">${escapeHtml(t.backBtn)}</a>
+                    <a class="pager-index" href="watch.html">${escapeHtml(t.backBtn)}</a>
                     <a href="watch.html?id=${encodeURIComponent(next.id)}">${escapeHtml(next.title)} →</a>
                 </div>`;
+        }
+
+        function renderDirectory(t) {
+            const list = catalog();
+            const items = list.map(zine => `
+                <a class="directory-item" href="watch.html?id=${encodeURIComponent(zine.id)}">
+                    <span>${escapeHtml(zine.emoji || '⌚')}</span>
+                    <span class="directory-name">${escapeHtml(zine.title)}</span>
+                    <span class="directory-meta">${zine.year || ''}</span>
+                </a>`).join('');
+
+            return `
+                <div class="directory-intro">
+                    <h2>${escapeHtml(t.directoryTitle)}</h2>
+                    <p>${escapeHtml(t.directoryIntro.replace('{n}', list.length))}</p>
+                </div>
+                <div class="directory">${items}</div>`;
         }
 
         function renderDetail() {
@@ -972,8 +1055,11 @@
             const zine = CURRENT;
 
             if (!zine) {
-                content.innerHTML = `<div class="message"><p>${escapeHtml(t.notFound)}</p>
-                    <p><a href="index.html">${escapeHtml(t.backToIndex)}</a></p></div>`;
+                const requested = new URLSearchParams(window.location.search).get('id');
+                const warning = requested
+                    ? `<div class="message"><p>${escapeHtml(t.notFound)}</p></div>`
+                    : '';
+                content.innerHTML = warning + renderDirectory(t);
                 return;
             }
 
@@ -1037,10 +1123,10 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
-            document.getElementById('header-subtitle').textContent = t.headerSubtitle;
+            document.getElementById('header-subtitle').textContent = CURRENT ? t.headerSubtitle : t.directorySubtitle;
             document.getElementById('footer-text').textContent = t.footerText;
             document.documentElement.lang = lang;
-            document.title = CURRENT ? `${CURRENT.title} · HdR Watch Zines` : 'HdR Watch Zines';
+            document.title = CURRENT ? `${CURRENT.title} · HdR Watch Zines` : `${t.directoryTitle} · HdR Watch Zines`;
 
             localStorage.setItem('preferredLanguage', lang);
             renderDetail();

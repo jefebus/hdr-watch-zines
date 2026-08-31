@@ -332,7 +332,11 @@
             }
 
             .zine-card-content {
-                padding: 16px;
+                padding: 16px 16px 0;
+            }
+
+            .zine-card-actions {
+                padding: 0 16px 16px;
             }
 
             .nav-links {
@@ -345,7 +349,6 @@
             }
 
             .download-btn,
-            .detail-btn,
             .forum-btn,
             .unfold-btn {
                 margin-bottom: 6px;
@@ -381,6 +384,16 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
         
+        .zine-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .zine-card-link:hover h3 {
+            color: #0F82AF;
+        }
+
         .zine-card-image {
             width: 100%;
             height: 200px;
@@ -388,7 +401,11 @@
         }
         
         .zine-card-content {
-            padding: 20px;
+            padding: 20px 20px 0;
+        }
+
+        .zine-card-actions {
+            padding: 0 20px 20px;
         }
         
         .zine-card h3 {
@@ -419,23 +436,6 @@
         
         .download-btn:hover {
             background: #0d6a8f;
-        }
-
-        .detail-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background: #2f7d4f;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.85em;
-            transition: background 0.2s;
-            margin-right: 8px;
-        }
-
-        .detail-btn:hover {
-            background: #276a43;
         }
         
         footer {
@@ -655,6 +655,7 @@
             <div class="nav-links">
                 <a href="index.html" class="current">📖 Zines</a>
                 <a href="timeline.html">📅 Timeline</a>
+                <a href="watch.html">📋 Fichas</a>
                 <a href="stats.html">📊 Stats</a>
             </div>
             <h1>⌚ HdR Watch Zines</h1>
@@ -777,24 +778,23 @@
             
             return `
                 <div class="zine-card">
-                    <img src="${zine.sourceFolder}/${zine.id}_front.jpeg?v=2" alt="${zine.title}" class="zine-card-image">
-                    <div class="zine-card-content">
-                        <h3>${zine.title} ${zine.emoji}</h3>
-                        <p class="zine-description" data-id="${zine.id}">${description}</p>
-                        <div>
-                            <a href="watch.html?id=${encodeURIComponent(zine.id)}" class="detail-btn">
-                                <span class="detail-btn-text">📋 Ficha</span>
-                            </a>
-                            <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" data-zine-id="${zine.id}" download>
-                                <span class="download-btn-text">📥 Descargar</span>
-                            </a>
-                            <a href="${zine.hdr_link}" class="${forumLinkClass}" target="_blank">
-                                <span class="forum-btn-text">💬 HdR</span>
-                            </a>
-                            <button class="unfold-btn" data-zine-id="${zine.id}" onclick="togglePages('${zine.id}-pages')">
-                                <span class="unfold-btn-text">📖 Ver páginas</span>
-                            </button>
+                    <a class="zine-card-link" href="watch.html?id=${encodeURIComponent(zine.id)}">
+                        <img src="${zine.sourceFolder}/${zine.id}_front.jpeg?v=2" alt="${zine.title}" class="zine-card-image">
+                        <div class="zine-card-content">
+                            <h3>${zine.title} ${zine.emoji}</h3>
+                            <p class="zine-description" data-id="${zine.id}">${description}</p>
                         </div>
+                    </a>
+                    <div class="zine-card-actions">
+                        <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" data-zine-id="${zine.id}" download>
+                            <span class="download-btn-text">📥 Descargar</span>
+                        </a>
+                        <a href="${zine.hdr_link}" class="${forumLinkClass}" target="_blank">
+                            <span class="forum-btn-text">💬 HdR</span>
+                        </a>
+                        <button class="unfold-btn" data-zine-id="${zine.id}" onclick="togglePages('${zine.id}-pages')">
+                            <span class="unfold-btn-text">📖 Ver páginas</span>
+                        </button>
                     </div>
                 </div>
             `;
@@ -1147,7 +1147,6 @@
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
                 downloadBtn: '📥 Descargar',
-                detailBtn: '📋 Ficha',
                 forumBtn: '💬 HdR',
                 unfoldBtn: '📖 Ver páginas',
                 foldBtn: '📕 Ocultar páginas',
@@ -1188,7 +1187,6 @@
                 introText1: 'Laden Sie druckfertige Zines Ihrer Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
                 introText2: 'Jedes Zine ist so gestaltet, dass es sich zu einer kompakten Broschüre falten lässt, die perfekt in Ihr Uhrenetui passt.',
                 downloadBtn: '📥 Herunterladen',
-                detailBtn: '📋 Datenblatt',
                 forumBtn: '💬 HdR',
                 unfoldBtn: '📖 Seiten ansehen',
                 foldBtn: '📕 Seiten ausblenden',
@@ -1229,7 +1227,6 @@
                 introText1: 'Download print-ready zines of your favorite watches from the "Hablemos de Relojes" community.',
                 introText2: 'Each zine is designed to fold into a compact booklet that fits perfectly in your watch case.',
                 downloadBtn: '📥 Download',
-                detailBtn: '📋 Details',
                 forumBtn: '💬 HdR',
                 unfoldBtn: '📖 View pages',
                 foldBtn: '📕 Hide pages',
@@ -1289,10 +1286,6 @@
             // Update all download buttons
             document.querySelectorAll('.download-btn-text').forEach(btn => {
                 btn.textContent = t.downloadBtn;
-            });
-
-            document.querySelectorAll('.detail-btn-text').forEach(btn => {
-                btn.textContent = t.detailBtn;
             });
             
             // Update all forum buttons
