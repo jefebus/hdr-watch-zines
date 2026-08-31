@@ -154,11 +154,6 @@
             .detail {
                 grid-template-columns: minmax(0, 1fr);
             }
-
-            /* Reading column: the zine prose stays single column wherever the page does. */
-            .zine-pages {
-                grid-template-columns: minmax(0, 1fr);
-            }
         }
 
         .photos {
@@ -340,8 +335,16 @@
 
         .zine-pages {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: minmax(0, 1fr);
             gap: 16px;
+        }
+
+        /* Only real desktop widths get columns; phones keep one reading column in
+           both orientations, landscape on a large phone being ~930px wide. */
+        @media (min-width: 1000px) {
+            .zine-pages {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
 
         .zine-page {
