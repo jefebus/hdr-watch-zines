@@ -154,6 +154,11 @@
             .detail {
                 grid-template-columns: minmax(0, 1fr);
             }
+
+            /* Reading column: the zine prose stays single column wherever the page does. */
+            .zine-pages {
+                grid-template-columns: minmax(0, 1fr);
+            }
         }
 
         .photos {
@@ -400,40 +405,6 @@
         .btn-forum { background: #7b68ee; }
         .btn-secondary { background: #444444; }
 
-        .gallery {
-            margin-top: 24px;
-        }
-
-        .gallery-frame {
-            display: flex;
-            justify-content: center;
-            background: #1a1a1a;
-            border: 1px solid #3d3d3d;
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .gallery-frame img {
-            max-height: 520px;
-            width: auto;
-            max-width: 100%;
-            border-radius: 4px;
-        }
-
-        .gallery-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 14px;
-            margin-top: 12px;
-        }
-
-        .page-counter {
-            font-weight: 600;
-            min-width: 56px;
-            text-align: center;
-        }
-
         .message {
             text-align: center;
             padding: 60px 20px;
@@ -559,12 +530,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
 
-            .gallery-frame {
-                padding: 8px;
-            }
-
-            .actions .btn,
-            .gallery-nav .btn {
+            .actions .btn {
                 flex: 1 1 auto;
                 text-align: center;
             }
@@ -624,9 +590,6 @@
         let ZINES = [];
         let CURRENT = null;
         let currentLanguage = 'es';
-        let galleryPage = 1;
-
-        const GALLERY_PAGES = 8;
 
         const translations = {
             es: {
@@ -636,8 +599,6 @@
                 directoryIntro: 'Ficha detallada de cada uno de los {n} proyectos: especificaciones, variantes, unidades y el contenido completo del zine.',
                 footerText: 'Proyecto comunitario de Hablemos de Relojes.',
                 notFound: 'No se ha encontrado ningún proyecto con ese identificador.',
-                prev: 'Anterior',
-                next: 'Siguiente',
                 specs: 'Especificaciones',
                 variants: 'Variantes y unidades',
                 variantName: 'Variante',
@@ -648,7 +609,6 @@
                 zineText: 'Contenido del zine',
                 zinePagesWord: 'páginas',
                 zineWordsWord: 'palabras',
-                pages: 'Páginas del zine',
                 download: '📥 Descargar zine (PDF)',
                 forum: '💬 Hilo en HdR',
                 backBtn: '← Todas las fichas',
@@ -677,8 +637,6 @@
                 directoryIntro: 'Ausführliches Datenblatt zu jedem der {n} Projekte: technische Daten, Varianten, Stückzahlen und der komplette Zine-Inhalt.',
                 footerText: 'Gemeinschaftsprojekt von Hablemos de Relojes.',
                 notFound: 'Kein Projekt mit dieser Kennung gefunden.',
-                prev: 'Zurück',
-                next: 'Weiter',
                 specs: 'Technische Daten',
                 variants: 'Varianten und Stückzahlen',
                 variantName: 'Variante',
@@ -689,7 +647,6 @@
                 zineText: 'Zine-Inhalt',
                 zinePagesWord: 'Seiten',
                 zineWordsWord: 'Wörter',
-                pages: 'Zine-Seiten',
                 download: '📥 Zine herunterladen (PDF)',
                 forum: '💬 HdR-Thread',
                 backBtn: '← Alle Datenblätter',
@@ -718,8 +675,6 @@
                 directoryIntro: 'A detailed sheet for each of the {n} projects: specifications, variants, units and the full zine content.',
                 footerText: 'Community project by Hablemos de Relojes.',
                 notFound: 'No project found with that identifier.',
-                prev: 'Previous',
-                next: 'Next',
                 specs: 'Specifications',
                 variants: 'Variants and units',
                 variantName: 'Variant',
@@ -730,7 +685,6 @@
                 zineText: 'Zine content',
                 zinePagesWord: 'pages',
                 zineWordsWord: 'words',
-                pages: 'Zine pages',
                 download: '📥 Download zine (PDF)',
                 forum: '💬 HdR thread',
                 backBtn: '← All sheets',
@@ -1000,22 +954,6 @@
                 </details>`;
         }
 
-        function renderGallery(zine, t) {
-            if (!hasZineForLang(zine, currentLanguage) || !zine.pdfFolder) return '';
-            const suffix = pdfSuffix(zine, currentLanguage);
-            const src = `${zine.pdfFolder}/${zine.id}${suffix} zine-${galleryPage}.png?v=2`;
-            return `
-                <div class="gallery">
-                    <div class="section-title">${escapeHtml(t.pages)}</div>
-                    <div class="gallery-frame"><img src="${escapeHtml(src)}" alt="${escapeHtml(zine.title)} ${galleryPage}"></div>
-                    <div class="gallery-nav">
-                        <button class="btn btn-primary" data-page-step="-1">← ${escapeHtml(t.prev)}</button>
-                        <span class="page-counter">${galleryPage} / ${GALLERY_PAGES}</span>
-                        <button class="btn btn-primary" data-page-step="1">${escapeHtml(t.next)} →</button>
-                    </div>
-                </div>`;
-        }
-
         function renderPager(zine, t) {
             const list = catalog();
             const index = list.findIndex(z => z.id === zine.id);
@@ -1097,16 +1035,7 @@
                         <div class="actions">${downloadBtn}${forumBtn}</div>
                     </div>
                 </div>
-                ${renderZineText(zine, t)}
-                ${renderGallery(zine, t)}`;
-
-            content.querySelectorAll('[data-page-step]').forEach(button => {
-                button.addEventListener('click', () => {
-                    const step = Number(button.dataset.pageStep);
-                    galleryPage = ((galleryPage - 1 + step + GALLERY_PAGES) % GALLERY_PAGES) + 1;
-                    renderDetail();
-                });
-            });
+                ${renderZineText(zine, t)}`;
 
             const zineText = content.querySelector('#zine-text');
             if (zineText) {
