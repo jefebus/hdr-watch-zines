@@ -645,9 +645,19 @@
                 released: 'Presentado',
                 units: 'Unidades producidas',
                 category: 'Categoría',
+                complications: 'Complicaciones',
+                chronographLayout: 'Disposición del cronógrafo',
                 noPrice: 'No disponible',
                 laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Otros proyectos' },
                 movementNames: { automatic: 'Automático', manual: 'Manual', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-digi', quartz: 'Cuarzo' },
+                complicationNames: {
+                    date: 'Fecha', day: 'Día', small_seconds: 'Pequeño segundero', chronograph: 'Cronógrafo',
+                    gmt: 'GMT', power_reserve: 'Reserva de marcha', full_calendar: 'Calendario completo',
+                    world_time: 'Hora mundial', dual_time: 'Hora dual', split_time: 'Tiempo parcial',
+                    countdown_timer: 'Temporizador de cuenta atrás', alarm: 'Alarma', hourly_signal: 'Señal horaria',
+                    thermometer: 'Termómetro', '24_hour_indicator': 'Indicador de 24 horas'
+                },
+                chronographLayoutNames: { monocompax: 'Monocompax', bicompax: 'Bicompax', tricompax: 'Tricompax' },
                 statusNames: { active: 'Activo', payment: 'En pago', prototyping: 'Prototipado', production: 'En producción', in_delivery: 'En reparto', delivered: 'Entregado' },
                 months: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
             },
@@ -683,9 +693,19 @@
                 released: 'Vorgestellt',
                 units: 'Produzierte Stück',
                 category: 'Kategorie',
+                complications: 'Komplikationen',
+                chronographLayout: 'Chronographen-Anordnung',
                 noPrice: 'Nicht verfügbar',
                 laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Andere Projekte' },
                 movementNames: { automatic: 'Automatik', manual: 'Handaufzug', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-Digi', quartz: 'Quarz' },
+                complicationNames: {
+                    date: 'Datum', day: 'Wochentag', small_seconds: 'Kleine Sekunde', chronograph: 'Chronograph',
+                    gmt: 'GMT', power_reserve: 'Gangreserve', full_calendar: 'Vollkalender',
+                    world_time: 'Weltzeit', dual_time: 'Zweite Zeitzone', split_time: 'Zwischenzeit',
+                    countdown_timer: 'Countdown-Timer', alarm: 'Alarm', hourly_signal: 'Stundensignal',
+                    thermometer: 'Thermometer', '24_hour_indicator': '24-Stunden-Anzeige'
+                },
+                chronographLayoutNames: { monocompax: 'Monocompax', bicompax: 'Bicompax', tricompax: 'Tricompax' },
                 statusNames: { active: 'Aktiv', payment: 'Zahlung', prototyping: 'Prototyping', production: 'In Produktion', in_delivery: 'Im Versand', delivered: 'Geliefert' },
                 months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
             },
@@ -721,9 +741,19 @@
                 released: 'Released',
                 units: 'Units produced',
                 category: 'Category',
+                complications: 'Complications',
+                chronographLayout: 'Chronograph layout',
                 noPrice: 'Not available',
                 laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Other projects' },
                 movementNames: { automatic: 'Automatic', manual: 'Manual', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-digi', quartz: 'Quartz' },
+                complicationNames: {
+                    date: 'Date', day: 'Day', small_seconds: 'Small seconds', chronograph: 'Chronograph',
+                    gmt: 'GMT', power_reserve: 'Power reserve', full_calendar: 'Full calendar',
+                    world_time: 'World time', dual_time: 'Dual time', split_time: 'Split time',
+                    countdown_timer: 'Countdown timer', alarm: 'Alarm', hourly_signal: 'Hourly signal',
+                    thermometer: 'Thermometer', '24_hour_indicator': '24-hour indicator'
+                },
+                chronographLayoutNames: { monocompax: 'Monocompax', bicompax: 'Bicompax', tricompax: 'Tricompax' },
                 statusNames: { active: 'Active', payment: 'Payment', prototyping: 'Prototyping', production: 'In production', in_delivery: 'Shipping', delivered: 'Delivered' },
                 months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
             }
@@ -759,6 +789,12 @@
             const released = typeof zine.year === 'number'
                 ? (typeof zine.month === 'number' ? `${t.months[zine.month - 1]} ${zine.year}` : String(zine.year))
                 : null;
+            const complications = Array.isArray(zine.complications) && zine.complications.length
+                ? [...new Set(zine.complications)].map(value => t.complicationNames[value] || value).join(' · ')
+                : null;
+            const chronographLayout = zine.chronograph_layout
+                ? (t.chronographLayoutNames[zine.chronograph_layout] || zine.chronograph_layout)
+                : null;
 
             return [
                 specRow(t.released, released),
@@ -771,6 +807,8 @@
                 specRow(t.movementType, t.movementNames[zine.movement_type] || zine.movement_type),
                 specRow(t.caliber, caliber),
                 specRow(t.maker, zine.movement_company),
+                specRow(t.complications, complications),
+                specRow(t.chronographLayout, chronographLayout),
                 specRow(t.category, zine.category),
                 specRow(t.units, totalUnits > 0 ? totalUnits : null)
             ].join('');

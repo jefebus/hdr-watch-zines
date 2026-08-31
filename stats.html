@@ -321,6 +321,8 @@
           <option value="water-resist">Hermeticidad</option>
           <option value="movement-type">Tipos de movimiento</option>
           <option value="movement-company">Fabricante de calibre</option>
+          <option value="complications">Complicaciones</option>
+          <option value="chronograph-layout">Disposición de cronógrafos</option>
           <option value="units-production">Unidades producidas (por modelo)</option>
         </select>
       </div>
@@ -446,6 +448,30 @@
               <canvas id="movementCompanyChart" aria-label="Distribución por fabricante de calibre" role="img"></canvas>
             </div>
             <div id="movement-company-error" class="error-banner"></div>
+          </section>
+
+          <!-- Complications Chart -->
+          <section class="stats-card chart-section" id="complications">
+            <div>
+              <h2>Complicaciones</h2>
+              <p class="stats-meta">Número de proyectos/relojes con cada complicación. Las funciones de los módulos digitales y ana-digi se agrupan en una única categoría Digital.</p>
+            </div>
+            <div class="chart-container" style="height: 520px;">
+              <canvas id="complicationsChart" aria-label="Distribución por complicaciones" role="img"></canvas>
+            </div>
+            <div id="complications-error" class="error-banner"></div>
+          </section>
+
+          <!-- Chronograph Layout Chart -->
+          <section class="stats-card chart-section" id="chronograph-layout">
+            <div>
+              <h2>Disposición de cronógrafos</h2>
+              <p class="stats-meta">Distribución de los cronógrafos analógicos según su número de subesferas: monocompax, bicompax o tricompax.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="chronographLayoutChart" aria-label="Distribución de cronógrafos por disposición" role="img"></canvas>
+            </div>
+            <div id="chronograph-layout-error" class="error-banner"></div>
           </section>
 
           <!-- Units Production Chart -->
@@ -1001,6 +1027,67 @@
             <div class="summary-row">
               <span class="summary-label">Otros</span>
               <span class="summary-value">${otrosWithWR}</span>
+            </div>
+          `;
+          break;
+
+        case 'complications':
+          const complicationValues = watches.flatMap(watch => getStatisticalComplications(watch));
+          const complicationCounts = complicationValues.reduce((counts, value) => {
+            counts[value] = (counts[value] || 0) + 1;
+            return counts;
+          }, {});
+          const complicationRanking = Object.entries(complicationCounts).sort((a, b) => b[1] - a[1]);
+          const watchesWithComplications = watches.filter(watch => getStatisticalComplications(watch).length > 0).length;
+          const groupedDigitalCount = watches.filter(isDigitalModule).length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de proyectos/relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con complicación/categoría</span>
+              <span class="summary-value">${watchesWithComplications}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Categorías distintas</span>
+              <span class="summary-value">${complicationRanking.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Digitales agrupados</span>
+              <span class="summary-value">${groupedDigitalCount}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Más frecuente</span>
+              <span class="summary-value">${complicationRanking.length ? `${complicationRanking[0][0]} (${complicationRanking[0][1]})` : '—'}</span>
+            </div>
+          `;
+          break;
+
+        case 'chronograph-layout':
+          const layoutCounts = watches.reduce((counts, watch) => {
+            if (watch && CHRONOGRAPH_LAYOUT_LABELS[watch.chronograph_layout]) {
+              counts[watch.chronograph_layout] = (counts[watch.chronograph_layout] || 0) + 1;
+            }
+            return counts;
+          }, {});
+          const classifiedChronographs = Object.values(layoutCounts).reduce((sum, count) => sum + count, 0);
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Cronógrafos clasificados</span>
+              <span class="summary-value">${classifiedChronographs}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Monocompax</span>
+              <span class="summary-value">${layoutCounts.monocompax || 0}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Bicompax</span>
+              <span class="summary-value">${layoutCounts.bicompax || 0}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Tricompax</span>
+              <span class="summary-value">${layoutCounts.tricompax || 0}</span>
             </div>
           `;
           break;
@@ -3242,6 +3329,83 @@
       });
     }
 
+    const COMPLICATION_LABELS = {
+      date: "Fecha",
+      day: "Día",
+      small_seconds: "Pequeño segundero",
+      chronograph: "Cronógrafo",
+      gmt: "GMT",
+      power_reserve: "Reserva de marcha",
+      full_calendar: "Calendario completo",
+      world_time: "Hora mundial",
+      dual_time: "Hora dual",
+      split_time: "Tiempo parcial",
+      countdown_timer: "Cuenta atrás",
+      alarm: "Alarma",
+      hourly_signal: "Señal horaria",
+      thermometer: "Termómetro",
+      "24_hour_indicator": "Indicador 24 h"
+    };
+
+    const CHRONOGRAPH_LAYOUT_LABELS = {
+      monocompax: "Monocompax",
+      bicompax: "Bicompax",
+      tricompax: "Tricompax"
+    };
+
+    function isDigitalModule(watch) {
+      return watch && (
+        watch.movement_type === "digital" ||
+        watch.movement_type === "anadigi" ||
+        watch.category === "digital" ||
+        watch.category === "anadigi"
+      );
+    }
+
+    function getStatisticalComplications(watch) {
+      if (isDigitalModule(watch)) return ["Digital"];
+      if (!watch || !Array.isArray(watch.complications)) return [];
+      return [...new Set(watch.complications)]
+        .filter(value => typeof value === "string" && value.trim())
+        .map(value => COMPLICATION_LABELS[value] || value);
+    }
+
+    function buildComplicationsChart(watches) {
+      const rows = [];
+      for (const watch of watches || []) {
+        for (const complication of getStatisticalComplications(watch)) {
+          rows.push({ ...watch, statistical_complication: complication });
+        }
+      }
+
+      buildChart(rows, {
+        chartId: "complicationsChart",
+        errorId: "complications-error",
+        field: "statistical_complication",
+        title: "Complicación",
+        xLabel: "Complicación o categoría",
+        yLabel: "Número de proyectos/relojes"
+      });
+    }
+
+    function buildChronographLayoutChart(watches) {
+      const rows = (watches || [])
+        .filter(watch => watch && CHRONOGRAPH_LAYOUT_LABELS[watch.chronograph_layout])
+        .map(watch => ({
+          ...watch,
+          statistical_chronograph_layout: CHRONOGRAPH_LAYOUT_LABELS[watch.chronograph_layout]
+        }));
+
+      buildChart(rows, {
+        chartId: "chronographLayoutChart",
+        errorId: "chronograph-layout-error",
+        field: "statistical_chronograph_layout",
+        title: "Disposición",
+        xLabel: "Disposición del cronógrafo",
+        yLabel: "Número de proyectos/relojes"
+      });
+    }
+
     function buildChart(watches, config) {
       const { chartId, errorId, field, title, xLabel, yLabel, color, borderColor } = config;
       
@@ -3250,10 +3414,13 @@
         return;
       }
 
-      // Group by value and lane_id
+      // Group counts and project names by value and lane_id.
       const rswcCounts = Object.create(null);
       const sysCounts = Object.create(null);
       const otrosCounts = Object.create(null);
+      const rswcProjects = Object.create(null);
+      const sysProjects = Object.create(null);
+      const otrosProjects = Object.create(null);
       const allValues = new Set();
 
       for (const w of watches) {
@@ -3268,16 +3435,26 @@
         if (typeof value === "string" && !value) continue;
 
         const key = value.toString();
+        const projectName = w.title || [w.brand, w.model].filter(Boolean).join(" ") || w.id || "(sin nombre)";
         allValues.add(key);
         
         const laneId = w.lane_id || "otros";
+        let counts;
+        let projects;
         if (laneId === "rswc") {
-          rswcCounts[key] = (rswcCounts[key] || 0) + 1;
+          counts = rswcCounts;
+          projects = rswcProjects;
         } else if (laneId === "sys") {
-          sysCounts[key] = (sysCounts[key] || 0) + 1;
+          counts = sysCounts;
+          projects = sysProjects;
         } else {
-          otrosCounts[key] = (otrosCounts[key] || 0) + 1;
+          counts = otrosCounts;
+          projects = otrosProjects;
         }
+
+        counts[key] = (counts[key] || 0) + 1;
+        if (!projects[key]) projects[key] = [];
+        if (!projects[key].includes(projectName)) projects[key].push(projectName);
       }
 
       if (allValues.size === 0) {
@@ -3298,15 +3475,19 @@
 
       const datasets = [];
 
-      // Create datasets for each lane_id with their specific colors
+      // Create datasets for each lane_id with their specific colors.
       const rswcData = labels.map(label => rswcCounts[label] || 0);
       const sysData = labels.map(label => sysCounts[label] || 0);
       const otrosData = labels.map(label => otrosCounts[label] || 0);
+      const projectNamesFor = projects => labels.map(label =>
+        (projects[label] || []).slice().sort((a, b) => a.localeCompare(b, "es"))
+      );
 
       if (rswcData.some(v => v > 0)) {
         datasets.push({
           label: "RSWC",
           data: rswcData,
+          projectNames: projectNamesFor(rswcProjects),
           backgroundColor: "rgba(218, 165, 32, 0.7)",
           borderColor: "rgba(218, 165, 32, 0.95)",
           borderWidth: 1.2,
@@ -3319,6 +3500,7 @@
         datasets.push({
           label: "Sol y Sombra",
           data: sysData,
+          projectNames: projectNamesFor(sysProjects),
           backgroundColor: "rgba(139, 92, 246, 0.7)",
           borderColor: "rgba(139, 92, 246, 0.95)",
           borderWidth: 1.2,
@@ -3331,6 +3513,7 @@
         datasets.push({
           label: "Otros",
           data: otrosData,
+          projectNames: projectNamesFor(otrosProjects),
           backgroundColor: "rgba(239, 68, 68, 0.7)",
           borderColor: "rgba(239, 68, 68, 0.95)",
           borderWidth: 1.2,
@@ -3349,8 +3532,8 @@
           responsive: true,
           maintainAspectRatio: false,
           interaction: {
-            mode: 'index',
-            intersect: false,
+            mode: 'nearest',
+            intersect: true,
           },
           layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
           scales: {
@@ -3388,9 +3571,9 @@
                   const lane = context.dataset.label;
                   return `${lane}: ${count} ${count === 1 ? "reloj" : "relojes"}`; 
                 },
-                footer(items) {
-                  const total = items.reduce((sum, item) => sum + item.parsed.y, 0);
-                  return `Total: ${total} ${total === 1 ? "reloj" : "relojes"}`;
+                afterLabel(context) {
+                  const names = context.dataset.projectNames?.[context.dataIndex] || [];
+                  return names.map(name => `• ${name}`);
                 }
               },
             },
@@ -3705,6 +3888,10 @@
           borderColor: "rgba(244, 63, 94, 0.95)"
         });
       } catch (e) { console.error(e); }
+
+      try { buildComplicationsChart(data); } catch (e) { console.error(e); }
+
+      try { buildChronographLayoutChart(data); } catch (e) { console.error(e); }
 
       try { buildUnitsProductionChart(data); } catch (e) { console.error(e); }
 
