@@ -314,47 +314,6 @@
             color: #999999;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 8px;
-            }
-
-            header {
-                padding: 20px 14px;
-            }
-
-            .content {
-                padding: 20px 14px;
-            }
-
-            .filters {
-                padding: 14px;
-            }
-
-            .zine-card-content {
-                padding: 16px 16px 0;
-            }
-
-            .zine-card-actions {
-                padding: 0 16px 16px;
-            }
-
-            .nav-links {
-                gap: 6px;
-            }
-
-            .nav-links a {
-                padding: 8px 12px;
-                font-size: 0.8em;
-            }
-
-            .download-btn,
-            .forum-btn,
-            .unfold-btn {
-                margin-bottom: 6px;
-            }
-        }
-
         @media (max-width: 768px) {
             .zines-grid {
                 grid-template-columns: 1fr;
@@ -641,6 +600,48 @@
         
         .nav-links a.current:hover {
             opacity: 1;
+        }
+
+        /* Kept last so it overrides the base rules above, whatever their order. */
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+
+            header {
+                padding: 20px 14px;
+            }
+
+            .content {
+                padding: 20px 14px;
+            }
+
+            .filters {
+                padding: 14px;
+            }
+
+            .zine-card-content {
+                padding: 16px 16px 0;
+            }
+
+            .zine-card-actions {
+                padding: 0 16px 16px;
+            }
+
+            .nav-links {
+                gap: 6px;
+            }
+
+            .nav-links a {
+                padding: 8px 9px;
+                font-size: 0.8em;
+            }
+
+            .download-btn,
+            .forum-btn,
+            .unfold-btn {
+                margin-bottom: 6px;
+            }
         }
     </style>
 </head>
