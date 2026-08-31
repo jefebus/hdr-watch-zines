@@ -94,6 +94,264 @@
             margin-top: 30px;
         }
         
+        .filters {
+            background: #2b2b2b;
+            border: 1px solid #3d3d3d;
+            border-radius: 10px;
+            padding: 18px 20px;
+        }
+
+        .filters-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 0;
+            background: none;
+            border: none;
+            color: #dddddd;
+            font-family: inherit;
+            font-size: 0.95em;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .filters-arrow {
+            margin-left: auto;
+            color: #0F82AF;
+            font-size: 1.1em;
+            transition: transform 0.2s;
+        }
+
+        .filters.collapsed .filters-arrow {
+            transform: rotate(-90deg);
+        }
+
+        .filters-body {
+            margin-top: 18px;
+        }
+
+        .filters.collapsed .filters-body {
+            display: none;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .filter-search {
+            flex: 1 1 320px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: 1px solid #4a4a4a;
+            background: #1e1e1e;
+            color: #dddddd;
+            font-size: 0.95em;
+            font-family: inherit;
+        }
+
+        .filter-select {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #4a4a4a;
+            background: #1e1e1e;
+            color: #dddddd;
+            font-size: 0.9em;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .filter-search:focus,
+        .filter-select:focus {
+            outline: none;
+            border-color: #0F82AF;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999999;
+            font-weight: 600;
+        }
+
+        .filter-value {
+            color: #0F82AF;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .filters input[type="range"] {
+            width: 100%;
+            accent-color: #0F82AF;
+            cursor: pointer;
+        }
+
+        /* Two range inputs stacked on one shared track: only the thumbs catch pointer events. */
+        .dual-range {
+            position: relative;
+            height: 28px;
+        }
+
+        .dual-range .dual-track,
+        .dual-range .dual-fill {
+            position: absolute;
+            top: 12px;
+            height: 4px;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .dual-range .dual-track {
+            left: 10px;
+            right: 10px;
+            background: #1e1e1e;
+            border: 1px solid #4a4a4a;
+        }
+
+        .dual-range .dual-fill {
+            background: #0F82AF;
+        }
+
+        .dual-range input[type="range"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 28px;
+            margin: 0;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .dual-range input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            pointer-events: auto;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0F82AF;
+            border: 2px solid #dddddd;
+            cursor: pointer;
+        }
+
+        .dual-range input[type="range"]::-moz-range-thumb {
+            pointer-events: auto;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0F82AF;
+            border: 2px solid #dddddd;
+            cursor: pointer;
+        }
+
+        .dual-range input[type="range"]::-webkit-slider-runnable-track,
+        .dual-range input[type="range"]::-moz-range-track {
+            background: none;
+            border: none;
+        }
+
+        /* Keeps the lower thumb grabbable when both sit on top of each other. */
+        #filter-diam-min {
+            z-index: 2;
+        }
+
+        .filter-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid #3d3d3d;
+        }
+
+        .filter-count {
+            color: #999999;
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        .filter-reset {
+            background: #444444;
+            border: none;
+            color: #dddddd;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85em;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .filter-reset:hover {
+            background: #555555;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #999999;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+
+            header {
+                padding: 20px 14px;
+            }
+
+            .content {
+                padding: 20px 14px;
+            }
+
+            .filters {
+                padding: 14px;
+            }
+
+            .zine-card-content {
+                padding: 16px;
+            }
+
+            .nav-links {
+                gap: 6px;
+            }
+
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
+
+            .download-btn,
+            .detail-btn,
+            .forum-btn,
+            .unfold-btn {
+                margin-bottom: 6px;
+            }
+        }
+
         @media (max-width: 768px) {
             .zines-grid {
                 grid-template-columns: 1fr;
@@ -161,6 +419,23 @@
         
         .download-btn:hover {
             background: #0d6a8f;
+        }
+
+        .detail-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #2f7d4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85em;
+            transition: background 0.2s;
+            margin-right: 8px;
+        }
+
+        .detail-btn:hover {
+            background: #276a43;
         }
         
         footer {
@@ -397,6 +672,57 @@
                 <p id="intro-text-2">Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.</p>
             </div>
             
+            <div class="filters" id="filters">
+                <button type="button" class="filters-toggle" id="filters-toggle" aria-expanded="true" aria-controls="filters-body">
+                    <span id="filters-title"></span>
+                    <span class="filter-count" id="filter-count"></span>
+                    <span class="filters-arrow">▾</span>
+                </button>
+                <div class="filters-body" id="filters-body">
+                    <div class="filter-row">
+                        <input type="search" id="filter-search" class="filter-search" autocomplete="off">
+                    </div>
+                    <div class="filter-grid">
+                        <div class="filter-group">
+                            <span class="filter-label" id="label-sort"></span>
+                            <select id="filter-sort" class="filter-select"></select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label" id="label-collection"></span>
+                            <select id="filter-lane" class="filter-select"></select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label" id="label-movement"></span>
+                            <select id="filter-movement" class="filter-select"></select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label" id="label-company"></span>
+                            <select id="filter-company" class="filter-select"></select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label" id="label-water"></span>
+                            <select id="filter-water" class="filter-select"></select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label"><span id="label-diameter"></span> <span class="filter-value" id="diameter-value"></span></span>
+                            <div class="dual-range">
+                                <div class="dual-track"></div>
+                                <div class="dual-fill" id="diam-fill"></div>
+                                <input type="range" id="filter-diam-min" step="1">
+                                <input type="range" id="filter-diam-max" step="1">
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label"><span id="label-price"></span> <span class="filter-value" id="price-value"></span></span>
+                            <input type="range" id="filter-price-max" step="1">
+                        </div>
+                    </div>
+                    <div class="filter-footer">
+                        <button type="button" class="filter-reset" id="filter-reset"></button>
+                    </div>
+                </div>
+            </div>
+
             <div class="zines-grid" id="zines-grid">
                 <div class="loading">Cargando zines...</div>
             </div>
@@ -419,11 +745,10 @@
             try {
                 const response = await fetch(`zines_data.json?v=${Date.now()}`);
                 ZINES_DATA = await response.json();
-                renderAllZines();
-                
-                // Set language after loading data
-                const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-                setLanguage(savedLang);
+
+                currentLanguage = localStorage.getItem('preferredLanguage') || 'es';
+                initFilters();
+                applyFilters();
             } catch (error) {
                 console.error('Error loading zines data:', error);
                 document.getElementById('zines-grid').innerHTML = '<p class="loading">Error al cargar los datos de los zines.</p>';
@@ -457,6 +782,9 @@
                         <h3>${zine.title} ${zine.emoji}</h3>
                         <p class="zine-description" data-id="${zine.id}">${description}</p>
                         <div>
+                            <a href="watch.html?id=${encodeURIComponent(zine.id)}" class="detail-btn">
+                                <span class="detail-btn-text">📋 Ficha</span>
+                            </a>
                             <a href="${zine.pdfFolder}/${zine.id} zine.pdf" class="download-btn" data-zine-id="${zine.id}" download>
                                 <span class="download-btn-text">📥 Descargar</span>
                             </a>
@@ -492,22 +820,294 @@
             `;
         }
 
-        function renderAllZines() {
+        function renderAllZines(list) {
             const grid = document.getElementById('zines-grid');
             if (!grid) {
                 console.error('Zines grid not found!');
                 return;
             }
-            
+
             grid.innerHTML = '';
-            
-            // Only show watches that have zines, sorted alphabetically by title
-            ZINES_DATA.filter(zine => zine.has_zine !== false)
-                      .sort((a, b) => a.title.localeCompare(b.title, 'es'))
-                      .forEach(zine => {
+
+            if (!list.length) {
+                grid.innerHTML = '<p class="no-results" id="no-results"></p>';
+                return;
+            }
+
+            list.forEach(zine => {
                 grid.insertAdjacentHTML('beforeend', renderZineCard(zine));
                 grid.insertAdjacentHTML('beforeend', renderGallery(zine));
             });
+        }
+
+        const FILTERS = {
+            search: '',
+            lane: '',
+            movement: '',
+            company: '',
+            water: 0,
+            diamMin: 0,
+            diamMax: 100,
+            priceMax: 0,
+            sort: 'title-asc'
+        };
+        let DIAM_BOUNDS = { min: 0, max: 100 };
+        let PRICE_BOUNDS = { min: 0, max: 0 };
+        let LAST_RESULT = { shown: 0, total: 0 };
+
+        const LANE_ORDER = ['rswc', 'sys', 'otros'];
+        const MOVEMENT_ORDER = ['automatic', 'manual', 'solar', 'digital', 'anadigi'];
+        const WATER_STEPS = [0, 30, 50, 100, 200, 300, 500];
+        const SORT_KEYS = ['title-asc', 'title-desc', 'year-desc', 'year-asc', 'diam-asc', 'diam-desc', 'price-asc', 'price-desc'];
+
+        const byTitle = (a, b) => a.title.localeCompare(b.title, 'es');
+        // Watches without a price are always pushed to the end, whatever the direction.
+        const byPrice = dir => (a, b) => {
+            const pa = typeof a.price === 'number' ? a.price : null;
+            const pb = typeof b.price === 'number' ? b.price : null;
+            if (pa === null && pb === null) return byTitle(a, b);
+            if (pa === null) return 1;
+            if (pb === null) return -1;
+            return (pa - pb) * dir || byTitle(a, b);
+        };
+        const SORTERS = {
+            'title-asc': byTitle,
+            'title-desc': (a, b) => byTitle(b, a),
+            'year-desc': (a, b) => (b.year - a.year) || (b.month - a.month) || byTitle(a, b),
+            'year-asc': (a, b) => (a.year - b.year) || (a.month - b.month) || byTitle(a, b),
+            'diam-asc': (a, b) => (a.case_diameter - b.case_diameter) || byTitle(a, b),
+            'diam-desc': (a, b) => (b.case_diameter - a.case_diameter) || byTitle(a, b),
+            'price-asc': byPrice(1),
+            'price-desc': byPrice(-1)
+        };
+
+        function normalizeText(value) {
+            return String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function catalogZines() {
+            return ZINES_DATA.filter(zine => zine.has_zine !== false);
+        }
+
+        function zineHaystack(zine) {
+            if (!zine._haystack) {
+                zine._haystack = normalizeText([
+                    zine.title, zine.brand, zine.model, zine.id,
+                    zine.movement_id, zine.movement_company,
+                    (zine.models || []).join(' '),
+                    zine.description_es, zine.description_de, zine.description_en
+                ].join(' '));
+            }
+            return zine._haystack;
+        }
+
+        function zineMatchesFilters(zine) {
+            if (FILTERS.lane && (zine.lane_id || 'otros') !== FILTERS.lane) return false;
+            if (FILTERS.movement && zine.movement_type !== FILTERS.movement) return false;
+            if (FILTERS.company && zine.movement_company !== FILTERS.company) return false;
+            if (FILTERS.water && !(typeof zine.water_resist === 'number' && zine.water_resist >= FILTERS.water)) return false;
+
+            const diam = zine.case_diameter;
+            if (typeof diam === 'number' && (diam < FILTERS.diamMin || diam > FILTERS.diamMax)) return false;
+
+            if (FILTERS.priceMax < PRICE_BOUNDS.max) {
+                if (!(typeof zine.price === 'number' && zine.price <= FILTERS.priceMax)) return false;
+            }
+
+            if (FILTERS.search && !zineHaystack(zine).includes(FILTERS.search)) return false;
+            return true;
+        }
+
+        // Options get their label from the active translation, so only values are set here.
+        function buildSelect(id, values, onChange) {
+            const select = document.getElementById(id);
+            select.innerHTML = '<option value=""></option>' +
+                values.map(value => `<option value="${value}"></option>`).join('');
+            select.addEventListener('change', () => {
+                onChange(select.value);
+                applyFilters();
+            });
+            return select;
+        }
+
+        function updateDiameterFill() {
+            const span = DIAM_BOUNDS.max - DIAM_BOUNDS.min;
+            const low = span ? ((FILTERS.diamMin - DIAM_BOUNDS.min) / span) * 100 : 0;
+            const high = span ? ((FILTERS.diamMax - DIAM_BOUNDS.min) / span) * 100 : 100;
+            const fill = document.getElementById('diam-fill');
+            // The 10px terms recentre the fill on the 20px thumbs at both ends of the track.
+            fill.style.left = `calc(${low}% + ${10 - low * 0.2}px)`;
+            fill.style.width = `calc(${high - low}% + ${(low - high) * 0.2}px)`;
+        }
+
+        function initFilters() {
+            const zines = catalogZines();
+
+            const diameters = zines.map(z => z.case_diameter).filter(v => typeof v === 'number');
+            DIAM_BOUNDS = { min: Math.floor(Math.min(...diameters)), max: Math.ceil(Math.max(...diameters)) };
+            const prices = zines.map(z => z.price).filter(v => typeof v === 'number');
+            PRICE_BOUNDS = { min: Math.floor(Math.min(...prices)), max: Math.ceil(Math.max(...prices)) };
+
+            FILTERS.diamMin = DIAM_BOUNDS.min;
+            FILTERS.diamMax = DIAM_BOUNDS.max;
+            FILTERS.priceMax = PRICE_BOUNDS.max;
+
+            buildSelect(
+                'filter-lane',
+                LANE_ORDER.filter(lane => zines.some(z => (z.lane_id || 'otros') === lane)),
+                value => { FILTERS.lane = value; }
+            );
+            buildSelect(
+                'filter-movement',
+                MOVEMENT_ORDER.filter(type => zines.some(z => z.movement_type === type)),
+                value => { FILTERS.movement = value; }
+            );
+
+            const companies = [...new Set(zines.map(z => z.movement_company).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'));
+            const companySelect = buildSelect('filter-company', companies, value => { FILTERS.company = value; });
+            companies.forEach((name, i) => { companySelect.options[i + 1].textContent = name; });
+
+            const waterSelect = document.getElementById('filter-water');
+            waterSelect.innerHTML = WATER_STEPS
+                .map(v => `<option value="${v}">${v === 0 ? '' : '≥ ' + v + ' m'}</option>`)
+                .join('');
+            waterSelect.addEventListener('change', () => {
+                FILTERS.water = Number(waterSelect.value);
+                applyFilters();
+            });
+
+            const sortSelect = document.getElementById('filter-sort');
+            sortSelect.innerHTML = SORT_KEYS.map(key => `<option value="${key}"></option>`).join('');
+            sortSelect.value = FILTERS.sort;
+            sortSelect.addEventListener('change', () => {
+                FILTERS.sort = sortSelect.value;
+                applyFilters();
+            });
+
+            const searchInput = document.getElementById('filter-search');
+            searchInput.addEventListener('input', () => {
+                FILTERS.search = normalizeText(searchInput.value.trim());
+                applyFilters();
+            });
+
+            const diamMinInput = document.getElementById('filter-diam-min');
+            const diamMaxInput = document.getElementById('filter-diam-max');
+            [diamMinInput, diamMaxInput].forEach(input => {
+                input.min = DIAM_BOUNDS.min;
+                input.max = DIAM_BOUNDS.max;
+            });
+            diamMinInput.value = DIAM_BOUNDS.min;
+            diamMaxInput.value = DIAM_BOUNDS.max;
+            diamMinInput.addEventListener('input', () => {
+                FILTERS.diamMin = Math.min(Number(diamMinInput.value), FILTERS.diamMax);
+                diamMinInput.value = FILTERS.diamMin;
+                applyFilters();
+            });
+            diamMaxInput.addEventListener('input', () => {
+                FILTERS.diamMax = Math.max(Number(diamMaxInput.value), FILTERS.diamMin);
+                diamMaxInput.value = FILTERS.diamMax;
+                applyFilters();
+            });
+
+            const priceInput = document.getElementById('filter-price-max');
+            priceInput.min = PRICE_BOUNDS.min;
+            priceInput.max = PRICE_BOUNDS.max;
+            priceInput.value = PRICE_BOUNDS.max;
+            priceInput.addEventListener('input', () => {
+                FILTERS.priceMax = Number(priceInput.value);
+                applyFilters();
+            });
+
+            document.getElementById('filter-reset').addEventListener('click', resetFilters);
+
+            const panel = document.getElementById('filters');
+            const toggle = document.getElementById('filters-toggle');
+            const storedCollapsed = localStorage.getItem('filtersCollapsed');
+            // The panel is tall on phones, so it starts folded there unless the user chose otherwise.
+            if (storedCollapsed === null ? window.innerWidth <= 600 : storedCollapsed === 'true') {
+                panel.classList.add('collapsed');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+            toggle.addEventListener('click', () => {
+                const collapsed = panel.classList.toggle('collapsed');
+                toggle.setAttribute('aria-expanded', String(!collapsed));
+                localStorage.setItem('filtersCollapsed', String(collapsed));
+            });
+        }
+
+        function resetFilters() {
+            FILTERS.search = '';
+            FILTERS.lane = '';
+            FILTERS.movement = '';
+            FILTERS.company = '';
+            FILTERS.water = 0;
+            FILTERS.diamMin = DIAM_BOUNDS.min;
+            FILTERS.diamMax = DIAM_BOUNDS.max;
+            FILTERS.priceMax = PRICE_BOUNDS.max;
+            FILTERS.sort = 'title-asc';
+
+            document.getElementById('filter-search').value = '';
+            document.getElementById('filter-lane').value = '';
+            document.getElementById('filter-movement').value = '';
+            document.getElementById('filter-company').value = '';
+            document.getElementById('filter-water').value = '0';
+            document.getElementById('filter-sort').value = 'title-asc';
+            document.getElementById('filter-diam-min').value = DIAM_BOUNDS.min;
+            document.getElementById('filter-diam-max').value = DIAM_BOUNDS.max;
+            document.getElementById('filter-price-max').value = PRICE_BOUNDS.max;
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const all = catalogZines();
+            const list = all.filter(zineMatchesFilters).sort(SORTERS[FILTERS.sort]);
+            LAST_RESULT = { shown: list.length, total: all.length };
+            renderAllZines(list);
+            setLanguage(currentLanguage);
+        }
+
+        function updateFilterTexts(t) {
+            document.getElementById('filters-title').textContent = t.filtersTitle;
+            document.getElementById('filter-search').placeholder = t.searchPlaceholder;
+            document.getElementById('label-sort').textContent = t.labelSort;
+            document.getElementById('label-collection').textContent = t.labelCollection;
+            document.getElementById('label-movement').textContent = t.labelMovement;
+            document.getElementById('label-company').textContent = t.labelCompany;
+            document.getElementById('label-water').textContent = t.labelWater;
+            document.getElementById('label-diameter').textContent = t.labelDiameter;
+            document.getElementById('label-price').textContent = t.labelPrice;
+            document.getElementById('filter-reset').textContent = t.resetBtn;
+
+            [...document.getElementById('filter-lane').options].forEach(option => {
+                option.textContent = option.value ? (t.laneNames[option.value] || option.value) : t.anyOption;
+            });
+            [...document.getElementById('filter-movement').options].forEach(option => {
+                option.textContent = option.value ? (t.movementNames[option.value] || option.value) : t.anyOption;
+            });
+            document.querySelectorAll('#filter-sort option').forEach(option => {
+                option.textContent = t.sortNames[option.value] || option.value;
+            });
+
+            const companySelect = document.getElementById('filter-company');
+            if (companySelect.options.length) companySelect.options[0].textContent = t.anyOption;
+            const waterSelect = document.getElementById('filter-water');
+            if (waterSelect.options.length) waterSelect.options[0].textContent = t.anyOption;
+
+            document.getElementById('diameter-value').textContent =
+                (FILTERS.diamMin === DIAM_BOUNDS.min && FILTERS.diamMax === DIAM_BOUNDS.max)
+                    ? t.anyOption
+                    : `${FILTERS.diamMin}–${FILTERS.diamMax} mm`;
+            document.getElementById('price-value').textContent =
+                FILTERS.priceMax >= PRICE_BOUNDS.max ? t.anyOption : `≤ ${FILTERS.priceMax} €`;
+            updateDiameterFill();
+
+            document.getElementById('filter-count').textContent = t.showing
+                .replace('{n}', LAST_RESULT.shown)
+                .replace('{total}', LAST_RESULT.total);
+
+            const noResults = document.getElementById('no-results');
+            if (noResults) noResults.textContent = t.noResults;
         }
 
         function togglePages(galleryId) {
@@ -547,6 +1147,7 @@
                 introText1: 'Descarga zines listos para imprimir de tus relojes favoritos de la comunidad "Hablemos de Relojes".',
                 introText2: 'Cada zine está diseñado para plegarse en un folleto compacto que encaja perfectamente en tu estuche de reloj.',
                 downloadBtn: '📥 Descargar',
+                detailBtn: '📋 Ficha',
                 forumBtn: '💬 HdR',
                 unfoldBtn: '📖 Ver páginas',
                 foldBtn: '📕 Ocultar páginas',
@@ -555,13 +1156,39 @@
                 footerAbout: 'Sobre este proyecto',
                 footerText1: 'Los zines se generan con Typst usando la plantilla zen-zine.',
                 footerText2: 'Proyecto comunitario de Hablemos de Relojes.',
-                footerGithub: 'GitHub'
+                footerGithub: 'GitHub',
+                searchPlaceholder: '🔍 Buscar por nombre, marca, calibre...',
+                filtersTitle: '🔎 Filtros y búsqueda',
+                labelSort: 'Ordenar por',
+                labelCollection: 'Colección',
+                labelMovement: 'Movimiento',
+                labelCompany: 'Fabricante del calibre',
+                labelWater: 'Hermeticidad mínima',
+                labelDiameter: 'Diámetro',
+                labelPrice: 'Precio de salida del proyecto',
+                anyOption: 'Cualquiera',
+                resetBtn: '✕ Limpiar filtros',
+                showing: 'Mostrando {n} de {total} relojes',
+                noResults: 'Ningún reloj coincide con los filtros seleccionados.',
+                laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Otros' },
+                movementNames: { automatic: 'Automático', manual: 'Manual', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-digi' },
+                sortNames: {
+                    'title-asc': 'Nombre (A-Z)',
+                    'title-desc': 'Nombre (Z-A)',
+                    'year-desc': 'Año (más reciente)',
+                    'year-asc': 'Año (más antiguo)',
+                    'diam-asc': 'Diámetro (menor)',
+                    'diam-desc': 'Diámetro (mayor)',
+                    'price-asc': 'Precio (menor)',
+                    'price-desc': 'Precio (mayor)'
+                }
             },
             de: {
                 headerSubtitle: 'Druckbare Anleitungshefte für Uhrenliebhaber',
                 introText1: 'Laden Sie druckfertige Zines Ihrer Lieblingsuhren aus der "Hablemos de Relojes"-Community herunter.',
                 introText2: 'Jedes Zine ist so gestaltet, dass es sich zu einer kompakten Broschüre falten lässt, die perfekt in Ihr Uhrenetui passt.',
                 downloadBtn: '📥 Herunterladen',
+                detailBtn: '📋 Datenblatt',
                 forumBtn: '💬 HdR',
                 unfoldBtn: '📖 Seiten ansehen',
                 foldBtn: '📕 Seiten ausblenden',
@@ -570,13 +1197,39 @@
                 footerAbout: 'Über dieses Projekt',
                 footerText1: 'Die Zines werden mit Typst mit dem zen-zine Template generiert.',
                 footerText2: 'Gemeinschaftsprojekt von Hablemos de Relojes.',
-                footerGithub: 'GitHub'
+                footerGithub: 'GitHub',
+                searchPlaceholder: '🔍 Suche nach Name, Marke, Kaliber...',
+                filtersTitle: '🔎 Filter und Suche',
+                labelSort: 'Sortieren nach',
+                labelCollection: 'Kollektion',
+                labelMovement: 'Werk',
+                labelCompany: 'Werkhersteller',
+                labelWater: 'Mindest-Wasserdichtigkeit',
+                labelDiameter: 'Durchmesser',
+                labelPrice: 'Startpreis des Projekts',
+                anyOption: 'Beliebig',
+                resetBtn: '✕ Filter zurücksetzen',
+                showing: '{n} von {total} Uhren',
+                noResults: 'Keine Uhr entspricht den gewählten Filtern.',
+                laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Andere' },
+                movementNames: { automatic: 'Automatik', manual: 'Handaufzug', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-Digi' },
+                sortNames: {
+                    'title-asc': 'Name (A-Z)',
+                    'title-desc': 'Name (Z-A)',
+                    'year-desc': 'Jahr (neueste)',
+                    'year-asc': 'Jahr (älteste)',
+                    'diam-asc': 'Durchmesser (klein)',
+                    'diam-desc': 'Durchmesser (groß)',
+                    'price-asc': 'Preis (niedrig)',
+                    'price-desc': 'Preis (hoch)'
+                }
             },
             en: {
                 headerSubtitle: 'Printable instruction booklets for watch enthusiasts',
                 introText1: 'Download print-ready zines of your favorite watches from the "Hablemos de Relojes" community.',
                 introText2: 'Each zine is designed to fold into a compact booklet that fits perfectly in your watch case.',
                 downloadBtn: '📥 Download',
+                detailBtn: '📋 Details',
                 forumBtn: '💬 HdR',
                 unfoldBtn: '📖 View pages',
                 foldBtn: '📕 Hide pages',
@@ -585,7 +1238,32 @@
                 footerAbout: 'About this project',
                 footerText1: 'Zines are generated with Typst using the zen-zine template.',
                 footerText2: 'Community project by Hablemos de Relojes.',
-                footerGithub: 'GitHub'
+                footerGithub: 'GitHub',
+                searchPlaceholder: '🔍 Search by name, brand, caliber...',
+                filtersTitle: '🔎 Filters and search',
+                labelSort: 'Sort by',
+                labelCollection: 'Collection',
+                labelMovement: 'Movement',
+                labelCompany: 'Movement maker',
+                labelWater: 'Minimum water resistance',
+                labelDiameter: 'Diameter',
+                labelPrice: 'Project launch price',
+                anyOption: 'Any',
+                resetBtn: '✕ Clear filters',
+                showing: 'Showing {n} of {total} watches',
+                noResults: 'No watch matches the selected filters.',
+                laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Others' },
+                movementNames: { automatic: 'Automatic', manual: 'Manual', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-digi' },
+                sortNames: {
+                    'title-asc': 'Name (A-Z)',
+                    'title-desc': 'Name (Z-A)',
+                    'year-desc': 'Year (newest)',
+                    'year-asc': 'Year (oldest)',
+                    'diam-asc': 'Diameter (smallest)',
+                    'diam-desc': 'Diameter (largest)',
+                    'price-asc': 'Price (lowest)',
+                    'price-desc': 'Price (highest)'
+                }
             }
         };
 
@@ -595,14 +1273,14 @@
             
             // Update language buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
+                btn.classList.toggle('active', (btn.getAttribute('onclick') || '').includes(`'${lang}'`));
             });
-            event?.target?.classList.add('active') || document.querySelector(`.lang-btn[onclick*="${lang}"]`)?.classList.add('active');
             
             // Update static text
             document.getElementById('header-subtitle').textContent = t.headerSubtitle;
             document.getElementById('intro-text-1').textContent = t.introText1;
             document.getElementById('intro-text-2').textContent = t.introText2;
+            updateFilterTexts(t);
             document.getElementById('footer-about').innerHTML = '<strong>' + t.footerAbout + '</strong>';
             document.getElementById('footer-text-1').innerHTML = t.footerText1.replace('Typst', '<a href="https://github.com/typst/typst">Typst</a>').replace('zen-zine', '<em>zen-zine</em>');
             document.getElementById('footer-text-2').innerHTML = t.footerText2.replace('Hablemos de Relojes', '<a href="https://www.hablemosderelojes.com">Hablemos de Relojes</a>');
@@ -611,6 +1289,10 @@
             // Update all download buttons
             document.querySelectorAll('.download-btn-text').forEach(btn => {
                 btn.textContent = t.downloadBtn;
+            });
+
+            document.querySelectorAll('.detail-btn-text').forEach(btn => {
+                btn.textContent = t.detailBtn;
             });
             
             // Update all forum buttons

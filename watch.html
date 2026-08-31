@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HdR Watch Zines</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #dddddd;
+            background: #222222;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #222222;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        header {
+            background: #111111;
+            color: #dddddd;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #dddddd;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .lang-btn.active {
+            background: #0F82AF;
+        }
+
+        .nav-links {
+            margin-bottom: 14px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0F82AF;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .pager a {
+            display: inline-block;
+            padding: 9px 16px;
+            background: #333333;
+            color: #dddddd;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            max-width: 34ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .pager a:hover {
+            background: #444444;
+        }
+
+        .detail {
+            display: grid;
+            grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+            gap: 30px;
+            align-items: start;
+        }
+
+        @media (max-width: 860px) {
+            .detail {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .photos {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .photos img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #3d3d3d;
+            background: #1a1a1a;
+        }
+
+        .detail h2 {
+            font-size: 1.8em;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            color: #999999;
+            margin-bottom: 14px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 0.78em;
+            font-weight: 600;
+            background: #333333;
+            border: 1px solid #4a4a4a;
+            color: #cccccc;
+        }
+
+        .badge.status-delivered { background: #14532d; border-color: #166534; color: #dcfce7; }
+        .badge.status-active,
+        .badge.status-payment,
+        .badge.status-prototyping,
+        .badge.status-production,
+        .badge.status-in_delivery { background: #7c2d12; border-color: #9a3412; color: #ffedd5; }
+        .badge.lane-rswc { background: #78350f; border-color: #a16207; color: #fef3c7; }
+        .badge.lane-sys { background: #4c1d95; border-color: #6d28d9; color: #ede9fe; }
+
+        .description {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #999999;
+            font-weight: 700;
+            margin: 24px 0 12px;
+        }
+
+        .specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1px;
+            background: #3d3d3d;
+            border: 1px solid #3d3d3d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .spec {
+            background: #2b2b2b;
+            padding: 12px 14px;
+        }
+
+        .spec-label {
+            display: block;
+            font-size: 0.72em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999999;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            font-size: 1.05em;
+            font-weight: 600;
+        }
+
+        table.variants {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #3d3d3d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table.variants th,
+        table.variants td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid #3d3d3d;
+        }
+
+        table.variants th {
+            background: #2b2b2b;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999999;
+        }
+
+        table.variants td.num,
+        table.variants th.num {
+            text-align: right;
+        }
+
+        table.variants tfoot td {
+            font-weight: 700;
+            background: #2b2b2b;
+            border-bottom: none;
+        }
+
+        .notes {
+            margin-top: 18px;
+            padding: 12px 14px;
+            background: #2b2b2b;
+            border-left: 3px solid #0F82AF;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #bbbbbb;
+        }
+
+        .zine-text {
+            margin-top: 30px;
+        }
+
+        .zine-text > summary {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-bottom: 12px;
+            list-style: none;
+            cursor: pointer;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #999999;
+            font-weight: 700;
+        }
+
+        .zine-text > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .zine-text-hint {
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 400;
+            color: #777777;
+        }
+
+        .zine-text-arrow {
+            margin-left: auto;
+            color: #0F82AF;
+            font-size: 1.2em;
+            transition: transform 0.2s;
+        }
+
+        .zine-text[open] .zine-text-arrow {
+            transform: rotate(180deg);
+        }
+
+        .zine-pages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .zine-page {
+            background: #2b2b2b;
+            border: 1px solid #3d3d3d;
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+
+        .zine-page h3 {
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+            color: #0F82AF;
+            margin-bottom: 10px;
+        }
+
+        .zine-page p {
+            margin-bottom: 10px;
+            font-size: 0.92em;
+        }
+
+        .zine-page ul {
+            margin: 0 0 10px 18px;
+            font-size: 0.92em;
+        }
+
+        .zine-page li {
+            margin-bottom: 3px;
+        }
+
+        .zine-page :last-child {
+            margin-bottom: 0;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 9px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85em;
+            font-family: inherit;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .btn-primary { background: #0F82AF; }
+        .btn-forum { background: #7b68ee; }
+        .btn-secondary { background: #444444; }
+
+        .gallery {
+            margin-top: 24px;
+        }
+
+        .gallery-frame {
+            display: flex;
+            justify-content: center;
+            background: #1a1a1a;
+            border: 1px solid #3d3d3d;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .gallery-frame img {
+            max-height: 520px;
+            width: auto;
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .page-counter {
+            font-weight: 600;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        .message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999999;
+        }
+
+        .message a {
+            color: #099dd7;
+        }
+
+        @media (max-width: 768px) {
+            .lang-switcher {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+
+            header {
+                padding: 20px 14px;
+            }
+
+            .content {
+                padding: 20px 14px;
+            }
+
+            .nav-links {
+                gap: 6px;
+            }
+
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
+
+            .pager {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .pager a {
+                max-width: none;
+                text-align: center;
+            }
+
+            .pager a.pager-index {
+                grid-column: 1 / -1;
+                order: -1;
+            }
+
+            /* Both shots side by side keep the specs within reach of the first scroll. */
+            .photos {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                align-items: start;
+            }
+
+            .detail h2 {
+                font-size: 1.4em;
+            }
+
+            .specs {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .gallery-frame {
+                padding: 8px;
+            }
+
+            .actions .btn,
+            .gallery-nav .btn {
+                flex: 1 1 auto;
+                text-align: center;
+            }
+        }
+
+        footer {
+            background: #111111;
+            color: #dddddd;
+            padding: 30px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: #099dd7;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="lang-switcher">
+                <button class="lang-btn" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">📖 Zines</a>
+                <a href="timeline.html">📅 Timeline</a>
+                <a href="stats.html">📊 Stats</a>
+            </div>
+            <h1>⌚ HdR Watch Zines</h1>
+            <p id="header-subtitle"></p>
+        </header>
+
+        <div class="content" id="content">
+            <div class="message" id="loading">…</div>
+        </div>
+
+        <footer>
+            <p id="footer-text"></p>
+            <p><a href="https://github.com/jefebus/hdr-watch-zines" target="_blank" id="footer-github">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let ZINES = [];
+        let CURRENT = null;
+        let currentLanguage = 'es';
+        let galleryPage = 1;
+
+        const GALLERY_PAGES = 8;
+
+        const translations = {
+            es: {
+                headerSubtitle: 'Ficha de proyecto',
+                footerText: 'Proyecto comunitario de Hablemos de Relojes.',
+                notFound: 'No se ha encontrado ningún proyecto con ese identificador.',
+                backToIndex: 'Volver al índice de zines',
+                prev: 'Anterior',
+                next: 'Siguiente',
+                specs: 'Especificaciones',
+                variants: 'Variantes y unidades',
+                variantName: 'Variante',
+                variantUnits: 'Unidades',
+                totalUnits: 'Total',
+                singleVariant: 'Edición única',
+                notesTitle: 'Notas',
+                zineText: 'Contenido del zine',
+                zinePagesWord: 'páginas',
+                zineWordsWord: 'palabras',
+                pages: 'Páginas del zine',
+                download: '📥 Descargar zine (PDF)',
+                forum: '💬 Hilo en HdR',
+                backBtn: '← Todos los zines',
+                launchPrice: 'Precio de salida',
+                diameter: 'Diámetro',
+                height: 'Grosor',
+                lugToLug: 'Lug to lug',
+                strap: 'Ancho de correa',
+                water: 'Hermeticidad',
+                movementType: 'Tipo de movimiento',
+                caliber: 'Calibre',
+                maker: 'Fabricante',
+                released: 'Presentado',
+                units: 'Unidades producidas',
+                category: 'Categoría',
+                noPrice: 'No disponible',
+                laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Otros proyectos' },
+                movementNames: { automatic: 'Automático', manual: 'Manual', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-digi', quartz: 'Cuarzo' },
+                statusNames: { active: 'Activo', payment: 'En pago', prototyping: 'Prototipado', production: 'En producción', in_delivery: 'En reparto', delivered: 'Entregado' },
+                months: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+            },
+            de: {
+                headerSubtitle: 'Projektdatenblatt',
+                footerText: 'Gemeinschaftsprojekt von Hablemos de Relojes.',
+                notFound: 'Kein Projekt mit dieser Kennung gefunden.',
+                backToIndex: 'Zurück zur Zine-Übersicht',
+                prev: 'Zurück',
+                next: 'Weiter',
+                specs: 'Technische Daten',
+                variants: 'Varianten und Stückzahlen',
+                variantName: 'Variante',
+                variantUnits: 'Stück',
+                totalUnits: 'Gesamt',
+                singleVariant: 'Einzelausgabe',
+                notesTitle: 'Anmerkungen',
+                zineText: 'Zine-Inhalt',
+                zinePagesWord: 'Seiten',
+                zineWordsWord: 'Wörter',
+                pages: 'Zine-Seiten',
+                download: '📥 Zine herunterladen (PDF)',
+                forum: '💬 HdR-Thread',
+                backBtn: '← Alle Zines',
+                launchPrice: 'Startpreis',
+                diameter: 'Durchmesser',
+                height: 'Höhe',
+                lugToLug: 'Bandanstoß-Länge',
+                strap: 'Bandbreite',
+                water: 'Wasserdichtigkeit',
+                movementType: 'Werktyp',
+                caliber: 'Kaliber',
+                maker: 'Hersteller',
+                released: 'Vorgestellt',
+                units: 'Produzierte Stück',
+                category: 'Kategorie',
+                noPrice: 'Nicht verfügbar',
+                laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Andere Projekte' },
+                movementNames: { automatic: 'Automatik', manual: 'Handaufzug', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-Digi', quartz: 'Quarz' },
+                statusNames: { active: 'Aktiv', payment: 'Zahlung', prototyping: 'Prototyping', production: 'In Produktion', in_delivery: 'Im Versand', delivered: 'Geliefert' },
+                months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+            },
+            en: {
+                headerSubtitle: 'Project sheet',
+                footerText: 'Community project by Hablemos de Relojes.',
+                notFound: 'No project found with that identifier.',
+                backToIndex: 'Back to the zine index',
+                prev: 'Previous',
+                next: 'Next',
+                specs: 'Specifications',
+                variants: 'Variants and units',
+                variantName: 'Variant',
+                variantUnits: 'Units',
+                totalUnits: 'Total',
+                singleVariant: 'Single edition',
+                notesTitle: 'Notes',
+                zineText: 'Zine content',
+                zinePagesWord: 'pages',
+                zineWordsWord: 'words',
+                pages: 'Zine pages',
+                download: '📥 Download zine (PDF)',
+                forum: '💬 HdR thread',
+                backBtn: '← All zines',
+                launchPrice: 'Launch price',
+                diameter: 'Diameter',
+                height: 'Thickness',
+                lugToLug: 'Lug to lug',
+                strap: 'Lug width',
+                water: 'Water resistance',
+                movementType: 'Movement type',
+                caliber: 'Caliber',
+                maker: 'Maker',
+                released: 'Released',
+                units: 'Units produced',
+                category: 'Category',
+                noPrice: 'Not available',
+                laneNames: { rswc: 'RSWC', sys: 'Sol y Sombra', otros: 'Other projects' },
+                movementNames: { automatic: 'Automatic', manual: 'Manual', solar: 'Solar', digital: 'Digital', anadigi: 'Ana-digi', quartz: 'Quartz' },
+                statusNames: { active: 'Active', payment: 'Payment', prototyping: 'Prototyping', production: 'In production', in_delivery: 'Shipping', delivered: 'Delivered' },
+                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            }
+        };
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, c => (
+                { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+            ));
+        }
+
+        function catalog() {
+            return ZINES.filter(z => z.has_zine !== false).sort((a, b) => a.title.localeCompare(b.title, 'es'));
+        }
+
+        function pdfSuffix(zine, lang) {
+            return (lang !== 'es' && zine.pdf_langs && zine.pdf_langs.includes(lang)) ? `_${lang}` : '';
+        }
+
+        function hasZineForLang(zine, lang) {
+            if (!zine.has_zine) return false;
+            return lang === 'es' || Boolean(zine.pdf_langs && zine.pdf_langs.includes(lang));
+        }
+
+        function specRow(label, value) {
+            if (value === null || value === undefined || value === '') return '';
+            return `<div class="spec"><span class="spec-label">${escapeHtml(label)}</span><span class="spec-value">${escapeHtml(value)}</span></div>`;
+        }
+
+        function renderSpecs(zine, t) {
+            const caliber = Array.isArray(zine.movement_id) ? zine.movement_id.join(' / ') : zine.movement_id;
+            const totalUnits = (zine.units || []).filter(u => typeof u === 'number').reduce((sum, u) => sum + u, 0);
+            const released = typeof zine.year === 'number'
+                ? (typeof zine.month === 'number' ? `${t.months[zine.month - 1]} ${zine.year}` : String(zine.year))
+                : null;
+
+            return [
+                specRow(t.released, released),
+                specRow(t.launchPrice, typeof zine.price === 'number' ? `${zine.price} €` : t.noPrice),
+                specRow(t.diameter, typeof zine.case_diameter === 'number' ? `${zine.case_diameter} mm` : null),
+                specRow(t.height, typeof zine.case_height === 'number' && zine.case_height > 0 ? `${zine.case_height} mm` : null),
+                specRow(t.lugToLug, typeof zine.lug_to_lug === 'number' && zine.lug_to_lug > 0 ? `${zine.lug_to_lug} mm` : null),
+                specRow(t.strap, typeof zine.strap_width === 'number' ? `${zine.strap_width} mm` : null),
+                specRow(t.water, typeof zine.water_resist === 'number' ? `${zine.water_resist} m` : null),
+                specRow(t.movementType, t.movementNames[zine.movement_type] || zine.movement_type),
+                specRow(t.caliber, caliber),
+                specRow(t.maker, zine.movement_company),
+                specRow(t.category, zine.category),
+                specRow(t.units, totalUnits > 0 ? totalUnits : null)
+            ].join('');
+        }
+
+        function renderVariants(zine, t) {
+            const models = zine.models || [];
+            const units = zine.units || [];
+            const named = models.filter(name => name && name.trim());
+            if (named.length < 2) return '';
+
+            const total = units.filter(u => typeof u === 'number').reduce((sum, u) => sum + u, 0);
+            const rows = models.map((name, i) => `
+                <tr>
+                    <td>${escapeHtml(name || t.singleVariant)}</td>
+                    <td class="num">${typeof units[i] === 'number' ? units[i] : '—'}</td>
+                </tr>`).join('');
+
+            return `
+                <div class="section-title">${escapeHtml(t.variants)}</div>
+                <table class="variants">
+                    <thead><tr><th>${escapeHtml(t.variantName)}</th><th class="num">${escapeHtml(t.variantUnits)}</th></tr></thead>
+                    <tbody>${rows}</tbody>
+                    ${total > 0 ? `<tfoot><tr><td>${escapeHtml(t.totalUnits)}</td><td class="num">${total}</td></tr></tfoot>` : ''}
+                </table>`;
+        }
+
+        // The .typ sources are the single source of truth and are published alongside
+        // this page, so the zine prose is parsed straight from them: nothing to build,
+        // nothing to keep in sync. Mirrors the page structure described in AGENTS.md.
+        const TEXT_CACHE = new Map();
+
+        const TYP_TITLE_RE = /^\*(.+?)\*$/;
+        const TYP_BULLET_RE = /^-\s+(.*)$/;
+        const TYP_IMAGE_RE = /^#(block|image)\b/;
+
+        function cleanTypInline(text) {
+            return text
+                .replace(/#text\([^)]*\)\[([\s\S]*?)\]/g, '$1')
+                .replace(/\\ /g, ' ')
+                .replace(/\*(.+?)\*/g, '$1')
+                .replace(/_(.+?)_/g, '$1')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function parseTypPage(block) {
+            let title = null;
+            const content = [];
+            let buffer = [];
+
+            const flush = () => {
+                if (!buffer.length) return;
+                const text = cleanTypInline(buffer.join(' '));
+                buffer = [];
+                if (text) content.push({ type: 'p', text });
+            };
+
+            const addItem = item => {
+                const last = content[content.length - 1];
+                if (last && last.type === 'list') last.items.push(item);
+                else content.push({ type: 'list', items: [item] });
+            };
+
+            for (const raw of block.split('\n')) {
+                const line = raw.trim();
+                if (!line || line.startsWith('//') || TYP_IMAGE_RE.test(line)) {
+                    flush();
+                    continue;
+                }
+
+                const heading = line.match(TYP_TITLE_RE);
+                if (heading && title === null && !content.length) {
+                    title = cleanTypInline(heading[1]);
+                    continue;
+                }
+
+                const bullet = line.match(TYP_BULLET_RE);
+                if (bullet) {
+                    flush();
+                    const item = cleanTypInline(bullet[1]);
+                    if (item) addItem(item);
+                    continue;
+                }
+
+                if (line.startsWith('#')) {
+                    flush();
+                    continue;
+                }
+
+                buffer.push(line);
+            }
+            flush();
+
+            if (title === null && !content.length) return null;
+            return { title: title || '', content };
+        }
+
+        function typBracketBodies(block) {
+            const bodies = [];
+            const opener = /#place\(/g;
+            let match;
+            while ((match = opener.exec(block)) !== null) {
+                const start = block.indexOf('[', match.index + match[0].length);
+                if (start === -1) continue;
+                let depth = 0;
+                for (let i = start; i < block.length; i++) {
+                    if (block[i] === '[') depth++;
+                    else if (block[i] === ']') {
+                        depth--;
+                        if (depth === 0) {
+                            bodies.push(block.slice(start + 1, i));
+                            break;
+                        }
+                    }
+                }
+            }
+            return bodies;
+        }
+
+        function parseTypBack(block) {
+            const content = [];
+            for (const body of typBracketBodies(block)) {
+                const stripped = body.trim();
+                // The italic credits line is already shown by this page.
+                if (/^_[^_]+_$/.test(stripped)) continue;
+                const text = cleanTypInline(stripped);
+                if (text) content.push({ type: 'p', text });
+            }
+            return { title: '', content };
+        }
+
+        function parseZineTyp(source) {
+            const blocks = source.split('#pagebreak()');
+            if (blocks.length !== 8) return null;
+            const pages = blocks.slice(1, -1).map(parseTypPage).filter(Boolean);
+            if (!pages.length) return null;
+            return { pages, back: parseTypBack(blocks[blocks.length - 1]) };
+        }
+
+        async function loadZineText(zine, lang) {
+            const key = `${zine.id}.${lang}`;
+            if (!TEXT_CACHE.has(key)) {
+                let parsed = null;
+                if (zine.sourceFolder && hasZineForLang(zine, lang)) {
+                    try {
+                        const path = `${zine.sourceFolder}/${zine.id}${pdfSuffix(zine, lang)}.typ`;
+                        const response = await fetch(path, { cache: 'no-store' });
+                        if (response.ok) parsed = parseZineTyp(await response.text());
+                    } catch (error) {
+                        parsed = null;
+                    }
+                }
+                TEXT_CACHE.set(key, parsed);
+            }
+            return TEXT_CACHE.get(key);
+        }
+
+        function renderZineBlocks(content) {
+            return (content || []).map(entry => {
+                if (entry.type === 'list') {
+                    return `<ul>${entry.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>`;
+                }
+                return `<p>${escapeHtml(entry.text)}</p>`;
+            }).join('');
+        }
+
+        function countZineWords(text) {
+            const blocks = [...text.pages.map(p => p.content || []), (text.back && text.back.content) || []].flat();
+            return blocks.reduce((total, block) => {
+                const words = block.type === 'list' ? block.items.join(' ') : block.text;
+                return total + words.trim().split(/\s+/).filter(Boolean).length;
+            }, 0);
+        }
+
+        function renderZineText(zine, t) {
+            const text = TEXT_CACHE.get(`${zine.id}.${currentLanguage}`);
+            if (!text || !text.pages || !text.pages.length) return '';
+
+            const pages = text.pages.map(page => `
+                <div class="zine-page">
+                    ${page.title ? `<h3>${escapeHtml(page.title)}</h3>` : ''}
+                    ${renderZineBlocks(page.content)}
+                </div>`).join('');
+
+            const back = text.back && text.back.content && text.back.content.length
+                ? `<div class="zine-page">${renderZineBlocks(text.back.content)}</div>`
+                : '';
+
+            // Several screens' worth of prose, so phones get it folded unless asked otherwise.
+            const stored = localStorage.getItem('zineTextOpen');
+            const open = stored === null ? window.innerWidth > 600 : stored === 'true';
+
+            return `
+                <details class="zine-text" id="zine-text"${open ? ' open' : ''}>
+                    <summary>
+                        <span>${escapeHtml(t.zineText)}</span>
+                        <span class="zine-text-hint">${text.pages.length} ${escapeHtml(t.zinePagesWord)} · ${countZineWords(text)} ${escapeHtml(t.zineWordsWord)}</span>
+                        <span class="zine-text-arrow">▾</span>
+                    </summary>
+                    <div class="zine-pages">${pages}${back}</div>
+                </details>`;
+        }
+
+        function renderGallery(zine, t) {
+            if (!hasZineForLang(zine, currentLanguage) || !zine.pdfFolder) return '';
+            const suffix = pdfSuffix(zine, currentLanguage);
+            const src = `${zine.pdfFolder}/${zine.id}${suffix} zine-${galleryPage}.png?v=2`;
+            return `
+                <div class="gallery">
+                    <div class="section-title">${escapeHtml(t.pages)}</div>
+                    <div class="gallery-frame"><img src="${escapeHtml(src)}" alt="${escapeHtml(zine.title)} ${galleryPage}"></div>
+                    <div class="gallery-nav">
+                        <button class="btn btn-primary" data-page-step="-1">← ${escapeHtml(t.prev)}</button>
+                        <span class="page-counter">${galleryPage} / ${GALLERY_PAGES}</span>
+                        <button class="btn btn-primary" data-page-step="1">${escapeHtml(t.next)} →</button>
+                    </div>
+                </div>`;
+        }
+
+        function renderPager(zine, t) {
+            const list = catalog();
+            const index = list.findIndex(z => z.id === zine.id);
+            if (index === -1) {
+                return `<div class="pager"><a class="pager-index" href="index.html">${escapeHtml(t.backBtn)}</a></div>`;
+            }
+            const prev = list[(index - 1 + list.length) % list.length];
+            const next = list[(index + 1) % list.length];
+            return `
+                <div class="pager">
+                    <a href="watch.html?id=${encodeURIComponent(prev.id)}">← ${escapeHtml(prev.title)}</a>
+                    <a class="pager-index" href="index.html">${escapeHtml(t.backBtn)}</a>
+                    <a href="watch.html?id=${encodeURIComponent(next.id)}">${escapeHtml(next.title)} →</a>
+                </div>`;
+        }
+
+        function renderDetail() {
+            const t = translations[currentLanguage];
+            const content = document.getElementById('content');
+            const zine = CURRENT;
+
+            if (!zine) {
+                content.innerHTML = `<div class="message"><p>${escapeHtml(t.notFound)}</p>
+                    <p><a href="index.html">${escapeHtml(t.backToIndex)}</a></p></div>`;
+                return;
+            }
+
+            const lane = zine.lane_id || 'otros';
+            const description = zine[`description_${currentLanguage}`] || zine.description_es || '';
+            const photos = zine.sourceFolder ? `
+                <div class="photos">
+                    <img src="${escapeHtml(zine.sourceFolder)}/${escapeHtml(zine.id)}_front.jpeg?v=2" alt="${escapeHtml(zine.title)}">
+                    <img src="${escapeHtml(zine.sourceFolder)}/${escapeHtml(zine.id)}_back.jpeg?v=2" alt="${escapeHtml(zine.title)}">
+                </div>` : '<div class="photos"></div>';
+
+            const downloadBtn = hasZineForLang(zine, currentLanguage) && zine.pdfFolder
+                ? `<a class="btn btn-primary" href="${escapeHtml(zine.pdfFolder)}/${escapeHtml(zine.id)}${pdfSuffix(zine, currentLanguage)} zine.pdf" download>${escapeHtml(t.download)}</a>`
+                : '';
+            const forumBtn = zine.hdr_link
+                ? `<a class="btn btn-forum" href="${escapeHtml(zine.hdr_link)}" target="_blank" rel="noopener">${escapeHtml(t.forum)}</a>`
+                : '';
+
+            content.innerHTML = `
+                ${renderPager(zine, t)}
+                <div class="detail">
+                    ${photos}
+                    <div>
+                        <h2>${escapeHtml(zine.title)} ${escapeHtml(zine.emoji || '')}</h2>
+                        <p class="subtitle">${escapeHtml([zine.brand, zine.model].filter(Boolean).join(' · '))}</p>
+                        <div class="badges">
+                            <span class="badge lane-${escapeHtml(lane)}">${escapeHtml(t.laneNames[lane] || lane)}</span>
+                            ${zine.project_status ? `<span class="badge status-${escapeHtml(zine.project_status)}">${escapeHtml(t.statusNames[zine.project_status] || zine.project_status)}</span>` : ''}
+                        </div>
+                        <p class="description">${escapeHtml(description)}</p>
+                        <div class="section-title">${escapeHtml(t.specs)}</div>
+                        <div class="specs">${renderSpecs(zine, t)}</div>
+                        ${renderVariants(zine, t)}
+                        ${zine.notes ? `<div class="notes"><strong>${escapeHtml(t.notesTitle)}:</strong> ${escapeHtml(zine.notes)}</div>` : ''}
+                        <div class="actions">${downloadBtn}${forumBtn}</div>
+                    </div>
+                </div>
+                ${renderZineText(zine, t)}
+                ${renderGallery(zine, t)}`;
+
+            content.querySelectorAll('[data-page-step]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const step = Number(button.dataset.pageStep);
+                    galleryPage = ((galleryPage - 1 + step + GALLERY_PAGES) % GALLERY_PAGES) + 1;
+                    renderDetail();
+                });
+            });
+
+            const zineText = content.querySelector('#zine-text');
+            if (zineText) {
+                zineText.addEventListener('toggle', () => {
+                    localStorage.setItem('zineTextOpen', String(zineText.open));
+                });
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            const t = translations[lang];
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.getElementById('header-subtitle').textContent = t.headerSubtitle;
+            document.getElementById('footer-text').textContent = t.footerText;
+            document.documentElement.lang = lang;
+            document.title = CURRENT ? `${CURRENT.title} · HdR Watch Zines` : 'HdR Watch Zines';
+
+            localStorage.setItem('preferredLanguage', lang);
+            renderDetail();
+
+            if (CURRENT && !TEXT_CACHE.has(`${CURRENT.id}.${lang}`)) {
+                loadZineText(CURRENT, lang).then(text => {
+                    if (text && currentLanguage === lang) renderDetail();
+                });
+            }
+        }
+
+        async function loadWatch() {
+            try {
+                const response = await fetch(`zines_data.json?v=${Date.now()}`);
+                const data = await response.json();
+                ZINES = data.filter(entry => entry && entry.id);
+
+                const id = new URLSearchParams(window.location.search).get('id');
+                CURRENT = ZINES.find(zine => zine.id === id) || null;
+
+                setLanguage(localStorage.getItem('preferredLanguage') || 'es');
+            } catch (error) {
+                console.error('Error loading zines data:', error);
+                document.getElementById('content').innerHTML =
+                    '<div class="message"><p>Error al cargar los datos.</p></div>';
+            }
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        document.addEventListener('DOMContentLoaded', loadWatch);
+    </script>
+</body>
+</html>
