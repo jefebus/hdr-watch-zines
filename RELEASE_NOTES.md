@@ -1,4 +1,24 @@
-﻿## 🆕 Últimas actualizaciones (Julio 2026)
+﻿## 🆕 Últimas actualizaciones (Agosto 2026)
+
+### 📋 Novedad: fichas de proyecto
+- Página propia para cada uno de los 60 proyectos, con enlace directo para compartir en el foro
+- Especificaciones completas, precio de salida, estado, variantes con sus unidades y enlaces al PDF y al hilo
+- Incluye **el contenido completo del zine**, hasta ahora solo legible dentro del PDF
+- Navegación entre fichas, directorio del listado completo, y en español, alemán e inglés
+
+### 🔍 Buscador y filtros en el índice
+- Búsqueda por nombre, marca o calibre, y filtros por colección, movimiento, fabricante, hermeticidad, diámetro y precio de salida
+- Ordenación, contador de resultados y panel plegable
+- Al pulsar sobre la tarjeta de un reloj se abre su ficha
+
+### 📱 Móvil y estadísticas
+- Tipografía, botones y maquetado revisados en todas las páginas para pantallas pequeñas
+- En las gráficas de correlación, los relojes con medidas idénticas ya no se tapan entre sí
+
+### 🔄 Datos
+- Especificaciones y estado de proyecto revisados
+
+## 🆕 Últimas actualizaciones (Julio 2026)
 
 ### 📖 Nuevo zine
 - **RSWC Potemkin** — nuevo folleto (*Zavod* y *Vintage*), homenaje al acorazado Potemkin de Serguéi Eisenstein y al Slava Sadko. Incluye historia, ficha técnica e inscripciones en cirílico con su traducción

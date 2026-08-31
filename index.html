@@ -635,12 +635,49 @@
             .nav-links a {
                 padding: 8px 9px;
                 font-size: 0.8em;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
             }
 
             .download-btn,
             .forum-btn,
             .unfold-btn {
                 margin-bottom: 6px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+
+            /* 16px keeps iOS from zooming the page when a field gets focus. */
+            .filter-search,
+            .filter-select {
+                font-size: 16px;
+                min-height: 44px;
+            }
+
+            .filters-toggle,
+            .filter-reset,
+            .lang-btn {
+                min-height: 44px;
+            }
+
+            /* Taller grab area for the sliders; the track stays centred in it. */
+            .dual-range {
+                height: 44px;
+            }
+
+            .dual-range .dual-track,
+            .dual-range .dual-fill {
+                top: 20px;
+            }
+
+            .dual-range input[type="range"] {
+                height: 44px;
+            }
+
+            #filter-price-max {
+                height: 44px;
             }
         }
     </style>

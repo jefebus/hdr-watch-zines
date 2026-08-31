@@ -249,6 +249,44 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Kept last so it overrides the base rules above. */
+    @media (max-width: 600px) {
+      body {
+        padding: 8px;
+      }
+
+      header {
+        padding: 20px 14px;
+      }
+
+      .content {
+        padding: 20px 14px;
+      }
+
+      .chart-selector,
+      .stats-card {
+        padding: 14px;
+      }
+
+      .nav-links {
+        gap: 6px;
+      }
+
+      .nav-links a {
+        padding: 8px 9px;
+        font-size: 0.8em;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* 16px keeps iOS from zooming the page when the select gets focus. */
+      .chart-selector select {
+        font-size: 16px;
+        min-height: 44px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -455,6 +493,12 @@
   <script>
     // Global variable to store watch data
     let globalWatchData = [];
+
+    // Fingers are far less precise than a cursor, so widen the point hit area
+    // without changing how big the points look.
+    if (window.Chart) {
+      Chart.defaults.elements.point.hitRadius = 14;
+    }
 
     // Simple hash function to generate deterministic pseudo-random values from watch IDs
     function hashString(str) {

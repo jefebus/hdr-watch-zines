@@ -398,6 +398,34 @@
             border-color: #0F82AF;
         }
 
+        /* Kept last so it overrides the base rules above. */
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+
+            header {
+                padding: 20px 14px;
+            }
+
+            .nav-links {
+                gap: 6px;
+            }
+
+            .nav-links a {
+                padding: 8px 9px;
+                font-size: 0.8em;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+
+            .lang-btn {
+                min-height: 44px;
+                padding: 6px 16px;
+            }
+        }
+
     </style>
 </head>
 <body>
