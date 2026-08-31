@@ -97,7 +97,7 @@ Tapa 1: Dibujo del combate final protegido por zafiro.
 
 Tapa 2: Sello Sol y Sombra en placado IP oro.
 
-Ambas con anclaje por tornillos.
+Ambas con sistema de rosca.
 
 *Correas incluidas:*
 
@@ -126,10 +126,8 @@ excelente visibilidad nocturna.
 #image("roquina_back.jpeg", width: 100%, height: 50%, fit: "cover")
 
 #place(top + left, dx: 5mm, dy: 45mm, box(width: 100% - 10mm, text(black, size: 7pt)[
-La tapa trasera roscada incluye dos versiones: una con dibujo a todo color 
-de la pelea final protegido por cristal de zafiro, y otra con el sello 
-Sol y Sombra en relieve y placado IP oro. Sistema de anclaje por tornillos 
-que mantiene ambas siempre rectas.
+El Roquina incluye dos tapas traseras roscadas: una con el dibujo de la pelea final protegido por cristal de zafiro y con un anclaje por tornillos que mantiene el dibujo siempre recto, y otra con el sello 
+Sol y Sombra en relieve y placado IP oro.
 ]))
 
 #place(bottom + left, dx: 5mm, dy: -5mm, text(black, size: 7pt)[
