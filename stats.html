@@ -467,6 +467,59 @@
       return Math.abs(hash) / 2147483647;
     }
 
+    // Spreads points that share the exact same (x, y) value along a 45° diagonal so
+    // overlapping markers appear as a small visible stack instead of hiding each other.
+    // Every point in a group gets a shared stackGroup id used by the interaction mode below.
+    function stackOverlappingPoints(entries, step = 0.08) {
+      const groups = new Map();
+      entries.forEach(entry => {
+        const key = `${entry.x}|${entry.y}`;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(entry);
+      });
+
+      let nextGroupId = 0;
+      groups.forEach(group => {
+        if (group.length < 2) return;
+        const groupId = nextGroupId++;
+        const n = group.length;
+        group.forEach((entry, i) => {
+          const offset = (i - (n - 1) / 2) * step;
+          entry.x += offset;
+          entry.y += offset;
+          entry.stackGroup = groupId;
+        });
+      });
+      return entries;
+    }
+
+    // Custom mode: find the nearest point as usual, then expand the active items to
+    // every point sharing its stackGroup id, so jittered stacks still show together
+    // in the tooltip/hover, just like fully overlapping points already do.
+    if (window.Chart) {
+      Chart.Interaction.modes.stackedNearest = function(chart, e, options, useFinalPosition) {
+        const nearestItems = Chart.Interaction.modes.nearest(chart, e, options, useFinalPosition);
+        if (!nearestItems.length) return nearestItems;
+
+        const first = nearestItems[0];
+        const raw = chart.data.datasets[first.datasetIndex].data[first.index];
+        const groupId = raw && raw.stackGroup;
+        if (groupId === undefined) return nearestItems;
+
+        const items = [];
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+          const meta = chart.getDatasetMeta(datasetIndex);
+          dataset.data.forEach((point, index) => {
+            if (point && point.stackGroup === groupId) {
+              const element = meta.data[index];
+              if (element) items.push({ element, datasetIndex, index });
+            }
+          });
+        });
+        return items.length ? items : nearestItems;
+      };
+    }
+
     // Chart selector functionality
     function setupChartSelector() {
       const select = document.getElementById('chartSelect');
@@ -1092,13 +1145,7 @@
         return;
       }
 
-      // Group data by lane_id
-      const rswcData = [];
-      const rswcInfo = [];
-      const sysData = [];
-      const sysInfo = [];
-      const otrosData = [];
-      const otrosInfo = [];
+      const entries = [];
 
       for (const w of watches) {
         if (!w) continue;
@@ -1115,36 +1162,51 @@
         if (!Number.isFinite(diamVal) || !Number.isFinite(strapVal)) continue;
         if (strapVal <= 0 || diamVal <= 0) continue;
 
-        const point = { x: diamVal, y: strapVal };
-        const info = {
-          id: w.id || "(sin id)",
-          model: w.model || w.title || w.id || "?",
-          brand: w.brand || "",
-          shape: w.case_shape || "round"
-        };
-
-        const laneId = w.lane_id || "otros";
-        if (laneId === "rswc") {
-          rswcData.push(point);
-          rswcInfo.push(info);
-        } else if (laneId === "sys") {
-          sysData.push(point);
-          sysInfo.push(info);
-        } else {
-          otrosData.push(point);
-          otrosInfo.push(info);
-        }
+        entries.push({
+          x: diamVal,
+          y: strapVal,
+          laneId: w.lane_id || "otros",
+          info: {
+            id: w.id || "(sin id)",
+            model: w.model || w.title || w.id || "?",
+            brand: w.brand || "",
+            shape: w.case_shape || "round",
+            diam: diamVal,
+            strap: strapVal
+          }
+        });
       }
 
-      const totalCount = rswcData.length + sysData.length + otrosData.length;
-      if (totalCount === 0) {
+      if (entries.length === 0) {
         showError("diameter-strap-error", "No se han encontrado relojes con ambos datos (diámetro y ancho de correa).");
         return;
       }
 
-      const allData = [...rswcData, ...sysData, ...otrosData];
-      const diameters = allData.map(d => d.x);
-      const straps = allData.map(d => d.y);
+      stackOverlappingPoints(entries);
+
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const e of entries) {
+        const point = { x: e.x, y: e.y, stackGroup: e.stackGroup };
+        if (e.laneId === "rswc") {
+          rswcData.push(point);
+          rswcInfo.push(e.info);
+        } else if (e.laneId === "sys") {
+          sysData.push(point);
+          sysInfo.push(e.info);
+        } else {
+          otrosData.push(point);
+          otrosInfo.push(e.info);
+        }
+      }
+
+      const diameters = entries.map(e => e.info.diam);
+      const straps = entries.map(e => e.info.strap);
       const minDiam = Math.min(...diameters);
       const maxDiam = Math.max(...diameters);
       const minStrap = Math.min(...straps);
@@ -1216,6 +1278,7 @@
           responsive: true,
           maintainAspectRatio: false,
           layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          interaction: { mode: 'stackedNearest', intersect: true },
           scales: {
             x: {
               type: 'linear',
@@ -1270,9 +1333,11 @@
                   return displayName;
                 },
                 afterLabel(context) {
-                  const diam = context.parsed.x;
-                  const strap = context.parsed.y;
-                  return `Diámetro: ${diam}mm, Ancho: ${strap}mm`;
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  if (!info) return "";
+                  return `Diámetro: ${info.diam}mm, Ancho: ${info.strap}mm`;
                 },
               },
             },
@@ -1287,13 +1352,7 @@
         return;
       }
 
-      // Group data by lane_id
-      const rswcData = [];
-      const rswcInfo = [];
-      const sysData = [];
-      const sysInfo = [];
-      const otrosData = [];
-      const otrosInfo = [];
+      const entries = [];
 
       for (const w of watches) {
         if (!w) continue;
@@ -1310,36 +1369,51 @@
         if (!Number.isFinite(diamVal) || !Number.isFinite(heightVal)) continue;
         if (heightVal <= 0 || diamVal <= 0) continue;
 
-        const point = { x: diamVal, y: heightVal };
-        const info = {
-          id: w.id || "(sin id)",
-          model: w.model || w.title || w.id || "?",
-          brand: w.brand || "",
-          shape: w.case_shape || "round"
-        };
-
-        const laneId = w.lane_id || "otros";
-        if (laneId === "rswc") {
-          rswcData.push(point);
-          rswcInfo.push(info);
-        } else if (laneId === "sys") {
-          sysData.push(point);
-          sysInfo.push(info);
-        } else {
-          otrosData.push(point);
-          otrosInfo.push(info);
-        }
+        entries.push({
+          x: diamVal,
+          y: heightVal,
+          laneId: w.lane_id || "otros",
+          info: {
+            id: w.id || "(sin id)",
+            model: w.model || w.title || w.id || "?",
+            brand: w.brand || "",
+            shape: w.case_shape || "round",
+            diam: diamVal,
+            height: heightVal
+          }
+        });
       }
 
-      const totalCount = rswcData.length + sysData.length + otrosData.length;
-      if (totalCount === 0) {
+      if (entries.length === 0) {
         showError("diameter-height-error", "No se han encontrado relojes con ambos datos (diámetro y grosor).");
         return;
       }
 
-      const allData = [...rswcData, ...sysData, ...otrosData];
-      const diameters = allData.map(d => d.x);
-      const heights = allData.map(d => d.y);
+      stackOverlappingPoints(entries);
+
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const e of entries) {
+        const point = { x: e.x, y: e.y, stackGroup: e.stackGroup };
+        if (e.laneId === "rswc") {
+          rswcData.push(point);
+          rswcInfo.push(e.info);
+        } else if (e.laneId === "sys") {
+          sysData.push(point);
+          sysInfo.push(e.info);
+        } else {
+          otrosData.push(point);
+          otrosInfo.push(e.info);
+        }
+      }
+
+      const diameters = entries.map(e => e.info.diam);
+      const heights = entries.map(e => e.info.height);
       const minDiam = Math.min(...diameters);
       const maxDiam = Math.max(...diameters);
       const minHeight = Math.min(...heights);
@@ -1411,6 +1485,7 @@
           responsive: true,
           maintainAspectRatio: false,
           layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          interaction: { mode: 'stackedNearest', intersect: true },
           scales: {
             x: {
               type: 'linear',
@@ -1468,9 +1543,11 @@
                   return displayName;
                 },
                 afterLabel(context) {
-                  const diam = context.parsed.x;
-                  const height = context.parsed.y;
-                  return `Diámetro: ${diam}mm, Grosor: ${height}mm`;
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  if (!info) return "";
+                  return `Diámetro: ${info.diam}mm, Grosor: ${info.height}mm`;
                 },
               },
             },
@@ -1485,13 +1562,7 @@
         return;
       }
 
-      // Group data by lane_id
-      const rswcData = [];
-      const rswcInfo = [];
-      const sysData = [];
-      const sysInfo = [];
-      const otrosData = [];
-      const otrosInfo = [];
+      const entries = [];
 
       for (const w of watches) {
         if (!w) continue;
@@ -1508,36 +1579,51 @@
         if (!Number.isFinite(diamVal) || !Number.isFinite(lugVal)) continue;
         if (lugVal <= 0 || diamVal <= 0) continue;
 
-        const point = { x: diamVal, y: lugVal };
-        const info = {
-          id: w.id || "(sin id)",
-          model: w.model || w.title || w.id || "?",
-          brand: w.brand || "",
-          shape: w.case_shape || "round"
-        };
-
-        const laneId = w.lane_id || "otros";
-        if (laneId === "rswc") {
-          rswcData.push(point);
-          rswcInfo.push(info);
-        } else if (laneId === "sys") {
-          sysData.push(point);
-          sysInfo.push(info);
-        } else {
-          otrosData.push(point);
-          otrosInfo.push(info);
-        }
+        entries.push({
+          x: diamVal,
+          y: lugVal,
+          laneId: w.lane_id || "otros",
+          info: {
+            id: w.id || "(sin id)",
+            model: w.model || w.title || w.id || "?",
+            brand: w.brand || "",
+            shape: w.case_shape || "round",
+            diam: diamVal,
+            lug: lugVal
+          }
+        });
       }
 
-      const totalCount = rswcData.length + sysData.length + otrosData.length;
-      if (totalCount === 0) {
+      if (entries.length === 0) {
         showError("diameter-lug-error", "No se han encontrado relojes con ambos datos (diámetro y lug to lug).");
         return;
       }
 
-      const allData = [...rswcData, ...sysData, ...otrosData];
-      const diameters = allData.map(d => d.x);
-      const lugs = allData.map(d => d.y);
+      stackOverlappingPoints(entries);
+
+      const rswcData = [];
+      const rswcInfo = [];
+      const sysData = [];
+      const sysInfo = [];
+      const otrosData = [];
+      const otrosInfo = [];
+
+      for (const e of entries) {
+        const point = { x: e.x, y: e.y, stackGroup: e.stackGroup };
+        if (e.laneId === "rswc") {
+          rswcData.push(point);
+          rswcInfo.push(e.info);
+        } else if (e.laneId === "sys") {
+          sysData.push(point);
+          sysInfo.push(e.info);
+        } else {
+          otrosData.push(point);
+          otrosInfo.push(e.info);
+        }
+      }
+
+      const diameters = entries.map(e => e.info.diam);
+      const lugs = entries.map(e => e.info.lug);
       const minDiam = Math.min(...diameters);
       const maxDiam = Math.max(...diameters);
       const minLug = Math.min(...lugs);
@@ -1609,6 +1695,7 @@
           responsive: true,
           maintainAspectRatio: false,
           layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          interaction: { mode: 'stackedNearest', intersect: true },
           scales: {
             x: {
               type: 'linear',
@@ -1663,9 +1750,11 @@
                   return displayName;
                 },
                 afterLabel(context) {
-                  const diam = context.parsed.x;
-                  const lug = context.parsed.y;
-                  return `Diámetro: ${diam}mm, Lug to Lug: ${lug}mm`;
+                  const dataset = context.dataset;
+                  const idx = context.dataIndex + (dataset.dataStartIndex || 0);
+                  const info = allInfo[idx];
+                  if (!info) return "";
+                  return `Diámetro: ${info.diam}mm, Lug to Lug: ${info.lug}mm`;
                 },
               },
             },
