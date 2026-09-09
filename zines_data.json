@@ -2216,7 +2216,7 @@
     "lane_id": "sys",
     "has_zine": true,
     "lug_to_lug": 44.6,
-     "project_status": "in_delivery",
+     "project_status": "delivered",
     "water_resist": 50,
     "models": [
       "Azul",
