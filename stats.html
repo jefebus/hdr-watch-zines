@@ -431,10 +431,10 @@
           <section class="stats-card chart-section" id="lift-angle">
             <div>
               <h2>Ángulos de levante</h2>
-              <p class="stats-meta">Ángulo de levante de los escapes mecánicos, en grados y con escala lineal. Cada punto representa un reloj; los módulos digitales, de cuarzo y los calibres sin dato se excluyen.</p>
+              <p class="stats-meta">Ángulo de levante de los escapes mecánicos, en grados y con escala lineal. El eje X agrupa los calibres nominales; los colores distinguen las colecciones.</p>
             </div>
-            <div class="chart-container">
-              <canvas id="liftAngleChart" aria-label="Distribución de ángulos de levante" role="img"></canvas>
+            <div class="chart-container" style="height: 560px;">
+              <canvas id="liftAngleChart" aria-label="Distribución de ángulos de levante por calibre" role="img"></canvas>
             </div>
             <div id="lift-angle-error" class="error-banner"></div>
           </section>
@@ -2955,6 +2955,46 @@
       });
     }
 
+    const LIFT_ANGLE_CALIBRES = [
+      "2409 / 2415",
+      "2609",
+      "2824-2",
+      "3133",
+      "46943 (?)",
+      "6460",
+      "8205",
+      "8215",
+      "9015",
+      "A10",
+      "NH34",
+      "NH35",
+      "NH35A",
+      "NH36",
+      "NH36A",
+      "PT5000",
+      "SL-4601",
+      "SL4617",
+      "ST16",
+      "ST17 / ST1701 (familia)",
+      "ST19 / ST1901",
+      "ST2836",
+      "ST36 (familia)",
+      "SW200",
+      "YN55A"
+    ];
+
+    function getNominalLiftCalibre(movementId) {
+      const raw = Array.isArray(movementId) ? movementId.join(" / ") : String(movementId || "");
+      const normalized = raw.replaceAll(" ", "").toUpperCase();
+
+      if (normalized === "2409/2415" || normalized === "2415") return "2409 / 2415";
+      if (["TY3620-2", "ST3600", "ST3620", "ST3621"].includes(normalized)) return "ST36 (familia)";
+      if (["ST17", "ST1700", "ST1701"].includes(normalized)) return "ST17 / ST1701 (familia)";
+      if (["ST19", "ST-19", "ST1901", "ST-1901"].includes(normalized)) return "ST19 / ST1901";
+      if (normalized === "46943") return "46943 (?)";
+      return raw;
+    }
+
     function buildLiftAngleChart(watches) {
       if (!Array.isArray(watches) || watches.length === 0) {
         showError("lift-angle-error", "No hay datos disponibles.");
@@ -2962,20 +3002,26 @@
       }
 
       const groups = {
-        rswc: { baseX: 2, label: "RSWC", color: "rgba(218, 165, 32, 0.7)", border: "rgba(218, 165, 32, 0.95)", info: [] },
-        sys: { baseX: 1, label: "Sol y Sombra", color: "rgba(139, 92, 246, 0.7)", border: "rgba(139, 92, 246, 0.95)", info: [] },
-        otros: { baseX: 0, label: "Otros", color: "rgba(239, 68, 68, 0.7)", border: "rgba(239, 68, 68, 0.95)", info: [] }
+        rswc: { label: "RSWC", color: "rgba(218, 165, 32, 0.7)", border: "rgba(218, 165, 32, 0.95)", info: [] },
+        sys: { label: "Sol y Sombra", color: "rgba(139, 92, 246, 0.7)", border: "rgba(139, 92, 246, 0.95)", info: [] },
+        otros: { label: "Otros", color: "rgba(239, 68, 68, 0.7)", border: "rgba(239, 68, 68, 0.95)", info: [] }
       };
 
       for (const watch of watches) {
         if (!watch || typeof watch.lift_angle !== "number" || !Number.isFinite(watch.lift_angle) || watch.lift_angle <= 0) continue;
         const lane = watch.lane_id === "rswc" || watch.lane_id === "sys" ? watch.lane_id : "otros";
+        const movementId = Array.isArray(watch.movement_id) ? watch.movement_id.join(" / ") : (watch.movement_id || "—");
+        const nominalCalibre = getNominalLiftCalibre(watch.movement_id);
+        const movementCompany = watch.movement_company || "Fabricante no identificado";
         groups[lane].info.push({
           id: watch.id || "(sin id)",
           title: watch.title || watch.model || watch.id || "(sin título)",
           brand: watch.brand || "",
           model: watch.model || "",
-          movementId: Array.isArray(watch.movement_id) ? watch.movement_id.join(" / ") : (watch.movement_id || "—"),
+          movementId,
+          movementCompany,
+          nominalCalibre,
+          nominalCalibreLabel: `${movementCompany} ${nominalCalibre}`,
           liftAngle: watch.lift_angle,
           liftAngleNotes: watch.lift_angle_notes || "Sin nota de procedencia."
         });
@@ -2987,17 +3033,35 @@
         return;
       }
 
+      const calibreLabels = [
+        ...LIFT_ANGLE_CALIBRES.filter(label => allInfo.some(info => info.nominalCalibre === label)),
+        ...[...new Set(allInfo.map(info => info.nominalCalibre))]
+          .filter(label => !LIFT_ANGLE_CALIBRES.includes(label))
+          .sort((a, b) => a.localeCompare(b, "es"))
+      ];
+      const calibreIndex = new Map(calibreLabels.map((label, index) => [label, index]));
+      const calibreDisplayLabels = new Map(calibreLabels.map(label => {
+        const manufacturers = [...new Set(
+          allInfo.filter(info => info.nominalCalibre === label).map(info => info.movementCompany)
+        )].sort((a, b) => a.localeCompare(b, "es"));
+        return [label, `${manufacturers.join(" / ")} ${label}`];
+      }));
+
       for (const group of Object.values(groups)) {
-        group.info.sort((a, b) => a.liftAngle - b.liftAngle || a.title.localeCompare(b.title, "es"));
+        group.info.sort((a, b) =>
+          calibreIndex.get(a.nominalCalibre) - calibreIndex.get(b.nominalCalibre) ||
+          a.liftAngle - b.liftAngle ||
+          a.title.localeCompare(b.title, "es")
+        );
       }
 
-      const jitterAmount = 0.3;
+      const jitterAmount = 0.28;
       const datasets = [groups.otros, groups.sys, groups.rswc]
         .filter(group => group.info.length)
         .map(group => ({
           label: group.label,
           data: group.info.map(info => ({
-            x: group.baseX + (hashString(info.id) - 0.5) * jitterAmount * 2,
+            x: calibreIndex.get(info.nominalCalibre) + (hashString(info.id) - 0.5) * jitterAmount * 2,
             y: info.liftAngle
           })),
           projectInfo: group.info,
@@ -3024,12 +3088,23 @@
           responsive: true,
           maintainAspectRatio: false,
           interaction: { mode: "nearest", intersect: true },
-          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 34 } },
           scales: {
             x: {
-              display: false,
+              type: "linear",
               min: -0.5,
-              max: 2.5
+              max: calibreLabels.length - 0.5,
+              ticks: {
+                stepSize: 1,
+                autoSkip: false,
+                color: "#9ca3af",
+                font: { size: 9 },
+                minRotation: 55,
+                maxRotation: 70,
+                callback: value => calibreDisplayLabels.get(calibreLabels[Math.round(value)]) || ""
+              },
+              title: { display: true, text: "Fabricante y calibre nominal", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { display: false }
             },
             y: {
               type: "linear",
@@ -3070,7 +3145,8 @@
                   const info = context.dataset.projectInfo?.[context.dataIndex];
                   if (!info) return [];
                   return [
-                    `Calibre: ${info.movementId}`,
+                    `Calibre nominal: ${info.nominalCalibreLabel}`,
+                    `ID registrado: ${info.movementId}`,
                     `Ángulo de levante: ${info.liftAngle}°`,
                     `Nota: ${info.liftAngleNotes}`
                   ];

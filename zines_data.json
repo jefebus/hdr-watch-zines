@@ -916,7 +916,7 @@
     "case_height": 14.0,
     "strap_width": 20,
     "movement_type": "manual",
-    "movement_id": "ST1901",
+    "movement_id": "ST-1901",
     "lift_angle": 54,
     "lift_angle_notes": "Suposición — trasladado desde Seagull ST1902 (Caliber Corner), misma base de escape Venus 175; sin ficha propia del ST1901.",
     "complications": ["chronograph", "small_seconds"],
