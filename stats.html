@@ -319,6 +319,7 @@
           <option value="yearly-volume-cumulative">Volumen contratado (€) acumulado por años</option>
           <option value="price">Distribución de precios</option>
           <option value="water-resist">Hermeticidad</option>
+          <option value="lift-angle">Ángulos de levante</option>
           <option value="movement-type">Tipos de movimiento</option>
           <option value="movement-company">Fabricante de calibre</option>
           <option value="complications">Complicaciones</option>
@@ -424,6 +425,18 @@
               <canvas id="waterResistChart" aria-label="Distribución de hermeticidad" role="img"></canvas>
             </div>
             <div id="water-resist-error" class="error-banner"></div>
+          </section>
+
+          <!-- Lift Angle Chart -->
+          <section class="stats-card chart-section" id="lift-angle">
+            <div>
+              <h2>Ángulos de levante</h2>
+              <p class="stats-meta">Ángulo de levante de los escapes mecánicos, en grados y con escala lineal. Cada punto representa un reloj; los módulos digitales, de cuarzo y los calibres sin dato se excluyen.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="liftAngleChart" aria-label="Distribución de ángulos de levante" role="img"></canvas>
+            </div>
+            <div id="lift-angle-error" class="error-banner"></div>
           </section>
 
           <!-- Movement Type Chart -->
@@ -986,6 +999,51 @@
             <div class="summary-row">
               <span class="summary-label">Precio medio Otros</span>
               <span class="summary-value">${avgOtrosWithPrice}€</span>
+            </div>
+          `;
+          break;
+
+        case 'lift-angle':
+          const liftAngleWatches = watches.filter(w =>
+            w && typeof w.lift_angle === 'number' && Number.isFinite(w.lift_angle) && w.lift_angle > 0
+          );
+          const liftAngles = liftAngleWatches.map(w => w.lift_angle);
+          const averageLiftAngle = liftAngles.length
+            ? (liftAngles.reduce((sum, value) => sum + value, 0) / liftAngles.length).toFixed(1)
+            : '—';
+          const minLiftAngle = liftAngles.length ? Math.min(...liftAngles) : '—';
+          const maxLiftAngle = liftAngles.length ? Math.max(...liftAngles) : '—';
+          const rswcLiftAngles = liftAngleWatches.filter(w => w.lane_id === 'rswc').length;
+          const sysLiftAngles = liftAngleWatches.filter(w => w.lane_id === 'sys').length;
+          const otrosLiftAngles = liftAngleWatches.filter(w => w.lane_id !== 'rswc' && w.lane_id !== 'sys').length;
+          html = `
+            <div class="summary-row">
+              <span class="summary-label">Total de proyectos/relojes</span>
+              <span class="summary-value">${watches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Con ángulo de levante</span>
+              <span class="summary-value">${liftAngleWatches.length}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Ángulo medio</span>
+              <span class="summary-value">${averageLiftAngle === '—' ? '—' : `${averageLiftAngle}°`}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Rango</span>
+              <span class="summary-value">${minLiftAngle === '—' ? '—' : `${minLiftAngle}° – ${maxLiftAngle}°`}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">RSWC</span>
+              <span class="summary-value">${rswcLiftAngles}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sol y Sombra</span>
+              <span class="summary-value">${sysLiftAngles}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Otros</span>
+              <span class="summary-value">${otrosLiftAngles}</span>
             </div>
           `;
           break;
@@ -2897,6 +2955,133 @@
       });
     }
 
+    function buildLiftAngleChart(watches) {
+      if (!Array.isArray(watches) || watches.length === 0) {
+        showError("lift-angle-error", "No hay datos disponibles.");
+        return;
+      }
+
+      const groups = {
+        rswc: { baseX: 2, label: "RSWC", color: "rgba(218, 165, 32, 0.7)", border: "rgba(218, 165, 32, 0.95)", info: [] },
+        sys: { baseX: 1, label: "Sol y Sombra", color: "rgba(139, 92, 246, 0.7)", border: "rgba(139, 92, 246, 0.95)", info: [] },
+        otros: { baseX: 0, label: "Otros", color: "rgba(239, 68, 68, 0.7)", border: "rgba(239, 68, 68, 0.95)", info: [] }
+      };
+
+      for (const watch of watches) {
+        if (!watch || typeof watch.lift_angle !== "number" || !Number.isFinite(watch.lift_angle) || watch.lift_angle <= 0) continue;
+        const lane = watch.lane_id === "rswc" || watch.lane_id === "sys" ? watch.lane_id : "otros";
+        groups[lane].info.push({
+          id: watch.id || "(sin id)",
+          title: watch.title || watch.model || watch.id || "(sin título)",
+          brand: watch.brand || "",
+          model: watch.model || "",
+          movementId: Array.isArray(watch.movement_id) ? watch.movement_id.join(" / ") : (watch.movement_id || "—"),
+          liftAngle: watch.lift_angle,
+          liftAngleNotes: watch.lift_angle_notes || "Sin nota de procedencia."
+        });
+      }
+
+      const allInfo = Object.values(groups).flatMap(group => group.info);
+      if (!allInfo.length) {
+        showError("lift-angle-error", "No se han encontrado ángulos de levante válidos.");
+        return;
+      }
+
+      for (const group of Object.values(groups)) {
+        group.info.sort((a, b) => a.liftAngle - b.liftAngle || a.title.localeCompare(b.title, "es"));
+      }
+
+      const jitterAmount = 0.3;
+      const datasets = [groups.otros, groups.sys, groups.rswc]
+        .filter(group => group.info.length)
+        .map(group => ({
+          label: group.label,
+          data: group.info.map(info => ({
+            x: group.baseX + (hashString(info.id) - 0.5) * jitterAmount * 2,
+            y: info.liftAngle
+          })),
+          projectInfo: group.info,
+          backgroundColor: group.color,
+          borderColor: group.border,
+          borderWidth: 1.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: group.border
+        }));
+
+      const minAngle = Math.min(...allInfo.map(info => info.liftAngle));
+      const maxAngle = Math.max(...allInfo.map(info => info.liftAngle));
+      const ctx = document.getElementById("liftAngleChart");
+      if (!ctx) {
+        showError("lift-angle-error", "No se ha encontrado el lienzo del gráfico.");
+        return;
+      }
+
+      new Chart(ctx, {
+        type: "scatter",
+        data: { datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "nearest", intersect: true },
+          layout: { padding: { top: 10, right: 16, left: 4, bottom: 8 } },
+          scales: {
+            x: {
+              display: false,
+              min: -0.5,
+              max: 2.5
+            },
+            y: {
+              type: "linear",
+              min: Math.max(0, Math.floor(minAngle) - 1),
+              max: Math.ceil(maxAngle) + 1,
+              ticks: {
+                stepSize: 1,
+                color: "#9ca3af",
+                font: { size: 10 },
+                callback: value => `${value}°`
+              },
+              title: { display: true, text: "Ángulo de levante (°)", color: "#e5e7eb", font: { size: 11, weight: "500" } },
+              grid: { color: "rgba(55, 65, 81, 0.6)" }
+            }
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: "top",
+              labels: { color: "#e5e7eb", font: { size: 10 } }
+            },
+            tooltip: {
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              borderColor: "rgba(148, 163, 184, 0.7)",
+              borderWidth: 1,
+              padding: 10,
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              callbacks: {
+                title(items) {
+                  return items[0].dataset.projectInfo?.[items[0].dataIndex]?.title || "?";
+                },
+                label(context) {
+                  const info = context.dataset.projectInfo?.[context.dataIndex];
+                  return info?.brand && info.model ? `${info.brand} · ${info.model}` : (info?.model || "?");
+                },
+                afterLabel(context) {
+                  const info = context.dataset.projectInfo?.[context.dataIndex];
+                  if (!info) return [];
+                  return [
+                    `Calibre: ${info.movementId}`,
+                    `Ángulo de levante: ${info.liftAngle}°`,
+                    `Nota: ${info.liftAngleNotes}`
+                  ];
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
     function buildWaterResistChart(watches) {
       if (!Array.isArray(watches) || watches.length === 0) {
         showError("water-resist-error", "No hay datos disponibles.");
@@ -3862,6 +4047,8 @@
       try { buildPriceLine(data); } catch (e) { console.error(e); }
 
       try { buildWaterResistChart(data); } catch (e) { console.error(e); }
+
+      try { buildLiftAngleChart(data); } catch (e) { console.error(e); }
 
       try {
         buildChart(data, {
