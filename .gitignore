@@ -44,3 +44,9 @@ hdr_images*/
 hdr_texts*/
 downloads
 tablas_joserra100/*
+
+# debug/scratch files kept locally but untracked
+debug_hdr.html
+debug_uhrforum.html
+Citizen_G900_Manual.md
+tablas_joserra100.md
