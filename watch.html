@@ -830,19 +830,156 @@
 
         const TYP_TITLE_RE = /^\*(.+?)\*$/;
         const TYP_BULLET_RE = /^-\s+(.*)$/;
-        const TYP_IMAGE_RE = /^#(block|image)\b/;
+        const TYP_IDENT_RE = /[A-Za-z_][\w-]*/y;
+        const TYP_STATEMENT_RE = /^(set|show|let|import|include)$/;
+
+        // Removes Typst code from markup, keeping only the text of its content blocks:
+        // `#fondo("bg.jpeg")[body]` -> `body`, `#text(font: ("A", "B"))[✠]` -> `✠`,
+        // `#v(1em)` / `#image(...)` / `#block({ image(...) })` -> ``, `#set ...` -> ``.
+        // Newlines are kept so the line-based parser still sees titles, bullets and
+        // paragraph breaks. A `#` that does not start code (e.g. `#1`) stays as text.
+        function stripTypCode(src) {
+            const n = src.length;
+            let i = 0;
+
+            // Skips a "string", // comment or /* comment */ in code mode.
+            const skipCodeTrivia = () => {
+                if (src[i] === '"') {
+                    i++;
+                    while (i < n && src[i] !== '"') i += src[i] === '\\' ? 2 : 1;
+                    i++;
+                    return true;
+                }
+                if (src[i] === '/' && src[i + 1] === '/') {
+                    while (i < n && src[i] !== '\n') i++;
+                    return true;
+                }
+                if (src[i] === '/' && src[i + 1] === '*') {
+                    const end = src.indexOf('*/', i + 2);
+                    i = end === -1 ? n : end + 2;
+                    return true;
+                }
+                return false;
+            };
+
+            // Code inside (...) or {...}: returns the markup of the content blocks found in it.
+            const codeGroup = () => {
+                const found = [];
+                let depth = 0;
+                while (i < n) {
+                    if (skipCodeTrivia()) continue;
+                    const c = src[i];
+                    if (c === '[') {
+                        i++;
+                        found.push(markup(true));
+                        continue;
+                    }
+                    i++;
+                    if (c === '(' || c === '{') depth++;
+                    else if ((c === ')' || c === '}') && --depth === 0) break;
+                }
+                return found;
+            };
+
+            // #set/#show/#let/#import/#include: dropped up to the end of the line (or `;`).
+            const skipStatement = () => {
+                let depth = 0;
+                while (i < n) {
+                    if (skipCodeTrivia()) continue;
+                    const c = src[i];
+                    if (depth === 0 && (c === '\n' || c === ']' || c === ')' || c === '}')) return;
+                    if (c === '[') {
+                        i++;
+                        markup(true);
+                        continue;
+                    }
+                    i++;
+                    if (depth === 0 && c === ';') return;
+                    if (c === '(' || c === '{') depth++;
+                    else if (c === ')' || c === '}') depth--;
+                }
+            };
+
+            // Cursor on `#`.
+            const hashExpr = () => {
+                const next = src[i + 1];
+                if (next === '(' || next === '{') {
+                    i++;
+                    return codeGroup().join('\n');
+                }
+                if (next === '[') {
+                    i += 2;
+                    return markup(true);
+                }
+                TYP_IDENT_RE.lastIndex = i + 1;
+                const ident = TYP_IDENT_RE.exec(src);
+                if (!ident) {
+                    i++;
+                    return '#';
+                }
+                i = TYP_IDENT_RE.lastIndex;
+                if (TYP_STATEMENT_RE.test(ident[0])) {
+                    skipStatement();
+                    return '';
+                }
+                const parts = [];
+                while (i < n) {
+                    if (src[i] === '(') {
+                        parts.push(...codeGroup());
+                    } else if (src[i] === '[') {
+                        i++;
+                        parts.push(markup(true));
+                    } else if (src[i] === '.') {
+                        TYP_IDENT_RE.lastIndex = i + 1;
+                        if (!TYP_IDENT_RE.exec(src)) break;
+                        i = TYP_IDENT_RE.lastIndex;
+                    } else {
+                        break;
+                    }
+                }
+                return parts.join('\n');
+            };
+
+            // Markup; inside a content block it ends at the matching `]`.
+            const markup = inBlock => {
+                let out = '';
+                let depth = 0;
+                while (i < n) {
+                    const c = src[i];
+                    if (c === '\\') {
+                        out += src.slice(i, i + 2);
+                        i += 2;
+                    } else if (c === '/' && src[i + 1] === '/'
+                        && /^[ \t]*$/.test(src.slice(src.lastIndexOf('\n', i - 1) + 1, i))) {
+                        while (i < n && src[i] !== '\n') i++;
+                    } else if (c === '#') {
+                        out += hashExpr();
+                    } else if (inBlock && c === ']' && depth === 0) {
+                        i++;
+                        return out;
+                    } else {
+                        if (inBlock && c === '[') depth++;
+                        else if (inBlock && c === ']') depth--;
+                        out += c;
+                        i++;
+                    }
+                }
+                return out;
+            };
+
+            return markup(false);
+        }
 
         function cleanTypInline(text) {
             return text
-                .replace(/#text\([^)]*\)\[([\s\S]*?)\]/g, '$1')
-                .replace(/\\ /g, ' ')
+                .replace(/\\(?=\s|$)/g, ' ')
                 .replace(/\*(.+?)\*/g, '$1')
                 .replace(/_(.+?)_/g, '$1')
                 .replace(/\s+/g, ' ')
                 .trim();
         }
 
-        function parseTypPage(block) {
+        function parseTypLines(text, allowTitle) {
             let title = null;
             const content = [];
             let buffer = [];
@@ -860,14 +997,14 @@
                 else content.push({ type: 'list', items: [item] });
             };
 
-            for (const raw of block.split('\n')) {
+            for (const raw of text.split('\n')) {
                 const line = raw.trim();
-                if (!line || line.startsWith('//') || TYP_IMAGE_RE.test(line)) {
+                if (!line || line.startsWith('//')) {
                     flush();
                     continue;
                 }
 
-                const heading = line.match(TYP_TITLE_RE);
+                const heading = allowTitle && line.match(TYP_TITLE_RE);
                 if (heading && title === null && !content.length) {
                     title = cleanTypInline(heading[1]);
                     continue;
@@ -881,15 +1018,15 @@
                     continue;
                 }
 
-                if (line.startsWith('#')) {
-                    flush();
-                    continue;
-                }
-
                 buffer.push(line);
             }
             flush();
 
+            return { title, content };
+        }
+
+        function parseTypPage(block) {
+            const { title, content } = parseTypLines(stripTypCode(block), true);
             if (title === null && !content.length) return null;
             return { title: title || '', content };
         }
@@ -919,11 +1056,10 @@
         function parseTypBack(block) {
             const content = [];
             for (const body of typBracketBodies(block)) {
-                const stripped = body.trim();
+                const stripped = stripTypCode(body).trim();
                 // The italic credits line is already shown by this page.
                 if (/^_[^_]+_$/.test(stripped)) continue;
-                const text = cleanTypInline(stripped);
-                if (text) content.push({ type: 'p', text });
+                content.push(...parseTypLines(stripped, false).content);
             }
             return { title: '', content };
         }

@@ -10,7 +10,7 @@ import argparse
 # -------- CONFIGURATION --------
 BASE_DOMAIN = "https://www.hablemosderelojes.com/"
 START_URLS = [
-   "https://www.hablemosderelojes.com/t/238801",  
+   "https://www.hablemosderelojes.com/t/278844",  
 ]
 OUTPUT_DIR = "hdr_texts"
 OUTPUT_FORMAT = "markdown"  # Options: "markdown", "json", "txt"
@@ -66,6 +66,15 @@ def scrape_thread(url, thread_title="", first_page_only=False, author_filter=Non
             title_elem = soup.find("h1", class_=re.compile("fancy-title"))
             if title_elem:
                 thread_title = title_elem.get_text(strip=True)
+            else:
+                # Single-post crawler pages (e.g. .../topic-id/post-number) don't
+                # have an h1.fancy-title, only a <title> tag like:
+                # '"Thread Title" - nº 1399 por Author - Hablemos de Relojes - HdR'
+                if soup.title and soup.title.string:
+                    raw_title = soup.title.string.strip()
+                    raw_title = re.sub(r"\s*-\s*n[ºo]\s*\d+.*$", "", raw_title)
+                    raw_title = raw_title.strip().strip('"')
+                    thread_title = raw_title
         
         # Find all post containers (crawler-friendly structure)
         post_containers = soup.find_all("div", class_="topic-body")
@@ -274,8 +283,14 @@ for thread_url in urls:
     
     print(f"\n[OK] Extracted {len(posts_data)} posts from '{thread_title}'")
     
-    # Extract thread ID from URL
-    thread_id = thread_url.rstrip('/').split('/')[-1].split('?')[0]
+    # Extract thread ID from URL (the numeric id right after the slug in
+    # /t/slug/12345 or /t/slug/12345/6789 - the *last* segment may be a post
+    # number instead of the thread id, so don't just grab it blindly).
+    id_match = re.search(r"/t/[^/]+/(\d+)", thread_url)
+    if id_match:
+        thread_id = id_match.group(1)
+    else:
+        thread_id = thread_url.rstrip('/').split('/')[-1].split('?')[0]
     
     # Get watch IDs for this thread
     watch_ids = get_watch_ids_for_thread(thread_id)
